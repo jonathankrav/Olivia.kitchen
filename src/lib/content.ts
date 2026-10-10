@@ -9,7 +9,7 @@ export const content = {
   en: {
     skip: 'Skip to content', stamp: ['Three kitchens.', 'One beautiful table.'],
     nav: ['The experience', 'My kitchens', 'Gallery'], book: 'Let’s plan your table',
-    eyebrow: 'PRIVATE CHEF · PERSONAL DINING', hero: ['A little soul.', 'A lot of flavour.'],
+    eyebrow: 'PRIVATE CHEF · PERSONAL DINING', hero: ['A big soul.', 'A lot of flavour.'],
     intro: 'Three culinary traditions. One unforgettable table. Beautiful food, made with care, in the comfort of your home.',
     explore: 'Discover my kitchens', scroll: 'A taste of what’s to come', photoNote: 'GOOD FOOD. GOOD COMPANY.',
     ribbon: ['Made with love', 'Seasonal ingredients', 'Your home, your occasion', 'Always a personal touch'],
@@ -36,7 +36,7 @@ export const content = {
   he: {
     skip: 'דילוג לתוכן', stamp: ['שלושה מטבחים.', 'שולחן יפה אחד.'],
     nav: ['החוויה', 'המטבחים שלי', 'גלריה'], book: 'נתכנן את הארוחה שלכם',
-    eyebrow: 'שפית פרטית · חוויה אישית', hero: ['קצת נשמה.', 'הרבה טעם.'],
+    eyebrow: 'שפית פרטית · חוויה אישית', hero: ['הרבה נשמה.', 'הרבה טעם.'],
     intro: 'שלוש מסורות קולינריות. שולחן אחד בלתי נשכח. אוכל יפהפה, שמוכן באהבה, בנוחות של הבית שלכם.',
     explore: 'גלו את המטבחים שלי', scroll: 'טעימה ממה שמחכה לכם', photoNote: 'אוכל טוב. חברה טובה.',
     ribbon: ['עשוי באהבה', 'חומרי גלם עונתיים', 'הבית שלכם, האירוע שלכם', 'תמיד עם נגיעה אישית'],
@@ -63,7 +63,7 @@ export const content = {
   ru: {
     skip: 'Перейти к содержимому', stamp: ['Три кухни.', 'Один прекрасный стол.'],
     nav: ['Впечатления', 'Мои кухни', 'Галерея'], book: 'Спланируем ваш вечер',
-    eyebrow: 'ЛИЧНЫЙ ШЕФ · ОСОБЕННЫЕ УЖИНЫ', hero: ['Немного души.', 'Много вкуса.'],
+    eyebrow: 'ЛИЧНЫЙ ШЕФ · ОСОБЕННЫЕ УЖИНЫ', hero: ['Много души.', 'Много вкуса.'],
     intro: 'Три кулинарные традиции. Один незабываемый стол. Прекрасная еда, приготовленная с заботой, у вас дома.',
     explore: 'Откройте мои кухни', scroll: 'Вкус того, что вас ждёт', photoNote: 'ХОРОШАЯ ЕДА. ПРИЯТНАЯ КОМПАНИЯ.',
     ribbon: ['Приготовлено с любовью', 'Сезонные продукты', 'Ваш дом, ваш праздник', 'Всегда индивидуально'],
