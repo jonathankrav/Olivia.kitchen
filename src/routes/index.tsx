@@ -74,7 +74,7 @@ function OliviaKitchen() {
     <div className="site" dir={direction}>
       <a className="skip-link" href="#main">{text.skip}</a>
       <header className="header">
-        <a className="brand" href="#" aria-label="Olivia Kitchen"><span>olivia<span className="brand-dot">.</span></span><small>THE PRIVATE KITCHEN</small></a>
+        <a className="brand" href="#" aria-label="Olivia Kitchen"><span>Olivia<span className="brand-dot">.</span></span><small>THE PRIVATE KITCHEN</small></a>
         <nav className={menuOpen ? 'navigation is-open' : 'navigation'} aria-label={text.menu}>
           {text.nav.map((label, index) => <a key={label} href={`#${['experience', 'kitchens', 'gallery'][index]}`} onClick={() => setMenuOpen(false)}>{label}</a>)}
         </nav>
