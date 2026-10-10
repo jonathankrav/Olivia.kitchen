@@ -2,7 +2,7 @@ export type Language = 'en' | 'he' | 'ru'
 
 export const contact = {
   email: 'chef@olivia.kitchen',
-  whatsappNumber: '',
+  whatsappNumber: '+972587217215',
 }
 
 export const content = {
