@@ -31,4 +31,4 @@ Automatic notification configuration was attempted, but the Netlify API rejected
 
 ## Images
 
-Illustrative imagery lives in `public/img/` and is clearly identified as illustrative in the gallery. All displayed imagery is requested through `/.netlify/images` rather than loading full-resolution PNG files. `scripts/generate-images.mjs` was used to create these static assets. Regeneration requires Netlify AI Gateway access and incurs inference usage; it is not part of development or deployment. 
+Illustrative imagery lives in `public/img/` and is clearly identified as illustrative in the gallery. All displayed imagery is requested through `/.netlify/images` rather than loading full-resolution PNG files. `scripts/generate-images.mjs` was used to create these static assets. Regeneration requires Netlify AI Gateway access and incurs inference usage; it is not part of development or deployment.
