@@ -16,10 +16,15 @@ function OliviaKitchen() {
   const [activeImage, setActiveImage] = useState<number | null>(null)
   const [whatsappNotice, setWhatsappNotice] = useState(false)
   const [formState, setFormState] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
+  const [siteUrl, setSiteUrl] = useState('')
   const galleryDialog = useRef<HTMLDialogElement>(null)
   const whatsappDialog = useRef<HTMLDialogElement>(null)
   const text = content[language]
   const direction = language === 'he' ? 'rtl' : 'ltr'
+
+  useEffect(() => {
+    setSiteUrl(window.location.origin)
+  }, [])
 
   useEffect(() => {
     document.documentElement.lang = language
@@ -48,17 +53,16 @@ function OliviaKitchen() {
     event.preventDefault()
     if (formState === 'sending') return
     const form = event.currentTarget
-    const fields = new FormData(form)
-    const body = new URLSearchParams()
-    fields.forEach((value, key) => body.append(key, String(value)))
+    const fields = Object.fromEntries(new FormData(form).entries())
     setFormState('sending')
     try {
-      const response = await fetch('/__forms.html', {
+      const response = await fetch(`https://formsubmit.co/ajax/${contact.email}`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: body.toString(),
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ ...fields, _template: 'table', _captcha: 'false' }),
       })
-      if (!response.ok) throw new Error('Submission failed')
+      const result = await response.json()
+      if (!response.ok || String(result.success) !== 'true') throw new Error('Submission failed')
       setFormState('success')
       form.reset()
     } catch {
@@ -66,8 +70,9 @@ function OliviaKitchen() {
     }
   }
 
-  const whatsappUrl = contact.whatsappNumber
-    ? `https://wa.me/${contact.whatsappNumber}?text=${encodeURIComponent('Hello Olivia, I would love to plan a private dining experience.')}`
+  const whatsappDigits = contact.whatsappNumber.replace(/\D/g, '')
+  const whatsappUrl = whatsappDigits
+    ? `https://wa.me/${whatsappDigits}?text=${encodeURIComponent('Hello Olivia, I would love to plan a private dining experience.')}`
     : null
 
   return (
@@ -134,9 +139,9 @@ function OliviaKitchen() {
             <span className="contact-flower" aria-hidden="true">✳</span>
           </div>
           <div className="form-panel">
-            {formState === 'success' ? <div className="form-success" role="status"><span className="success-icon"><Check size={30} /></span><h3>{text.success}</h3><p>{text.successText}</p><button className="button" onClick={() => setFormState('idle')}>{text.another}<ArrowRight size={17} /></button></div> : <form name="chef-inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={handleSubmit}>
-              <input type="hidden" name="form-name" value="chef-inquiry" /><input type="hidden" name="language" value={language} /><input type="hidden" name="subject" value="New private dining inquiry — Olivia Kitchen" />
-              <div hidden><label>Leave this empty<input name="bot-field" tabIndex={-1} autoComplete="off" /></label></div>
+            {formState === 'success' ? <div className="form-success" role="status"><span className="success-icon"><Check size={30} /></span><h3>{text.success}</h3><p>{text.successText}</p><button className="button" onClick={() => setFormState('idle')}>{text.another}<ArrowRight size={17} /></button></div> : <form onSubmit={handleSubmit}>
+              <input type="hidden" name="language" value={language} /><input type="hidden" name="_subject" value="New private dining inquiry — Olivia Kitchen" />
+              <div hidden><label>Leave this empty<input name="_honey" tabIndex={-1} autoComplete="off" /></label></div>
               <div className="form-grid">
                 <label>{text.name}<span className="required">*</span><input name="name" autoComplete="name" placeholder={text.namePlaceholder} required maxLength={100} /></label>
                 <label>{text.email}<span className="required">*</span><input type="email" name="email" autoComplete="email" placeholder="you@example.com" required maxLength={254} dir="ltr" /></label>
@@ -159,7 +164,7 @@ function OliviaKitchen() {
       <dialog ref={galleryDialog} className="lightbox" onCancel={() => setActiveImage(null)} onClick={event => { if (event.target === event.currentTarget) setActiveImage(null) }} aria-label={text.galleryTitle} onKeyDown={event => { if (event.key === 'ArrowRight' && activeImage !== null) setActiveImage((activeImage + 1) % dishes.length); if (event.key === 'ArrowLeft' && activeImage !== null) setActiveImage((activeImage + dishes.length - 1) % dishes.length) }}>
         {activeImage !== null && <div className="lightbox-inner"><button autoFocus className="lightbox-close icon-button" onClick={() => setActiveImage(null)} aria-label={text.close}><X /></button><img src={imageUrl(dishes[activeImage], 1600)} alt={text.dishes[activeImage]} /><div className="lightbox-bottom"><button className="icon-button" onClick={() => setActiveImage((activeImage + dishes.length - 1) % dishes.length)} aria-label={language === 'he' ? 'הקודם' : language === 'ru' ? 'Назад' : 'Previous image'}><ChevronLeft /></button><p>{text.dishes[activeImage]}</p><button className="icon-button" onClick={() => setActiveImage((activeImage + 1) % dishes.length)} aria-label={language === 'he' ? 'הבא' : language === 'ru' ? 'Далее' : 'Next image'}><ChevronRight /></button></div></div>}
       </dialog>
-      <dialog ref={whatsappDialog} className="contact-dialog" onCancel={() => setWhatsappNotice(false)} onClick={event => { if (event.target === event.currentTarget) setWhatsappNotice(false) }} aria-labelledby="whatsapp-title"><button autoFocus className="dialog-close icon-button" aria-label={text.close} onClick={() => setWhatsappNotice(false)}><X /></button><MessageCircle size={32} /><h3 id="whatsapp-title">{text.whatsapp}</h3><p>{text.whatsappUnavailable}</p><a href={`mailto:${contact.email}`} className="button"><Mail size={18} />{contact.email}</a><a className="share-link" href={`https://wa.me/?text=${encodeURIComponent('Olivia Kitchen — Israeli, Italian & Azerbaijani private dining. https://super-conkies-52d942.netlify.app')}`} target="_blank" rel="noopener noreferrer">{text.share}<ArrowUpRight size={16} /></a></dialog>
+      <dialog ref={whatsappDialog} className="contact-dialog" onCancel={() => setWhatsappNotice(false)} onClick={event => { if (event.target === event.currentTarget) setWhatsappNotice(false) }} aria-labelledby="whatsapp-title"><button autoFocus className="dialog-close icon-button" aria-label={text.close} onClick={() => setWhatsappNotice(false)}><X /></button><MessageCircle size={32} /><h3 id="whatsapp-title">{text.whatsapp}</h3><p>{text.whatsappUnavailable}</p><a href={`mailto:${contact.email}`} className="button"><Mail size={18} />{contact.email}</a><a className="share-link" href={`https://wa.me/?text=${encodeURIComponent(`Olivia Kitchen — Israeli, Italian & Azerbaijani private dining. ${siteUrl}`)}`} target="_blank" rel="noopener noreferrer">{text.share}<ArrowUpRight size={16} /></a></dialog>
     </div>
   )
 }

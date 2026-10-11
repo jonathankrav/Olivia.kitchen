@@ -2,7 +2,7 @@
 
 ## Architecture
 
-This is a single-page private-chef marketing website, built with TanStack Start, React 19, TypeScript, and Vite and deployed on Netlify. It is not an ecommerce application. There is no runtime AI, authentication, or custom database.
+This is a single-page private-chef marketing website, built with TanStack Start, React 19, TypeScript, and Vite and deployed on Vercel through the Nitro plugin. It is not an ecommerce application. There is no runtime AI, authentication, or custom database.
 
 ## Key directories
 
@@ -10,10 +10,8 @@ This is a single-page private-chef marketing website, built with TanStack Start,
 - `src/routes/__root.tsx`: HTML shell, stylesheet import, favicon, and product-specific sharing metadata. Do not add an Open Graph image; the hosting platform supplies it.
 - `src/lib/content.ts`: all English, Hebrew, and Russian copy plus email and WhatsApp configuration.
 - `src/styles.css`: responsive editorial design, olive/cream theme tokens, typography, RTL handling, motion, and reduced-motion preferences.
-- `public/img/`: four generated illustrative food images. Use Netlify Image CDN URLs for all image displays.
-- `public/__forms.html`: static hidden Netlify form required for build-time detection in an SSR application.
+- `public/img/`: four generated illustrative food images. Images are served as static files from `/img/`.
 - `scripts/generate-images.mjs`: optional, manually invoked static-image generation utility using Netlify AI Gateway. Never run during a build.
-- `.netlify/features/netlify-forms`: feature activation marker created by the Netlify Forms skill.
 
 ## Conventions
 
@@ -23,11 +21,9 @@ Maintain the cream, olive, and warm photographic design. Prefer existing CSS tok
 
 ## Contact handling
 
-`chef-inquiry` is managed by Netlify Forms. The React form must POST URL-encoded data to `/__forms.html`, not `/`, because the SSR handler would intercept root requests. Keep every field mirrored in the static form skeleton. Preserve the `form-name` hidden input and `bot-field` honeypot. Do not store inquiries in local files or client-side state as persistence.
+The inquiry form posts JSON to FormSubmit (`https://formsubmit.co/ajax/<contact.email>`) from `handleSubmit`. Preserve the `_honey` honeypot and the `_subject` hidden input. FormSubmit sends an activation email to `chef@olivia.kitchen` on the first submission, so do not claim email delivery works before the owner has activated it and a test inquiry has arrived. Do not store inquiries in local files or client-side state as persistence.
 
-Form detection was enabled. Email notification creation was rejected by the API with `Unauthorized`, so the project owner must configure notification delivery to `chef@olivia.kitchen` in Netlify. Do not claim email delivery works before it is configured and verified.
-
-The user did not supply a WhatsApp number. `contact.whatsappNumber` is intentionally empty; until populated, the button opens an honest email/request-reply fallback with a WhatsApp share link. Once supplied, store the country-code-inclusive digits-only number in this setting. Never invent a telephone number, service location, chef portrait, or client testimonial.
+`contact.whatsappNumber` holds the number supplied by the owner; the chat link strips non-digits before building the `wa.me` URL. Never invent a telephone number, service location, chef portrait, or client testimonial.
 
 ## Workflow
 
