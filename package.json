@@ -13,6 +13,7 @@
     "@tanstack/router-plugin": "1.168.41",
     "highlight.js": "11.11.1",
     "lucide-react": "0.576.0",
+    "nitro": "latest",
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "tailwindcss": "4.2.2",

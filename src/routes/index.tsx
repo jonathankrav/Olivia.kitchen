@@ -7,10 +7,7 @@ export const Route = createFileRoute('/')({ component: OliviaKitchen })
 
 const cuisineKeys = ['israeli', 'italian', 'azerbaijani']
 const dishes = ['table', ...cuisineKeys]
-//const imageUrl = (name: string, width = 1000) => `/.netlify/images?url=/img/${name}.png&w=${width}&fm=webp&q=85`
-//const imageUrl = ({ name }: { name: string }) => 'img/${name}.png'
-const imageUrl = ({ name, width = 1000 }: { name: string; width?: number }) => '/img/${name}.png'
-//const imageUrl = ({ name }: { name: string }) => new URL('../../public/img/${name}.png', import.meta.url).href
+const imageUrl = (name: string, _width = 1000) => `/img/${name}.png`
 
 function OliviaKitchen() {
   const [language, setLanguage] = useState<Language>('en')
