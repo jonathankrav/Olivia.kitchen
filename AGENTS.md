@@ -27,4 +27,4 @@ The inquiry form posts JSON to FormSubmit (`https://formsubmit.co/ajax/<contact.
 
 ## Workflow
 
-Use pnpm for dependency management. Local development is `pnpm dev` or `netlify dev --port 8889`. During agent-runner tasks, do not run build, dev-server, TypeScript-check, or test commands; automatic deployment validates the project. Never inspect `.git` or print credentials. No inline code comments unless requested.
+Use pnpm for dependency management. Local development is `pnpm dev`. During agent-runner tasks, do not run build, dev-server, TypeScript-check, or test commands; automatic deployment validates the project. Never inspect `.git` or print credentials. No inline code comments unless requested.
