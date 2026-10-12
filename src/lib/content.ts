@@ -9,7 +9,7 @@ export const content = {
   en: {
     skip: 'Skip to content', stamp: ['Three kitchens.', 'One beautiful table.'],
     nav: ['The experience', 'My kitchens', 'Gallery'], book: 'Let’s plan your table',
-    eyebrow: 'PRIVATE CHEF · PERSONAL DINING', hero: ['A big soul.', 'A lot of flavour.'],
+    eyebrow: 'PRIVATE CHEF · HAIFA & THE NORTH', hero: ['A big soul.', 'A lot of flavour.'],
     intro: 'Three culinary traditions. One unforgettable table. Beautiful food, made with care, in the comfort of your home.',
     explore: 'Discover my kitchens', scroll: 'A taste of what’s to come', photoNote: 'GOOD FOOD. GOOD COMPANY.',
     ribbon: ['Made with love', 'Seasonal ingredients', 'Your home, your occasion', 'Always a personal touch'],
@@ -36,7 +36,7 @@ export const content = {
   he: {
     skip: 'דילוג לתוכן', stamp: ['שלושה מטבחים.', 'שולחן יפה אחד.'],
     nav: ['החוויה', 'המטבחים שלי', 'גלריה'], book: 'נתכנן את הארוחה שלכם',
-    eyebrow: 'שפית פרטית · חוויה אישית', hero: ['הרבה נשמה.', 'הרבה טעם.'],
+    eyebrow: 'שפית פרטית · חיפה והצפון', hero: ['הרבה נשמה.', 'הרבה טעם.'],
     intro: 'שלוש מסורות קולינריות. שולחן אחד בלתי נשכח. אוכל יפהפה, שמוכן באהבה, בנוחות של הבית שלכם.',
     explore: 'גלו את המטבחים שלי', scroll: 'טעימה ממה שמחכה לכם', photoNote: 'אוכל טוב. חברה טובה.',
     ribbon: ['עשוי באהבה', 'חומרי גלם עונתיים', 'הבית שלכם, האירוע שלכם', 'תמיד עם נגיעה אישית'],
@@ -63,7 +63,7 @@ export const content = {
   ru: {
     skip: 'Перейти к содержимому', stamp: ['Три кухни.', 'Один прекрасный стол.'],
     nav: ['Впечатления', 'Мои кухни', 'Галерея'], book: 'Спланируем ваш вечер',
-    eyebrow: 'ЛИЧНЫЙ ШЕФ · ОСОБЕННЫЕ УЖИНЫ', hero: ['Много души.', 'Много вкуса.'],
+    eyebrow: 'ЛИЧНЫЙ ШЕФ · ХАЙФА И СЕВЕР', hero: ['Много души.', 'Много вкуса.'],
     intro: 'Три кулинарные традиции. Один незабываемый стол. Прекрасная еда, приготовленная с заботой, у вас дома.',
     explore: 'Откройте мои кухни', scroll: 'Вкус того, что вас ждёт', photoNote: 'ХОРОШАЯ ЕДА. ПРИЯТНАЯ КОМПАНИЯ.',
     ribbon: ['Приготовлено с любовью', 'Сезонные продукты', 'Ваш дом, ваш праздник', 'Всегда индивидуально'],
@@ -87,4 +87,73 @@ export const content = {
     success: 'Ваш запрос отправлен!', successText: 'Спасибо за приглашение к вашему столу. Я свяжусь с вами по электронной почте, чтобы обсудить планы.', another: 'Отправить ещё один запрос', error: 'Не удалось отправить запрос. Попробуйте ещё раз или напишите на chef@olivia.kitchen.',
     footer: 'Хорошая еда объединяет.', rights: 'Olivia Kitchen. Создано с любовью.', menu: 'Открыть меню', language: 'Выбрать язык', top: 'Наверх',
   },
+}
+
+export const siteUrl = 'https://olivia.kitchen'
+
+export const seo = {
+  en: {
+    path: '/',
+    locale: 'en_US',
+    title: 'Private Chef in Haifa & Northern Israel | Olivia Kitchen',
+    description: 'Olivia is a private chef in Haifa and Northern Israel. Israeli, Italian and Azerbaijani menus cooked at your home for intimate dinners and family celebrations. Request a menu.',
+    serviceType: 'Private chef',
+  },
+  he: {
+    path: '/he',
+    locale: 'he_IL',
+    title: 'שפית פרטית בחיפה ובצפון | Olivia Kitchen',
+    description: 'אוליביה, שפית פרטית בחיפה ובצפון. מטבח ישראלי, איטלקי ואזרבייג׳ני שמוכן אצלכם בבית, לארוחות אינטימיות ולאירועים משפחתיים. השאירו פנייה לתפריט מותאם.',
+    serviceType: 'שפית פרטית',
+  },
+  ru: {
+    path: '/ru',
+    locale: 'ru_RU',
+    title: 'Частный шеф в Хайфе и на севере Израиля | Olivia Kitchen',
+    description: 'Оливия — частный шеф в Хайфе и на севере Израиля. Израильская, итальянская и азербайджанская кухня у вас дома: камерные ужины и семейные праздники. Оставьте запрос на меню.',
+    serviceType: 'Частный шеф',
+  },
+}
+
+export function seoHead(language: Language) {
+  const page = seo[language]
+  const url = `${siteUrl}${page.path}`
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'FoodService',
+    name: 'Olivia Kitchen',
+    url: siteUrl,
+    email: contact.email,
+    description: seo.en.description,
+    serviceType: page.serviceType,
+    inLanguage: ['en', 'he', 'ru'],
+    areaServed: [
+      { '@type': 'City', name: 'Haifa' },
+      { '@type': 'AdministrativeArea', name: 'Northern Israel' },
+    ],
+    keywords: 'private chef, Haifa, Northern Israel, Israeli cuisine, Italian cuisine, Azerbaijani cuisine',
+  }
+  return {
+    meta: [
+      { title: page.title },
+      { name: 'description', content: page.description },
+      { property: 'og:title', content: page.title },
+      { property: 'og:description', content: page.description },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:url', content: url },
+      { property: 'og:site_name', content: 'Olivia Kitchen' },
+      { property: 'og:locale', content: page.locale },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: page.title },
+      { name: 'twitter:description', content: page.description },
+    ],
+    links: [
+      { rel: 'canonical', href: url },
+      { rel: 'alternate', hrefLang: 'en', href: `${siteUrl}/` },
+      { rel: 'alternate', hrefLang: 'he', href: `${siteUrl}/he` },
+      { rel: 'alternate', hrefLang: 'ru', href: `${siteUrl}/ru` },
+      { rel: 'alternate', hrefLang: 'x-default', href: `${siteUrl}/` },
+    ],
+    scripts: [{ type: 'application/ld+json', children: JSON.stringify(structuredData) }],
+  }
 }

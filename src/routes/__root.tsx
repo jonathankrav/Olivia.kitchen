@@ -1,10 +1,6 @@
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
-
+import { HeadContent, Scripts, createRootRoute, useRouterState } from '@tanstack/react-router'
 
 import '../styles.css'
-
-const siteName = 'Olivia Kitchen | Private Chef'
-const siteDescription = 'Three culinary traditions. One unforgettable table. Discover private dining with Olivia, inspired by Israeli, Italian, and Azerbaijani kitchens.'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -17,37 +13,16 @@ export const Route = createRootRoute({
         name: 'viewport',
         content: 'width=device-width, initial-scale=1',
       },
-      {
-        title: siteName,
-      },
-      {
-        name: 'description',
-        content: siteDescription,
-      },
-      {
-        property: 'og:title',
-        content: siteName,
-      },
-      {
-        property: 'og:description',
-        content: siteDescription,
-      },
-      {
-        property: 'og:type',
-        content: 'website',
-      },
-      {
-        name: 'twitter:card',
-        content: 'summary_large_image',
-      },
     ],
   }),
   shellComponent: RootDocument,
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+  const pathname = useRouterState({ select: state => state.location.pathname })
+  const language = pathname.startsWith('/he') ? 'he' : pathname.startsWith('/ru') ? 'ru' : 'en'
   return (
-    <html lang="en">
+    <html lang={language} dir={language === 'he' ? 'rtl' : 'ltr'}>
       <head>
         <HeadContent />
       </head>
