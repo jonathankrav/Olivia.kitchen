@@ -122,7 +122,7 @@ export const sections = {
       label: 'KASHRUT', title: 'A kitchen that fits\nyour home.',
       intro: 'Every home keeps its own rules, so the menu is built around yours. There are three options.',
       options: [
-        { title: 'Kosher', text: 'A menu planned around the kashrut rules of your home, including the separation of meat and dairy. If you need supervision, mention it in your inquiry and we will look at it together.' },
+        { title: 'Kosher', text: 'A menu planned around the kashrut rules of your home, including the separation of meat and dairy.' },
         { title: 'Kosher-style', text: 'No pork or shellfish and no mixing of meat and dairy, but without formal supervision.' },
         { title: 'Not kosher', text: 'Full freedom with the menu, including ingredients that a kosher kitchen leaves out, such as seafood.' },
       ],
@@ -152,7 +152,7 @@ export const sections = {
       label: 'כשרות', title: 'מטבח שמתאים\nלבית שלכם.',
       intro: 'כל בית שומר על כללים משלו, ולכן התפריט נבנה לפי מה שמתאים לכם. יש שלוש אפשרויות.',
       options: [
-        { title: 'מטבח כשר', text: 'תפריט שמתוכנן לפי כללי הכשרות של הבית שלכם, כולל הפרדה בין בשרי לחלבי. אם נדרשת השגחה, כתבו על כך בפנייה ונבדוק יחד.' },
+        { title: 'מטבח כשר', text: 'תפריט שמתוכנן לפי כללי הכשרות של הבית שלכם, כולל הפרדה בין בשרי לחלבי.' },
         { title: 'בסגנון כשר', text: 'בלי בשר חזיר ופירות ים ובלי ערבוב בשר וחלב, אך ללא השגחה רשמית.' },
         { title: 'לא כשר', text: 'חופש מלא בתפריט, כולל חומרי גלם שמטבח כשר משאיר בחוץ, כמו פירות ים.' },
       ],
@@ -182,7 +182,7 @@ export const sections = {
       label: 'КАШРУТ', title: 'Кухня, которая подходит\nвашему дому.',
       intro: 'В каждом доме свои правила, поэтому меню строится под ваши. Есть три варианта.',
       options: [
-        { title: 'Кошерная кухня', text: 'Меню по правилам кашрута вашего дома, включая разделение мясного и молочного. Если нужен надзор, напишите об этом в запросе, и мы обсудим.' },
+        { title: 'Кошерная кухня', text: 'Меню по правилам кашрута вашего дома, включая разделение мясного и молочного.' },
         { title: 'Кошер-стайл', text: 'Без свинины и морепродуктов и без смешивания мясного с молочным, но без официального надзора.' },
         { title: 'Некошерная кухня', text: 'Полная свобода в меню, включая продукты, которых нет на кошерной кухне, например морепродукты.' },
       ],
