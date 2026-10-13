@@ -1,4 +1,7 @@
 {
   "framework": "tanstack-start",
-  "installCommand": "pnpm install --no-frozen-lockfile"
+  "installCommand": "pnpm install --no-frozen-lockfile",
+  "redirects": [
+    { "source": "/he", "destination": "/", "permanent": true }
+  ]
 }

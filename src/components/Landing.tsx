@@ -7,7 +7,7 @@ const cuisineKeys = ['israeli', 'italian', 'azerbaijani']
 const dishes = ['table', ...cuisineKeys]
 const imageUrl = (name: string, _width = 1000) => `/img/${name}.webp`
 
-const languagePaths: Record<Language, string> = { en: '/', he: '/he', ru: '/ru' }
+const languagePaths: Record<Language, string> = { en: '/en', he: '/', ru: '/ru' }
 
 export function Landing({ language }: { language: Language }) {
   const [menuOpen, setMenuOpen] = useState(false)

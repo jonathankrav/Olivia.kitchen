@@ -7,7 +7,7 @@ This is a single-page private-chef marketing website, built with TanStack Start,
 ## Key directories
 
 - `src/components/Landing.tsx`: the complete landing page, mobile navigation, cuisine filtering, gallery lightbox, and inquiry form. It takes a `language` prop.
-- `src/routes/index.tsx`, `he.tsx`, `ru.tsx`: one route per language (`/`, `/he`, `/ru`), each rendering `Landing` with its own SEO head from `seoHead` in `src/lib/content.ts`. The language switcher links between these routes.
+- `src/routes/index.tsx` (Hebrew), `en.tsx`, `ru.tsx`: one route per language (`/` (Hebrew, default), `/en`, `/ru`), each rendering `Landing` with its own SEO head from `seoHead` in `src/lib/content.ts`. The language switcher links between these routes.
 - `src/routes/__root.tsx`: HTML shell, stylesheet import, favicon, and `lang`/`dir` derived from the path. Do not add an Open Graph image; the hosting platform supplies it.
 - `public/robots.txt`, `public/sitemap.xml`: search engine files; update the sitemap when adding a route.
 - `src/lib/content.ts`: all English, Hebrew, and Russian copy plus email and WhatsApp configuration.

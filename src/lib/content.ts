@@ -93,14 +93,14 @@ export const siteUrl = 'https://olivia.kitchen'
 
 export const seo = {
   en: {
-    path: '/',
+    path: '/en',
     locale: 'en_US',
     title: 'Private Chef in Haifa & Northern Israel | Olivia Kitchen',
     description: 'Olivia is a private chef in Haifa and Northern Israel. Israeli, Italian and Azerbaijani menus cooked at your home for intimate dinners and family celebrations. Request a menu.',
     serviceType: 'Private chef',
   },
   he: {
-    path: '/he',
+    path: '/',
     locale: 'he_IL',
     title: 'שפית פרטית בחיפה ובצפון | Olivia Kitchen',
     description: 'אוליביה, שפית פרטית בחיפה ובצפון. מטבח ישראלי, איטלקי ואזרבייג׳ני שמוכן אצלכם בבית, לארוחות אינטימיות ולאירועים משפחתיים. השאירו פנייה לתפריט מותאם.',
@@ -149,8 +149,8 @@ export function seoHead(language: Language) {
     ],
     links: [
       { rel: 'canonical', href: url },
-      { rel: 'alternate', hrefLang: 'en', href: `${siteUrl}/` },
-      { rel: 'alternate', hrefLang: 'he', href: `${siteUrl}/he` },
+      { rel: 'alternate', hrefLang: 'en', href: `${siteUrl}/en` },
+      { rel: 'alternate', hrefLang: 'he', href: `${siteUrl}/` },
       { rel: 'alternate', hrefLang: 'ru', href: `${siteUrl}/ru` },
       { rel: 'alternate', hrefLang: 'x-default', href: `${siteUrl}/` },
     ],
