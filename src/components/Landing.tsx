@@ -1,7 +1,8 @@
 import { Link } from '@tanstack/react-router'
 import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { ArrowDown, ArrowRight, ArrowUpRight, Check, ChevronLeft, ChevronRight, Leaf, Mail, Menu, MessageCircle, Plus, Utensils, X } from 'lucide-react'
-import { contact, content, type Language } from '@/lib/content'
+import { AreasSection, FaqSection, KashrutSection } from '@/components/Sections'
+import { contact, content, sections, type Language } from '@/lib/content'
 
 const cuisineKeys = ['israeli', 'italian', 'azerbaijani']
 const dishes = ['table', ...cuisineKeys]
@@ -19,6 +20,7 @@ export function Landing({ language }: { language: Language }) {
   const galleryDialog = useRef<HTMLDialogElement>(null)
   const whatsappDialog = useRef<HTMLDialogElement>(null)
   const text = content[language]
+  const alts = sections[language].alts
   const direction = language === 'he' ? 'rtl' : 'ltr'
 
   useEffect(() => {
@@ -96,7 +98,7 @@ export function Landing({ language }: { language: Language }) {
             <a className="scroll-note" href="#experience"><span><ArrowDown size={17} /></span>{text.scroll}</a>
           </div>
           <div className="hero-visual">
-            <img src={imageUrl('table', 1400)} srcSet={`${imageUrl('table', 800)} 800w, ${imageUrl('table', 1400)} 1400w`} sizes="(max-width: 760px) 100vw, 55vw" alt={text.dishes[0]} fetchPriority="high" width="1400" height="1000" />
+            <img src={imageUrl('table', 1400)} srcSet={`${imageUrl('table', 800)} 800w, ${imageUrl('table', 1400)} 1400w`} sizes="(max-width: 760px) 100vw, 55vw" alt={alts[0]} fetchPriority="high" width="1400" height="1000" />
             <div className="photo-label"><span className="star-flower">✳</span><span>{text.photoNote}</span></div>
             <div className="hero-stamp"><Utensils size={22} strokeWidth={1.2} /><span>{text.stamp[0]}<br />{text.stamp[1]}</span></div>
           </div>
@@ -112,20 +114,25 @@ export function Landing({ language }: { language: Language }) {
         <section id="kitchens" className="kitchens section-wrap">
           <div className="section-heading"><div><span className="eyebrow">{text.kitchensLabel}</span><h2>{text.kitchensTitle}</h2></div><p>{text.kitchensIntro}</p></div>
           <div className="cuisine-grid">{cuisineKeys.map((key, index) => <article className="cuisine-card" key={key}>
-            <a href="#contact" className="cuisine-image" aria-label={`${text.book} — ${text.cuisineNames[index]}`}><img src={imageUrl(key, 700)} alt={text.dishes[index + 1]} loading="lazy" width="700" height="700" /><span className="cuisine-number">0{index + 1}</span><span className="round-arrow"><ArrowUpRight size={22} /></span></a>
+            <a href="#contact" className="cuisine-image" aria-label={`${text.book} — ${text.cuisineNames[index]}`}><img src={imageUrl(key, 700)} alt={alts[index + 1]} loading="lazy" width="700" height="700" /><span className="cuisine-number">0{index + 1}</span><span className="round-arrow"><ArrowUpRight size={22} /></span></a>
             <div className="cuisine-title"><h3>{text.cuisineNames[index]}</h3><span>✳</span></div><span className="cuisine-note">{text.cuisineNotes[index]}</span><p>{text.cuisineDescriptions[index]}</p>
           </article>)}</div>
         </section>
+
+        <KashrutSection language={language} />
 
         <section id="gallery" className="gallery-section">
           <div className="section-wrap">
             <div className="section-heading"><div><span className="eyebrow">{text.galleryLabel}</span><h2>{text.galleryTitle}</h2><p>{text.galleryText}</p></div><div className="gallery-filters" role="group" aria-label={text.galleryTitle}>{['all', ...cuisineKeys].map((key, index) => <button key={key} aria-pressed={filter === key} className={filter === key ? 'active' : ''} onClick={() => setFilter(key)}>{index === 0 ? text.all : text.cuisineNames[index - 1]}</button>)}</div></div>
             <div className={`gallery-grid ${filter !== 'all' ? 'filtered' : ''}`}>
-              {dishes.map((dish, index) => (filter === 'all' || filter === dish) && <button className={`gallery-item gallery-item-${index}`} key={dish} onClick={() => setActiveImage(index)} aria-label={`${text.viewImage}: ${text.dishes[index]}`}><img src={imageUrl(dish, index === 0 ? 1100 : 700)} alt={text.dishes[index]} loading="lazy" width="900" height="700" /><span className="gallery-caption">{text.dishes[index]}<Plus size={21} /></span></button>)}
+              {dishes.map((dish, index) => (filter === 'all' || filter === dish) && <button className={`gallery-item gallery-item-${index}`} key={dish} onClick={() => setActiveImage(index)} aria-label={`${text.viewImage}: ${text.dishes[index]}`}><img src={imageUrl(dish, index === 0 ? 1100 : 700)} alt={alts[index]} loading="lazy" width="900" height="700" /><span className="gallery-caption">{text.dishes[index]}<Plus size={21} /></span></button>)}
             </div>
             <p className="image-disclosure">{text.imageDisclosure}</p>
           </div>
         </section>
+
+        <AreasSection language={language} />
+        <FaqSection language={language} />
 
         <section id="contact" className="contact-section section-wrap">
           <div className="contact-copy"><span className="eyebrow">{text.contactLabel}</span><h2>{text.contactTitle}</h2><p>{text.contactText}</p><div className="contact-email"><span className="eyebrow">{text.emailLabel}</span><a href={`mailto:${contact.email}`}>{contact.email}<ArrowUpRight size={20} /></a></div>
@@ -156,7 +163,7 @@ export function Landing({ language }: { language: Language }) {
       <footer><div className="footer-main"><a href="#" className="brand footer-brand"><span>Olivia<span className="brand-dot">.</span></span><small>THE PRIVATE KITCHEN</small></a><p>{text.footer}</p><a className="back-top" href="#" aria-label={text.top}><ArrowUpRight size={23} /></a></div><div className="footer-bottom"><span>© {new Date().getFullYear()} {text.rights}</span><span>{text.cuisineNames.join(' · ')}</span><a href={`mailto:${contact.email}`}>{contact.email}</a></div></footer>
 
       <dialog ref={galleryDialog} className="lightbox" onCancel={() => setActiveImage(null)} onClick={event => { if (event.target === event.currentTarget) setActiveImage(null) }} aria-label={text.galleryTitle} onKeyDown={event => { if (event.key === 'ArrowRight' && activeImage !== null) setActiveImage((activeImage + 1) % dishes.length); if (event.key === 'ArrowLeft' && activeImage !== null) setActiveImage((activeImage + dishes.length - 1) % dishes.length) }}>
-        {activeImage !== null && <div className="lightbox-inner"><button autoFocus className="lightbox-close icon-button" onClick={() => setActiveImage(null)} aria-label={text.close}><X /></button><img src={imageUrl(dishes[activeImage], 1600)} alt={text.dishes[activeImage]} /><div className="lightbox-bottom"><button className="icon-button" onClick={() => setActiveImage((activeImage + dishes.length - 1) % dishes.length)} aria-label={language === 'he' ? 'הקודם' : language === 'ru' ? 'Назад' : 'Previous image'}><ChevronLeft /></button><p>{text.dishes[activeImage]}</p><button className="icon-button" onClick={() => setActiveImage((activeImage + 1) % dishes.length)} aria-label={language === 'he' ? 'הבא' : language === 'ru' ? 'Далее' : 'Next image'}><ChevronRight /></button></div></div>}
+        {activeImage !== null && <div className="lightbox-inner"><button autoFocus className="lightbox-close icon-button" onClick={() => setActiveImage(null)} aria-label={text.close}><X /></button><img src={imageUrl(dishes[activeImage], 1600)} alt={alts[activeImage]} /><div className="lightbox-bottom"><button className="icon-button" onClick={() => setActiveImage((activeImage + dishes.length - 1) % dishes.length)} aria-label={language === 'he' ? 'הקודם' : language === 'ru' ? 'Назад' : 'Previous image'}><ChevronLeft /></button><p>{text.dishes[activeImage]}</p><button className="icon-button" onClick={() => setActiveImage((activeImage + 1) % dishes.length)} aria-label={language === 'he' ? 'הבא' : language === 'ru' ? 'Далее' : 'Next image'}><ChevronRight /></button></div></div>}
       </dialog>
       <dialog ref={whatsappDialog} className="contact-dialog" onCancel={() => setWhatsappNotice(false)} onClick={event => { if (event.target === event.currentTarget) setWhatsappNotice(false) }} aria-labelledby="whatsapp-title"><button autoFocus className="dialog-close icon-button" aria-label={text.close} onClick={() => setWhatsappNotice(false)}><X /></button><MessageCircle size={32} /><h3 id="whatsapp-title">{text.whatsapp}</h3><p>{text.whatsappUnavailable}</p><a href={`mailto:${contact.email}`} className="button"><Mail size={18} />{contact.email}</a><a className="share-link" href={`https://wa.me/?text=${encodeURIComponent(`Olivia Kitchen — Israeli, Italian & Azerbaijani private dining. ${siteUrl}`)}`} target="_blank" rel="noopener noreferrer">{text.share}<ArrowUpRight size={16} /></a></dialog>
     </div>

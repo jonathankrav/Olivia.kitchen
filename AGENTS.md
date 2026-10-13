@@ -8,11 +8,13 @@ This is a single-page private-chef marketing website, built with TanStack Start,
 
 - `src/components/Landing.tsx`: the complete landing page, mobile navigation, cuisine filtering, gallery lightbox, and inquiry form. It takes a `language` prop.
 - `src/routes/index.tsx` (Hebrew), `en.tsx`, `ru.tsx`: one route per language (`/` (Hebrew, default), `/en`, `/ru`), each rendering `Landing` with its own SEO head from `seoHead` in `src/lib/content.ts`. The language switcher links between these routes.
+- `src/components/Sections.tsx`: shared kashrut, service-area and FAQ sections used by the landing page and the Hebrew local pages.
+- `src/components/LocalPage.tsx`, `src/routes/haifa.tsx`, `north.tsx`: Hebrew-only local SEO pages (`/haifa`, `/north`) with their own head from `localSeoHead`.
 - `src/routes/__root.tsx`: HTML shell, stylesheet import, favicon, and `lang`/`dir` derived from the path. Do not add an Open Graph image; the hosting platform supplies it.
 - `public/robots.txt`, `public/sitemap.xml`: search engine files; update the sitemap when adding a route.
 - `src/lib/content.ts`: all English, Hebrew, and Russian copy plus email and WhatsApp configuration.
 - `src/styles.css`: responsive editorial design, olive/cream theme tokens, typography, RTL handling, motion, and reduced-motion preferences.
-- `public/img/`: four generated illustrative food images. Images are served as static files from `/img/`.
+- `public/img/`: four generated illustrative food images (webp only). Images are served as static files from `/img/`.
 - `scripts/generate-images.mjs`: optional, manually invoked static-image generation utility using Netlify AI Gateway. Never run during a build.
 
 ## Conventions

@@ -21,4 +21,10 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://olivia.kitchen/ru"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://olivia.kitchen/"/>
   </url>
+  <url>
+    <loc>https://olivia.kitchen/haifa</loc>
+  </url>
+  <url>
+    <loc>https://olivia.kitchen/north</loc>
+  </url>
 </urlset>

@@ -115,24 +115,166 @@ export const seo = {
   },
 }
 
-export function seoHead(language: Language) {
-  const page = seo[language]
-  const url = `${siteUrl}${page.path}`
-  const structuredData = {
-    '@context': 'https://schema.org',
+export const sections = {
+  en: {
+    alts: ['A laid table with Israeli, Italian and Azerbaijani dishes', 'Israeli hummus with olive oil and fresh herbs', 'Italian pasta with tomatoes and basil', 'Azerbaijani saffron plov with herbs'],
+    kashrut: {
+      label: 'KASHRUT', title: 'A kitchen that fits\nyour home.',
+      intro: 'Every home keeps its own rules, so the menu is built around yours. There are three options.',
+      options: [
+        { title: 'Kosher', text: 'A menu planned around the kashrut rules of your home, including the separation of meat and dairy. If you need supervision, mention it in your inquiry and we will look at it together.' },
+        { title: 'Kosher-style', text: 'No pork or shellfish and no mixing of meat and dairy, but without formal supervision.' },
+        { title: 'Not kosher', text: 'Full freedom with the menu, including ingredients that a kosher kitchen leaves out, such as seafood.' },
+      ],
+    },
+    areas: {
+      label: 'WHERE I WORK', title: 'Haifa and\nthe North.',
+      text: 'Olivia comes to your home in Haifa and across Northern Israel. If you are somewhere else in the north, write and we will check together.',
+      cities: ['Haifa', 'The Krayot', 'Nesher', 'Karmiel', 'Nahariya', 'Akko'],
+      links: [] as { label: string; to: string }[],
+    },
+    faq: {
+      label: 'GOOD TO KNOW', title: 'Frequently\nasked questions.',
+      items: [
+        { q: 'Where does Olivia work?', a: 'In Haifa and Northern Israel: Haifa, the Krayot, Nesher, Karmiel, Nahariya, Akko and the surrounding area. If your home is elsewhere in the north, write and we will check.' },
+        { q: 'Is kosher food available?', a: 'Yes. There are three options: kosher, kosher-style and not kosher. Tell us in your inquiry what suits your home.' },
+        { q: 'Which cuisines can I choose?', a: 'Israeli, Italian and Azerbaijani. Pick one kitchen or combine them in a single menu.' },
+        { q: 'What kind of occasions is this for?', a: 'Intimate dinners, family celebrations and gatherings at home.' },
+        { q: 'What about allergies and dietary needs?', a: 'Mention them in the inquiry form and the menu will be adapted in a personal conversation.' },
+        { q: 'How much does it cost?', a: 'The price depends on the menu, the number of guests and the date. Send an inquiry and you will receive a personal offer.' },
+        { q: 'How do I book?', a: 'Fill in the inquiry form, write to chef@olivia.kitchen or message on WhatsApp. Olivia will get back to you to plan the details.' },
+      ],
+    },
+  },
+  he: {
+    alts: ['שולחן ערוך עם מנות מהמטבח הישראלי, האיטלקי והאזרבייג׳ני', 'חומוס ישראלי עם שמן זית ועשבי תיבול טריים', 'פסטה איטלקית עם עגבניות ובזיליקום', 'פלוב זעפרן אזרבייג׳ני עם עשבי תיבול'],
+    kashrut: {
+      label: 'כשרות', title: 'מטבח שמתאים\nלבית שלכם.',
+      intro: 'כל בית שומר על כללים משלו, ולכן התפריט נבנה לפי מה שמתאים לכם. יש שלוש אפשרויות.',
+      options: [
+        { title: 'מטבח כשר', text: 'תפריט שמתוכנן לפי כללי הכשרות של הבית שלכם, כולל הפרדה בין בשרי לחלבי. אם נדרשת השגחה, כתבו על כך בפנייה ונבדוק יחד.' },
+        { title: 'בסגנון כשר', text: 'בלי בשר חזיר ופירות ים ובלי ערבוב בשר וחלב, אך ללא השגחה רשמית.' },
+        { title: 'לא כשר', text: 'חופש מלא בתפריט, כולל חומרי גלם שמטבח כשר משאיר בחוץ, כמו פירות ים.' },
+      ],
+    },
+    areas: {
+      label: 'אזורי שירות', title: 'חיפה\nוהצפון.',
+      text: 'אוליביה מגיעה אליכם הביתה בחיפה ובצפון הארץ. אם אתם במקום אחר בצפון, כתבו ונבדוק יחד.',
+      cities: ['חיפה', 'הקריות', 'נשר', 'כרמיאל', 'נהריה', 'עכו'],
+      links: [{ label: 'שף פרטי בחיפה', to: '/haifa' }, { label: 'שף פרטי לאירועים בצפון', to: '/north' }],
+    },
+    faq: {
+      label: 'טוב לדעת', title: 'שאלות\nנפוצות.',
+      items: [
+        { q: 'באילו אזורים אוליביה עובדת?', a: 'בחיפה ובצפון: חיפה, הקריות, נשר, כרמיאל, נהריה, עכו והסביבה. אם הבית שלכם במקום אחר בצפון, כתבו ונבדוק.' },
+        { q: 'האם אפשר לקבל אוכל כשר?', a: 'כן. יש שלוש אפשרויות: מטבח כשר, בסגנון כשר ולא כשר. כתבו בפנייה מה מתאים לבית שלכם.' },
+        { q: 'אילו מטבחים אפשר לבחור?', a: 'ישראלי, איטלקי ואזרבייג׳ני. אפשר לבחור מטבח אחד או לשלב ביניהם בתפריט אחד.' },
+        { q: 'לאילו אירועים זה מתאים?', a: 'ארוחות ערב אינטימיות, חגיגות משפחתיות ומפגשים בבית.' },
+        { q: 'מה לגבי אלרגיות והעדפות תזונתיות?', a: 'ציינו אותן בטופס הפנייה, והתפריט יותאם בשיחה אישית.' },
+        { q: 'כמה זה עולה?', a: 'המחיר תלוי בתפריט, במספר האורחים ובמועד האירוע. השאירו פנייה ותקבלו הצעה אישית.' },
+        { q: 'איך מזמינים?', a: 'ממלאים את טופס הפנייה באתר, כותבים ל־chef@olivia.kitchen או פונים בוואטסאפ. אוליביה תחזור אליכם לתיאום הפרטים.' },
+      ],
+    },
+  },
+  ru: {
+    alts: ['Накрытый стол с блюдами израильской, итальянской и азербайджанской кухни', 'Израильский хумус с оливковым маслом и свежей зеленью', 'Итальянская паста с томатами и базиликом', 'Азербайджанский шафрановый плов с зеленью'],
+    kashrut: {
+      label: 'КАШРУТ', title: 'Кухня, которая подходит\nвашему дому.',
+      intro: 'В каждом доме свои правила, поэтому меню строится под ваши. Есть три варианта.',
+      options: [
+        { title: 'Кошерная кухня', text: 'Меню по правилам кашрута вашего дома, включая разделение мясного и молочного. Если нужен надзор, напишите об этом в запросе, и мы обсудим.' },
+        { title: 'Кошер-стайл', text: 'Без свинины и морепродуктов и без смешивания мясного с молочным, но без официального надзора.' },
+        { title: 'Некошерная кухня', text: 'Полная свобода в меню, включая продукты, которых нет на кошерной кухне, например морепродукты.' },
+      ],
+    },
+    areas: {
+      label: 'ГДЕ Я РАБОТАЮ', title: 'Хайфа\nи север.',
+      text: 'Оливия приезжает к вам домой в Хайфе и на севере Израиля. Если вы в другом месте на севере, напишите, и мы вместе проверим.',
+      cities: ['Хайфа', 'Крайот', 'Нешер', 'Кармиэль', 'Нагария', 'Акко'],
+      links: [] as { label: string; to: string }[],
+    },
+    faq: {
+      label: 'ПОЛЕЗНО ЗНАТЬ', title: 'Частые\nвопросы.',
+      items: [
+        { q: 'Где работает Оливия?', a: 'В Хайфе и на севере Израиля: Хайфа, Крайот, Нешер, Кармиэль, Нагария, Акко и окрестности. Если ваш дом в другом месте на севере, напишите, и мы проверим.' },
+        { q: 'Можно ли заказать кошерное меню?', a: 'Да. Есть три варианта: кошерная кухня, кошер-стайл и некошерная. Напишите в запросе, что подходит вашему дому.' },
+        { q: 'Какие кухни можно выбрать?', a: 'Израильская, итальянская и азербайджанская. Можно выбрать одну или объединить их в одном меню.' },
+        { q: 'Для каких событий это подходит?', a: 'Камерные ужины, семейные праздники и встречи дома.' },
+        { q: 'Что с аллергиями и пожеланиями по питанию?', a: 'Укажите их в форме запроса, и меню подберут в личном разговоре.' },
+        { q: 'Сколько это стоит?', a: 'Цена зависит от меню, количества гостей и даты. Отправьте запрос, и вы получите индивидуальное предложение.' },
+        { q: 'Как заказать?', a: 'Заполните форму запроса, напишите на chef@olivia.kitchen или в WhatsApp. Оливия свяжется с вами, чтобы обсудить детали.' },
+      ],
+    },
+  },
+}
+
+export const localPages = {
+  haifa: {
+    path: '/haifa',
+    title: 'שף פרטי בחיפה | שפית פרטית לארוחות ואירועים בבית | Olivia Kitchen',
+    description: 'שף פרטי בחיפה: אוליביה מבשלת אצלכם בבית מטבח ישראלי, איטלקי ואזרבייג׳ני. אפשרויות כשר, בסגנון כשר ולא כשר. השאירו פנייה לתפריט מותאם.',
+    eyebrow: 'שפית פרטית · חיפה',
+    heading: 'שף פרטי\nבחיפה',
+    paragraphs: [
+      'אוליביה היא שפית פרטית בחיפה. היא מגיעה אליכם הביתה ומכינה ארוחה שמותאמת לאירוע, לאורחים ולטעם שלכם: ארוחת ערב אינטימית, חגיגה משפחתית או סתם סיבה להיפגש.',
+      'התפריט נבנה מהמטבח הישראלי, האיטלקי והאזרבייג׳ני, בנפרד או בשילוב ביניהם. אפשר לבחור מטבח כשר, בסגנון כשר או לא כשר, ולציין אלרגיות והעדפות תזונתיות.',
+      'אוליביה עובדת בחיפה, בקריות, בנשר ובסביבה.',
+    ],
+    otherLabel: 'שף פרטי לאירועים בצפון',
+    otherTo: '/north',
+  },
+  north: {
+    path: '/north',
+    title: 'שף פרטי לאירועים בצפון | כרמיאל, נהריה, עכו | Olivia Kitchen',
+    description: 'שפית פרטית לאירועים בבית בצפון: כרמיאל, נהריה, עכו והסביבה. מטבח ישראלי, איטלקי ואזרבייג׳ני, עם אפשרויות כשר, בסגנון כשר ולא כשר.',
+    eyebrow: 'שפית פרטית · הצפון',
+    heading: 'שף פרטי\nלאירועים בצפון',
+    paragraphs: [
+      'אוליביה, שפית פרטית מחיפה, מגיעה לאירועים בבית גם בצפון הארץ: בכרמיאל, בנהריה, בעכו ובסביבה.',
+      'ארוחת ערב אינטימית או חגיגה משפחתית: מתכננים יחד תפריט ישראלי, איטלקי או אזרבייג׳ני, או שילוב ביניהם. יש אפשרות למטבח כשר, בסגנון כשר או לא כשר.',
+      'אם הבית שלכם במקום אחר בצפון, כתבו ונבדוק יחד.',
+    ],
+    otherLabel: 'שף פרטי בחיפה',
+    otherTo: '/haifa',
+  },
+}
+
+export type LocalPageKey = keyof typeof localPages
+
+const cityNames = ['Haifa', 'Krayot', 'Nesher', 'Karmiel', 'Nahariya', 'Akko']
+
+function faqSchema(language: Language) {
+  return {
+    '@type': 'FAQPage',
+    inLanguage: language,
+    mainEntity: sections[language].faq.items.map(item => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a },
+    })),
+  }
+}
+
+function foodService(serviceType: string) {
+  return {
     '@type': 'FoodService',
     name: 'Olivia Kitchen',
     url: siteUrl,
     email: contact.email,
     description: seo.en.description,
-    serviceType: page.serviceType,
+    serviceType,
     inLanguage: ['en', 'he', 'ru'],
     areaServed: [
-      { '@type': 'City', name: 'Haifa' },
+      ...cityNames.map(name => ({ '@type': 'City', name })),
       { '@type': 'AdministrativeArea', name: 'Northern Israel' },
     ],
-    keywords: 'private chef, Haifa, Northern Israel, Israeli cuisine, Italian cuisine, Azerbaijani cuisine',
+    keywords: 'private chef, Haifa, Northern Israel, kosher, kosher-style, Israeli cuisine, Italian cuisine, Azerbaijani cuisine',
   }
+}
+
+function buildHead(page: { path: string; title: string; description: string; locale: string }, serviceType: string, language: Language, alternates: boolean) {
+  const url = `${siteUrl}${page.path === '/' ? '/' : page.path}`
+  const graph = { '@context': 'https://schema.org', '@graph': [foodService(serviceType), faqSchema(language)] }
   return {
     meta: [
       { title: page.title },
@@ -149,11 +291,23 @@ export function seoHead(language: Language) {
     ],
     links: [
       { rel: 'canonical', href: url },
-      { rel: 'alternate', hrefLang: 'en', href: `${siteUrl}/en` },
-      { rel: 'alternate', hrefLang: 'he', href: `${siteUrl}/` },
-      { rel: 'alternate', hrefLang: 'ru', href: `${siteUrl}/ru` },
-      { rel: 'alternate', hrefLang: 'x-default', href: `${siteUrl}/` },
+      ...(alternates ? [
+        { rel: 'alternate', hrefLang: 'en', href: `${siteUrl}/en` },
+        { rel: 'alternate', hrefLang: 'he', href: `${siteUrl}/` },
+        { rel: 'alternate', hrefLang: 'ru', href: `${siteUrl}/ru` },
+        { rel: 'alternate', hrefLang: 'x-default', href: `${siteUrl}/` },
+      ] : []),
     ],
-    scripts: [{ type: 'application/ld+json', children: JSON.stringify(structuredData) }],
+    scripts: [{ type: 'application/ld+json', children: JSON.stringify(graph) }],
   }
+}
+
+export function seoHead(language: Language) {
+  const page = seo[language]
+  return buildHead(page, page.serviceType, language, true)
+}
+
+export function localSeoHead(key: LocalPageKey) {
+  const page = localPages[key]
+  return buildHead({ ...page, locale: 'he_IL' }, seo.he.serviceType, 'he', false)
 }
