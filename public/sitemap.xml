@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://olivia.kitchen/</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://olivia.kitchen/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olivia.kitchen/en"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://olivia.kitchen/ru"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olivia.kitchen/"/>
+  </url>
+  <url>
+    <loc>https://olivia.kitchen/en</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://olivia.kitchen/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olivia.kitchen/en"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://olivia.kitchen/ru"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olivia.kitchen/"/>
+  </url>
+  <url>
+    <loc>https://olivia.kitchen/ru</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://olivia.kitchen/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olivia.kitchen/en"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://olivia.kitchen/ru"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olivia.kitchen/"/>
+  </url>
+  <url>
+    <loc>https://olivia.kitchen/haifa</loc>
+  </url>
+  <url>
+    <loc>https://olivia.kitchen/north</loc>
+  </url>
+</urlset>
