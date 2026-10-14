@@ -79,7 +79,7 @@ export function Landing({ language }: { language: Language }) {
       <header className="header">
         <a className="brand" href="#" aria-label="Olivia Kitchen"><span>Olivia<span className="brand-dot">.</span></span><small>THE PRIVATE KITCHEN</small></a>
         <nav className={menuOpen ? 'navigation is-open' : 'navigation'} aria-label={text.menu}>
-          {text.nav.map((label, index) => <a key={label} href={`#${['experience', 'kitchens', 'gallery'][index]}`} onClick={() => setMenuOpen(false)}>{label}</a>)}
+          {text.nav.map((label, index) => <a key={label} href={`#${['experience', 'about', 'kitchens', 'gallery'][index]}`} onClick={() => setMenuOpen(false)}>{label}</a>)}
         </nav>
         <div className="header-actions">
           <div className="languages" role="group" aria-label={text.language}>
@@ -111,6 +111,11 @@ export function Landing({ language }: { language: Language }) {
         <section id="experience" className="experience section-wrap">
           <div className="experience-heading"><span className="eyebrow">{text.experienceLabel}</span><h2>{text.experienceTitle}</h2></div>
           <div className="experience-copy"><p>{text.experienceText}</p><p className="experience-end">{text.experienceEnd}</p><span className="signature">{text.signature}</span></div>
+        </section>
+
+        <section id="about" className="about section-wrap">
+          <div className="about-heading"><span className="eyebrow">{text.aboutLabel}</span><h2>{text.aboutTitle}</h2></div>
+          <div className="about-body"><p>{text.aboutText}</p><ul className="about-facts">{text.aboutFacts.map(([value, label]) => <li key={label}><strong>{value}</strong><span>{label}</span></li>)}</ul></div>
         </section>
 
         <section id="kitchens" className="kitchens section-wrap">
