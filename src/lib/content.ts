@@ -21,9 +21,8 @@ export const content = {
     cuisineNames: ['Israeli', 'Italian', 'Azerbaijani'],
     cuisineNotes: ['Fresh, vibrant & generous', 'Simple, soulful & seasonal', 'Warm, aromatic & heartfelt'],
     cuisineDescriptions: ['Colourful mezze, bright herbs, and beautiful ingredients. A sun-filled table made for sharing.', 'Handmade pasta, seasonal produce, and the joy of a long, unhurried meal. A little taste of la dolce vita.', 'Fragrant saffron rice, fresh herbs, and comforting flavours. A rich tradition of welcoming people to the table.'],
-    galleryLabel: 'FROM THE KITCHEN', galleryTitle: 'A feast for the eyes.', galleryText: 'A little inspiration for your next gathering.', all: 'All flavours',
-    dishes: ['A table made for sharing', 'Hummus & fresh herbs', 'Pasta, tomatoes & basil', 'Saffron plov'],
-    imageDisclosure: 'Illustrative culinary imagery, created to celebrate these three kitchens.', viewImage: 'View image', close: 'Close',
+    galleryLabel: 'FROM THE KITCHEN', galleryTitle: 'A feast for the eyes.', galleryText: 'A little inspiration for your next gathering.', all: 'All flavours', savoury: 'Starters & mains', desserts: 'Desserts',
+    imageDisclosure: 'Photographs of dishes prepared by Olivia. © JonathanKrav', viewImage: 'View image', close: 'Close',
     contactLabel: 'LET’S MAKE SOMETHING SPECIAL', contactTitle: 'Your next beautiful\nevening starts here.',
     contactText: 'An intimate dinner, a family celebration, or simply a reason to gather. Tell me a little about your plans, and we’ll take it from there.',
     emailLabel: 'WRITE TO ME', whatsapp: 'Connect on WhatsApp', whatsappUnavailable: 'Leave your WhatsApp number in the form and request a reply there, or reach Olivia by email.', share: 'Share on WhatsApp',
@@ -48,9 +47,8 @@ export const content = {
     cuisineNames: ['ישראלי', 'איטלקי', 'אזרבייג׳ני'],
     cuisineNotes: ['טרי, צבעוני ונדיב', 'פשוט, מלא נשמה ועונתי', 'חם, ארומטי ומכל הלב'],
     cuisineDescriptions: ['מזטים צבעוניים, עשבי תיבול רעננים וחומרי גלם נהדרים. שולחן מלא שמש שנועד לחלוק.', 'פסטה בעבודת יד, תוצרת עונתית והנאה מארוחה ארוכה ונינוחה. טעימה קטנה מהחיים הטובים.', 'אורז זעפרן ריחני, עשבי תיבול טריים וטעמים מנחמים. מסורת עשירה של אירוח סביב השולחן.'],
-    galleryLabel: 'מהמטבח', galleryTitle: 'חגיגה לעיניים.', galleryText: 'קצת השראה למפגש הבא שלכם.', all: 'כל הטעמים',
-    dishes: ['שולחן שנועד לחלוק', 'חומוס ועשבי תיבול', 'פסטה, עגבניות ובזיליקום', 'פלוב זעפרן'],
-    imageDisclosure: 'תמונות קולינריות להמחשה, שנוצרו בהשראת שלושת המטבחים.', viewImage: 'הצגת תמונה', close: 'סגירה',
+    galleryLabel: 'מהמטבח', galleryTitle: 'חגיגה לעיניים.', galleryText: 'קצת השראה למפגש הבא שלכם.', all: 'כל הטעמים', savoury: 'פתיחות ועיקריות', desserts: 'קינוחים',
+    imageDisclosure: 'צילומי מנות שהוכנו על ידי אוליביה. © JonathanKrav', viewImage: 'הצגת תמונה', close: 'סגירה',
     contactLabel: 'בואו ניצור משהו מיוחד', contactTitle: 'הערב היפה הבא שלכם\nמתחיל כאן.',
     contactText: 'ארוחת ערב אינטימית, חגיגה משפחתית או סתם סיבה להיפגש. ספרו לי קצת על התוכניות שלכם ונמשיך משם.',
     emailLabel: 'כתבו לי', whatsapp: 'יצירת קשר בוואטסאפ', whatsappUnavailable: 'השאירו בטופס את מספר הוואטסאפ שלכם ובקשו מענה שם, או פנו לאוליביה במייל.', share: 'שיתוף בוואטסאפ',
@@ -75,9 +73,8 @@ export const content = {
     cuisineNames: ['Израильская', 'Итальянская', 'Азербайджанская'],
     cuisineNotes: ['Свежая, яркая и щедрая', 'Простая, душевная и сезонная', 'Тёплая, ароматная и искренняя'],
     cuisineDescriptions: ['Разноцветные мезе, свежая зелень и прекрасные продукты. Солнечный стол для дружной компании.', 'Паста ручной работы, сезонные продукты и радость неспешного ужина. Немного итальянской dolce vita.', 'Ароматный шафрановый плов, свежая зелень и уютные вкусы. Богатая традиция гостеприимства.'],
-    galleryLabel: 'ИЗ КУХНИ', galleryTitle: 'Праздник для глаз.', galleryText: 'Немного вдохновения для вашей следующей встречи.', all: 'Все вкусы',
-    dishes: ['Стол для тёплой компании', 'Хумус и свежая зелень', 'Паста, томаты и базилик', 'Шафрановый плов'],
-    imageDisclosure: 'Иллюстративные изображения, вдохновлённые тремя кулинарными традициями.', viewImage: 'Открыть изображение', close: 'Закрыть',
+    galleryLabel: 'ИЗ КУХНИ', galleryTitle: 'Праздник для глаз.', galleryText: 'Немного вдохновения для вашей следующей встречи.', all: 'Все вкусы', savoury: 'Закуски и горячее', desserts: 'Десерты',
+    imageDisclosure: 'Фотографии блюд, приготовленных Оливией. © JonathanKrav', viewImage: 'Открыть изображение', close: 'Закрыть',
     contactLabel: 'СОЗДАДИМ ЧТО-ТО ОСОБЕННОЕ', contactTitle: 'Ваш прекрасный вечер\nначинается здесь.',
     contactText: 'Камерный ужин, семейный праздник или просто повод собраться. Расскажите немного о ваших планах, и мы всё обсудим.',
     emailLabel: 'НАПИШИТЕ МНЕ', whatsapp: 'Связаться в WhatsApp', whatsappUnavailable: 'Оставьте в форме номер WhatsApp и попросите ответить там или напишите Оливии по электронной почте.', share: 'Поделиться в WhatsApp',
@@ -88,6 +85,27 @@ export const content = {
     footer: 'Хорошая еда объединяет.', rights: 'Olivia Kitchen. Создано с любовью.', menu: 'Открыть меню', language: 'Выбрать язык', top: 'Наверх',
   },
 }
+
+export const galleryPhotos = [
+  { file: 'grilled-rib-steak', width: 1600, height: 1600, smWidth: 800, smHeight: 800, group: 'savoury', captions: { en: 'Grilled rib steak with roasted vegetables', he: 'סטייק צלעות על האש עם ירקות צלויים', ru: 'Стейк на кости на гриле с запечёнными овощами' } },
+  { file: 'tropical-millefeuille', width: 1600, height: 1200, smWidth: 800, smHeight: 600, group: 'desserts', captions: { en: 'Layered dessert with tropical fruit and raspberries', he: 'קינוח שכבות עם פירות טרופיים ופטל', ru: 'Слоёный десерт с тропическими фруктами и малиной' } },
+  { file: 'lamb-and-beef-platter', width: 1600, height: 1200, smWidth: 800, smHeight: 600, group: 'savoury', captions: { en: 'Lamb chops and beef medallions with roasted vegetables', he: 'צלעות טלה ומדליוני בקר עם ירקות צלויים', ru: 'Бараньи рёбрышки и медальоны из говядины с овощами' } },
+  { file: 'chocolate-glaze-cake', width: 1280, height: 1600, smWidth: 800, smHeight: 1000, group: 'desserts', captions: { en: 'Glazed chocolate cake with strawberries and passion fruit', he: 'עוגת שוקולד מצופה עם תותים ופסיפלורה', ru: 'Шоколадный торт с глазурью, клубникой и маракуйей' } },
+  { file: 'seared-salmon-puree', width: 1280, height: 1600, smWidth: 800, smHeight: 1000, group: 'savoury', captions: { en: 'Seared salmon with silky purée', he: 'סלמון צרוב עם פירה קטיפתי', ru: 'Лосось с нежным пюре' } },
+  { file: 'strawberry-cheesecake', width: 1600, height: 1200, smWidth: 800, smHeight: 600, group: 'desserts', captions: { en: 'Cheesecake with strawberries and passion fruit', he: 'עוגת גבינה עם תותים ופסיפלורה', ru: 'Чизкейк с клубникой и маракуйей' } },
+  { file: 'burrata-heirloom-tomatoes', width: 1600, height: 1200, smWidth: 800, smHeight: 600, group: 'savoury', captions: { en: 'Burrata with heirloom tomatoes and basil', he: 'בוראטה עם עגבניות צבעוניות ובזיליקום', ru: 'Буррата с разноцветными томатами и базиликом' } },
+  { file: 'sorbet-meringue-dessert', width: 1600, height: 1600, smWidth: 800, smHeight: 800, group: 'desserts', captions: { en: 'Plated dessert with sorbet, meringue and an edible flower', he: 'קינוח מצופה עם סורבה, מרנג ופרח אכיל', ru: 'Десерт с сорбетом, меренгой и съедобным цветком' } },
+  { file: 'beef-carpaccio', width: 1600, height: 1600, smWidth: 800, smHeight: 800, group: 'savoury', captions: { en: 'Beef carpaccio with pine nuts and radish', he: 'קרפצ׳יו בקר עם צנוברים וצנונית', ru: 'Карпаччо из говядины с кедровыми орешками и редисом' } },
+  { file: 'three-chocolate-mousse-cake', width: 1600, height: 1200, smWidth: 800, smHeight: 600, group: 'desserts', captions: { en: 'Three-layer chocolate mousse cake', he: 'עוגת מוס שוקולד בשלוש שכבות', ru: 'Трёхслойный шоколадный муссовый торт' } },
+  { file: 'crispy-skin-fish', width: 1600, height: 1200, smWidth: 800, smHeight: 600, group: 'savoury', captions: { en: 'Fish with crisp skin and fresh salad', he: 'דג עם עור פריך וסלט טרי', ru: 'Рыба с хрустящей кожицей и свежим салатом' } },
+  { file: 'chocolate-plated-dessert', width: 1600, height: 1200, smWidth: 800, smHeight: 600, group: 'desserts', captions: { en: 'Chocolate plated dessert with an edible flower', he: 'קינוח שוקולד מצופה עם פרח אכיל', ru: 'Шоколадный десерт с съедобным цветком' } },
+  { file: 'carpaccio-radish-microherbs', width: 1600, height: 1200, smWidth: 800, smHeight: 600, group: 'savoury', captions: { en: 'Beef carpaccio with radish and micro herbs', he: 'קרפצ׳יו בקר עם צנונית ועלי מיקרו', ru: 'Карпаччо из говядины с редисом и микрозеленью' } },
+  { file: 'strawberry-tartlets', width: 1600, height: 1200, smWidth: 800, smHeight: 600, group: 'desserts', captions: { en: 'Strawberry tartlets', he: 'טארטלטים תותים', ru: 'Тарталетки с клубникой' } },
+  { file: 'warm-starter-red-currants', width: 1600, height: 1200, smWidth: 800, smHeight: 600, group: 'savoury', captions: { en: 'Warm starter with red currants and micro herbs', he: 'מנה ראשונה חמה עם דומדמניות אדומות ועלי מיקרו', ru: 'Тёплая закуска с красной смородиной и микрозеленью' } },
+  { file: 'chocolate-strawberry-tart', width: 1280, height: 1600, smWidth: 800, smHeight: 1000, group: 'desserts', captions: { en: 'Chocolate cream tart with strawberries and gilded hazelnuts', he: 'טארט קרם שוקולד עם תותים ואגוזי לוז מוזהבים', ru: 'Шоколадный тарт с клубникой и позолоченным фундуком' } },
+  { file: 'raspberry-macarons', width: 1280, height: 1600, smWidth: 800, smHeight: 1000, group: 'desserts', captions: { en: 'Raspberry macarons', he: 'מקרונים בטעם פטל', ru: 'Малиновые макаруны' } },
+  { file: 'peanut-caramel-bars', width: 1280, height: 1600, smWidth: 800, smHeight: 1000, group: 'desserts', captions: { en: 'Chocolate bars with peanut caramel', he: 'חטיפי שוקולד עם קרמל בוטנים', ru: 'Шоколадные батончики с арахисовой карамелью' } },
+] as const
 
 export const siteUrl = 'https://olivia.kitchen'
 
@@ -117,7 +135,7 @@ export const seo = {
 
 export const sections = {
   en: {
-    alts: ['A laid table with Israeli, Italian and Azerbaijani dishes', 'Israeli hummus with olive oil and fresh herbs', 'Italian pasta with tomatoes and basil', 'Azerbaijani saffron plov with herbs'],
+    alts: ['Lamb chops, beef medallions and roasted vegetables on a platter', 'Seared salmon with silky purée', 'Burrata with heirloom tomatoes and basil', 'Grilled rib steak with roasted vegetables'],
     kashrut: {
       label: 'KASHRUT', title: 'A kitchen that fits\nyour home.',
       intro: 'Every home keeps its own rules, so the menu is built around yours. There are three options.',
@@ -147,7 +165,7 @@ export const sections = {
     },
   },
   he: {
-    alts: ['שולחן ערוך עם מנות מהמטבח הישראלי, האיטלקי והאזרבייג׳ני', 'חומוס ישראלי עם שמן זית ועשבי תיבול טריים', 'פסטה איטלקית עם עגבניות ובזיליקום', 'פלוב זעפרן אזרבייג׳ני עם עשבי תיבול'],
+    alts: ['צלעות טלה, מדליוני בקר וירקות צלויים על מגש', 'סלמון צרוב עם פירה קטיפתי', 'בוראטה עם עגבניות צבעוניות ובזיליקום', 'סטייק צלעות על האש עם ירקות צלויים'],
     kashrut: {
       label: 'כשרות', title: 'מטבח שמתאים\nלבית שלכם.',
       intro: 'כל בית שומר על כללים משלו, ולכן התפריט נבנה לפי מה שמתאים לכם. יש שלוש אפשרויות.',
@@ -177,7 +195,7 @@ export const sections = {
     },
   },
   ru: {
-    alts: ['Накрытый стол с блюдами израильской, итальянской и азербайджанской кухни', 'Израильский хумус с оливковым маслом и свежей зеленью', 'Итальянская паста с томатами и базиликом', 'Азербайджанский шафрановый плов с зеленью'],
+    alts: ['Бараньи рёбрышки, медальоны из говядины и запечённые овощи на блюде', 'Лосось с нежным пюре', 'Буррата с разноцветными томатами и базиликом', 'Стейк на кости на гриле с запечёнными овощами'],
     kashrut: {
       label: 'КАШРУТ', title: 'Кухня, которая подходит\nвашему дому.',
       intro: 'В каждом доме свои правила, поэтому меню строится под ваши. Есть три варианта.',
