@@ -11,7 +11,7 @@ This is a single-page private-chef marketing website, built with TanStack Start,
 - `src/components/Sections.tsx`: shared kashrut, service-area and FAQ sections used by the landing page and the Hebrew local pages.
 - `src/components/LocalPage.tsx`, `src/routes/haifa.tsx`, `north.tsx`: Hebrew-only local SEO pages (`/haifa`, `/north`) with their own head from `localSeoHead`.
 - `src/routes/__root.tsx`: HTML shell, stylesheet import, favicon, and `lang`/`dir` derived from the path. Do not add an Open Graph image; the hosting platform supplies it.
-- `public/robots.txt`, `public/sitemap.xml`: search engine files; update the sitemap when adding a route.
+- `public/robots.txt`, `public/sitemap.xml`: search engine files; update the sitemap when adding a route, and keep its image list for `/` in step with `galleryPhotos`.
 - `src/lib/content.ts`: all English, Hebrew, and Russian copy plus email and WhatsApp configuration.
 - `src/styles.css`: responsive editorial design, olive/cream theme tokens, typography, RTL handling, motion, and reduced-motion preferences.
 - `public/img/`: real photographs of Olivia's dishes (webp only), processed to the site style with the photographer's JonathanKrav mark in the bottom-right corner. Gallery files come in a full size and a `-sm` size; `hero`, `israeli`, `italian` and `azerbaijani` are the hero and cuisine-card crops. The gallery list, groups (`savoury`, `desserts`) and per-language captions live in `galleryPhotos` in `src/lib/content.ts`. Images are served as static files from `/img/`.

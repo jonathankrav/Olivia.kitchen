@@ -285,9 +285,22 @@ function faqSchema(language: Language) {
 function foodService(serviceType: string) {
   return {
     '@type': 'FoodService',
+    '@id': `${siteUrl}/#business`,
     name: 'Olivia Kitchen',
     url: siteUrl,
+    image: `${siteUrl}/img/hero.webp`,
+    logo: `${siteUrl}/apple-touch-icon.png`,
     email: contact.email,
+    telephone: contact.whatsappNumber,
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer service',
+      email: contact.email,
+      telephone: contact.whatsappNumber,
+      availableLanguage: ['Hebrew', 'English', 'Russian'],
+    },
+    founder: { '@id': `${siteUrl}/#olivia` },
+    knowsAbout: ['Israeli cuisine', 'Italian cuisine', 'Azerbaijani cuisine', 'Kosher cooking', 'Private dining'],
     description: seo.en.description,
     serviceType,
     inLanguage: ['en', 'he', 'ru'],
@@ -299,9 +312,40 @@ function foodService(serviceType: string) {
   }
 }
 
+function personSchema() {
+  return {
+    '@type': 'Person',
+    '@id': `${siteUrl}/#olivia`,
+    name: 'Olivia',
+    jobTitle: 'Private chef',
+    worksFor: { '@id': `${siteUrl}/#business` },
+  }
+}
+
+function websiteSchema() {
+  return {
+    '@type': 'WebSite',
+    '@id': `${siteUrl}/#website`,
+    name: 'Olivia Kitchen',
+    url: siteUrl,
+    inLanguage: ['he', 'en', 'ru'],
+    publisher: { '@id': `${siteUrl}/#business` },
+  }
+}
+
+function breadcrumbSchema(page: { path: string; title: string }) {
+  return {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Olivia Kitchen', item: `${siteUrl}/` },
+      { '@type': 'ListItem', position: 2, name: page.title.split(' | ')[0], item: `${siteUrl}${page.path}` },
+    ],
+  }
+}
+
 function buildHead(page: { path: string; title: string; description: string; locale: string }, serviceType: string, language: Language, alternates: boolean) {
   const url = `${siteUrl}${page.path === '/' ? '/' : page.path}`
-  const graph = { '@context': 'https://schema.org', '@graph': [foodService(serviceType), faqSchema(language)] }
+  const graph = { '@context': 'https://schema.org', '@graph': [foodService(serviceType), personSchema(), websiteSchema(), faqSchema(language), ...(alternates ? [] : [breadcrumbSchema(page)])] }
   return {
     meta: [
       { title: page.title },

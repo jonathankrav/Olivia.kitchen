@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://olivia.kitchen/</loc>
+    <lastmod>2026-10-15</lastmod>
     <xhtml:link rel="alternate" hreflang="he" href="https://olivia.kitchen/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://olivia.kitchen/en"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://olivia.kitchen/ru"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://olivia.kitchen/"/>
+    <image:image><image:loc>https://olivia.kitchen/img/hero.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/grilled-rib-steak.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/tropical-millefeuille.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/lamb-and-beef-platter.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/eggplant-rolls.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/tomato-bruschetta.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/mozzarella-pesto-salad.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/seared-salmon-puree.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/strawberry-cheesecake.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/burrata-heirloom-tomatoes.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/sorbet-meringue-dessert.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/beef-carpaccio.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/crispy-skin-fish.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/chocolate-plated-dessert.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/carpaccio-radish-microherbs.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/strawberry-tartlets.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/warm-starter-red-currants.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/chocolate-strawberry-tart.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/peanut-caramel-bars.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://olivia.kitchen/en</loc>
