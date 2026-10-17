@@ -1,6 +1,24 @@
 import { Link } from '@tanstack/react-router'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import { sections, type Language } from '@/lib/content'
+
+export function ServicesSection({ language }: { language: Language }) {
+  const { services } = sections[language]
+  return (
+    <section id="services" className="services section-wrap">
+      <div className="services-top">
+        <div><span className="eyebrow">{services.label}</span><h2>{services.title}</h2></div>
+        <div className="services-lead"><p>{services.intro}</p><div className="services-count"><strong>{services.guests[0]}</strong><span>{services.guests[1]}</span></div></div>
+      </div>
+      <div className="services-groups">{services.groups.map((group, index) => <div className="services-group" key={group.title}>
+        <span className="services-index">0{index + 1}</span>
+        <h3>{group.title}</h3>
+        <ul>{group.items.map(item => <li key={item.title}><strong>{item.title}</strong><p>{item.text}</p></li>)}</ul>
+      </div>)}</div>
+      <div className="services-cta"><p>{services.note}</p><a className="button" href="#contact">{services.button}<ArrowRight size={17} /></a></div>
+    </section>
+  )
+}
 
 export function KashrutSection({ language }: { language: Language }) {
   const { kashrut } = sections[language]

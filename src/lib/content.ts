@@ -8,7 +8,7 @@ export const contact = {
 export const content = {
   en: {
     skip: 'Skip to content', stamp: ['Three kitchens.', 'One beautiful table.'],
-    nav: ['The experience', 'About me', 'My kitchens', 'Gallery'], book: 'Let’s plan your table',
+    nav: ['The experience', 'Services', 'My kitchens', 'Gallery'], book: 'Let’s plan your table',
     eyebrow: 'PRIVATE CHEF · HAIFA & THE NORTH', hero: ['A big soul.', 'A lot of flavour.'],
     intro: 'Three culinary traditions. One unforgettable table. Beautiful food, made with care, in the comfort of your home.',
     explore: 'Discover my kitchens', scroll: 'A taste of what’s to come', photoNote: 'GOOD FOOD. GOOD COMPANY.',
@@ -16,9 +16,6 @@ export const content = {
     experienceLabel: 'WELCOME TO MY TABLE', experienceTitle: 'More than a meal.\nA moment to remember.',
     experienceText: 'The best evenings begin around a table. I’m Olivia, and I bring the warmth of Israeli, Italian, and Caucasian cooking to yours. A menu shaped around you, thoughtfully prepared, and made for sharing.',
     experienceEnd: 'You bring the people. I’ll bring the flavour.', signature: 'With love, Olivia',
-    aboutLabel: 'ABOUT ME', aboutTitle: 'More than ten years in the kitchen.\nSix as a head chef.',
-    aboutText: 'I completed culinary courses at Ben-Gurion University in Eilat, and I have been working in kitchens for more than 10 years, the last 6 as a head chef. Today I bring that experience to private tables in Haifa and the north.',
-    aboutFacts: [['10+', 'years of work in the kitchen'], ['6', 'years as a head chef'], ['Eilat', 'culinary courses at Ben-Gurion University']],
     kitchensLabel: 'THREE ROOTS. ONE KITCHEN.', kitchensTitle: 'A world of flavour,\nclose to home.',
     kitchensIntro: 'Different traditions, the same love for bringing people together. Pick a favourite, or let us create a menu that crosses borders.',
     cuisineNames: ['Israeli', 'Italian', 'Caucasian'],
@@ -37,7 +34,7 @@ export const content = {
   },
   he: {
     skip: 'דילוג לתוכן', stamp: ['שלושה מטבחים.', 'שולחן יפה אחד.'],
-    nav: ['החוויה', 'עליי', 'המטבחים שלי', 'גלריה'], book: 'נתכנן את הארוחה שלכם',
+    nav: ['החוויה', 'שירותים', 'המטבחים שלי', 'גלריה'], book: 'נתכנן את הארוחה שלכם',
     eyebrow: 'שפית פרטית · חיפה והצפון', hero: ['הרבה נשמה.', 'הרבה טעם.'],
     intro: 'שלוש מסורות קולינריות. שולחן אחד בלתי נשכח. אוכל יפהפה, שמוכן באהבה, בנוחות של הבית שלכם.',
     explore: 'גלו את המטבחים שלי', scroll: 'טעימה ממה שמחכה לכם', photoNote: 'אוכל טוב. חברה טובה.',
@@ -45,9 +42,6 @@ export const content = {
     experienceLabel: 'ברוכים הבאים לשולחן שלי', experienceTitle: 'יותר מארוחה.\nרגע לזכור.',
     experienceText: 'הערבים הכי יפים מתחילים סביב שולחן. אני אוליביה, ואני מביאה אליכם את החום של המטבח הישראלי, האיטלקי והקווקזי. תפריט שמותאם לכם, מוכן בתשומת לב ונועד לחלוק יחד.',
     experienceEnd: 'אתם מביאים את האנשים. אני אביא את הטעם.', signature: 'באהבה, אוליביה',
-    aboutLabel: 'עליי', aboutTitle: 'יותר מעשר שנים במטבח.\nשש מהן כשפית ראשית.',
-    aboutText: 'סיימתי קורסי קולינריה באוניברסיטת בן-גוריון באילת, ואני עובדת במטבחים כבר יותר מ-10 שנים, מהן 6 שנים כשפית ראשית. היום אני מביאה את הניסיון הזה לשולחנות פרטיים בחיפה ובצפון.',
-    aboutFacts: [['10+', 'שנות עבודה במטבח'], ['6', 'שנים כשפית ראשית'], ['אילת', 'קורסי קולינריה באוניברסיטת בן-גוריון']],
     kitchensLabel: 'שלושה שורשים. מטבח אחד.', kitchensTitle: 'עולם של טעמים,\nקרוב לבית.',
     kitchensIntro: 'מסורות שונות, אותה אהבה לחיבור בין אנשים. בחרו מטבח אהוב, או ניצור יחד תפריט שחוצה גבולות.',
     cuisineNames: ['ישראלי', 'איטלקי', 'קווקזי'],
@@ -66,7 +60,7 @@ export const content = {
   },
   ru: {
     skip: 'Перейти к содержимому', stamp: ['Три кухни.', 'Один прекрасный стол.'],
-    nav: ['Впечатления', 'Обо мне', 'Мои кухни', 'Галерея'], book: 'Спланируем ваш вечер',
+    nav: ['Впечатления', 'Услуги', 'Мои кухни', 'Галерея'], book: 'Спланируем ваш вечер',
     eyebrow: 'ЛИЧНЫЙ ШЕФ · ХАЙФА И СЕВЕР', hero: ['Много души.', 'Много вкуса.'],
     intro: 'Три кулинарные традиции. Один незабываемый стол. Прекрасная еда, приготовленная с заботой, у вас дома.',
     explore: 'Откройте мои кухни', scroll: 'Вкус того, что вас ждёт', photoNote: 'ХОРОШАЯ ЕДА. ПРИЯТНАЯ КОМПАНИЯ.',
@@ -74,9 +68,6 @@ export const content = {
     experienceLabel: 'ДОБРО ПОЖАЛОВАТЬ К МОЕМУ СТОЛУ', experienceTitle: 'Больше, чем ужин.\nМомент на память.',
     experienceText: 'Лучшие вечера начинаются за общим столом. Я Оливия, и я приношу в ваш дом тепло израильской, итальянской и кавказской кухни. Меню именно для вас, приготовленное с вниманием и созданное для близких.',
     experienceEnd: 'Вы приглашаете гостей. Я добавляю вкус.', signature: 'С любовью, Оливия',
-    aboutLabel: 'ОБО МНЕ', aboutTitle: 'Больше десяти лет на кухне.\nШесть из них — шеф-поваром.',
-    aboutText: 'Я окончила кулинарные курсы в университете Бен-Гуриона в Эйлате и работаю на кухне больше 10 лет, из них 6 лет шеф-поваром. Сегодня я приношу этот опыт за частные столы в Хайфе и на севере.',
-    aboutFacts: [['10+', 'лет работы на кухне'], ['6', 'лет в роли шеф-повара'], ['Эйлат', 'кулинарные курсы в университете Бен-Гуриона']],
     kitchensLabel: 'ТРИ ТРАДИЦИИ. ОДНА КУХНЯ.', kitchensTitle: 'Целый мир вкусов,\nсовсем рядом.',
     kitchensIntro: 'Разные традиции и одна любовь к тёплым встречам. Выберите любимую кухню или создадим меню без границ.',
     cuisineNames: ['Израильская', 'Итальянская', 'Кавказская'],
@@ -145,6 +136,27 @@ export const seo = {
 export const sections = {
   en: {
     alts: ['Lamb chops, beef medallions and roasted vegetables on a platter', 'Seared salmon with silky purée', 'Burrata with heirloom tomatoes and basil', 'Grilled lamb ribs with rice and roasted vegetables'],
+    services: {
+      label: 'EVENTS & SERVICE', title: 'Your table for\n4 to 30 guests.',
+      intro: 'Olivia cooks for groups of 4 to 30 guests: family celebrations, corporate events and evenings with friends. You decide how much to take on and what kind of evening you want.',
+      guests: ['4–30', 'guests'],
+      groups: [
+        { title: 'Occasions', items: [
+          { title: 'Family celebrations', text: 'Birthdays, holidays and special dates around one table.' },
+          { title: 'Corporate events', text: 'Team lunches and dinners, and receptions for colleagues and clients.' },
+          { title: 'Evenings with friends', text: 'A relaxed table for your friends, with no time spent in the kitchen.' },
+        ] },
+        { title: 'Level of service', items: [
+          { title: 'Full service', text: 'Olivia cooks and serves the dishes, so you can stay with your guests.' },
+          { title: 'Cooking only', text: 'Olivia prepares the food and the serving stays with you.' },
+        ] },
+        { title: 'Menu format', items: [
+          { title: 'Full menu', text: 'A seated meal served course by course, from starters to dessert.' },
+          { title: 'Shulchan shuk', text: 'A buffet-style table full of dishes, for guests to enjoy at their own pace.' },
+        ] },
+      ],
+      note: 'Tell us the date, the number of guests and the format you prefer, and we will plan the menu together.', button: 'Let’s plan your table',
+    },
     kashrut: {
       label: 'KASHRUT', title: 'A kitchen that fits\nyour home.',
       intro: 'Every home keeps its own rules, so the menu is built around yours. There are three options.',
@@ -166,7 +178,7 @@ export const sections = {
         { q: 'Where does Olivia work?', a: 'In Haifa and Northern Israel: Haifa, the Krayot, Nesher, Karmiel, Nahariya, Akko and the surrounding area. If your home is elsewhere in the north, write and we will check.' },
         { q: 'Is kosher food available?', a: 'Yes. There are three options: kosher, kosher-style and not kosher. Tell us in your inquiry what suits your home.' },
         { q: 'Which cuisines can I choose?', a: 'Israeli, Italian and Caucasian. Pick one kitchen or combine them in a single menu.' },
-        { q: 'What kind of occasions is this for?', a: 'Intimate dinners, family celebrations and gatherings at home.' },
+        { q: 'What kind of occasions is this for?', a: 'Family celebrations, corporate events and evenings with friends, for groups of 4 to 30 guests. Choose full service or cooking only, and a full menu or a shulchan shuk buffet.' },
         { q: 'What about allergies and dietary needs?', a: 'Mention them in the inquiry form and the menu will be adapted in a personal conversation.' },
         { q: 'How much does it cost?', a: 'The price depends on the menu, the number of guests and the date. Send an inquiry and you will receive a personal offer.' },
         { q: 'How do I book?', a: 'Fill in the inquiry form, write to chef@olivia.kitchen or message on WhatsApp. Olivia will get back to you to plan the details.' },
@@ -175,6 +187,27 @@ export const sections = {
   },
   he: {
     alts: ['צלעות טלה, מדליוני בקר וירקות צלויים על מגש', 'סלמון צרוב עם פירה קטיפתי', 'בוראטה עם עגבניות צבעוניות ובזיליקום', 'צלעות טלה על האש עם אורז וירקות צלויים'],
+    services: {
+      label: 'אירועים ושירות', title: 'שולחן לקבוצות\nשל 4 עד 30 אורחים.',
+      intro: 'אוליביה מבשלת לקבוצות של 4 עד 30 אורחים: אירועים משפחתיים, אירועי חברה וערבים עם חברים. אתם בוחרים כמה לקחת על עצמכם ואיזה ערב אתם רוצים.',
+      guests: ['4–30', 'אורחים'],
+      groups: [
+        { title: 'סוגי אירועים', items: [
+          { title: 'אירועים משפחתיים', text: 'ימי הולדת, חגים ותאריכים מיוחדים סביב שולחן אחד.' },
+          { title: 'אירועי חברה', text: 'ארוחות צוות וערבי אירוח לעמיתים וללקוחות.' },
+          { title: 'מפגשי חברים', text: 'שולחן נינוח לחברים, בלי לבלות את הערב במטבח.' },
+        ] },
+        { title: 'רמת שירות', items: [
+          { title: 'שירות מלא', text: 'אוליביה מבשלת ומגישה את המנות, ואתם נשארים עם האורחים.' },
+          { title: 'הכנת האוכל בלבד', text: 'אוליביה מכינה את האוכל, וההגשה נשארת אצלכם.' },
+        ] },
+        { title: 'סגנון התפריט', items: [
+          { title: 'תפריט מלא', text: 'ארוחה מסודרת מנה אחר מנה, מהמנות הראשונות ועד הקינוח.' },
+          { title: 'שולחן שוק', text: 'שולחן עמוס מנות בסגנון בופה, שהאורחים נהנים ממנו בקצב שלהם.' },
+        ] },
+      ],
+      note: 'ספרו לנו על התאריך, מספר האורחים והסגנון שמתאים לכם, ונבנה את התפריט יחד.', button: 'נתכנן את הארוחה שלכם',
+    },
     kashrut: {
       label: 'כשרות', title: 'מטבח שמתאים\nלבית שלכם.',
       intro: 'כל בית שומר על כללים משלו, ולכן התפריט נבנה לפי מה שמתאים לכם. יש שלוש אפשרויות.',
@@ -196,7 +229,7 @@ export const sections = {
         { q: 'באילו אזורים אוליביה עובדת?', a: 'בחיפה ובצפון: חיפה, הקריות, נשר, כרמיאל, נהריה, עכו והסביבה. אם הבית שלכם במקום אחר בצפון, כתבו ונבדוק.' },
         { q: 'האם אפשר לקבל אוכל כשר?', a: 'כן. יש שלוש אפשרויות: מטבח כשר, בסגנון כשר ולא כשר. כתבו בפנייה מה מתאים לבית שלכם.' },
         { q: 'אילו מטבחים אפשר לבחור?', a: 'ישראלי, איטלקי וקווקזי. אפשר לבחור מטבח אחד או לשלב ביניהם בתפריט אחד.' },
-        { q: 'לאילו אירועים זה מתאים?', a: 'ארוחות ערב אינטימיות, חגיגות משפחתיות ומפגשים בבית.' },
+        { q: 'לאילו אירועים זה מתאים?', a: 'אירועים משפחתיים, אירועי חברה וערבים עם חברים, לקבוצות של 4 עד 30 אורחים. אפשר לבחור שירות מלא או הכנת האוכל בלבד, ותפריט מלא או שולחן שוק.' },
         { q: 'מה לגבי אלרגיות והעדפות תזונתיות?', a: 'ציינו אותן בטופס הפנייה, והתפריט יותאם בשיחה אישית.' },
         { q: 'כמה זה עולה?', a: 'המחיר תלוי בתפריט, במספר האורחים ובמועד האירוע. השאירו פנייה ותקבלו הצעה אישית.' },
         { q: 'איך מזמינים?', a: 'ממלאים את טופס הפנייה באתר, כותבים ל־chef@olivia.kitchen או פונים בוואטסאפ. אוליביה תחזור אליכם לתיאום הפרטים.' },
@@ -205,6 +238,27 @@ export const sections = {
   },
   ru: {
     alts: ['Бараньи рёбрышки, медальоны из говядины и запечённые овощи на блюде', 'Лосось с нежным пюре', 'Буррата с разноцветными томатами и базиликом', 'Бараньи рёбрышки на гриле с рисом и запечёнными овощами'],
+    services: {
+      label: 'МЕРОПРИЯТИЯ И СЕРВИС', title: 'Стол для компании\nот 4 до 30 человек.',
+      intro: 'Оливия готовит для компаний от 4 до 30 человек: семейные праздники, корпоративы и встречи с друзьями. Вы выбираете, сколько забот взять на себя и каким будет вечер.',
+      guests: ['4–30', 'человек'],
+      groups: [
+        { title: 'Какие события', items: [
+          { title: 'Семейные праздники', text: 'Дни рождения, праздники и важные даты за одним столом.' },
+          { title: 'Корпоративы', text: 'Обеды и ужины для команды, приёмы для коллег и клиентов.' },
+          { title: 'Встречи с друзьями', text: 'Спокойный вечер за столом без хлопот на кухне.' },
+        ] },
+        { title: 'Уровень сервиса', items: [
+          { title: 'Полное обслуживание', text: 'Оливия готовит и подаёт блюда, а вы остаётесь с гостями.' },
+          { title: 'Только приготовление', text: 'Оливия готовит еду, а подача остаётся за вами.' },
+        ] },
+        { title: 'Формат меню', items: [
+          { title: 'Полное меню', text: 'Ужин с подачей блюд по порядку: от закусок до десерта.' },
+          { title: 'Шульхан шук (фуршет)', text: 'Стол с большим выбором блюд, из которых гости выбирают сами и в своём темпе.' },
+        ] },
+      ],
+      note: 'Напишите дату, число гостей и желаемый формат, а меню мы составим вместе.', button: 'Спланируем ваш вечер',
+    },
     kashrut: {
       label: 'КАШРУТ', title: 'Кухня, которая подходит\nвашему дому.',
       intro: 'В каждом доме свои правила, поэтому меню строится под ваши. Есть три варианта.',
@@ -226,7 +280,7 @@ export const sections = {
         { q: 'Где работает Оливия?', a: 'В Хайфе и на севере Израиля: Хайфа, Крайот, Нешер, Кармиэль, Нагария, Акко и окрестности. Если ваш дом в другом месте на севере, напишите, и мы проверим.' },
         { q: 'Можно ли заказать кошерное меню?', a: 'Да. Есть три варианта: кошерная кухня, кошер-стайл и некошерная. Напишите в запросе, что подходит вашему дому.' },
         { q: 'Какие кухни можно выбрать?', a: 'Израильская, итальянская и кавказская. Можно выбрать одну или объединить их в одном меню.' },
-        { q: 'Для каких событий это подходит?', a: 'Камерные ужины, семейные праздники и встречи дома.' },
+        { q: 'Для каких событий это подходит?', a: 'Семейные праздники, корпоративы и встречи с друзьями для компаний от 4 до 30 человек. Можно выбрать полное обслуживание или только приготовление, а также полное меню или фуршет в формате шульхан шук.' },
         { q: 'Что с аллергиями и пожеланиями по питанию?', a: 'Укажите их в форме запроса, и меню подберут в личном разговоре.' },
         { q: 'Сколько это стоит?', a: 'Цена зависит от меню, количества гостей и даты. Отправьте запрос, и вы получите индивидуальное предложение.' },
         { q: 'Как заказать?', a: 'Заполните форму запроса, напишите на chef@olivia.kitchen или в WhatsApp. Оливия свяжется с вами, чтобы обсудить детали.' },
