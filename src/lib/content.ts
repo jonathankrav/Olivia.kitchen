@@ -2,13 +2,15 @@ export type Language = 'en' | 'he' | 'ru'
 
 export const contact = {
   email: 'chef@olivia.kitchen',
+  phone: '054-505-5199',
+  phoneE164: '+972545055199',
   whatsappNumber: '+972587217215',
 }
 
 export const content = {
   en: {
     skip: 'Skip to content', stamp: ['Three kitchens.', 'One beautiful table.'],
-    nav: ['The experience', 'Services', 'My kitchens', 'Gallery'], book: 'Let’s plan your table',
+    nav: ['The experience', 'Services', 'My kitchens', 'Gallery', 'Contact'], book: 'Let’s plan your table',
     eyebrow: 'PRIVATE CHEF · HAIFA & THE NORTH', hero: ['A big soul.', 'A lot of flavour.'],
     intro: 'Three culinary traditions. One unforgettable table. Beautiful food, made with care, in the comfort of your home.',
     explore: 'Discover my kitchens', scroll: 'A taste of what’s to come', photoNote: 'GOOD FOOD. GOOD COMPANY.',
@@ -30,11 +32,12 @@ export const content = {
     namePlaceholder: 'How should I call you?', phonePlaceholder: 'Include country code', messagePlaceholder: 'The occasion, your ideas, dietary needs…',
     optional: 'optional', send: 'Send my inquiry', sending: 'Sending your inquiry…', privacy: 'Your details are only used to respond to your inquiry.',
     success: 'Your inquiry is on its way!', successText: 'Thank you for inviting me to your table. I’ll be in touch by email to talk about your plans.', another: 'Send another inquiry', error: 'Your inquiry couldn’t be sent. Please try again or email chef@olivia.kitchen.',
+    contactsLabel: 'CONTACT', contactsTitle: 'Let’s talk.', contactsText: 'Call, write or message me. I will get back to you to talk through your event.', callLabel: 'CALL', writeLabel: 'WRITE', chatLabel: 'MESSAGE', areaLabel: 'WHERE I WORK', areaValue: 'Haifa and Northern Israel',
     footer: 'Good food brings us together.', rights: 'Olivia Kitchen. Made with love.', menu: 'Open menu', language: 'Choose language', top: 'Back to top',
   },
   he: {
     skip: 'דילוג לתוכן', stamp: ['שלושה מטבחים.', 'שולחן יפה אחד.'],
-    nav: ['החוויה', 'שירותים', 'המטבחים שלי', 'גלריה'], book: 'נתכנן את הארוחה שלכם',
+    nav: ['החוויה', 'שירותים', 'המטבחים שלי', 'גלריה', 'יצירת קשר'], book: 'נתכנן את הארוחה שלכם',
     eyebrow: 'שפית פרטית · חיפה והצפון', hero: ['הרבה נשמה.', 'הרבה טעם.'],
     intro: 'שלוש מסורות קולינריות. שולחן אחד בלתי נשכח. אוכל יפהפה, שמוכן באהבה, בנוחות של הבית שלכם.',
     explore: 'גלו את המטבחים שלי', scroll: 'טעימה ממה שמחכה לכם', photoNote: 'אוכל טוב. חברה טובה.',
@@ -56,11 +59,12 @@ export const content = {
     namePlaceholder: 'איך לקרוא לכם?', phonePlaceholder: 'כולל קידומת מדינה', messagePlaceholder: 'האירוע, הרעיונות שלכם, צרכים תזונתיים…',
     optional: 'לא חובה', send: 'שליחת פנייה', sending: 'הפנייה נשלחת…', privacy: 'הפרטים שלכם ישמשו רק למענה לפנייה.',
     success: 'הפנייה שלכם בדרך!', successText: 'תודה שהזמנתם אותי לשולחן שלכם. אצור קשר באימייל כדי לדבר על התוכניות.', another: 'שליחת פנייה נוספת', error: 'לא ניתן לשלוח את הפנייה. נסו שוב או כתבו לכתובת chef@olivia.kitchen.',
+    contactsLabel: 'יצירת קשר', contactsTitle: 'בואו נדבר.', contactsText: 'אפשר להתקשר, לכתוב או לשלוח הודעה. אחזור אליכם כדי לדבר על האירוע.', callLabel: 'טלפון', writeLabel: 'אימייל', chatLabel: 'הודעה', areaLabel: 'איפה אני עובדת', areaValue: 'חיפה והצפון',
     footer: 'אוכל טוב מחבר בינינו.', rights: 'אוליביה קיטשן. נוצר באהבה.', menu: 'פתיחת תפריט', language: 'בחירת שפה', top: 'חזרה לראש העמוד',
   },
   ru: {
     skip: 'Перейти к содержимому', stamp: ['Три кухни.', 'Один прекрасный стол.'],
-    nav: ['Впечатления', 'Услуги', 'Мои кухни', 'Галерея'], book: 'Спланируем ваш вечер',
+    nav: ['Впечатления', 'Услуги', 'Мои кухни', 'Галерея', 'Контакты'], book: 'Спланируем ваш вечер',
     eyebrow: 'ЛИЧНЫЙ ШЕФ · ХАЙФА И СЕВЕР', hero: ['Много души.', 'Много вкуса.'],
     intro: 'Три кулинарные традиции. Один незабываемый стол. Прекрасная еда, приготовленная с заботой, у вас дома.',
     explore: 'Откройте мои кухни', scroll: 'Вкус того, что вас ждёт', photoNote: 'ХОРОШАЯ ЕДА. ПРИЯТНАЯ КОМПАНИЯ.',
@@ -82,6 +86,7 @@ export const content = {
     namePlaceholder: 'Как к вам обращаться?', phonePlaceholder: 'С кодом страны', messagePlaceholder: 'Повод, ваши идеи, пожелания по питанию…',
     optional: 'необязательно', send: 'Отправить запрос', sending: 'Отправляем запрос…', privacy: 'Ваши данные используются только для ответа на запрос.',
     success: 'Ваш запрос отправлен!', successText: 'Спасибо за приглашение к вашему столу. Я свяжусь с вами по электронной почте, чтобы обсудить планы.', another: 'Отправить ещё один запрос', error: 'Не удалось отправить запрос. Попробуйте ещё раз или напишите на chef@olivia.kitchen.',
+    contactsLabel: 'КОНТАКТЫ', contactsTitle: 'Давайте поговорим.', contactsText: 'Позвоните, напишите или отправьте сообщение. Я свяжусь с вами, чтобы обсудить ваше событие.', callLabel: 'ТЕЛЕФОН', writeLabel: 'ПОЧТА', chatLabel: 'СООБЩЕНИЕ', areaLabel: 'ГДЕ Я РАБОТАЮ', areaValue: 'Хайфа и север Израиля',
     footer: 'Хорошая еда объединяет.', rights: 'Olivia Kitchen. Создано с любовью.', menu: 'Открыть меню', language: 'Выбрать язык', top: 'Наверх',
   },
 }
@@ -345,12 +350,12 @@ function foodService(serviceType: string) {
     image: `${siteUrl}/img/hero.webp`,
     logo: `${siteUrl}/apple-touch-icon.png`,
     email: contact.email,
-    telephone: contact.whatsappNumber,
+    telephone: contact.phoneE164,
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer service',
       email: contact.email,
-      telephone: contact.whatsappNumber,
+      telephone: contact.phoneE164,
       availableLanguage: ['Hebrew', 'English', 'Russian'],
     },
     founder: { '@id': `${siteUrl}/#olivia` },
