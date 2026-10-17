@@ -79,7 +79,7 @@ export function Landing({ language }: { language: Language }) {
       <header className="header">
         <a className="brand" href="#" aria-label="Olivia Kitchen"><span>Olivia<span className="brand-dot">.</span></span><small>THE PRIVATE KITCHEN</small></a>
         <nav className={menuOpen ? 'navigation is-open' : 'navigation'} aria-label={text.menu}>
-          {text.nav.map((label, index) => <a key={label} href={`#${['experience', 'services', 'kitchens', 'gallery'][index]}`} onClick={() => setMenuOpen(false)}>{label}</a>)}
+          {text.nav.map((label, index) => <a key={label} href={`#${['experience', 'services', 'kitchens', 'gallery', 'contacts'][index]}`} onClick={() => setMenuOpen(false)}>{label}</a>)}
         </nav>
         <div className="header-actions">
           <div className="languages" role="group" aria-label={text.language}>
