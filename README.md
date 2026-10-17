@@ -1,6 +1,6 @@
 # Olivia Kitchen
 
-A warm, editorial-style single-page website for private chef Olivia, celebrating Israeli, Italian, and Azerbaijani cuisine. The site includes English, Hebrew, and Russian content, an interactive gallery, and a private-dining inquiry form.
+A warm, editorial-style single-page website for private chef Olivia, celebrating Israeli, Italian, and Caucasian cuisine. The site includes English, Hebrew, and Russian content, an interactive gallery, and a private-dining inquiry form.
 
 ## Technologies
 
