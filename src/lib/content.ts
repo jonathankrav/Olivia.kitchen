@@ -144,7 +144,7 @@ export const seo = {
 
 export const sections = {
   en: {
-    alts: ['Lamb chops, beef medallions and roasted vegetables on a platter', 'Seared salmon with silky purée', 'Burrata with heirloom tomatoes and basil', 'Grilled rib steak with roasted vegetables'],
+    alts: ['Lamb chops, beef medallions and roasted vegetables on a platter', 'Seared salmon with silky purée', 'Burrata with heirloom tomatoes and basil', 'Grilled lamb ribs with rice and roasted vegetables'],
     kashrut: {
       label: 'KASHRUT', title: 'A kitchen that fits\nyour home.',
       intro: 'Every home keeps its own rules, so the menu is built around yours. There are three options.',
@@ -174,7 +174,7 @@ export const sections = {
     },
   },
   he: {
-    alts: ['צלעות טלה, מדליוני בקר וירקות צלויים על מגש', 'סלמון צרוב עם פירה קטיפתי', 'בוראטה עם עגבניות צבעוניות ובזיליקום', 'סטייק צלעות על האש עם ירקות צלויים'],
+    alts: ['צלעות טלה, מדליוני בקר וירקות צלויים על מגש', 'סלמון צרוב עם פירה קטיפתי', 'בוראטה עם עגבניות צבעוניות ובזיליקום', 'צלעות טלה על האש עם אורז וירקות צלויים'],
     kashrut: {
       label: 'כשרות', title: 'מטבח שמתאים\nלבית שלכם.',
       intro: 'כל בית שומר על כללים משלו, ולכן התפריט נבנה לפי מה שמתאים לכם. יש שלוש אפשרויות.',
@@ -204,7 +204,7 @@ export const sections = {
     },
   },
   ru: {
-    alts: ['Бараньи рёбрышки, медальоны из говядины и запечённые овощи на блюде', 'Лосось с нежным пюре', 'Буррата с разноцветными томатами и базиликом', 'Стейк на кости на гриле с запечёнными овощами'],
+    alts: ['Бараньи рёбрышки, медальоны из говядины и запечённые овощи на блюде', 'Лосось с нежным пюре', 'Буррата с разноцветными томатами и базиликом', 'Бараньи рёбрышки на гриле с рисом и запечёнными овощами'],
     kashrut: {
       label: 'КАШРУТ', title: 'Кухня, которая подходит\nвашему дому.',
       intro: 'В каждом доме свои правила, поэтому меню строится под ваши. Есть три варианта.',
