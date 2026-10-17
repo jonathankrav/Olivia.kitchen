@@ -27,7 +27,7 @@ Maintain the cream, olive, and warm photographic design. Prefer existing CSS tok
 
 The inquiry form posts JSON to FormSubmit (`https://formsubmit.co/ajax/<contact.email>`) from `handleSubmit`. Preserve the `_honey` honeypot and the `_subject` hidden input. FormSubmit sends an activation email to `chef@olivia.kitchen` on the first submission, so do not claim email delivery works before the owner has activated it and a test inquiry has arrived. Do not store inquiries in local files or client-side state as persistence.
 
-`contact.whatsappNumber` holds the number supplied by the owner; the chat link strips non-digits before building the `wa.me` URL. Never invent a telephone number, service location, chef portrait, or client testimonial.
+`contact.phone` and `contact.phoneE164` hold the call number supplied by the owner, shown in the contacts section and footers and used for the `tel:` links and structured data. `contact.whatsappNumber` holds the number supplied by the owner; the chat link strips non-digits before building the `wa.me` URL. Never invent a telephone number, service location, chef portrait, or client testimonial.
 
 ## Branches and environments
 

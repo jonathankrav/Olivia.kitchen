@@ -162,9 +162,18 @@ export function Landing({ language }: { language: Language }) {
             </form>}
           </div>
         </section>
+        <section id="contacts" className="contacts section-wrap">
+          <div className="contacts-heading"><span className="eyebrow">{text.contactsLabel}</span><h2>{text.contactsTitle}</h2><p>{text.contactsText}</p></div>
+          <ul className="contacts-list">
+            <li><span className="eyebrow">{text.callLabel}</span><a href={`tel:${contact.phoneE164}`} dir="ltr">{contact.phone}</a></li>
+            <li><span className="eyebrow">{text.writeLabel}</span><a href={`mailto:${contact.email}`} dir="ltr">{contact.email}</a></li>
+            <li><span className="eyebrow">WHATSAPP</span>{whatsappUrl ? <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">{text.chatLabel}</a> : <button onClick={() => setWhatsappNotice(true)}>{text.chatLabel}</button>}</li>
+            <li><span className="eyebrow">{text.areaLabel}</span><span className="contacts-value">{text.areaValue}</span></li>
+          </ul>
+        </section>
       </main>
 
-      <footer><div className="footer-main"><a href="#" className="brand footer-brand"><span>Olivia<span className="brand-dot">.</span></span><small>THE PRIVATE KITCHEN</small></a><p>{text.footer}</p><a className="back-top" href="#" aria-label={text.top}><ArrowUpRight size={23} /></a></div><div className="footer-bottom"><span>© {new Date().getFullYear()} {text.rights}</span><span>{text.cuisineNames.join(' · ')}</span><a href={`mailto:${contact.email}`}>{contact.email}</a></div></footer>
+      <footer><div className="footer-main"><a href="#" className="brand footer-brand"><span>Olivia<span className="brand-dot">.</span></span><small>THE PRIVATE KITCHEN</small></a><p>{text.footer}</p><a className="back-top" href="#" aria-label={text.top}><ArrowUpRight size={23} /></a></div><div className="footer-bottom"><span>© {new Date().getFullYear()} {text.rights}</span><span>{text.cuisineNames.join(' · ')}</span><a href={`tel:${contact.phoneE164}`} dir="ltr">{contact.phone}</a><a href={`mailto:${contact.email}`}>{contact.email}</a></div></footer>
 
       <dialog ref={galleryDialog} className="lightbox" onCancel={() => setActiveImage(null)} onClick={event => { if (event.target === event.currentTarget) setActiveImage(null) }} aria-label={text.galleryTitle} onKeyDown={event => { if (event.key === 'ArrowRight' && activeImage !== null) setActiveImage((activeImage + 1) % galleryPhotos.length); if (event.key === 'ArrowLeft' && activeImage !== null) setActiveImage((activeImage + galleryPhotos.length - 1) % galleryPhotos.length) }}>
         {activeImage !== null && <div className="lightbox-inner"><button autoFocus className="lightbox-close icon-button" onClick={() => setActiveImage(null)} aria-label={text.close}><X /></button><img src={imageUrl(galleryPhotos[activeImage].file)} alt={galleryPhotos[activeImage].captions[language]} width={galleryPhotos[activeImage].width} height={galleryPhotos[activeImage].height} /><div className="lightbox-bottom"><button className="icon-button" onClick={() => setActiveImage((activeImage + galleryPhotos.length - 1) % galleryPhotos.length)} aria-label={language === 'he' ? 'הקודם' : language === 'ru' ? 'Назад' : 'Previous image'}><ChevronLeft /></button><p>{galleryPhotos[activeImage].captions[language]}</p><button className="icon-button" onClick={() => setActiveImage((activeImage + 1) % galleryPhotos.length)} aria-label={language === 'he' ? 'הבא' : language === 'ru' ? 'Далее' : 'Next image'}><ChevronRight /></button></div></div>}
