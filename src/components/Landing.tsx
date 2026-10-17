@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { ArrowDown, ArrowRight, ArrowUpRight, Check, ChevronLeft, ChevronRight, Leaf, Mail, Menu, MessageCircle, Plus, Utensils, X } from 'lucide-react'
-import { AreasSection, FaqSection, KashrutSection } from '@/components/Sections'
+import { AreasSection, FaqSection, KashrutSection, ServicesSection } from '@/components/Sections'
 import { contact, content, galleryPhotos, sections, type Language } from '@/lib/content'
 
 const cuisineKeys = ['israeli', 'italian', 'azerbaijani']
@@ -79,7 +79,7 @@ export function Landing({ language }: { language: Language }) {
       <header className="header">
         <a className="brand" href="#" aria-label="Olivia Kitchen"><span>Olivia<span className="brand-dot">.</span></span><small>THE PRIVATE KITCHEN</small></a>
         <nav className={menuOpen ? 'navigation is-open' : 'navigation'} aria-label={text.menu}>
-          {text.nav.map((label, index) => <a key={label} href={`#${['experience', 'kitchens', 'gallery'][index]}`} onClick={() => setMenuOpen(false)}>{label}</a>)}
+          {text.nav.map((label, index) => <a key={label} href={`#${['experience', 'services', 'kitchens', 'gallery'][index]}`} onClick={() => setMenuOpen(false)}>{label}</a>)}
         </nav>
         <div className="header-actions">
           <div className="languages" role="group" aria-label={text.language}>
@@ -112,6 +112,8 @@ export function Landing({ language }: { language: Language }) {
           <div className="experience-heading"><span className="eyebrow">{text.experienceLabel}</span><h2>{text.experienceTitle}</h2></div>
           <div className="experience-copy"><p>{text.experienceText}</p><p className="experience-end">{text.experienceEnd}</p><span className="signature">{text.signature}</span></div>
         </section>
+
+        <ServicesSection language={language} />
 
         <section id="kitchens" className="kitchens section-wrap">
           <div className="section-heading"><div><span className="eyebrow">{text.kitchensLabel}</span><h2>{text.kitchensTitle}</h2></div><p>{text.kitchensIntro}</p></div>

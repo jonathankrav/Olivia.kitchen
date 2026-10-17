@@ -29,6 +29,10 @@ The inquiry form posts JSON to FormSubmit (`https://formsubmit.co/ajax/<contact.
 
 `contact.whatsappNumber` holds the number supplied by the owner; the chat link strips non-digits before building the `wa.me` URL. Never invent a telephone number, service location, chef portrait, or client testimonial.
 
+## Branches and environments
+
+`main` is production (olivia.kitchen, deployed by Vercel). `test` is the working branch and is served at olivia-kitchen-test.vercel.app. Make changes in `test`, review them there, and merge to `main` only after the owner approves.
+
 ## Workflow
 
 Use pnpm for dependency management. Local development is `pnpm dev`. During agent-runner tasks, do not run build, dev-server, TypeScript-check, or test commands; automatic deployment validates the project. Never inspect `.git` or print credentials. No inline code comments unless requested.
