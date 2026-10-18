@@ -5,10 +5,10 @@ import '../styles.css'
 export const Route = createRootRoute({
   head: () => ({
     links: [
-      { rel: 'icon', href: '/favicon.ico?v=2', sizes: '48x48' },
-      { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg?v=2', sizes: 'any' },
-      { rel: 'icon', type: 'image/png', href: '/favicon-192.png?v=2', sizes: '192x192' },
-      { rel: 'apple-touch-icon', href: '/apple-touch-icon.png?v=2' },
+      { rel: 'icon', href: '/favicon.ico?v=3', sizes: '48x48' },
+      { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg?v=3', sizes: 'any' },
+      { rel: 'icon', type: 'image/png', href: '/favicon-192.png?v=3', sizes: '192x192' },
+      { rel: 'apple-touch-icon', href: '/apple-touch-icon.png?v=3' },
     ],
     meta: [
       {

@@ -33,7 +33,8 @@ export const content = {
     optional: 'optional', send: 'Send my inquiry', sending: 'Sending your inquiry…', privacy: 'Your details are only used to respond to your inquiry.',
     success: 'Your inquiry is on its way!', successText: 'Thank you for inviting me to your table. I’ll be in touch by email to talk about your plans.', another: 'Send another inquiry', error: 'Your inquiry couldn’t be sent. Please try again or email chef@olivia.kitchen.',
     contactsLabel: 'CONTACT', contactsTitle: 'Let’s talk.', contactsText: 'Call, write or message me. I will get back to you to talk through your event.', callLabel: 'CALL', writeLabel: 'WRITE', chatLabel: 'MESSAGE', areaLabel: 'WHERE I WORK', areaValue: 'Haifa and Northern Israel',
-    footer: 'Good food brings us together.', rights: 'Olivia Kitchen. Made with love.', menu: 'Open menu', language: 'Choose language', top: 'Back to top',
+    slogan: 'Three kitchens. Three traditions. One chef.',
+    footer: 'Good food brings us together.', rights: 'Olivia’s Kitchen. Made with love.', menu: 'Open menu', language: 'Choose language', top: 'Back to top',
   },
   he: {
     skip: 'דילוג לתוכן', stamp: ['שלושה מטבחים.', 'שולחן יפה אחד.'],
@@ -60,7 +61,8 @@ export const content = {
     optional: 'לא חובה', send: 'שליחת פנייה', sending: 'הפנייה נשלחת…', privacy: 'הפרטים שלכם ישמשו רק למענה לפנייה.',
     success: 'הפנייה שלכם בדרך!', successText: 'תודה שהזמנתם אותי לשולחן שלכם. אצור קשר באימייל כדי לדבר על התוכניות.', another: 'שליחת פנייה נוספת', error: 'לא ניתן לשלוח את הפנייה. נסו שוב או כתבו לכתובת chef@olivia.kitchen.',
     contactsLabel: 'יצירת קשר', contactsTitle: 'בואו נדבר.', contactsText: 'אפשר להתקשר, לכתוב או לשלוח הודעה. אחזור אליכם כדי לדבר על האירוע.', callLabel: 'טלפון', writeLabel: 'אימייל', chatLabel: 'הודעה', areaLabel: 'איפה אני עובדת', areaValue: 'חיפה והצפון',
-    footer: 'אוכל טוב מחבר בינינו.', rights: 'אוליביה קיטשן. נוצר באהבה.', menu: 'פתיחת תפריט', language: 'בחירת שפה', top: 'חזרה לראש העמוד',
+    slogan: 'שלושה מטבחים. שלוש מסורות. שפית אחת.',
+    footer: 'אוכל טוב מחבר בינינו.', rights: 'Olivia’s Kitchen. נוצר באהבה.', menu: 'פתיחת תפריט', language: 'בחירת שפה', top: 'חזרה לראש העמוד',
   },
   ru: {
     skip: 'Перейти к содержимому', stamp: ['Три кухни.', 'Один прекрасный стол.'],
@@ -87,12 +89,14 @@ export const content = {
     optional: 'необязательно', send: 'Отправить запрос', sending: 'Отправляем запрос…', privacy: 'Ваши данные используются только для ответа на запрос.',
     success: 'Ваш запрос отправлен!', successText: 'Спасибо за приглашение к вашему столу. Я свяжусь с вами по электронной почте, чтобы обсудить планы.', another: 'Отправить ещё один запрос', error: 'Не удалось отправить запрос. Попробуйте ещё раз или напишите на chef@olivia.kitchen.',
     contactsLabel: 'КОНТАКТЫ', contactsTitle: 'Давайте поговорим.', contactsText: 'Позвоните, напишите или отправьте сообщение. Я свяжусь с вами, чтобы обсудить ваше событие.', callLabel: 'ТЕЛЕФОН', writeLabel: 'ПОЧТА', chatLabel: 'СООБЩЕНИЕ', areaLabel: 'ГДЕ Я РАБОТАЮ', areaValue: 'Хайфа и север Израиля',
-    footer: 'Хорошая еда объединяет.', rights: 'Olivia Kitchen. Создано с любовью.', menu: 'Открыть меню', language: 'Выбрать язык', top: 'Наверх',
+    slogan: 'Три кухни. Три традиции. Один шеф.',
+    footer: 'Хорошая еда объединяет.', rights: 'Olivia’s Kitchen. Создано с любовью.', menu: 'Открыть меню', language: 'Выбрать язык', top: 'Наверх',
   },
 }
 
 export const galleryPhotos = [
   { file: 'grilled-rib-steak', width: 1600, height: 1600, smWidth: 800, smHeight: 800, group: 'savoury', captions: { en: 'Grilled rib steak with roasted vegetables', he: 'סטייק צלעות על האש עם ירקות צלויים', ru: 'Стейк на кости на гриле с запечёнными овощами' } },
+  { file: 'bagel-egg-avocado', width: 1600, height: 1200, smWidth: 800, smHeight: 600, group: 'savoury', captions: { en: 'Bagel with egg, avocado, salmon and mozzarella', he: 'בייגל עם ביצה, אבוקדו, סלמון ומוצרלה', ru: 'Бейгль с яйцом, авокадо, лососем и моцареллой' } },
   { file: 'tropical-millefeuille', width: 1600, height: 1200, smWidth: 800, smHeight: 600, group: 'desserts', captions: { en: 'Layered dessert with tropical fruit and raspberries', he: 'קינוח שכבות עם פירות טרופיים ופטל', ru: 'Слоёный десерт с тропическими фруктами и малиной' } },
   { file: 'lamb-and-beef-platter', width: 1600, height: 1200, smWidth: 800, smHeight: 600, group: 'savoury', captions: { en: 'Lamb chops and beef medallions with roasted vegetables', he: 'צלעות טלה ומדליוני בקר עם ירקות צלויים', ru: 'Бараньи рёбрышки и медальоны из говядины с овощами' } },
   { file: 'eggplant-rolls', width: 1200, height: 1214, smWidth: 800, smHeight: 809, group: 'savoury', captions: { en: 'Eggplant rolls with tomato filling, tahini and grated cheese', he: 'רולדות חצילים במילוי עגבניות, טחינה וגבינה מגורדת', ru: 'Рулеты из баклажана с томатной начинкой, тахини и тёртым сыром' } },
@@ -118,21 +122,21 @@ export const seo = {
   en: {
     path: '/en',
     locale: 'en_US',
-    title: 'Private Chef in Haifa & Northern Israel | Olivia Kitchen',
+    title: 'Private Chef in Haifa & Northern Israel | Olivia’s Kitchen',
     description: 'I’m Olivia, a private chef in Haifa and Northern Israel. I cook Israeli, Italian and Caucasian menus at your home for family celebrations, corporate events and evenings with friends. Request a menu.',
     serviceType: 'Private chef',
   },
   he: {
     path: '/',
     locale: 'he_IL',
-    title: 'שפית פרטית בחיפה ובצפון | Olivia Kitchen',
+    title: 'שפית פרטית בחיפה ובצפון | Olivia’s Kitchen',
     description: 'אני אוליביה, שפית פרטית בחיפה ובצפון. אני מכינה מטבח ישראלי, איטלקי וקווקזי אצלכם בבית, לאירועים משפחתיים, אירועי חברה וערבים עם חברים. השאירו פנייה לתפריט מותאם.',
     serviceType: 'שפית פרטית',
   },
   ru: {
     path: '/ru',
     locale: 'ru_RU',
-    title: 'Частный шеф в Хайфе и на севере Израиля | Olivia Kitchen',
+    title: 'Частный шеф в Хайфе и на севере Израиля | Olivia’s Kitchen',
     description: 'Я Оливия, частный шеф в Хайфе и на севере Израиля. Готовлю израильскую, итальянскую и кавказскую кухню у вас дома: семейные праздники, корпоративы и встречи с друзьями. Оставьте запрос на меню.',
     serviceType: 'Частный шеф',
   },
@@ -297,7 +301,7 @@ export const sections = {
 export const localPages = {
   haifa: {
     path: '/haifa',
-    title: 'שף פרטי בחיפה | שפית פרטית לארוחות ואירועים בבית | Olivia Kitchen',
+    title: 'שף פרטי בחיפה | שפית פרטית לארוחות ואירועים בבית | Olivia’s Kitchen',
     description: 'שף פרטי בחיפה: אני, אוליביה, מבשלת אצלכם בבית מטבח ישראלי, איטלקי וקווקזי. אפשרויות כשר, בסגנון כשר ולא כשר. השאירו פנייה לתפריט מותאם.',
     eyebrow: 'שפית פרטית · חיפה',
     heading: 'שף פרטי\nבחיפה',
@@ -311,7 +315,7 @@ export const localPages = {
   },
   north: {
     path: '/north',
-    title: 'שף פרטי לאירועים בצפון | כרמיאל, נהריה, עכו | Olivia Kitchen',
+    title: 'שף פרטי לאירועים בצפון | כרמיאל, נהריה, עכו | Olivia’s Kitchen',
     description: 'שפית פרטית לאירועים בבית בצפון: כרמיאל, נהריה, עכו והסביבה. מטבח ישראלי, איטלקי וקווקזי, עם אפשרויות כשר, בסגנון כשר ולא כשר.',
     eyebrow: 'שפית פרטית · הצפון',
     heading: 'שף פרטי\nלאירועים בצפון',
@@ -345,7 +349,7 @@ function foodService(serviceType: string) {
   return {
     '@type': 'FoodService',
     '@id': `${siteUrl}/#business`,
-    name: 'Olivia Kitchen',
+    name: 'Olivia’s Kitchen',
     url: siteUrl,
     image: `${siteUrl}/img/hero.webp`,
     logo: `${siteUrl}/apple-touch-icon.png`,
@@ -385,7 +389,7 @@ function websiteSchema() {
   return {
     '@type': 'WebSite',
     '@id': `${siteUrl}/#website`,
-    name: 'Olivia Kitchen',
+    name: 'Olivia’s Kitchen',
     url: siteUrl,
     inLanguage: ['he', 'en', 'ru'],
     publisher: { '@id': `${siteUrl}/#business` },
@@ -396,7 +400,7 @@ function breadcrumbSchema(page: { path: string; title: string }) {
   return {
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Olivia Kitchen', item: `${siteUrl}/` },
+      { '@type': 'ListItem', position: 1, name: 'Olivia’s Kitchen', item: `${siteUrl}/` },
       { '@type': 'ListItem', position: 2, name: page.title.split(' | ')[0], item: `${siteUrl}${page.path}` },
     ],
   }
@@ -413,7 +417,7 @@ function buildHead(page: { path: string; title: string; description: string; loc
       { property: 'og:description', content: page.description },
       { property: 'og:type', content: 'website' },
       { property: 'og:url', content: url },
-      { property: 'og:site_name', content: 'Olivia Kitchen' },
+      { property: 'og:site_name', content: 'Olivia’s Kitchen' },
       { property: 'og:locale', content: page.locale },
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:title', content: page.title },

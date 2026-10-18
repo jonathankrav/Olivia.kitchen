@@ -11,11 +11,12 @@ export function LocalPage({ pageKey }: { pageKey: LocalPageKey }) {
     <div className="site" dir="rtl">
       <a className="skip-link" href="#main">{text.skip}</a>
       <header className="header">
-        <Link className="brand" to="/" aria-label="Olivia Kitchen"><span>Olivia<span className="brand-dot">.</span></span><small>THE PRIVATE KITCHEN</small></Link>
+        <Link className="brand" to="/" aria-label="Olivia’s Kitchen"><img className="brand-mark" src="/logo.svg" alt="" width="52" height="52" /><span className="brand-text"><span className="brand-name">Olivia’s Kitchen</span><small>{text.slogan}</small></span></Link>
         <div className="header-actions">
           <Link to="/" hash="contact" className="button header-book">{text.book}<ArrowUpRight size={15} /></Link>
         </div>
       </header>
+      <p className="slogan-bar">{text.slogan}</p>
 
       <main id="main">
         <section className="local-hero section-wrap">
@@ -47,7 +48,7 @@ export function LocalPage({ pageKey }: { pageKey: LocalPageKey }) {
         </section>
       </main>
 
-      <footer><div className="footer-main"><Link to="/" className="brand footer-brand"><span>Olivia<span className="brand-dot">.</span></span><small>THE PRIVATE KITCHEN</small></Link><p>{text.footer}</p></div><div className="footer-bottom"><span>© {new Date().getFullYear()} {text.rights}</span><span>{text.cuisineNames.join(' · ')}</span><a href={`tel:${contact.phoneE164}`} dir="ltr">{contact.phone}</a><a href={`mailto:${contact.email}`}>{contact.email}</a></div></footer>
+      <footer><div className="footer-main"><Link className="brand footer-brand" to="/"><img className="brand-mark" src="/logo.svg" alt="" width="52" height="52" /><span className="brand-text"><span className="brand-name">Olivia’s Kitchen</span><small>{text.slogan}</small></span></Link><p>{text.footer}</p></div><div className="footer-bottom"><span>© {new Date().getFullYear()} {text.rights}</span><span>{text.cuisineNames.join(' · ')}</span><a href={`tel:${contact.phoneE164}`} dir="ltr">{contact.phone}</a><a href={`mailto:${contact.email}`}>{contact.email}</a></div></footer>
     </div>
   )
 }

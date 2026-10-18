@@ -77,7 +77,7 @@ export function Landing({ language }: { language: Language }) {
     <div className="site" dir={direction}>
       <a className="skip-link" href="#main">{text.skip}</a>
       <header className="header">
-        <a className="brand" href="#" aria-label="Olivia Kitchen"><span>Olivia<span className="brand-dot">.</span></span><small>THE PRIVATE KITCHEN</small></a>
+        <a className="brand" href="#" aria-label="Olivia’s Kitchen"><img className="brand-mark" src="/logo.svg" alt="" width="52" height="52" /><span className="brand-text"><span className="brand-name">Olivia’s Kitchen</span><small>{text.slogan}</small></span></a>
         <nav className={menuOpen ? 'navigation is-open' : 'navigation'} aria-label={text.menu}>
           {text.nav.map((label, index) => <a key={label} href={`#${['experience', 'services', 'kitchens', 'gallery', 'contacts'][index]}`} onClick={() => setMenuOpen(false)}>{label}</a>)}
         </nav>
@@ -89,6 +89,7 @@ export function Landing({ language }: { language: Language }) {
           <button className="menu-toggle icon-button" aria-label={text.menu} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</button>
         </div>
       </header>
+      <p className="slogan-bar">{text.slogan}</p>
 
       <main id="main">
         <section className="hero">
@@ -173,12 +174,12 @@ export function Landing({ language }: { language: Language }) {
         </section>
       </main>
 
-      <footer><div className="footer-main"><a href="#" className="brand footer-brand"><span>Olivia<span className="brand-dot">.</span></span><small>THE PRIVATE KITCHEN</small></a><p>{text.footer}</p><a className="back-top" href="#" aria-label={text.top}><ArrowUpRight size={23} /></a></div><div className="footer-bottom"><span>© {new Date().getFullYear()} {text.rights}</span><span>{text.cuisineNames.join(' · ')}</span><a href={`tel:${contact.phoneE164}`} dir="ltr">{contact.phone}</a><a href={`mailto:${contact.email}`}>{contact.email}</a></div></footer>
+      <footer><div className="footer-main"><a className="brand footer-brand" href="#"><img className="brand-mark" src="/logo.svg" alt="" width="52" height="52" /><span className="brand-text"><span className="brand-name">Olivia’s Kitchen</span><small>{text.slogan}</small></span></a><p>{text.footer}</p><a className="back-top" href="#" aria-label={text.top}><ArrowUpRight size={23} /></a></div><div className="footer-bottom"><span>© {new Date().getFullYear()} {text.rights}</span><span>{text.cuisineNames.join(' · ')}</span><a href={`tel:${contact.phoneE164}`} dir="ltr">{contact.phone}</a><a href={`mailto:${contact.email}`}>{contact.email}</a></div></footer>
 
       <dialog ref={galleryDialog} className="lightbox" onCancel={() => setActiveImage(null)} onClick={event => { if (event.target === event.currentTarget) setActiveImage(null) }} aria-label={text.galleryTitle} onKeyDown={event => { if (event.key === 'ArrowRight' && activeImage !== null) setActiveImage((activeImage + 1) % galleryPhotos.length); if (event.key === 'ArrowLeft' && activeImage !== null) setActiveImage((activeImage + galleryPhotos.length - 1) % galleryPhotos.length) }}>
         {activeImage !== null && <div className="lightbox-inner"><button autoFocus className="lightbox-close icon-button" onClick={() => setActiveImage(null)} aria-label={text.close}><X /></button><img src={imageUrl(galleryPhotos[activeImage].file)} alt={galleryPhotos[activeImage].captions[language]} width={galleryPhotos[activeImage].width} height={galleryPhotos[activeImage].height} /><div className="lightbox-bottom"><button className="icon-button" onClick={() => setActiveImage((activeImage + galleryPhotos.length - 1) % galleryPhotos.length)} aria-label={language === 'he' ? 'הקודם' : language === 'ru' ? 'Назад' : 'Previous image'}><ChevronLeft /></button><p>{galleryPhotos[activeImage].captions[language]}</p><button className="icon-button" onClick={() => setActiveImage((activeImage + 1) % galleryPhotos.length)} aria-label={language === 'he' ? 'הבא' : language === 'ru' ? 'Далее' : 'Next image'}><ChevronRight /></button></div></div>}
       </dialog>
-      <dialog ref={whatsappDialog} className="contact-dialog" onCancel={() => setWhatsappNotice(false)} onClick={event => { if (event.target === event.currentTarget) setWhatsappNotice(false) }} aria-labelledby="whatsapp-title"><button autoFocus className="dialog-close icon-button" aria-label={text.close} onClick={() => setWhatsappNotice(false)}><X /></button><MessageCircle size={32} /><h3 id="whatsapp-title">{text.whatsapp}</h3><p>{text.whatsappUnavailable}</p><a href={`mailto:${contact.email}`} className="button"><Mail size={18} />{contact.email}</a><a className="share-link" href={`https://wa.me/?text=${encodeURIComponent(`Olivia Kitchen — Israeli, Italian & Caucasian private dining. ${siteUrl}`)}`} target="_blank" rel="noopener noreferrer">{text.share}<ArrowUpRight size={16} /></a></dialog>
+      <dialog ref={whatsappDialog} className="contact-dialog" onCancel={() => setWhatsappNotice(false)} onClick={event => { if (event.target === event.currentTarget) setWhatsappNotice(false) }} aria-labelledby="whatsapp-title"><button autoFocus className="dialog-close icon-button" aria-label={text.close} onClick={() => setWhatsappNotice(false)}><X /></button><MessageCircle size={32} /><h3 id="whatsapp-title">{text.whatsapp}</h3><p>{text.whatsappUnavailable}</p><a href={`mailto:${contact.email}`} className="button"><Mail size={18} />{contact.email}</a><a className="share-link" href={`https://wa.me/?text=${encodeURIComponent(`Olivia’s Kitchen — Israeli, Italian & Caucasian private dining. ${siteUrl}`)}`} target="_blank" rel="noopener noreferrer">{text.share}<ArrowUpRight size={16} /></a></dialog>
     </div>
   )
 }
