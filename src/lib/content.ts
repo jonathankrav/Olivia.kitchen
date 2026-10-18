@@ -33,7 +33,7 @@ export const content = {
     optional: 'optional', send: 'Send my inquiry', sending: 'Sending your inquiry…', privacy: 'Your details are only used to respond to your inquiry.',
     success: 'Your inquiry is on its way!', successText: 'Thank you for inviting me to your table. I’ll be in touch by email to talk about your plans.', another: 'Send another inquiry', error: 'Your inquiry couldn’t be sent. Please try again or email chef@olivia.kitchen.',
     contactsLabel: 'CONTACT', contactsTitle: 'Let’s talk.', contactsText: 'Call, write or message me. I will get back to you to talk through your event.', callLabel: 'CALL', writeLabel: 'WRITE', chatLabel: 'MESSAGE', areaLabel: 'WHERE I WORK', areaValue: 'Haifa and Northern Israel',
-    slogan: 'Three kitchens. Three traditions. One chef.',
+    slogan: 'Three kitchens. Two formats. One chef.',
     footer: 'Good food brings us together.', rights: 'Olivia’s Kitchen. Made with love.', menu: 'Open menu', language: 'Choose language', top: 'Back to top',
   },
   he: {
@@ -61,7 +61,7 @@ export const content = {
     optional: 'לא חובה', send: 'שליחת פנייה', sending: 'הפנייה נשלחת…', privacy: 'הפרטים שלכם ישמשו רק למענה לפנייה.',
     success: 'הפנייה שלכם בדרך!', successText: 'תודה שהזמנתם אותי לשולחן שלכם. אצור קשר באימייל כדי לדבר על התוכניות.', another: 'שליחת פנייה נוספת', error: 'לא ניתן לשלוח את הפנייה. נסו שוב או כתבו לכתובת chef@olivia.kitchen.',
     contactsLabel: 'יצירת קשר', contactsTitle: 'בואו נדבר.', contactsText: 'אפשר להתקשר, לכתוב או לשלוח הודעה. אחזור אליכם כדי לדבר על האירוע.', callLabel: 'טלפון', writeLabel: 'אימייל', chatLabel: 'הודעה', areaLabel: 'איפה אני עובדת', areaValue: 'חיפה והצפון',
-    slogan: 'שלושה מטבחים. שלוש מסורות. שפית אחת.',
+    slogan: 'שלושה מטבחים. שני פורמטים. שפית אחת.',
     footer: 'אוכל טוב מחבר בינינו.', rights: 'Olivia’s Kitchen. נוצר באהבה.', menu: 'פתיחת תפריט', language: 'בחירת שפה', top: 'חזרה לראש העמוד',
   },
   ru: {
@@ -89,7 +89,7 @@ export const content = {
     optional: 'необязательно', send: 'Отправить запрос', sending: 'Отправляем запрос…', privacy: 'Ваши данные используются только для ответа на запрос.',
     success: 'Ваш запрос отправлен!', successText: 'Спасибо за приглашение к вашему столу. Я свяжусь с вами по электронной почте, чтобы обсудить планы.', another: 'Отправить ещё один запрос', error: 'Не удалось отправить запрос. Попробуйте ещё раз или напишите на chef@olivia.kitchen.',
     contactsLabel: 'КОНТАКТЫ', contactsTitle: 'Давайте поговорим.', contactsText: 'Позвоните, напишите или отправьте сообщение. Я свяжусь с вами, чтобы обсудить ваше событие.', callLabel: 'ТЕЛЕФОН', writeLabel: 'ПОЧТА', chatLabel: 'СООБЩЕНИЕ', areaLabel: 'ГДЕ Я РАБОТАЮ', areaValue: 'Хайфа и север Израиля',
-    slogan: 'Три кухни. Три традиции. Один шеф.',
+    slogan: 'Три кухни. Два формата. Один шеф.',
     footer: 'Хорошая еда объединяет.', rights: 'Olivia’s Kitchen. Создано с любовью.', menu: 'Открыть меню', language: 'Выбрать язык', top: 'Наверх',
   },
 }
