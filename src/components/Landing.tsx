@@ -89,6 +89,7 @@ export function Landing({ language }: { language: Language }) {
           <button className="menu-toggle icon-button" aria-label={text.menu} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</button>
         </div>
       </header>
+      <p className="slogan-bar">{text.slogan}</p>
 
       <main id="main">
         <section className="hero">

@@ -16,6 +16,7 @@ export function LocalPage({ pageKey }: { pageKey: LocalPageKey }) {
           <Link to="/" hash="contact" className="button header-book">{text.book}<ArrowUpRight size={15} /></Link>
         </div>
       </header>
+      <p className="slogan-bar">{text.slogan}</p>
 
       <main id="main">
         <section className="local-hero section-wrap">
