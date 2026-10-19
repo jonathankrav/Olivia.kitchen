@@ -1,6 +1,7 @@
+import { useEffect, useRef } from 'react'
 import { Link } from '@tanstack/react-router'
 import { ArrowRight, ArrowUpRight } from 'lucide-react'
-import { sections, type Language } from '@/lib/content'
+import { sections, videoClips, type Language } from '@/lib/content'
 
 export function ServicesSection({ language }: { language: Language }) {
   const { services } = sections[language]
@@ -16,6 +17,43 @@ export function ServicesSection({ language }: { language: Language }) {
         <ul>{group.items.map(item => <li key={item.title}><strong>{item.title}</strong><p>{item.text}</p></li>)}</ul>
       </div>)}</div>
       <div className="services-cta"><p>{services.note}</p><a className="button" href="#contact">{services.button}<ArrowRight size={17} /></a></div>
+    </section>
+  )
+}
+
+function VideoClip({ clip, language }: { clip: (typeof videoClips)[number]; language: Language }) {
+  const ref = useRef<HTMLVideoElement>(null)
+  const { video } = sections[language]
+  useEffect(() => {
+    const el = ref.current
+    if (!el || typeof IntersectionObserver === 'undefined') return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && entry.intersectionRatio >= 0.6) { if (el.currentTime === 0) el.play().catch(() => undefined) } else if (!el.paused) el.pause()
+    }, { threshold: [0, 0.6] })
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+  return (
+    <figure className="video-card">
+      <div className="video-frame">
+        <video ref={ref} controls muted playsInline preload="metadata" poster={`/video/${clip.poster}.webp`} width={clip.width} height={clip.height} aria-label={clip.captions[language]}>
+          <source src={`/video/${clip.file}.mp4`} type="video/mp4" />
+        </video>
+      </div>
+      <figcaption><span>{clip.captions[language]}</span><small>{video.duration}</small></figcaption>
+    </figure>
+  )
+}
+
+export function VideoSection({ language }: { language: Language }) {
+  const { video } = sections[language]
+  return (
+    <section id="video" className="video-section">
+      <div className="section-wrap">
+        <div className="section-heading"><div><span className="eyebrow">{video.label}</span><h2>{video.title}</h2></div><p>{video.intro}</p></div>
+        <div className="video-grid">{videoClips.map(clip => <VideoClip key={clip.file} clip={clip} language={language} />)}</div>
+      </div>
     </section>
   )
 }
