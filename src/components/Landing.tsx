@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { ArrowDown, ArrowRight, ArrowUpRight, Check, ChevronLeft, ChevronRight, Leaf, Mail, Menu, MessageCircle, Plus, Utensils, X } from 'lucide-react'
-import { AreasSection, FaqSection, KashrutSection, ServicesSection } from '@/components/Sections'
+import { AreasSection, FaqSection, KashrutSection, ServicesSection, VideoSection } from '@/components/Sections'
 import { contact, content, galleryPhotos, sections, type Language } from '@/lib/content'
 
 const cuisineKeys = ['israeli', 'italian', 'azerbaijani']
@@ -135,6 +135,8 @@ export function Landing({ language }: { language: Language }) {
             <p className="image-disclosure">{text.imageDisclosure}</p>
           </div>
         </section>
+
+        <VideoSection language={language} />
 
         <AreasSection language={language} />
         <FaqSection language={language} />

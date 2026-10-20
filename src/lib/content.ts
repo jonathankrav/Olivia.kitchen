@@ -119,6 +119,10 @@ export const galleryPhotos = [
   { file: 'peanut-caramel-bars', width: 1280, height: 1600, smWidth: 800, smHeight: 1000, group: 'desserts', captions: { en: 'Chocolate bars with peanut caramel', he: 'חטיפי שוקולד עם קרמל בוטנים', ru: 'Шоколадные батончики с арахисовой карамелью' } },
 ] as const
 
+export const videoClips = [
+  { file: 'bagel-process', poster: 'bagel-process-poster', width: 1280, height: 714, duration: 'PT19S', uploadDate: '2026-10-19', captions: { en: 'Bagel with salmon, avocado, egg and mozzarella', he: 'בייגל עם סלמון, אבוקדו, ביצה ומוצרלה', ru: 'Бейгль с лососем, авокадо, яйцом и моцареллой' } },
+] as const
+
 export const siteUrl = 'https://olivia.kitchen'
 
 export const seo = {
@@ -148,6 +152,7 @@ export const seo = {
 export const sections = {
   en: {
     alts: ['Lamb chops, beef medallions and roasted vegetables on a platter', 'Seared salmon with silky purée', 'Burrata with heirloom tomatoes and basil', 'Grilled lamb ribs with rice and roasted vegetables'],
+    video: { label: 'VIDEO', title: 'How it\ncomes together.', intro: 'A few seconds from my kitchen: watch a dish come together.', sound: 'Turn sound on', duration: 'Video, 19 seconds' },
     services: {
       label: 'EVENTS & SERVICE', title: 'Your table for\n4 to 30 guests.',
       intro: 'I cook for groups of 4 to 30 guests: family celebrations, corporate events and evenings with friends. You decide how much to take on and what kind of evening you want.',
@@ -199,6 +204,7 @@ export const sections = {
   },
   he: {
     alts: ['צלעות טלה, מדליוני בקר וירקות צלויים על מגש', 'סלמון צרוב עם פירה קטיפתי', 'בוראטה עם עגבניות צבעוניות ובזיליקום', 'צלעות טלה על האש עם אורז וירקות צלויים'],
+    video: { label: 'וידאו', title: 'ככה זה\nנעשה.', intro: 'כמה שניות מהמטבח שלי: ככה מרכיבים מנה.', sound: 'הפעלת צליל', duration: 'סרטון, 19 שניות' },
     services: {
       label: 'אירועים ושירות', title: 'שולחן לקבוצות\nשל 4 עד 30 אורחים.',
       intro: 'אני מבשלת לקבוצות של 4 עד 30 אורחים: אירועים משפחתיים, אירועי חברה וערבים עם חברים. אתם בוחרים כמה לקחת על עצמכם ואיזה ערב אתם רוצים.',
@@ -250,6 +256,7 @@ export const sections = {
   },
   ru: {
     alts: ['Бараньи рёбрышки, медальоны из говядины и запечённые овощи на блюде', 'Лосось с нежным пюре', 'Буррата с разноцветными томатами и базиликом', 'Бараньи рёбрышки на гриле с рисом и запечёнными овощами'],
+    video: { label: 'ВИДЕО', title: 'Как это\nготовится.', intro: 'Несколько секунд из моей кухни: смотрите, как собирается блюдо.', sound: 'Включить звук', duration: 'Видео, 19 секунд' },
     services: {
       label: 'МЕРОПРИЯТИЯ И СЕРВИС', title: 'Стол для компании\nот 4 до 30 человек.',
       intro: 'Я готовлю для компаний от 4 до 30 человек: семейные праздники, корпоративы и встречи с друзьями. Вы выбираете, сколько забот взять на себя и каким будет вечер.',
@@ -336,6 +343,20 @@ export type LocalPageKey = keyof typeof localPages
 
 const cityNames = ['Haifa', 'Krayot', 'Nesher', 'Karmiel', 'Nahariya', 'Akko']
 
+function videoSchemas(language: Language) {
+  return videoClips.map(clip => ({
+    '@type': 'VideoObject',
+    name: clip.captions[language],
+    description: clip.captions[language],
+    thumbnailUrl: [`${siteUrl}/video/${clip.poster}.webp`],
+    uploadDate: clip.uploadDate,
+    duration: clip.duration,
+    contentUrl: `${siteUrl}/video/${clip.file}.mp4`,
+    inLanguage: language,
+    author: { '@id': `${siteUrl}/#olivia` },
+  }))
+}
+
 function faqSchema(language: Language) {
   return {
     '@type': 'FAQPage',
@@ -411,7 +432,7 @@ function breadcrumbSchema(page: { path: string; title: string }) {
 
 function buildHead(page: { path: string; title: string; description: string; locale: string }, serviceType: string, language: Language, alternates: boolean) {
   const url = `${siteUrl}${page.path === '/' ? '/' : page.path}`
-  const graph = { '@context': 'https://schema.org', '@graph': [foodService(serviceType), personSchema(), websiteSchema(), faqSchema(language), ...(alternates ? [] : [breadcrumbSchema(page)])] }
+  const graph = { '@context': 'https://schema.org', '@graph': [foodService(serviceType), personSchema(), websiteSchema(), faqSchema(language), ...(alternates ? videoSchemas(language) : [breadcrumbSchema(page)])] }
   return {
     meta: [
       { title: page.title },

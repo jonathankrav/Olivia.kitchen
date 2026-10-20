@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://olivia.kitchen/</loc>
     <lastmod>2026-10-15</lastmod>
@@ -30,6 +30,7 @@
     <image:image><image:loc>https://olivia.kitchen/img/warm-starter-red-currants.webp</image:loc></image:image>
     <image:image><image:loc>https://olivia.kitchen/img/chocolate-strawberry-tart.webp</image:loc></image:image>
     <image:image><image:loc>https://olivia.kitchen/img/peanut-caramel-bars.webp</image:loc></image:image>
+    <video:video><video:thumbnail_loc>https://olivia.kitchen/video/bagel-process-poster.webp</video:thumbnail_loc><video:title>Bagel with salmon, avocado, egg and mozzarella</video:title><video:description>Bagel with salmon, avocado, egg and mozzarella</video:description><video:content_loc>https://olivia.kitchen/video/bagel-process.mp4</video:content_loc><video:duration>19</video:duration></video:video>
   </url>
   <url>
     <loc>https://olivia.kitchen/en</loc>
@@ -37,6 +38,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://olivia.kitchen/en"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://olivia.kitchen/ru"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://olivia.kitchen/"/>
+    <video:video><video:thumbnail_loc>https://olivia.kitchen/video/bagel-process-poster.webp</video:thumbnail_loc><video:title>Bagel with salmon, avocado, egg and mozzarella</video:title><video:description>Bagel with salmon, avocado, egg and mozzarella</video:description><video:content_loc>https://olivia.kitchen/video/bagel-process.mp4</video:content_loc><video:duration>19</video:duration></video:video>
   </url>
   <url>
     <loc>https://olivia.kitchen/ru</loc>
@@ -44,6 +46,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://olivia.kitchen/en"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://olivia.kitchen/ru"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://olivia.kitchen/"/>
+    <video:video><video:thumbnail_loc>https://olivia.kitchen/video/bagel-process-poster.webp</video:thumbnail_loc><video:title>Бейгль с лососем, авокадо, яйцом и моцареллой</video:title><video:description>Бейгль с лососем, авокадо, яйцом и моцареллой</video:description><video:content_loc>https://olivia.kitchen/video/bagel-process.mp4</video:content_loc><video:duration>19</video:duration></video:video>
   </url>
   <url>
     <loc>https://olivia.kitchen/haifa</loc>
