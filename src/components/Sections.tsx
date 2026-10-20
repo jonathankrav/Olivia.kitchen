@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from '@tanstack/react-router'
-import { ArrowRight, ArrowUpRight } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Volume2 } from 'lucide-react'
 import { sections, videoClips, type Language } from '@/lib/content'
 
 export function ServicesSection({ language }: { language: Language }) {
@@ -23,7 +23,15 @@ export function ServicesSection({ language }: { language: Language }) {
 
 function VideoClip({ clip, language }: { clip: (typeof videoClips)[number]; language: Language }) {
   const ref = useRef<HTMLVideoElement>(null)
+  const [muted, setMuted] = useState(true)
   const { video } = sections[language]
+  const enableSound = () => {
+    const el = ref.current
+    if (!el) return
+    el.muted = false
+    if (el.ended) el.currentTime = 0
+    el.play().catch(() => undefined)
+  }
   useEffect(() => {
     const el = ref.current
     if (!el || typeof IntersectionObserver === 'undefined') return
@@ -37,9 +45,10 @@ function VideoClip({ clip, language }: { clip: (typeof videoClips)[number]; lang
   return (
     <figure className="video-card">
       <div className="video-frame">
-        <video ref={ref} controls muted playsInline preload="metadata" poster={`/video/${clip.poster}.webp`} width={clip.width} height={clip.height} aria-label={clip.captions[language]}>
+        <video ref={ref} controls muted playsInline onVolumeChange={event => setMuted(event.currentTarget.muted || event.currentTarget.volume === 0)} preload="metadata" poster={`/video/${clip.poster}.webp`} width={clip.width} height={clip.height} aria-label={clip.captions[language]}>
           <source src={`/video/${clip.file}.mp4`} type="video/mp4" />
         </video>
+        {muted && <button type="button" className="video-sound" onClick={enableSound}><Volume2 size={17} />{video.sound}</button>}
       </div>
       <figcaption><span>{clip.captions[language]}</span><small>{video.duration}</small></figcaption>
     </figure>
