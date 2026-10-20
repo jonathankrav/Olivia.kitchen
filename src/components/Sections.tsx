@@ -3,7 +3,7 @@ import { Link } from '@tanstack/react-router'
 import { ArrowRight, ArrowUpRight, Volume2 } from 'lucide-react'
 import { sections, videoClips, type Language } from '@/lib/content'
 
-export function ServicesSection({ language }: { language: Language }) {
+export function ServicesSection({ language, contactHref = '#contact' }: { language: Language; contactHref?: string }) {
   const { services } = sections[language]
   return (
     <section id="services" className="services section-wrap">
@@ -16,7 +16,7 @@ export function ServicesSection({ language }: { language: Language }) {
         <h3>{group.title}</h3>
         <ul>{group.items.map(item => <li key={item.title}><strong>{item.title}</strong><p>{item.text}</p></li>)}</ul>
       </div>)}</div>
-      <div className="services-cta"><p>{services.note}</p><a className="button" href="#contact">{services.button}<ArrowRight size={17} /></a></div>
+      <div className="services-cta"><p>{services.note}</p><a className="button" href={contactHref}>{services.button}<ArrowRight size={17} /></a></div>
     </section>
   )
 }
