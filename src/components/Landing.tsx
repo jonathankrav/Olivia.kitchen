@@ -1,28 +1,23 @@
 import { Link } from '@tanstack/react-router'
 import { useEffect, useRef, useState, type FormEvent } from 'react'
-import { ArrowDown, ArrowRight, ArrowUpRight, Check, ChevronLeft, ChevronRight, Leaf, Mail, Menu, MessageCircle, Plus, Utensils, X } from 'lucide-react'
+import { ArrowDown, ArrowRight, ArrowUpRight, Check, Leaf, Mail, Menu, MessageCircle, Utensils, X } from 'lucide-react'
+import { GallerySection } from '@/components/Gallery'
 import { AreasSection, FaqSection, KashrutSection, ServicesSection, VideoSection } from '@/components/Sections'
-import { contact, content, galleryPhotos, sections, type Language } from '@/lib/content'
+import { contact, content, sections, type Language } from '@/lib/content'
 
 const cuisineKeys = ['israeli', 'italian', 'azerbaijani']
 const imageUrl = (name: string) => `/img/${name}.webp`
-const galleryFilters = ['all', 'savoury', 'desserts'] as const
-type GalleryFilter = (typeof galleryFilters)[number]
 
 const languagePaths: Record<Language, string> = { en: '/en', he: '/', ru: '/ru' }
 
 export function Landing({ language }: { language: Language }) {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [filter, setFilter] = useState<GalleryFilter>('all')
-  const [activeImage, setActiveImage] = useState<number | null>(null)
   const [whatsappNotice, setWhatsappNotice] = useState(false)
   const [formState, setFormState] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
   const [siteUrl, setSiteUrl] = useState('')
-  const galleryDialog = useRef<HTMLDialogElement>(null)
   const whatsappDialog = useRef<HTMLDialogElement>(null)
   const text = content[language]
   const alts = sections[language].alts
-  const visiblePhotos = galleryPhotos.map((photo, index) => ({ photo, index })).filter(({ photo }) => filter === 'all' || photo.group === filter)
   const direction = language === 'he' ? 'rtl' : 'ltr'
 
   useEffect(() => {
@@ -30,22 +25,16 @@ export function Landing({ language }: { language: Language }) {
   }, [])
 
   useEffect(() => {
-    const dialog = galleryDialog.current
-    if (activeImage !== null) dialog?.showModal()
-    else dialog?.close()
-  }, [activeImage])
-
-  useEffect(() => {
     if (whatsappNotice) whatsappDialog.current?.showModal()
     else whatsappDialog.current?.close()
   }, [whatsappNotice])
 
   useEffect(() => {
-    if (activeImage === null && !whatsappNotice) return
+    if (!whatsappNotice) return
     const previousOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
     return () => { document.body.style.overflow = previousOverflow }
-  }, [activeImage, whatsappNotice])
+  }, [whatsappNotice])
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -126,15 +115,7 @@ export function Landing({ language }: { language: Language }) {
 
         <KashrutSection language={language} />
 
-        <section id="gallery" className="gallery-section">
-          <div className="section-wrap">
-            <div className="section-heading"><div><span className="eyebrow">{text.galleryLabel}</span><h2>{text.galleryTitle}</h2><p>{text.galleryText}</p></div><div className="gallery-filters" role="group" aria-label={text.galleryTitle}>{galleryFilters.map(key => <button key={key} aria-pressed={filter === key} className={filter === key ? 'active' : ''} onClick={() => setFilter(key)}>{key === 'all' ? text.all : text[key]}</button>)}</div></div>
-            <div className="gallery-grid">
-              {visiblePhotos.map(({ photo, index }) => <button className="gallery-item" key={photo.file} onClick={() => setActiveImage(index)} aria-label={`${text.viewImage}: ${photo.captions[language]}`}><img src={imageUrl(`${photo.file}-sm`)} alt={photo.captions[language]} loading="lazy" width={photo.smWidth} height={photo.smHeight} /><span className="gallery-caption">{photo.captions[language]}<Plus size={21} /></span></button>)}
-            </div>
-            <p className="image-disclosure">{text.imageDisclosure}</p>
-          </div>
-        </section>
+        <GallerySection language={language} />
 
         <VideoSection language={language} />
 
@@ -178,9 +159,6 @@ export function Landing({ language }: { language: Language }) {
 
       <footer><div className="footer-main"><a className="brand footer-brand" href="#"><img className="brand-mark" src="/logo.svg" alt="" width="52" height="52" /><span className="brand-text"><span className="brand-name">Olivia’s Kitchen</span><small>{text.slogan}</small></span></a><p>{text.footer}</p><a className="back-top" href="#" aria-label={text.top}><ArrowUpRight size={23} /></a></div><div className="footer-bottom"><span>© {new Date().getFullYear()} {text.rights}</span><span>{text.cuisineNames.join(' · ')}</span><a href={`tel:${contact.phoneE164}`} dir="ltr">{contact.phone}</a><a href={`mailto:${contact.email}`}>{contact.email}</a></div></footer>
 
-      <dialog ref={galleryDialog} className="lightbox" onCancel={() => setActiveImage(null)} onClick={event => { if (event.target === event.currentTarget) setActiveImage(null) }} aria-label={text.galleryTitle} onKeyDown={event => { if (event.key === 'ArrowRight' && activeImage !== null) setActiveImage((activeImage + 1) % galleryPhotos.length); if (event.key === 'ArrowLeft' && activeImage !== null) setActiveImage((activeImage + galleryPhotos.length - 1) % galleryPhotos.length) }}>
-        {activeImage !== null && <div className="lightbox-inner"><button autoFocus className="lightbox-close icon-button" onClick={() => setActiveImage(null)} aria-label={text.close}><X /></button><img src={imageUrl(galleryPhotos[activeImage].file)} alt={galleryPhotos[activeImage].captions[language]} width={galleryPhotos[activeImage].width} height={galleryPhotos[activeImage].height} /><div className="lightbox-bottom"><button className="icon-button" onClick={() => setActiveImage((activeImage + galleryPhotos.length - 1) % galleryPhotos.length)} aria-label={language === 'he' ? 'הקודם' : language === 'ru' ? 'Назад' : 'Previous image'}><ChevronLeft /></button><p>{galleryPhotos[activeImage].captions[language]}</p><button className="icon-button" onClick={() => setActiveImage((activeImage + 1) % galleryPhotos.length)} aria-label={language === 'he' ? 'הבא' : language === 'ru' ? 'Далее' : 'Next image'}><ChevronRight /></button></div></div>}
-      </dialog>
       <dialog ref={whatsappDialog} className="contact-dialog" onCancel={() => setWhatsappNotice(false)} onClick={event => { if (event.target === event.currentTarget) setWhatsappNotice(false) }} aria-labelledby="whatsapp-title"><button autoFocus className="dialog-close icon-button" aria-label={text.close} onClick={() => setWhatsappNotice(false)}><X /></button><MessageCircle size={32} /><h3 id="whatsapp-title">{text.whatsapp}</h3><p>{text.whatsappUnavailable}</p><a href={`mailto:${contact.email}`} className="button"><Mail size={18} />{contact.email}</a><a className="share-link" href={`https://wa.me/?text=${encodeURIComponent(`Olivia’s Kitchen — Israeli, Italian & Caucasian private dining. ${siteUrl}`)}`} target="_blank" rel="noopener noreferrer">{text.share}<ArrowUpRight size={16} /></a></dialog>
     </div>
   )
