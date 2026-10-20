@@ -50,6 +50,49 @@
   </url>
   <url>
     <loc>https://olivia.kitchen/haifa</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="he" href="https://olivia.kitchen/haifa"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olivia.kitchen/en/haifa"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://olivia.kitchen/ru/haifa"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olivia.kitchen/haifa"/>
+    <image:image><image:loc>https://olivia.kitchen/img/hero.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/israeli.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/italian.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/azerbaijani.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/grilled-rib-steak.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/seared-salmon-puree.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/burrata-heirloom-tomatoes.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/ratatouille.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/fish-burger-potatoes.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/bagel-egg-avocado.webp</image:loc></image:image>
+    <video:video><video:thumbnail_loc>https://olivia.kitchen/video/bagel-process-poster.webp</video:thumbnail_loc><video:title>בייגל עם סלמון, אבוקדו, ביצה ומוצרלה</video:title><video:description>בייגל עם סלמון, אבוקדו, ביצה ומוצרלה</video:description><video:content_loc>https://olivia.kitchen/video/bagel-process.mp4</video:content_loc><video:duration>19</video:duration></video:video>
+  </url>
+  <url>
+    <loc>https://olivia.kitchen/en/haifa</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="he" href="https://olivia.kitchen/haifa"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olivia.kitchen/en/haifa"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://olivia.kitchen/ru/haifa"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olivia.kitchen/haifa"/>
+    <image:image><image:loc>https://olivia.kitchen/img/hero.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/israeli.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/italian.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/azerbaijani.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/grilled-rib-steak.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/seared-salmon-puree.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/burrata-heirloom-tomatoes.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/ratatouille.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/fish-burger-potatoes.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/bagel-egg-avocado.webp</image:loc></image:image>
+    <video:video><video:thumbnail_loc>https://olivia.kitchen/video/bagel-process-poster.webp</video:thumbnail_loc><video:title>Bagel with salmon, avocado, egg and mozzarella</video:title><video:description>Bagel with salmon, avocado, egg and mozzarella</video:description><video:content_loc>https://olivia.kitchen/video/bagel-process.mp4</video:content_loc><video:duration>19</video:duration></video:video>
+  </url>
+  <url>
+    <loc>https://olivia.kitchen/ru/haifa</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="he" href="https://olivia.kitchen/haifa"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olivia.kitchen/en/haifa"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://olivia.kitchen/ru/haifa"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olivia.kitchen/haifa"/>
     <image:image><image:loc>https://olivia.kitchen/img/hero.webp</image:loc></image:image>
     <image:image><image:loc>https://olivia.kitchen/img/israeli.webp</image:loc></image:image>
     <image:image><image:loc>https://olivia.kitchen/img/italian.webp</image:loc></image:image>
@@ -64,6 +107,47 @@
   </url>
   <url>
     <loc>https://olivia.kitchen/north</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="he" href="https://olivia.kitchen/north"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olivia.kitchen/en/north"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://olivia.kitchen/ru/north"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olivia.kitchen/north"/>
+    <image:image><image:loc>https://olivia.kitchen/img/burrata-heirloom-tomatoes.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/israeli.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/italian.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/azerbaijani.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/grilled-rib-steak.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/seared-salmon-puree.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/ratatouille.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/fish-burger-potatoes.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/bagel-egg-avocado.webp</image:loc></image:image>
+    <video:video><video:thumbnail_loc>https://olivia.kitchen/video/bagel-process-poster.webp</video:thumbnail_loc><video:title>בייגל עם סלמון, אבוקדו, ביצה ומוצרלה</video:title><video:description>בייגל עם סלמון, אבוקדו, ביצה ומוצרלה</video:description><video:content_loc>https://olivia.kitchen/video/bagel-process.mp4</video:content_loc><video:duration>19</video:duration></video:video>
+  </url>
+  <url>
+    <loc>https://olivia.kitchen/en/north</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="he" href="https://olivia.kitchen/north"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olivia.kitchen/en/north"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://olivia.kitchen/ru/north"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olivia.kitchen/north"/>
+    <image:image><image:loc>https://olivia.kitchen/img/burrata-heirloom-tomatoes.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/israeli.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/italian.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/azerbaijani.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/grilled-rib-steak.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/seared-salmon-puree.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/ratatouille.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/fish-burger-potatoes.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/bagel-egg-avocado.webp</image:loc></image:image>
+    <video:video><video:thumbnail_loc>https://olivia.kitchen/video/bagel-process-poster.webp</video:thumbnail_loc><video:title>Bagel with salmon, avocado, egg and mozzarella</video:title><video:description>Bagel with salmon, avocado, egg and mozzarella</video:description><video:content_loc>https://olivia.kitchen/video/bagel-process.mp4</video:content_loc><video:duration>19</video:duration></video:video>
+  </url>
+  <url>
+    <loc>https://olivia.kitchen/ru/north</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="he" href="https://olivia.kitchen/north"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olivia.kitchen/en/north"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://olivia.kitchen/ru/north"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olivia.kitchen/north"/>
     <image:image><image:loc>https://olivia.kitchen/img/burrata-heirloom-tomatoes.webp</image:loc></image:image>
     <image:image><image:loc>https://olivia.kitchen/img/israeli.webp</image:loc></image:image>
     <image:image><image:loc>https://olivia.kitchen/img/italian.webp</image:loc></image:image>

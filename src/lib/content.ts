@@ -23,6 +23,7 @@ export const content = {
     cuisineNames: ['Israeli', 'Italian', 'Caucasian'],
     cuisineNotes: ['Fresh, vibrant & generous', 'Simple, soulful & seasonal', 'Warm, aromatic & heartfelt'],
     cuisineDescriptions: ['Colourful mezze, bright herbs, and beautiful ingredients. A sun-filled table made for sharing.', 'Handmade pasta, seasonal produce, and the joy of a long, unhurried meal. A little taste of la dolce vita.', 'Fragrant saffron rice, fresh herbs, and comforting flavours. A rich tradition of welcoming people to the table.'],
+    galleryMore: 'Full gallery',
     galleryLabel: 'FROM THE KITCHEN', galleryTitle: 'A feast for the eyes.', galleryText: 'A little inspiration for your next gathering.', all: 'All flavours', savoury: 'Starters & mains', desserts: 'Desserts',
     imageDisclosure: 'Photographs of dishes I prepared. © JonathanKrav', viewImage: 'View image', close: 'Close',
     contactLabel: 'LET’S MAKE SOMETHING SPECIAL', contactTitle: 'Your next beautiful\nevening starts here.',
@@ -51,6 +52,7 @@ export const content = {
     cuisineNames: ['ישראלי', 'איטלקי', 'קווקזי'],
     cuisineNotes: ['טרי, צבעוני ונדיב', 'פשוט, מלא נשמה ועונתי', 'חם, ארומטי ומכל הלב'],
     cuisineDescriptions: ['מזטים צבעוניים, עשבי תיבול רעננים וחומרי גלם נהדרים. שולחן מלא שמש שנועד לחלוק.', 'פסטה בעבודת יד, תוצרת עונתית והנאה מארוחה ארוכה ונינוחה. טעימה קטנה מהחיים הטובים.', 'אורז זעפרן ריחני, עשבי תיבול טריים וטעמים מנחמים. מסורת עשירה של אירוח סביב השולחן.'],
+    galleryMore: 'לכל הגלריה',
     galleryLabel: 'מהמטבח', galleryTitle: 'חגיגה לעיניים.', galleryText: 'קצת השראה למפגש הבא שלכם.', all: 'כל הטעמים', savoury: 'פתיחות ועיקריות', desserts: 'קינוחים',
     imageDisclosure: 'צילומי מנות שהכנתי. © JonathanKrav', viewImage: 'הצגת תמונה', close: 'סגירה',
     contactLabel: 'בואו ניצור משהו מיוחד', contactTitle: 'הערב היפה הבא שלכם\nמתחיל כאן.',
@@ -60,7 +62,6 @@ export const content = {
     namePlaceholder: 'איך לקרוא לכם?', phonePlaceholder: 'כולל קידומת מדינה', messagePlaceholder: 'האירוע, הרעיונות שלכם, צרכים תזונתיים…',
     optional: 'לא חובה', send: 'שליחת פנייה', sending: 'הפנייה נשלחת…', privacy: 'הפרטים שלכם ישמשו רק למענה לפנייה.',
     success: 'הפנייה שלכם בדרך!', successText: 'תודה שהזמנתם אותי לשולחן שלכם. אצור קשר באימייל כדי לדבר על התוכניות.', another: 'שליחת פנייה נוספת', error: 'לא ניתן לשלוח את הפנייה. נסו שוב או כתבו לכתובת chef@olivia.kitchen.',
-    galleryMore: 'לכל הגלריה',
     contactsLabel: 'יצירת קשר', contactsTitle: 'בואו נדבר.', contactsText: 'אפשר להתקשר, לכתוב או לשלוח הודעה. אחזור אליכם כדי לדבר על האירוע.', callLabel: 'טלפון', writeLabel: 'אימייל', chatLabel: 'הודעה', areaLabel: 'איפה אני עובדת', areaValue: 'חיפה והצפון',
     slogan: 'שלושה מטבחים. שני פורמטים. שפית אחת.',
     footer: 'אוכל טוב מחבר בינינו.', rights: 'Olivia’s Kitchen. נוצר באהבה.', menu: 'פתיחת תפריט', language: 'בחירת שפה', top: 'חזרה לראש העמוד',
@@ -80,6 +81,7 @@ export const content = {
     cuisineNames: ['Израильская', 'Итальянская', 'Кавказская'],
     cuisineNotes: ['Свежая, яркая и щедрая', 'Простая, душевная и сезонная', 'Тёплая, ароматная и искренняя'],
     cuisineDescriptions: ['Разноцветные мезе, свежая зелень и прекрасные продукты. Солнечный стол для дружной компании.', 'Паста ручной работы, сезонные продукты и радость неспешного ужина. Немного итальянской dolce vita.', 'Ароматный шафрановый плов, свежая зелень и уютные вкусы. Богатая традиция гостеприимства.'],
+    galleryMore: 'Вся галерея',
     galleryLabel: 'ИЗ КУХНИ', galleryTitle: 'Праздник для глаз.', galleryText: 'Немного вдохновения для вашей следующей встречи.', all: 'Все вкусы', savoury: 'Закуски и горячее', desserts: 'Десерты',
     imageDisclosure: 'Фотографии блюд, приготовленных мной. © JonathanKrav', viewImage: 'Открыть изображение', close: 'Закрыть',
     contactLabel: 'СОЗДАДИМ ЧТО-ТО ОСОБЕННОЕ', contactTitle: 'Ваш прекрасный вечер\nначинается здесь.',
@@ -190,7 +192,7 @@ export const sections = {
       label: 'WHERE I WORK', title: 'Haifa and\nthe North.',
       text: 'I come to your home in Haifa and across Northern Israel. If you are somewhere else in the north, write to me and I will check.',
       cities: ['Haifa', 'The Krayot', 'Nesher', 'Karmiel', 'Nahariya', 'Akko'],
-      links: [] as { label: string; to: string }[],
+      links: [{ label: 'Private chef in Haifa', to: '/en/haifa' }, { label: 'Private chef for events in the North', to: '/en/north' }],
     },
     faq: {
       label: 'GOOD TO KNOW', title: 'Frequently\nasked questions.',
@@ -294,7 +296,7 @@ export const sections = {
       label: 'ГДЕ Я РАБОТАЮ', title: 'Хайфа\nи север.',
       text: 'Я приезжаю к вам домой в Хайфе и на севере Израиля. Если вы в другом месте на севере, напишите мне, и я проверю.',
       cities: ['Хайфа', 'Крайот', 'Нешер', 'Кармиэль', 'Нагария', 'Акко'],
-      links: [] as { label: string; to: string }[],
+      links: [{ label: 'Частный шеф в Хайфе', to: '/ru/haifa' }, { label: 'Частный шеф для мероприятий на севере', to: '/ru/north' }],
     },
     faq: {
       label: 'ПОЛЕЗНО ЗНАТЬ', title: 'Частые\nвопросы.',
@@ -313,34 +315,86 @@ export const sections = {
 
 export const localPages = {
   haifa: {
-    path: '/haifa',
-    title: 'שף פרטי בחיפה | שפית פרטית לארוחות ואירועים בבית | Olivia’s Kitchen',
-    description: 'שף פרטי בחיפה: אני, אוליביה, מבשלת אצלכם בבית מטבח ישראלי, איטלקי וקווקזי. אפשרויות כשר, בסגנון כשר ולא כשר. השאירו פנייה לתפריט מותאם.',
-    eyebrow: 'שפית פרטית · חיפה',
-    heading: 'שף פרטי\nבחיפה',
-    paragraphs: [
-      'אני אוליביה, שפית פרטית בחיפה. אני מגיעה אליכם הביתה ומכינה ארוחה שמותאמת לאירוע, לאורחים ולטעם שלכם: ארוחת ערב אינטימית, חגיגה משפחתית או סתם סיבה להיפגש.',
-      'התפריט נבנה מהמטבח הישראלי, האיטלקי והקווקזי, בנפרד או בשילוב ביניהם. אפשר לבחור מטבח כשר, בסגנון כשר או לא כשר, ולציין אלרגיות והעדפות תזונתיות.',
-      'אני עובדת בחיפה, בקריות, בנשר ובסביבה.',
-    ],
+    paths: { he: '/haifa', en: '/en/haifa', ru: '/ru/haifa' },
+    other: 'north',
     heroImage: { file: 'hero', width: 1600, height: 1143, altIndex: 0 },
-    otherLabel: 'שף פרטי לאירועים בצפון',
-    otherTo: '/north',
+    he: {
+      title: 'שף פרטי בחיפה | שפית פרטית לארוחות ואירועים בבית | Olivia’s Kitchen',
+      description: 'שף פרטי בחיפה: אני, אוליביה, מבשלת אצלכם בבית מטבח ישראלי, איטלקי וקווקזי. אפשרויות כשר, בסגנון כשר ולא כשר. השאירו פנייה לתפריט מותאם.',
+      eyebrow: 'שפית פרטית · חיפה',
+      heading: 'שף פרטי\nבחיפה',
+      paragraphs: [
+        'אני אוליביה, שפית פרטית בחיפה. אני מגיעה אליכם הביתה ומכינה ארוחה שמותאמת לאירוע, לאורחים ולטעם שלכם: ארוחת ערב אינטימית, חגיגה משפחתית או סתם סיבה להיפגש.',
+        'התפריט נבנה מהמטבח הישראלי, האיטלקי והקווקזי, בנפרד או בשילוב ביניהם. אפשר לבחור מטבח כשר, בסגנון כשר או לא כשר, ולציין אלרגיות והעדפות תזונתיות.',
+        'אני עובדת בחיפה, בקריות, בנשר ובסביבה.',
+      ],
+      otherLabel: 'שף פרטי לאירועים בצפון',
+    },
+    en: {
+      title: 'Private Chef in Haifa | Dinners and Events at Your Home | Olivia’s Kitchen',
+      description: 'Private chef in Haifa: I’m Olivia, and I cook Israeli, Italian and Caucasian menus at your home. Kosher, kosher-style and non-kosher options. Send a request for a menu made for your evening.',
+      eyebrow: 'Private chef · Haifa',
+      heading: 'Private chef\nin Haifa',
+      paragraphs: [
+        'I am Olivia, a private chef in Haifa. I come to your home and cook a meal built around your occasion, your guests and your taste: an intimate dinner, a family celebration or simply a reason to get together.',
+        'The menu draws on Israeli, Italian and Caucasian cuisine, separately or combined. You can choose a kosher kitchen, kosher-style or non-kosher, and tell me about allergies and dietary preferences.',
+        'I work in Haifa, the Krayot, Nesher and the surrounding area.',
+      ],
+      otherLabel: 'Private chef for events in the North',
+    },
+    ru: {
+      title: 'Частный шеф в Хайфе | Ужины и мероприятия у вас дома | Olivia’s Kitchen',
+      description: 'Частный шеф в Хайфе: я, Оливия, готовлю у вас дома израильскую, итальянскую и кавказскую кухню. Кошерная, в кошерном стиле и некошерная кухня. Оставьте заявку на меню под ваш вечер.',
+      eyebrow: 'Частный шеф · Хайфа',
+      heading: 'Частный шеф\nв Хайфе',
+      paragraphs: [
+        'Я Оливия, частный шеф в Хайфе. Я приезжаю к вам домой и готовлю ужин под ваш повод, ваших гостей и ваш вкус: камерный ужин, семейный праздник или просто повод встретиться.',
+        'Меню строится на израильской, итальянской и кавказской кухне, по отдельности или вместе. Можно выбрать кошерную кухню, кухню в кошерном стиле или некошерную, а также сообщить об аллергиях и пожеланиях по питанию.',
+        'Я работаю в Хайфе, Крайот, Нешере и окрестностях.',
+      ],
+      otherLabel: 'Частный шеф для мероприятий на севере',
+    },
   },
   north: {
-    path: '/north',
-    title: 'שף פרטי לאירועים בצפון | כרמיאל, נהריה, עכו | Olivia’s Kitchen',
-    description: 'שפית פרטית לאירועים בבית בצפון: כרמיאל, נהריה, עכו והסביבה. מטבח ישראלי, איטלקי וקווקזי, עם אפשרויות כשר, בסגנון כשר ולא כשר.',
-    eyebrow: 'שפית פרטית · הצפון',
-    heading: 'שף פרטי\nלאירועים בצפון',
-    paragraphs: [
-      'אני אוליביה, שפית פרטית מחיפה, ואני מגיעה לאירועים בבית גם בצפון הארץ: בכרמיאל, בנהריה, בעכו ובסביבה.',
-      'ארוחת ערב אינטימית או חגיגה משפחתית: מתכננים יחד תפריט ישראלי, איטלקי או קווקזי, או שילוב ביניהם. יש אפשרות למטבח כשר, בסגנון כשר או לא כשר.',
-      'אם הבית שלכם במקום אחר בצפון, כתבו ונבדוק יחד.',
-    ],
+    paths: { he: '/north', en: '/en/north', ru: '/ru/north' },
+    other: 'haifa',
     heroImage: { file: 'burrata-heirloom-tomatoes', width: 1600, height: 1200, altIndex: 2 },
-    otherLabel: 'שף פרטי בחיפה',
-    otherTo: '/haifa',
+    he: {
+      title: 'שף פרטי לאירועים בצפון | כרמיאל, נהריה, עכו | Olivia’s Kitchen',
+      description: 'שפית פרטית לאירועים בבית בצפון: כרמיאל, נהריה, עכו והסביבה. מטבח ישראלי, איטלקי וקווקזי, עם אפשרויות כשר, בסגנון כשר ולא כשר.',
+      eyebrow: 'שפית פרטית · הצפון',
+      heading: 'שף פרטי\nלאירועים בצפון',
+      paragraphs: [
+        'אני אוליביה, שפית פרטית מחיפה, ואני מגיעה לאירועים בבית גם בצפון הארץ: בכרמיאל, בנהריה, בעכו ובסביבה.',
+        'ארוחת ערב אינטימית או חגיגה משפחתית: מתכננים יחד תפריט ישראלי, איטלקי או קווקזי, או שילוב ביניהם. יש אפשרות למטבח כשר, בסגנון כשר או לא כשר.',
+        'אם הבית שלכם במקום אחר בצפון, כתבו ונבדוק יחד.',
+      ],
+      otherLabel: 'שף פרטי בחיפה',
+    },
+    en: {
+      title: 'Private Chef for Events in the North | Karmiel, Nahariya, Akko | Olivia’s Kitchen',
+      description: 'Private chef for events at home in Northern Israel: Karmiel, Nahariya, Akko and the surrounding area. Israeli, Italian and Caucasian menus with kosher, kosher-style and non-kosher options.',
+      eyebrow: 'Private chef · The North',
+      heading: 'Private chef\nfor events in the North',
+      paragraphs: [
+        'I am Olivia, a private chef from Haifa, and I come to events at home across Northern Israel: Karmiel, Nahariya, Akko and the surrounding area.',
+        'An intimate dinner or a family celebration: together we plan an Israeli, Italian or Caucasian menu, or a mix of them. Kosher, kosher-style and non-kosher kitchens are all possible.',
+        'If your home is elsewhere in the north, write to me and we will check together.',
+      ],
+      otherLabel: 'Private chef in Haifa',
+    },
+    ru: {
+      title: 'Частный шеф для мероприятий на севере | Кармиэль, Нагария, Акко | Olivia’s Kitchen',
+      description: 'Частный шеф для мероприятий на дому на севере Израиля: Кармиэль, Нагария, Акко и окрестности. Израильская, итальянская и кавказская кухня, кошерная, в кошерном стиле и некошерная.',
+      eyebrow: 'Частный шеф · Север',
+      heading: 'Частный шеф\nдля мероприятий на севере',
+      paragraphs: [
+        'Я Оливия, частный шеф из Хайфы, и приезжаю на домашние мероприятия на севере страны: в Кармиэль, Нагарию, Акко и окрестности.',
+        'Камерный ужин или семейный праздник: вместе составим меню израильской, итальянской или кавказской кухни или соединим их. Можно выбрать кошерную кухню, кухню в кошерном стиле или некошерную.',
+        'Если ваш дом в другом месте на севере, напишите, и мы вместе всё проверим.',
+      ],
+      otherLabel: 'Частный шеф в Хайфе',
+    },
   },
 }
 
@@ -425,19 +479,21 @@ function websiteSchema() {
   }
 }
 
-function breadcrumbSchema(page: { path: string; title: string }) {
+const homePaths: Record<Language, string> = { en: '/en', he: '/', ru: '/ru' }
+
+function breadcrumbSchema(page: { path: string; title: string }, language: Language) {
   return {
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Olivia’s Kitchen', item: `${siteUrl}/` },
+      { '@type': 'ListItem', position: 1, name: 'Olivia’s Kitchen', item: `${siteUrl}${homePaths[language]}` },
       { '@type': 'ListItem', position: 2, name: page.title.split(' | ')[0], item: `${siteUrl}${page.path}` },
     ],
   }
 }
 
-function buildHead(page: { path: string; title: string; description: string; locale: string }, serviceType: string, language: Language, alternates: boolean) {
+function buildHead(page: { path: string; title: string; description: string; locale: string }, serviceType: string, language: Language, alternates: { hrefLang: string; href: string }[], breadcrumb: boolean) {
   const url = `${siteUrl}${page.path === '/' ? '/' : page.path}`
-  const graph = { '@context': 'https://schema.org', '@graph': [foodService(serviceType), personSchema(), websiteSchema(), faqSchema(language), ...(alternates ? videoSchemas(language) : [breadcrumbSchema(page)])] }
+  const graph = { '@context': 'https://schema.org', '@graph': [foodService(serviceType), personSchema(), websiteSchema(), faqSchema(language), ...videoSchemas(language), ...(breadcrumb ? [breadcrumbSchema(page, language)] : [])] }
   return {
     meta: [
       { title: page.title },
@@ -454,12 +510,7 @@ function buildHead(page: { path: string; title: string; description: string; loc
     ],
     links: [
       { rel: 'canonical', href: url },
-      ...(alternates ? [
-        { rel: 'alternate', hrefLang: 'en', href: `${siteUrl}/en` },
-        { rel: 'alternate', hrefLang: 'he', href: `${siteUrl}/` },
-        { rel: 'alternate', hrefLang: 'ru', href: `${siteUrl}/ru` },
-        { rel: 'alternate', hrefLang: 'x-default', href: `${siteUrl}/` },
-      ] : []),
+      ...alternates.map(alternate => ({ rel: 'alternate', hrefLang: alternate.hrefLang, href: alternate.href })),
     ],
     scripts: [{ type: 'application/ld+json', children: JSON.stringify(graph) }],
   }
@@ -467,10 +518,23 @@ function buildHead(page: { path: string; title: string; description: string; loc
 
 export function seoHead(language: Language) {
   const page = seo[language]
-  return buildHead(page, page.serviceType, language, true)
+  const alternates = [
+    { hrefLang: 'en', href: `${siteUrl}/en` },
+    { hrefLang: 'he', href: `${siteUrl}/` },
+    { hrefLang: 'ru', href: `${siteUrl}/ru` },
+    { hrefLang: 'x-default', href: `${siteUrl}/` },
+  ]
+  return buildHead(page, page.serviceType, language, alternates, false)
 }
 
-export function localSeoHead(key: LocalPageKey) {
+export function localSeoHead(key: LocalPageKey, language: Language) {
   const page = localPages[key]
-  return buildHead({ ...page, locale: 'he_IL' }, seo.he.serviceType, 'he', false)
+  const copy = page[language]
+  const alternates = [
+    { hrefLang: 'en', href: `${siteUrl}${page.paths.en}` },
+    { hrefLang: 'he', href: `${siteUrl}${page.paths.he}` },
+    { hrefLang: 'ru', href: `${siteUrl}${page.paths.ru}` },
+    { hrefLang: 'x-default', href: `${siteUrl}${page.paths.he}` },
+  ]
+  return buildHead({ path: page.paths[language], title: copy.title, description: copy.description, locale: seo[language].locale }, seo[language].serviceType, language, alternates, true)
 }
