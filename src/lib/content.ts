@@ -60,6 +60,7 @@ export const content = {
     namePlaceholder: 'איך לקרוא לכם?', phonePlaceholder: 'כולל קידומת מדינה', messagePlaceholder: 'האירוע, הרעיונות שלכם, צרכים תזונתיים…',
     optional: 'לא חובה', send: 'שליחת פנייה', sending: 'הפנייה נשלחת…', privacy: 'הפרטים שלכם ישמשו רק למענה לפנייה.',
     success: 'הפנייה שלכם בדרך!', successText: 'תודה שהזמנתם אותי לשולחן שלכם. אצור קשר באימייל כדי לדבר על התוכניות.', another: 'שליחת פנייה נוספת', error: 'לא ניתן לשלוח את הפנייה. נסו שוב או כתבו לכתובת chef@olivia.kitchen.',
+    galleryMore: 'לכל הגלריה',
     contactsLabel: 'יצירת קשר', contactsTitle: 'בואו נדבר.', contactsText: 'אפשר להתקשר, לכתוב או לשלוח הודעה. אחזור אליכם כדי לדבר על האירוע.', callLabel: 'טלפון', writeLabel: 'אימייל', chatLabel: 'הודעה', areaLabel: 'איפה אני עובדת', areaValue: 'חיפה והצפון',
     slogan: 'שלושה מטבחים. שני פורמטים. שפית אחת.',
     footer: 'אוכל טוב מחבר בינינו.', rights: 'Olivia’s Kitchen. נוצר באהבה.', menu: 'פתיחת תפריט', language: 'בחירת שפה', top: 'חזרה לראש העמוד',
@@ -118,6 +119,8 @@ export const galleryPhotos = [
   { file: 'chocolate-strawberry-tart', width: 1280, height: 1600, smWidth: 800, smHeight: 1000, group: 'desserts', captions: { en: 'Chocolate cream tart with strawberries and gilded hazelnuts', he: 'טארט קרם שוקולד עם תותים ואגוזי לוז מוזהבים', ru: 'Шоколадный тарт с клубникой и позолоченным фундуком' } },
   { file: 'peanut-caramel-bars', width: 1280, height: 1600, smWidth: 800, smHeight: 1000, group: 'desserts', captions: { en: 'Chocolate bars with peanut caramel', he: 'חטיפי שוקולד עם קרמל בוטנים', ru: 'Шоколадные батончики с арахисовой карамелью' } },
 ] as const
+
+export const localGalleryFiles = ['grilled-rib-steak', 'seared-salmon-puree', 'burrata-heirloom-tomatoes', 'ratatouille', 'fish-burger-potatoes', 'bagel-egg-avocado'] as const
 
 export const videoClips = [
   { file: 'bagel-process', poster: 'bagel-process-poster', width: 1280, height: 714, duration: 'PT19S', uploadDate: '2026-10-19', captions: { en: 'Bagel with salmon, avocado, egg and mozzarella', he: 'בייגל עם סלמון, אבוקדו, ביצה ומוצרלה', ru: 'Бейгль с лососем, авокадо, яйцом и моцареллой' } },
@@ -320,6 +323,7 @@ export const localPages = {
       'התפריט נבנה מהמטבח הישראלי, האיטלקי והקווקזי, בנפרד או בשילוב ביניהם. אפשר לבחור מטבח כשר, בסגנון כשר או לא כשר, ולציין אלרגיות והעדפות תזונתיות.',
       'אני עובדת בחיפה, בקריות, בנשר ובסביבה.',
     ],
+    heroImage: { file: 'hero', width: 1600, height: 1143, altIndex: 0 },
     otherLabel: 'שף פרטי לאירועים בצפון',
     otherTo: '/north',
   },
@@ -334,6 +338,7 @@ export const localPages = {
       'ארוחת ערב אינטימית או חגיגה משפחתית: מתכננים יחד תפריט ישראלי, איטלקי או קווקזי, או שילוב ביניהם. יש אפשרות למטבח כשר, בסגנון כשר או לא כשר.',
       'אם הבית שלכם במקום אחר בצפון, כתבו ונבדוק יחד.',
     ],
+    heroImage: { file: 'burrata-heirloom-tomatoes', width: 1600, height: 1200, altIndex: 2 },
     otherLabel: 'שף פרטי בחיפה',
     otherTo: '/haifa',
   },

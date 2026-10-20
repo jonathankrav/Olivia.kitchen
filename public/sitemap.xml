@@ -50,8 +50,29 @@
   </url>
   <url>
     <loc>https://olivia.kitchen/haifa</loc>
+    <image:image><image:loc>https://olivia.kitchen/img/hero.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/israeli.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/italian.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/azerbaijani.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/grilled-rib-steak.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/seared-salmon-puree.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/burrata-heirloom-tomatoes.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/ratatouille.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/fish-burger-potatoes.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/bagel-egg-avocado.webp</image:loc></image:image>
+    <video:video><video:thumbnail_loc>https://olivia.kitchen/video/bagel-process-poster.webp</video:thumbnail_loc><video:title>Бейгль с лососем, авокадо, яйцом и моцареллой</video:title><video:description>Бейгль с лососем, авокадо, яйцом и моцареллой</video:description><video:content_loc>https://olivia.kitchen/video/bagel-process.mp4</video:content_loc><video:duration>19</video:duration></video:video>
   </url>
   <url>
     <loc>https://olivia.kitchen/north</loc>
+    <image:image><image:loc>https://olivia.kitchen/img/burrata-heirloom-tomatoes.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/israeli.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/italian.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/azerbaijani.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/grilled-rib-steak.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/seared-salmon-puree.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/ratatouille.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/fish-burger-potatoes.webp</image:loc></image:image>
+    <image:image><image:loc>https://olivia.kitchen/img/bagel-egg-avocado.webp</image:loc></image:image>
+    <video:video><video:thumbnail_loc>https://olivia.kitchen/video/bagel-process-poster.webp</video:thumbnail_loc><video:title>Бейгль с лососем, авокадо, яйцом и моцареллой</video:title><video:description>Бейгль с лососем, авокадо, яйцом и моцареллой</video:description><video:content_loc>https://olivia.kitchen/video/bagel-process.mp4</video:content_loc><video:duration>19</video:duration></video:video>
   </url>
 </urlset>
