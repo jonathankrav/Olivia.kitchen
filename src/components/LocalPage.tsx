@@ -1,6 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { ArrowUpRight, MessageCircle } from 'lucide-react'
-import { contact, content, galleryPhotos, localGalleryFiles, localPages, sections, type Language, type LocalPageKey } from '@/lib/content'
+import { contact, content, localPages, sections, type Language, type LocalPageKey } from '@/lib/content'
+import { GallerySection } from '@/components/Gallery'
 import { AreasSection, FaqSection, KashrutSection, ServicesSection, VideoSection } from '@/components/Sections'
 
 const homePaths: Record<Language, string> = { en: '/en', he: '/', ru: '/ru' }
@@ -13,7 +14,6 @@ export function LocalPage({ pageKey, language }: { pageKey: LocalPageKey; langua
   const text = content[language]
   const alts = sections[language].alts
   const cuisineKeys = ['israeli', 'italian', 'azerbaijani']
-  const galleryPicks = localGalleryFiles.flatMap(file => galleryPhotos.filter(photo => photo.file === file))
   const whatsappUrl = `https://wa.me/${contact.whatsappNumber.replace(/\D/g, '')}`
   return (
     <div className="site" dir={language === 'he' ? 'rtl' : 'ltr'}>
@@ -55,12 +55,7 @@ export function LocalPage({ pageKey, language }: { pageKey: LocalPageKey; langua
 
         <KashrutSection language={language} />
 
-        <section className="local-gallery-section">
-          <div className="section-wrap">
-            <div className="section-heading"><div><span className="eyebrow">{text.galleryLabel}</span><h2>{text.galleryTitle}</h2></div><Link className="text-link" to={home} hash="gallery">{text.galleryMore}<ArrowUpRight size={16} /></Link></div>
-            <div className="local-gallery">{galleryPicks.map(photo => <figure key={photo.file}><img src={`/img/${photo.file}-sm.webp`} alt={photo.captions[language]} loading="lazy" width={photo.smWidth} height={photo.smHeight} /><figcaption>{photo.captions[language]}</figcaption></figure>)}</div>
-          </div>
-        </section>
+        <GallerySection language={language} />
 
         <VideoSection language={language} />
         <AreasSection language={language} />

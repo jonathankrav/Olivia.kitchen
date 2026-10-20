@@ -23,7 +23,6 @@ export const content = {
     cuisineNames: ['Israeli', 'Italian', 'Caucasian'],
     cuisineNotes: ['Fresh, vibrant & generous', 'Simple, soulful & seasonal', 'Warm, aromatic & heartfelt'],
     cuisineDescriptions: ['Colourful mezze, bright herbs, and beautiful ingredients. A sun-filled table made for sharing.', 'Handmade pasta, seasonal produce, and the joy of a long, unhurried meal. A little taste of la dolce vita.', 'Fragrant saffron rice, fresh herbs, and comforting flavours. A rich tradition of welcoming people to the table.'],
-    galleryMore: 'Full gallery',
     galleryLabel: 'FROM THE KITCHEN', galleryTitle: 'A feast for the eyes.', galleryText: 'A little inspiration for your next gathering.', all: 'All flavours', savoury: 'Starters & mains', desserts: 'Desserts',
     imageDisclosure: 'Photographs of dishes I prepared. © JonathanKrav', viewImage: 'View image', close: 'Close',
     contactLabel: 'LET’S MAKE SOMETHING SPECIAL', contactTitle: 'Your next beautiful\nevening starts here.',
@@ -52,7 +51,6 @@ export const content = {
     cuisineNames: ['ישראלי', 'איטלקי', 'קווקזי'],
     cuisineNotes: ['טרי, צבעוני ונדיב', 'פשוט, מלא נשמה ועונתי', 'חם, ארומטי ומכל הלב'],
     cuisineDescriptions: ['מזטים צבעוניים, עשבי תיבול רעננים וחומרי גלם נהדרים. שולחן מלא שמש שנועד לחלוק.', 'פסטה בעבודת יד, תוצרת עונתית והנאה מארוחה ארוכה ונינוחה. טעימה קטנה מהחיים הטובים.', 'אורז זעפרן ריחני, עשבי תיבול טריים וטעמים מנחמים. מסורת עשירה של אירוח סביב השולחן.'],
-    galleryMore: 'לכל הגלריה',
     galleryLabel: 'מהמטבח', galleryTitle: 'חגיגה לעיניים.', galleryText: 'קצת השראה למפגש הבא שלכם.', all: 'כל הטעמים', savoury: 'פתיחות ועיקריות', desserts: 'קינוחים',
     imageDisclosure: 'צילומי מנות שהכנתי. © JonathanKrav', viewImage: 'הצגת תמונה', close: 'סגירה',
     contactLabel: 'בואו ניצור משהו מיוחד', contactTitle: 'הערב היפה הבא שלכם\nמתחיל כאן.',
@@ -81,7 +79,6 @@ export const content = {
     cuisineNames: ['Израильская', 'Итальянская', 'Кавказская'],
     cuisineNotes: ['Свежая, яркая и щедрая', 'Простая, душевная и сезонная', 'Тёплая, ароматная и искренняя'],
     cuisineDescriptions: ['Разноцветные мезе, свежая зелень и прекрасные продукты. Солнечный стол для дружной компании.', 'Паста ручной работы, сезонные продукты и радость неспешного ужина. Немного итальянской dolce vita.', 'Ароматный шафрановый плов, свежая зелень и уютные вкусы. Богатая традиция гостеприимства.'],
-    galleryMore: 'Вся галерея',
     galleryLabel: 'ИЗ КУХНИ', galleryTitle: 'Праздник для глаз.', galleryText: 'Немного вдохновения для вашей следующей встречи.', all: 'Все вкусы', savoury: 'Закуски и горячее', desserts: 'Десерты',
     imageDisclosure: 'Фотографии блюд, приготовленных мной. © JonathanKrav', viewImage: 'Открыть изображение', close: 'Закрыть',
     contactLabel: 'СОЗДАДИМ ЧТО-ТО ОСОБЕННОЕ', contactTitle: 'Ваш прекрасный вечер\nначинается здесь.',
@@ -121,8 +118,6 @@ export const galleryPhotos = [
   { file: 'chocolate-strawberry-tart', width: 1280, height: 1600, smWidth: 800, smHeight: 1000, group: 'desserts', captions: { en: 'Chocolate cream tart with strawberries and gilded hazelnuts', he: 'טארט קרם שוקולד עם תותים ואגוזי לוז מוזהבים', ru: 'Шоколадный тарт с клубникой и позолоченным фундуком' } },
   { file: 'peanut-caramel-bars', width: 1280, height: 1600, smWidth: 800, smHeight: 1000, group: 'desserts', captions: { en: 'Chocolate bars with peanut caramel', he: 'חטיפי שוקולד עם קרמל בוטנים', ru: 'Шоколадные батончики с арахисовой карамелью' } },
 ] as const
-
-export const localGalleryFiles = ['grilled-rib-steak', 'seared-salmon-puree', 'burrata-heirloom-tomatoes', 'ratatouille', 'fish-burger-potatoes', 'bagel-egg-avocado'] as const
 
 export const videoClips = [
   { file: 'bagel-process', poster: 'bagel-process-poster', width: 1280, height: 714, duration: 'PT19S', uploadDate: '2026-10-19', captions: { en: 'Bagel with salmon, avocado, egg and mozzarella', he: 'בייגל עם סלמון, אבוקדו, ביצה ומוצרלה', ru: 'Бейгль с лососем, авокадо, яйцом и моцареллой' } },
