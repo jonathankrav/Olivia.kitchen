@@ -120,7 +120,7 @@ export const galleryPhotos = [
 ] as const
 
 export const videoClips = [
-  { file: 'bagel-process', poster: 'bagel-process-poster', width: 1280, height: 714, duration: 'PT19S', uploadDate: '2026-10-19', captions: { en: 'Bagel with salmon, avocado, egg and mozzarella', he: 'בייגל עם סלמון, אבוקדו, ביצה ומוצרלה', ru: 'Бейгль с лососем, авокадо, яйцом и моцареллой' } },
+  { file: 'bagel-process', poster: 'bagel-process-poster', width: 1280, height: 714, duration: 'PT19S', uploadDate: '2026-10-19T12:00:00+03:00', captions: { en: 'Bagel with salmon, avocado, egg and mozzarella', he: 'בייגל עם סלמון, אבוקדו, ביצה ומוצרלה', ru: 'Бейгль с лососем, авокадо, яйцом и моцареллой' } },
 ] as const
 
 export const siteUrl = 'https://olivia.kitchen'
@@ -407,7 +407,7 @@ function videoSchemas(language: Language) {
     duration: clip.duration,
     contentUrl: `${siteUrl}/video/${clip.file}.mp4`,
     inLanguage: language,
-    author: { '@id': `${siteUrl}/#olivia` },
+    author: { '@type': 'Person', name: 'Olivia', url: siteUrl },
   }))
 }
 
@@ -459,6 +459,7 @@ function personSchema() {
     '@type': 'Person',
     '@id': `${siteUrl}/#olivia`,
     name: 'Olivia',
+    url: siteUrl,
     jobTitle: 'Private chef',
     worksFor: { '@id': `${siteUrl}/#business` },
   }
