@@ -155,7 +155,7 @@ export const sections = {
     video: { label: 'VIDEO', title: 'How it\ncomes together.', intro: 'A few seconds from my kitchen: watch a dish come together.', sound: 'Turn sound on', duration: 'Video, 19 seconds' },
     services: {
       label: 'EVENTS & SERVICE', title: 'Your table for\n4 to 30 guests.',
-      intro: 'I cook for groups of 4 to 30 guests: family celebrations, corporate events and evenings with friends. You decide how much to take on and what kind of evening you want.',
+      intro: 'I cook and provide catering for groups of 4 to 30 guests: family celebrations, corporate events and evenings with friends. You decide how much to take on and what kind of evening you want.',
       guests: ['4–30', 'guests'],
       groups: [
         { title: 'Occasions', items: [
@@ -207,7 +207,7 @@ export const sections = {
     video: { label: 'וידאו', title: 'ככה זה\nנעשה.', intro: 'כמה שניות מהמטבח שלי: ככה מרכיבים מנה.', sound: 'הפעלת צליל', duration: 'סרטון, 19 שניות' },
     services: {
       label: 'אירועים ושירות', title: 'שולחן לקבוצות\nשל 4 עד 30 אורחים.',
-      intro: 'אני מבשלת לקבוצות של 4 עד 30 אורחים: אירועים משפחתיים, אירועי חברה וערבים עם חברים. אתם בוחרים כמה לקחת על עצמכם ואיזה ערב אתם רוצים.',
+      intro: 'אני מבשלת ומספקת קייטרינג לקבוצות של 4 עד 30 אורחים: אירועים משפחתיים, אירועי חברה וערבים עם חברים. אתם בוחרים כמה לקחת על עצמכם ואיזה ערב אתם רוצים.',
       guests: ['4–30', 'אורחים'],
       groups: [
         { title: 'סוגי אירועים', items: [
@@ -259,7 +259,7 @@ export const sections = {
     video: { label: 'ВИДЕО', title: 'Как это\nготовится.', intro: 'Несколько секунд из моей кухни: смотрите, как собирается блюдо.', sound: 'Включить звук', duration: 'Видео, 19 секунд' },
     services: {
       label: 'МЕРОПРИЯТИЯ И СЕРВИС', title: 'Стол для компании\nот 4 до 30 человек.',
-      intro: 'Я готовлю для компаний от 4 до 30 человек: семейные праздники, корпоративы и встречи с друзьями. Вы выбираете, сколько забот взять на себя и каким будет вечер.',
+      intro: 'Я готовлю и делаю кейтеринг для компаний от 4 до 30 человек: семейные праздники, корпоративы и встречи с друзьями. Вы выбираете, сколько забот взять на себя и каким будет вечер.',
       guests: ['4–30', 'человек'],
       groups: [
         { title: 'Какие события', items: [
