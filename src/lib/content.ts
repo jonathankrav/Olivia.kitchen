@@ -360,7 +360,7 @@ export const localPages = {
       eyebrow: 'שפית פרטית · הצפון',
       heading: 'שף פרטי\nלאירועים בצפון',
       paragraphs: [
-        'אני אוליביה, שפית פרטית מחיפה, ואני מגיעה לאירועים בבית גם בצפון הארץ: בכרמיאל, בנהריה, בעכו ובסביבה.',
+        'אני אוליביה, שפית פרטית מחיפה, ואני עובדת בכל צפון הארץ: בכרמיאל, בנהריה, בעכו ובסביבה.',
         'ארוחת ערב אינטימית או חגיגה משפחתית: מתכננים יחד תפריט ישראלי, איטלקי או קווקזי, או שילוב ביניהם. יש אפשרות למטבח כשר, בסגנון כשר או לא כשר.',
         'אם הבית שלכם במקום אחר בצפון, כתבו ונבדוק יחד.',
       ],
@@ -372,7 +372,7 @@ export const localPages = {
       eyebrow: 'Private chef · The North',
       heading: 'Private chef\nfor events in the North',
       paragraphs: [
-        'I am Olivia, a private chef from Haifa, and I come to events at home across Northern Israel: Karmiel, Nahariya, Akko and the surrounding area.',
+        'I am Olivia, a private chef from Haifa, and I work across Northern Israel: Karmiel, Nahariya, Akko and the surrounding area.',
         'An intimate dinner or a family celebration: together we plan an Israeli, Italian or Caucasian menu, or a mix of them. Kosher, kosher-style and non-kosher kitchens are all possible.',
         'If your home is elsewhere in the north, write to me and we will check together.',
       ],
@@ -384,7 +384,7 @@ export const localPages = {
       eyebrow: 'Частный шеф · Север',
       heading: 'Частный шеф\nдля мероприятий на севере',
       paragraphs: [
-        'Я Оливия, частный шеф из Хайфы, и приезжаю на домашние мероприятия на севере страны: в Кармиэль, Нагарию, Акко и окрестности.',
+        'Я Оливия, частный шеф из Хайфы, и работаю по всему северу страны: Кармиэль, Нагарию, Акко и окрестности.',
         'Камерный ужин или семейный праздник: вместе составим меню израильской, итальянской или кавказской кухни или соединим их. Можно выбрать кошерную кухню, кухню в кошерном стиле или некошерную.',
         'Если ваш дом в другом месте на севере, напишите, и мы вместе всё проверим.',
       ],
