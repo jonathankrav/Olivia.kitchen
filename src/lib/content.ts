@@ -185,7 +185,7 @@ export const sections = {
     },
     areas: {
       label: 'WHERE I WORK', title: 'Haifa and\nthe North.',
-      text: 'I come to your home in Haifa and across Northern Israel. If you are somewhere else in the north, write to me and I will check.',
+      text: 'I work in Haifa and across Northern Israel. If you are somewhere else in the north, write to me and I will check.',
       cities: ['Haifa', 'The Krayot', 'Nesher', 'Karmiel', 'Nahariya', 'Akko'],
       links: [{ label: 'Private chef in Haifa', to: '/en/haifa' }, { label: 'Private chef for events in the North', to: '/en/north' }],
     },
@@ -237,7 +237,7 @@ export const sections = {
     },
     areas: {
       label: 'אזורי שירות', title: 'חיפה\nוהצפון.',
-      text: 'אני מגיעה אליכם הביתה בחיפה ובצפון הארץ. אם אתם במקום אחר בצפון, כתבו לי ונבדוק יחד.',
+      text: 'אני עובדת בחיפה ובצפון הארץ. אם אתם במקום אחר בצפון, כתבו לי ונבדוק יחד.',
       cities: ['חיפה', 'הקריות', 'נשר', 'כרמיאל', 'נהריה', 'עכו'],
       links: [{ label: 'שף פרטי בחיפה', to: '/haifa' }, { label: 'שף פרטי לאירועים בצפון', to: '/north' }],
     },
@@ -289,7 +289,7 @@ export const sections = {
     },
     areas: {
       label: 'ГДЕ Я РАБОТАЮ', title: 'Хайфа\nи север.',
-      text: 'Я приезжаю к вам домой в Хайфе и на севере Израиля. Если вы в другом месте на севере, напишите мне, и я проверю.',
+      text: 'Работаю в Хайфе и на севере Израиля. Если вы в другом месте на севере, напишите мне, и я проверю.',
       cities: ['Хайфа', 'Крайот', 'Нешер', 'Кармиэль', 'Нагария', 'Акко'],
       links: [{ label: 'Частный шеф в Хайфе', to: '/ru/haifa' }, { label: 'Частный шеф для мероприятий на севере', to: '/ru/north' }],
     },
