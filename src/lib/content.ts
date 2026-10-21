@@ -319,7 +319,7 @@ export const localPages = {
       eyebrow: 'שף פרטי · חיפה',
       heading: 'שף פרטי\nבחיפה',
       paragraphs: [
-        'שף פרטי חיפה והקריות, עד הבית: אני אוליביה, שפית פרטית בחיפה. אני מגיעה אליכם הביתה ומכינה ארוחה שמותאמת לאירוע, לאורחים ולטעם שלכם: ארוחת ערב אינטימית, חגיגה משפחתית או סתם סיבה להיפגש.',
+        'שף פרטי חיפה והקריות, עד הבית: אני אוליביה, שפית פרטית בחיפה. אני מכינה שולחן שמותאם לאירוע, לאורחים ולטעם שלכם: ארוחת ערב אינטימית, חגיגה משפחתית או סתם סיבה להיפגש.',
         'התפריט נבנה מהמטבח הישראלי, האיטלקי והקווקזי, בנפרד או בשילוב ביניהם. אפשר לבחור מטבח כשר, בסגנון כשר או לא כשר, ולציין אלרגיות והעדפות תזונתיות.',
         'אני עובדת בחיפה, בקריות, בנשר ובסביבה. מחפשים שף פרטי באזור חיפה? כתבו לי ונתאים תפריט לאירוע שלכם.',
       ],
@@ -331,7 +331,7 @@ export const localPages = {
       eyebrow: 'Private chef · Haifa',
       heading: 'Private chef\nin Haifa',
       paragraphs: [
-        'I am Olivia, a private chef in Haifa. I come to your home and cook a meal built around your occasion, your guests and your taste: an intimate dinner, a family celebration or simply a reason to get together.',
+        'I am Olivia, a private chef in Haifa. I prepare a table built around your occasion, your guests and your taste: an intimate dinner, a family celebration or simply a reason to get together.',
         'The menu draws on Israeli, Italian and Caucasian cuisine, separately or combined. You can choose a kosher kitchen, kosher-style or non-kosher, and tell me about allergies and dietary preferences.',
         'I work in Haifa, the Krayot, Nesher and the surrounding area.',
       ],
@@ -343,7 +343,7 @@ export const localPages = {
       eyebrow: 'Частный шеф · Хайфа',
       heading: 'Частный шеф\nв Хайфе',
       paragraphs: [
-        'Я Оливия, частный шеф в Хайфе. Я приезжаю к вам домой и готовлю ужин под ваш повод, ваших гостей и ваш вкус: камерный ужин, семейный праздник или просто повод встретиться.',
+        'Я Оливия, частный шеф в Хайфе. Я готовлю стол под ваш повод, ваших гостей и ваш вкус: камерный ужин, семейный праздник или просто повод встретиться.',
         'Меню строится на израильской, итальянской и кавказской кухне, по отдельности или вместе. Можно выбрать кошерную кухню, кухню в кошерном стиле или некошерную, а также сообщить об аллергиях и пожеланиях по питанию.',
         'Я работаю в Хайфе, Крайот, Нешере и окрестностях.',
       ],
