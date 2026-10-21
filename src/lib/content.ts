@@ -356,7 +356,7 @@ export const localPages = {
     heroImage: { file: 'burrata-heirloom-tomatoes', width: 1600, height: 1200, altIndex: 2 },
     he: {
       title: 'שף פרטי לאירועים בצפון | כרמיאל, נהריה, עכו | Olivia’s Kitchen',
-      description: 'שפית פרטית לאירועים בבית בצפון: כרמיאל, נהריה, עכו והסביבה. מטבח ישראלי, איטלקי וקווקזי, עם אפשרויות כשר, בסגנון כשר ולא כשר.',
+      description: 'שפית פרטית לאירועים בצפון: כרמיאל, נהריה, עכו והסביבה. מטבח ישראלי, איטלקי וקווקזי, עם אפשרויות כשר, בסגנון כשר ולא כשר.',
       eyebrow: 'שפית פרטית · הצפון',
       heading: 'שף פרטי\nלאירועים בצפון',
       paragraphs: [
@@ -368,7 +368,7 @@ export const localPages = {
     },
     en: {
       title: 'Private Chef for Events in the North | Karmiel, Nahariya, Akko | Olivia’s Kitchen',
-      description: 'Private chef for events at home in Northern Israel: Karmiel, Nahariya, Akko and the surrounding area. Israeli, Italian and Caucasian menus with kosher, kosher-style and non-kosher options.',
+      description: 'Private chef for events in Northern Israel: Karmiel, Nahariya, Akko and the surrounding area. Israeli, Italian and Caucasian menus with kosher, kosher-style and non-kosher options.',
       eyebrow: 'Private chef · The North',
       heading: 'Private chef\nfor events in the North',
       paragraphs: [
@@ -380,7 +380,7 @@ export const localPages = {
     },
     ru: {
       title: 'Частный шеф для мероприятий на севере | Кармиэль, Нагария, Акко | Olivia’s Kitchen',
-      description: 'Частный шеф для мероприятий на дому на севере Израиля: Кармиэль, Нагария, Акко и окрестности. Израильская, итальянская и кавказская кухня, кошерная, в кошерном стиле и некошерная.',
+      description: 'Частный шеф для мероприятий на севере Израиля: Кармиэль, Нагария, Акко и окрестности. Израильская, итальянская и кавказская кухня, кошерная, в кошерном стиле и некошерная.',
       eyebrow: 'Частный шеф · Север',
       heading: 'Частный шеф\nдля мероприятий на севере',
       paragraphs: [
