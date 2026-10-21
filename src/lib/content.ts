@@ -12,7 +12,7 @@ export const content = {
     skip: 'Skip to content', stamp: ['Three kitchens.', 'One beautiful table.'],
     nav: ['The experience', 'Services', 'My kitchens', 'Gallery', 'Contact'], book: 'Let’s plan your table',
     eyebrow: 'PRIVATE CHEF · HAIFA & THE NORTH', hero: ['A big soul.', 'A lot of flavour.'],
-    intro: 'Three culinary traditions. One unforgettable table. Beautiful food, made with care, in the comfort of your home.',
+    intro: 'Three culinary traditions. One unforgettable table. Beautiful food, made with care and brought to your table.',
     explore: 'Discover my kitchens', scroll: 'A taste of what’s to come', photoNote: 'GOOD FOOD. GOOD COMPANY.',
     ribbon: ['Made with love', 'Seasonal ingredients', 'Your home, your occasion', 'Always a personal touch'],
     experienceLabel: 'WELCOME TO MY TABLE', experienceTitle: 'More than a meal.\nA moment to remember.',
@@ -40,7 +40,7 @@ export const content = {
     skip: 'דילוג לתוכן', stamp: ['שלושה מטבחים.', 'שולחן יפה אחד.'],
     nav: ['החוויה', 'שירותים', 'המטבחים שלי', 'גלריה', 'יצירת קשר'], book: 'נתכנן את הארוחה שלכם',
     eyebrow: 'שפית פרטית · חיפה והצפון', hero: ['הרבה נשמה.', 'הרבה טעם.'],
-    intro: 'שלוש מסורות קולינריות. שולחן אחד בלתי נשכח. אוכל יפהפה, שמוכן באהבה, בנוחות של הבית שלכם.',
+    intro: 'שלוש מסורות קולינריות. שולחן אחד בלתי נשכח. אוכל יפהפה, שמוכן באהבה ומגיע עד השולחן שלכם.',
     explore: 'גלו את המטבחים שלי', scroll: 'טעימה ממה שמחכה לכם', photoNote: 'אוכל טוב. חברה טובה.',
     ribbon: ['עשוי באהבה', 'חומרי גלם עונתיים', 'הבית שלכם, האירוע שלכם', 'תמיד עם נגיעה אישית'],
     experienceLabel: 'ברוכים הבאים לשולחן שלי', experienceTitle: 'יותר מארוחה.\nרגע לזכור.',
@@ -68,7 +68,7 @@ export const content = {
     skip: 'Перейти к содержимому', stamp: ['Три кухни.', 'Один прекрасный стол.'],
     nav: ['Впечатления', 'Услуги', 'Мои кухни', 'Галерея', 'Контакты'], book: 'Спланируем ваш вечер',
     eyebrow: 'ЛИЧНЫЙ ШЕФ · ХАЙФА И СЕВЕР', hero: ['Много души.', 'Много вкуса.'],
-    intro: 'Три кулинарные традиции. Один незабываемый стол. Прекрасная еда, приготовленная с заботой, у вас дома.',
+    intro: 'Три кулинарные традиции. Один незабываемый стол. Прекрасная еда, приготовленная с заботой и поданная к вашему столу.',
     explore: 'Откройте мои кухни', scroll: 'Вкус того, что вас ждёт', photoNote: 'ХОРОШАЯ ЕДА. ПРИЯТНАЯ КОМПАНИЯ.',
     ribbon: ['Приготовлено с любовью', 'Сезонные продукты', 'Ваш дом, ваш праздник', 'Всегда индивидуально'],
     experienceLabel: 'ДОБРО ПОЖАЛОВАТЬ К МОЕМУ СТОЛУ', experienceTitle: 'Больше, чем ужин.\nМомент на память.',
@@ -130,21 +130,21 @@ export const seo = {
     path: '/en',
     locale: 'en_US',
     title: 'Private Chef in Haifa & Northern Israel | Olivia’s Kitchen',
-    description: 'I’m Olivia, a private chef in Haifa and Northern Israel. I cook Israeli, Italian and Caucasian menus at your home for family celebrations, corporate events and evenings with friends. Request a menu.',
+    description: 'I’m Olivia, a private chef in Haifa and Northern Israel. I cook Israeli, Italian and Caucasian menus for family celebrations, corporate events and evenings with friends. Request a menu.',
     serviceType: 'Private chef',
   },
   he: {
     path: '/',
     locale: 'he_IL',
-    title: 'שפית פרטית בחיפה ובצפון | Olivia’s Kitchen',
-    description: 'אני אוליביה, שפית פרטית בחיפה ובצפון. אני מכינה מטבח ישראלי, איטלקי וקווקזי אצלכם בבית, לאירועים משפחתיים, אירועי חברה וערבים עם חברים. השאירו פנייה לתפריט מותאם.',
+    title: 'שף פרטי חיפה והצפון | שפית פרטית בחיפה ובצפון | Olivia’s Kitchen',
+    description: 'שף פרטי חיפה והצפון: אני אוליביה, שפית פרטית בחיפה ובצפון. אני מכינה מטבח ישראלי, איטלקי וקווקזי, לאירועים משפחתיים, אירועי חברה וערבים עם חברים. השאירו פנייה לתפריט מותאם.',
     serviceType: 'שפית פרטית',
   },
   ru: {
     path: '/ru',
     locale: 'ru_RU',
     title: 'Частный шеф в Хайфе и на севере Израиля | Olivia’s Kitchen',
-    description: 'Я Оливия, частный шеф в Хайфе и на севере Израиля. Готовлю израильскую, итальянскую и кавказскую кухню у вас дома: семейные праздники, корпоративы и встречи с друзьями. Оставьте запрос на меню.',
+    description: 'Я Оливия, частный шеф в Хайфе и на севере Израиля. Готовлю израильскую, итальянскую и кавказскую кухню: семейные праздники, корпоративы и встречи с друзьями. Оставьте запрос на меню.',
     serviceType: 'Частный шеф',
   },
 }
@@ -155,7 +155,7 @@ export const sections = {
     video: { label: 'VIDEO', title: 'How it\ncomes together.', intro: 'A few seconds from my kitchen: watch a dish come together.', sound: 'Turn sound on', duration: 'Video, 19 seconds' },
     services: {
       label: 'EVENTS & SERVICE', title: 'Your table for\n4 to 30 guests.',
-      intro: 'I cook for groups of 4 to 30 guests: family celebrations, corporate events and evenings with friends. You decide how much to take on and what kind of evening you want.',
+      intro: 'I cook and provide catering for groups of 4 to 30 guests: family celebrations, corporate events and evenings with friends. You decide how much to take on and what kind of evening you want.',
       guests: ['4–30', 'guests'],
       groups: [
         { title: 'Occasions', items: [
@@ -207,7 +207,7 @@ export const sections = {
     video: { label: 'וידאו', title: 'ככה זה\nנעשה.', intro: 'כמה שניות מהמטבח שלי: ככה מרכיבים מנה.', sound: 'הפעלת צליל', duration: 'סרטון, 19 שניות' },
     services: {
       label: 'אירועים ושירות', title: 'שולחן לקבוצות\nשל 4 עד 30 אורחים.',
-      intro: 'אני מבשלת לקבוצות של 4 עד 30 אורחים: אירועים משפחתיים, אירועי חברה וערבים עם חברים. אתם בוחרים כמה לקחת על עצמכם ואיזה ערב אתם רוצים.',
+      intro: 'אני מבשלת ומספקת קייטרינג לקבוצות של 4 עד 30 אורחים: אירועים משפחתיים, אירועי חברה וערבים עם חברים. אתם בוחרים כמה לקחת על עצמכם ואיזה ערב אתם רוצים.',
       guests: ['4–30', 'אורחים'],
       groups: [
         { title: 'סוגי אירועים', items: [
@@ -259,7 +259,7 @@ export const sections = {
     video: { label: 'ВИДЕО', title: 'Как это\nготовится.', intro: 'Несколько секунд из моей кухни: смотрите, как собирается блюдо.', sound: 'Включить звук', duration: 'Видео, 19 секунд' },
     services: {
       label: 'МЕРОПРИЯТИЯ И СЕРВИС', title: 'Стол для компании\nот 4 до 30 человек.',
-      intro: 'Я готовлю для компаний от 4 до 30 человек: семейные праздники, корпоративы и встречи с друзьями. Вы выбираете, сколько забот взять на себя и каким будет вечер.',
+      intro: 'Я готовлю и делаю кейтеринг для компаний от 4 до 30 человек: семейные праздники, корпоративы и встречи с друзьями. Вы выбираете, сколько забот взять на себя и каким будет вечер.',
       guests: ['4–30', 'человек'],
       groups: [
         { title: 'Какие события', items: [
@@ -314,36 +314,36 @@ export const localPages = {
     other: 'north',
     heroImage: { file: 'hero', width: 1600, height: 1143, altIndex: 0 },
     he: {
-      title: 'שף פרטי בחיפה | שפית פרטית לארוחות ואירועים בבית | Olivia’s Kitchen',
-      description: 'שף פרטי בחיפה: אני, אוליביה, מבשלת אצלכם בבית מטבח ישראלי, איטלקי וקווקזי. אפשרויות כשר, בסגנון כשר ולא כשר. השאירו פנייה לתפריט מותאם.',
-      eyebrow: 'שפית פרטית · חיפה',
+      title: 'שף פרטי חיפה והקריות | שף פרטי בחיפה לארוחות ואירועים | Olivia’s Kitchen',
+      description: 'שף פרטי חיפה: אני, אוליביה, שפית פרטית בחיפה ובקריות. אני מבשלת מטבח ישראלי, איטלקי וקווקזי, עם אפשרויות כשר, בסגנון כשר ולא כשר. השאירו פנייה לתפריט מותאם.',
+      eyebrow: 'שף פרטי · חיפה',
       heading: 'שף פרטי\nבחיפה',
       paragraphs: [
-        'אני אוליביה, שפית פרטית בחיפה. אני מגיעה אליכם הביתה ומכינה ארוחה שמותאמת לאירוע, לאורחים ולטעם שלכם: ארוחת ערב אינטימית, חגיגה משפחתית או סתם סיבה להיפגש.',
+        'שף פרטי חיפה והקריות, עד הבית: אני אוליביה, שפית פרטית בחיפה. אני מכינה שולחן שמותאם לאירוע, לאורחים ולטעם שלכם: ארוחת ערב אינטימית, חגיגה משפחתית או סתם סיבה להיפגש.',
         'התפריט נבנה מהמטבח הישראלי, האיטלקי והקווקזי, בנפרד או בשילוב ביניהם. אפשר לבחור מטבח כשר, בסגנון כשר או לא כשר, ולציין אלרגיות והעדפות תזונתיות.',
-        'אני עובדת בחיפה, בקריות, בנשר ובסביבה.',
+        'אני עובדת בחיפה, בקריות, בנשר ובסביבה. מחפשים שף פרטי באזור חיפה? כתבו לי ונתאים תפריט לאירוע שלכם.',
       ],
       otherLabel: 'שף פרטי לאירועים בצפון',
     },
     en: {
-      title: 'Private Chef in Haifa | Dinners and Events at Your Home | Olivia’s Kitchen',
-      description: 'Private chef in Haifa: I’m Olivia, and I cook Israeli, Italian and Caucasian menus at your home. Kosher, kosher-style and non-kosher options. Send a request for a menu made for your evening.',
+      title: 'Private Chef in Haifa | Dinners and Events | Olivia’s Kitchen',
+      description: 'Private chef in Haifa: I’m Olivia, and I cook Israeli, Italian and Caucasian menus. Kosher, kosher-style and non-kosher options. Send a request for a menu made for your evening.',
       eyebrow: 'Private chef · Haifa',
       heading: 'Private chef\nin Haifa',
       paragraphs: [
-        'I am Olivia, a private chef in Haifa. I come to your home and cook a meal built around your occasion, your guests and your taste: an intimate dinner, a family celebration or simply a reason to get together.',
+        'I am Olivia, a private chef in Haifa. I prepare a table built around your occasion, your guests and your taste: an intimate dinner, a family celebration or simply a reason to get together.',
         'The menu draws on Israeli, Italian and Caucasian cuisine, separately or combined. You can choose a kosher kitchen, kosher-style or non-kosher, and tell me about allergies and dietary preferences.',
         'I work in Haifa, the Krayot, Nesher and the surrounding area.',
       ],
       otherLabel: 'Private chef for events in the North',
     },
     ru: {
-      title: 'Частный шеф в Хайфе | Ужины и мероприятия у вас дома | Olivia’s Kitchen',
-      description: 'Частный шеф в Хайфе: я, Оливия, готовлю у вас дома израильскую, итальянскую и кавказскую кухню. Кошерная, в кошерном стиле и некошерная кухня. Оставьте заявку на меню под ваш вечер.',
+      title: 'Частный шеф в Хайфе | Ужины и мероприятия | Olivia’s Kitchen',
+      description: 'Частный шеф в Хайфе: я, Оливия, готовлю израильскую, итальянскую и кавказскую кухню. Кошерная, в кошерном стиле и некошерная кухня. Оставьте заявку на меню под ваш вечер.',
       eyebrow: 'Частный шеф · Хайфа',
       heading: 'Частный шеф\nв Хайфе',
       paragraphs: [
-        'Я Оливия, частный шеф в Хайфе. Я приезжаю к вам домой и готовлю ужин под ваш повод, ваших гостей и ваш вкус: камерный ужин, семейный праздник или просто повод встретиться.',
+        'Я Оливия, частный шеф в Хайфе. Я готовлю стол под ваш повод, ваших гостей и ваш вкус: камерный ужин, семейный праздник или просто повод встретиться.',
         'Меню строится на израильской, итальянской и кавказской кухне, по отдельности или вместе. Можно выбрать кошерную кухню, кухню в кошерном стиле или некошерную, а также сообщить об аллергиях и пожеланиях по питанию.',
         'Я работаю в Хайфе, Крайот, Нешере и окрестностях.',
       ],
@@ -356,11 +356,11 @@ export const localPages = {
     heroImage: { file: 'burrata-heirloom-tomatoes', width: 1600, height: 1200, altIndex: 2 },
     he: {
       title: 'שף פרטי לאירועים בצפון | כרמיאל, נהריה, עכו | Olivia’s Kitchen',
-      description: 'שפית פרטית לאירועים בבית בצפון: כרמיאל, נהריה, עכו והסביבה. מטבח ישראלי, איטלקי וקווקזי, עם אפשרויות כשר, בסגנון כשר ולא כשר.',
+      description: 'שפית פרטית לאירועים בצפון: כרמיאל, נהריה, עכו והסביבה. מטבח ישראלי, איטלקי וקווקזי, עם אפשרויות כשר, בסגנון כשר ולא כשר.',
       eyebrow: 'שפית פרטית · הצפון',
       heading: 'שף פרטי\nלאירועים בצפון',
       paragraphs: [
-        'אני אוליביה, שפית פרטית מחיפה, ואני מגיעה לאירועים בבית גם בצפון הארץ: בכרמיאל, בנהריה, בעכו ובסביבה.',
+        'אני אוליביה, שפית פרטית מחיפה, ואני עובדת בכל צפון הארץ: בכרמיאל, בנהריה, בעכו ובסביבה.',
         'ארוחת ערב אינטימית או חגיגה משפחתית: מתכננים יחד תפריט ישראלי, איטלקי או קווקזי, או שילוב ביניהם. יש אפשרות למטבח כשר, בסגנון כשר או לא כשר.',
         'אם הבית שלכם במקום אחר בצפון, כתבו ונבדוק יחד.',
       ],
@@ -368,11 +368,11 @@ export const localPages = {
     },
     en: {
       title: 'Private Chef for Events in the North | Karmiel, Nahariya, Akko | Olivia’s Kitchen',
-      description: 'Private chef for events at home in Northern Israel: Karmiel, Nahariya, Akko and the surrounding area. Israeli, Italian and Caucasian menus with kosher, kosher-style and non-kosher options.',
+      description: 'Private chef for events in Northern Israel: Karmiel, Nahariya, Akko and the surrounding area. Israeli, Italian and Caucasian menus with kosher, kosher-style and non-kosher options.',
       eyebrow: 'Private chef · The North',
       heading: 'Private chef\nfor events in the North',
       paragraphs: [
-        'I am Olivia, a private chef from Haifa, and I come to events at home across Northern Israel: Karmiel, Nahariya, Akko and the surrounding area.',
+        'I am Olivia, a private chef from Haifa, and I work across Northern Israel: Karmiel, Nahariya, Akko and the surrounding area.',
         'An intimate dinner or a family celebration: together we plan an Israeli, Italian or Caucasian menu, or a mix of them. Kosher, kosher-style and non-kosher kitchens are all possible.',
         'If your home is elsewhere in the north, write to me and we will check together.',
       ],
@@ -380,11 +380,11 @@ export const localPages = {
     },
     ru: {
       title: 'Частный шеф для мероприятий на севере | Кармиэль, Нагария, Акко | Olivia’s Kitchen',
-      description: 'Частный шеф для мероприятий на дому на севере Израиля: Кармиэль, Нагария, Акко и окрестности. Израильская, итальянская и кавказская кухня, кошерная, в кошерном стиле и некошерная.',
+      description: 'Частный шеф для мероприятий на севере Израиля: Кармиэль, Нагария, Акко и окрестности. Израильская, итальянская и кавказская кухня, кошерная, в кошерном стиле и некошерная.',
       eyebrow: 'Частный шеф · Север',
       heading: 'Частный шеф\nдля мероприятий на севере',
       paragraphs: [
-        'Я Оливия, частный шеф из Хайфы, и приезжаю на домашние мероприятия на севере страны: в Кармиэль, Нагарию, Акко и окрестности.',
+        'Я Оливия, частный шеф из Хайфы, и работаю по всему северу страны: Кармиэль, Нагарию, Акко и окрестности.',
         'Камерный ужин или семейный праздник: вместе составим меню израильской, итальянской или кавказской кухни или соединим их. Можно выбрать кошерную кухню, кухню в кошерном стиле или некошерную.',
         'Если ваш дом в другом месте на севере, напишите, и мы вместе всё проверим.',
       ],
@@ -442,14 +442,15 @@ function foodService(serviceType: string) {
     },
     founder: { '@id': `${siteUrl}/#olivia` },
     knowsAbout: ['Israeli cuisine', 'Italian cuisine', 'Caucasian cuisine', 'Kosher cooking', 'Private dining'],
-    description: 'Private chef service by Olivia in Haifa and Northern Israel: Israeli, Italian and Caucasian menus cooked at home for groups of 4 to 30 guests.',
+    description: 'Private chef service by Olivia in Haifa and Northern Israel: Israeli, Italian and Caucasian menus prepared by the chef and brought to your table for groups of 4 to 30 guests.',
     serviceType,
     inLanguage: ['en', 'he', 'ru'],
     areaServed: [
       ...cityNames.map(name => ({ '@type': 'City', name })),
       { '@type': 'AdministrativeArea', name: 'Northern Israel' },
     ],
-    keywords: 'private chef, Haifa, Northern Israel, kosher, kosher-style, Israeli cuisine, Italian cuisine, Caucasian cuisine',
+    alternateName: ['שף פרטי חיפה', 'שף פרטי בחיפה', 'שפית פרטית בחיפה', 'Private chef Haifa'],
+    keywords: 'private chef, Haifa, Northern Israel, kosher, kosher-style, Israeli cuisine, Italian cuisine, Caucasian cuisine, שף פרטי חיפה, שף פרטי בחיפה, שפית פרטית בחיפה',
   }
 }
 
