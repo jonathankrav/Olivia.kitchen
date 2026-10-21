@@ -314,7 +314,7 @@ export const localPages = {
     other: 'north',
     heroImage: { file: 'hero', width: 1600, height: 1143, altIndex: 0 },
     he: {
-      title: 'שף פרטי חיפה והקריות | שף פרטי בחיפה לארוחות ואירועים בבית | Olivia’s Kitchen',
+      title: 'שף פרטי חיפה והקריות | שף פרטי בחיפה לארוחות ואירועים | Olivia’s Kitchen',
       description: 'שף פרטי חיפה: אני, אוליביה, שפית פרטית בחיפה ובקריות. אני מבשלת מטבח ישראלי, איטלקי וקווקזי, עם אפשרויות כשר, בסגנון כשר ולא כשר. השאירו פנייה לתפריט מותאם.',
       eyebrow: 'שף פרטי · חיפה',
       heading: 'שף פרטי\nבחיפה',
@@ -326,7 +326,7 @@ export const localPages = {
       otherLabel: 'שף פרטי לאירועים בצפון',
     },
     en: {
-      title: 'Private Chef in Haifa | Dinners and Events at Your Home | Olivia’s Kitchen',
+      title: 'Private Chef in Haifa | Dinners and Events | Olivia’s Kitchen',
       description: 'Private chef in Haifa: I’m Olivia, and I cook Israeli, Italian and Caucasian menus. Kosher, kosher-style and non-kosher options. Send a request for a menu made for your evening.',
       eyebrow: 'Private chef · Haifa',
       heading: 'Private chef\nin Haifa',
@@ -338,7 +338,7 @@ export const localPages = {
       otherLabel: 'Private chef for events in the North',
     },
     ru: {
-      title: 'Частный шеф в Хайфе | Ужины и мероприятия у вас дома | Olivia’s Kitchen',
+      title: 'Частный шеф в Хайфе | Ужины и мероприятия | Olivia’s Kitchen',
       description: 'Частный шеф в Хайфе: я, Оливия, готовлю израильскую, итальянскую и кавказскую кухню. Кошерная, в кошерном стиле и некошерная кухня. Оставьте заявку на меню под ваш вечер.',
       eyebrow: 'Частный шеф · Хайфа',
       heading: 'Частный шеф\nв Хайфе',
