@@ -442,7 +442,7 @@ function foodService(serviceType: string) {
     },
     founder: { '@id': `${siteUrl}/#olivia` },
     knowsAbout: ['Israeli cuisine', 'Italian cuisine', 'Caucasian cuisine', 'Kosher cooking', 'Private dining'],
-    description: 'Private chef service by Olivia in Haifa and Northern Israel: Israeli, Italian and Caucasian menus cooked at home for groups of 4 to 30 guests.',
+    description: 'Private chef service by Olivia in Haifa and Northern Israel: Israeli, Italian and Caucasian menus prepared by the chef and brought to your table for groups of 4 to 30 guests.',
     serviceType,
     inLanguage: ['en', 'he', 'ru'],
     areaServed: [
