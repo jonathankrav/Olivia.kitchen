@@ -45,7 +45,6 @@ function RecipeText({ recipe, headings }: { recipe: Recipe; headings?: boolean }
     <>
       {recipe.subtitle && <p className="book-subtitle">{recipe.subtitle}</p>}
       {recipe.meta && recipe.meta.length > 0 && <p className="book-meta">{recipe.meta.join(' · ')}</p>}
-      {pieces?.top && <img className="m-art m-art-top" src={pieces.top.src} alt="" />}
       {headings && <h3 className="book-section">Ингредиенты</h3>}
       {pieces?.bl && <img className="m-art m-art-bl" src={pieces.bl.src} alt="" />}
       {recipe.ingredients.map((group, index) => (
@@ -73,7 +72,10 @@ function RecipePages({ recipe }: { recipe: Recipe }) {
     return (
       <>
         <section className="book-page book-page-text">
-          <h2 className="book-title">{recipe.title}</h2>
+          <div className="m-head">
+            {pieces.top && <img className="m-art m-art-top" src={pieces.top.src} alt="" />}
+            <h2 className="book-title">{recipe.title}</h2>
+          </div>
           <RecipeText recipe={recipe} headings />
         </section>
         <section className="book-page book-page-art">
