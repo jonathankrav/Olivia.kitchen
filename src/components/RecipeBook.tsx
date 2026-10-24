@@ -69,6 +69,7 @@ export function RecipeBook({ book }: { book: Book }) {
   const hasRecipes = book.recipes.length > 0
   const last = hasRecipes ? book.recipes.length + 1 : 0
   const recipe = page >= 2 ? book.recipes[page - 2] : undefined
+  const coverArt = book.cover || book.recipes[0]?.illustration || ''
 
   async function leave() {
     await (logoutBook as unknown as () => Promise<unknown>)()
@@ -87,7 +88,7 @@ export function RecipeBook({ book }: { book: Book }) {
                 <p className="book-hand">{hasRecipes ? 'Мои рецепты, нарисованные и записанные от руки.' : 'Здесь появятся первые рецепты.'}</p>
                 {hasRecipes && <button className="book-open" onClick={() => setPage(1)}>Открыть оглавление</button>}
               </section>
-              <section className="book-page book-page-right"><Illustration svg={book.cover} label="Продукты на тарелке" /></section>
+              <section className="book-page book-page-right">{coverArt && <Illustration svg={coverArt} label="Рисунок из книги рецептов" />}</section>
             </>
           )}
           {page === 1 && (
@@ -100,7 +101,7 @@ export function RecipeBook({ book }: { book: Book }) {
                   ))}
                 </ol>
               </section>
-              <section className="book-page book-page-right"><Illustration svg={book.cover} label="Продукты на тарелке" /></section>
+              <section className="book-page book-page-right">{coverArt && <Illustration svg={coverArt} label="Рисунок из книги рецептов" />}</section>
             </>
           )}
           {recipe && <RecipePages recipe={recipe} />}
