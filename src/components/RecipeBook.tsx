@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import type { FormEvent } from 'react'
+import type { CSSProperties, FormEvent } from 'react'
 import { useRouter } from '@tanstack/react-router'
 import { ChevronLeft, ChevronRight, List } from 'lucide-react'
 import { loginBook, logoutBook } from '@/lib/book'
@@ -59,28 +59,20 @@ function RecipeText({ recipe, headings }: { recipe: Recipe; headings?: boolean }
 }
 
 function RecipePages({ recipe }: { recipe: Recipe }) {
-  if (recipe.illustration && recipe.artLayout === 'page') {
+  if (recipe.art) {
+    const half = (src: string) => ({ ['--art' as string]: `url("${src}")`, aspectRatio: String(recipe.art?.ratio) }) as CSSProperties
     return (
       <>
         <section className="book-page book-page-art">
-          <div className="book-art-layer" dangerouslySetInnerHTML={{ __html: recipe.illustration }} />
           <h2 className="book-title book-art-title">{recipe.title}</h2>
+          <div className="book-art-layer" role="img" aria-label={recipe.title}>
+            <div className="book-art-half book-art-left" style={half(recipe.art.left)} />
+            <div className="book-art-half book-art-right" style={half(recipe.art.right)} />
+          </div>
         </section>
         <section className="book-page book-page-text">
           <RecipeText recipe={recipe} headings />
         </section>
-      </>
-    )
-  }
-  if (recipe.illustration && recipe.artLayout === 'spread') {
-    return (
-      <>
-        <section className="book-page book-page-text book-text-spread">
-          <RecipeText recipe={recipe} headings />
-        </section>
-        <section className="book-page book-page-blank" />
-        <div className="book-art-layer book-art-spread" dangerouslySetInnerHTML={{ __html: recipe.illustration }} />
-        <h2 className="book-title book-art-title book-art-title-spread">{recipe.title}</h2>
       </>
     )
   }
