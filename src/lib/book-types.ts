@@ -10,6 +10,7 @@ export type Recipe = {
   note?: string
   caption?: string
   illustration?: string
+  artLayout?: 'page' | 'spread'
 }
 
 export type Book = {

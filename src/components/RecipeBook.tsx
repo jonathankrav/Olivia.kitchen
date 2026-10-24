@@ -39,21 +39,56 @@ function Illustration({ svg, label }: { svg: string; label?: string }) {
   return <div className="book-art" role={label ? 'img' : undefined} aria-label={label} dangerouslySetInnerHTML={{ __html: svg }} />
 }
 
+function RecipeText({ recipe, headings }: { recipe: Recipe; headings?: boolean }) {
+  return (
+    <>
+      {recipe.subtitle && <p className="book-subtitle">{recipe.subtitle}</p>}
+      {recipe.meta && recipe.meta.length > 0 && <p className="book-meta">{recipe.meta.join(' · ')}</p>}
+      {headings && <h3 className="book-section">Ингредиенты</h3>}
+      {recipe.ingredients.map((group, index) => (
+        <div className="book-group" key={index}>
+          {group.title && <h3>{group.title}</h3>}
+          <ul>{group.items.map(item => <li key={item}>{item}</li>)}</ul>
+        </div>
+      ))}
+      {headings && <h3 className="book-section">Приготовление</h3>}
+      <ol className="book-steps">{recipe.steps.map(step => <li key={step}>{step}</li>)}</ol>
+      {recipe.note && <p className="book-note">{recipe.note}</p>}
+    </>
+  )
+}
+
 function RecipePages({ recipe }: { recipe: Recipe }) {
+  if (recipe.illustration && recipe.artLayout === 'page') {
+    return (
+      <>
+        <section className="book-page book-page-art">
+          <div className="book-art-layer" dangerouslySetInnerHTML={{ __html: recipe.illustration }} />
+          <h2 className="book-title book-art-title">{recipe.title}</h2>
+        </section>
+        <section className="book-page book-page-text">
+          <RecipeText recipe={recipe} headings />
+        </section>
+      </>
+    )
+  }
+  if (recipe.illustration && recipe.artLayout === 'spread') {
+    return (
+      <>
+        <section className="book-page book-page-text book-text-spread">
+          <RecipeText recipe={recipe} headings />
+        </section>
+        <section className="book-page book-page-blank" />
+        <div className="book-art-layer book-art-spread" dangerouslySetInnerHTML={{ __html: recipe.illustration }} />
+        <h2 className="book-title book-art-title book-art-title-spread">{recipe.title}</h2>
+      </>
+    )
+  }
   return (
     <>
       <section className="book-page book-page-left">
         <h2 className="book-title">{recipe.title}</h2>
-        {recipe.subtitle && <p className="book-subtitle">{recipe.subtitle}</p>}
-        {recipe.meta && recipe.meta.length > 0 && <p className="book-meta">{recipe.meta.join(' · ')}</p>}
-        {recipe.ingredients.map((group, index) => (
-          <div className="book-group" key={index}>
-            {group.title && <h3>{group.title}</h3>}
-            <ul>{group.items.map(item => <li key={item}>{item}</li>)}</ul>
-          </div>
-        ))}
-        <ol className="book-steps">{recipe.steps.map(step => <li key={step}>{step}</li>)}</ol>
-        {recipe.note && <p className="book-note">{recipe.note}</p>}
+        <RecipeText recipe={recipe} />
       </section>
       <section className="book-page book-page-right">
         {recipe.illustration && <Illustration svg={recipe.illustration} label={recipe.title} />}
