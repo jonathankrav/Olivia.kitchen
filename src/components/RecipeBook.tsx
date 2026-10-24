@@ -40,43 +40,48 @@ function Illustration({ svg, label }: { svg: string; label?: string }) {
 }
 
 function RecipeText({ recipe, headings }: { recipe: Recipe; headings?: boolean }) {
+  const pieces = recipe.art?.pieces
   return (
     <>
       {recipe.subtitle && <p className="book-subtitle">{recipe.subtitle}</p>}
       {recipe.meta && recipe.meta.length > 0 && <p className="book-meta">{recipe.meta.join(' · ')}</p>}
+      {pieces?.top && <img className="m-art m-art-top" src={pieces.top.src} alt="" />}
       {headings && <h3 className="book-section">Ингредиенты</h3>}
+      {pieces?.bl && <img className="m-art m-art-bl" src={pieces.bl.src} alt="" />}
       {recipe.ingredients.map((group, index) => (
         <div className="book-group" key={index}>
           {group.title && <h3>{group.title}</h3>}
           <ul>{group.items.map(item => <li key={item}>{item}</li>)}</ul>
         </div>
       ))}
-      {headings && <h3 className="book-section">Приготовление</h3>}
+      {headings && <h3 className="book-section book-section-steps">Приготовление</h3>}
       <ol className="book-steps">{recipe.steps.map(step => <li key={step}>{step}</li>)}</ol>
       {recipe.note && <p className="book-note">{recipe.note}</p>}
+      {pieces?.dish && (
+        <div className="m-art m-art-end">
+          <img className="m-art-dish" src={pieces.dish.src} alt="" />
+          {pieces.br && <img className="m-art-br" src={pieces.br.src} alt="" />}
+        </div>
+      )}
     </>
   )
 }
 
 function RecipePages({ recipe }: { recipe: Recipe }) {
   if (recipe.art) {
-    const ratio = recipe.art.ratio
-    const w = Math.round(ratio * 1000)
-    const half = (src: string) => {
-      const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 ${w} 1000'><image href='${src}' width='${w}' height='1000'/></svg>`
-      return { ['--art' as string]: `url("${src}")`, ['--shape' as string]: `url("data:image/svg+xml,${encodeURIComponent(svg)}")`, aspectRatio: String(ratio) } as CSSProperties
-    }
+    const { ratio, pieces } = recipe.art
     return (
       <>
-        <section className="book-page book-page-art">
-          <h2 className="book-title book-art-title">{recipe.title}</h2>
-          <div className="book-art-layer" role="img" aria-label={recipe.title}>
-            <div className="book-art-half book-art-left" style={half(recipe.art.left)} />
-            <div className="book-art-half book-art-right" style={half(recipe.art.right)} />
-          </div>
-        </section>
         <section className="book-page book-page-text">
+          <h2 className="book-title">{recipe.title}</h2>
           <RecipeText recipe={recipe} headings />
+        </section>
+        <section className="book-page book-page-art">
+          <div className="book-art-stage" role="img" aria-label={recipe.title} style={{ aspectRatio: String(ratio) } as CSSProperties}>
+            {Object.entries(pieces).map(([name, piece]) => (
+              <img key={name} src={piece.src} alt="" style={{ left: `${piece.x * 100}%`, top: `${piece.y * 100}%`, width: `${piece.w * 100}%` }} />
+            ))}
+          </div>
         </section>
       </>
     )

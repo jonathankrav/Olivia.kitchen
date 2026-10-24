@@ -1,5 +1,9 @@
 export type RecipeGroup = { title?: string; items: string[] }
 
+export type ArtPiece = { src: string; x: number; y: number; w: number; r: number }
+
+export type BookArt = { ratio: number; pieces: { dish?: ArtPiece; top?: ArtPiece; bl?: ArtPiece; br?: ArtPiece } }
+
 export type Recipe = {
   id: string
   title: string
@@ -10,7 +14,7 @@ export type Recipe = {
   note?: string
   caption?: string
   illustration?: string
-  art?: { ratio: number; left: string; right: string }
+  art?: BookArt
 }
 
 export type Book = {
