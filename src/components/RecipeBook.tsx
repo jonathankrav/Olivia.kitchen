@@ -60,7 +60,12 @@ function RecipeText({ recipe, headings }: { recipe: Recipe; headings?: boolean }
 
 function RecipePages({ recipe }: { recipe: Recipe }) {
   if (recipe.art) {
-    const half = (src: string) => ({ ['--art' as string]: `url("${src}")`, aspectRatio: String(recipe.art?.ratio) }) as CSSProperties
+    const ratio = recipe.art.ratio
+    const w = Math.round(ratio * 1000)
+    const half = (src: string) => {
+      const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 ${w} 1000'><image href='${src}' width='${w}' height='1000'/></svg>`
+      return { ['--art' as string]: `url("${src}")`, ['--shape' as string]: `url("data:image/svg+xml,${encodeURIComponent(svg)}")`, aspectRatio: String(ratio) } as CSSProperties
+    }
     return (
       <>
         <section className="book-page book-page-art">
