@@ -104,7 +104,7 @@ export const book: Book = {
     },
     {
       id: 'souffle',
-      title: 'Суфле',
+      title: 'Шоколадное суфле',
       ingredients: [
         { items: ['яйца — 12 шт.', 'сахар — 0,5 кг'] },
         { items: ['сливочное масло — 400 г', 'шоколад — 1 кг'] },
