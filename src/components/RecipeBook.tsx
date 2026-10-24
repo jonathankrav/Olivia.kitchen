@@ -106,7 +106,8 @@ export function RecipeBook({ book }: { book: Book }) {
   const hasRecipes = book.recipes.length > 0
   const last = hasRecipes ? book.recipes.length + 1 : 0
   const recipe = page >= 2 ? book.recipes[page - 2] : undefined
-  const coverArt = book.cover || book.recipes[0]?.illustration || ''
+  const firstDish = book.recipes[0]?.art?.pieces.dish?.src
+  const coverArt = book.cover || book.recipes[0]?.illustration || (firstDish ? `<img src="${firstDish}" alt="">` : '')
 
   async function leave() {
     await (logoutBook as unknown as () => Promise<unknown>)()
