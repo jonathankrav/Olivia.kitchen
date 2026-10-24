@@ -56,8 +56,8 @@ function RecipePages({ recipe }: { recipe: Recipe }) {
         {recipe.note && <p className="book-note">{recipe.note}</p>}
       </section>
       <section className="book-page book-page-right">
-        <Illustration svg={recipe.illustration} label={recipe.title} />
-        {recipe.caption && <p className="book-caption">{recipe.caption}</p>}
+        {recipe.illustration && <Illustration svg={recipe.illustration} label={recipe.title} />}
+        {recipe.illustration && recipe.caption && <p className="book-caption">{recipe.caption}</p>}
       </section>
     </>
   )

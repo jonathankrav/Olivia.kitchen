@@ -9,7 +9,7 @@ export type Recipe = {
   steps: string[]
   note?: string
   caption?: string
-  illustration: string
+  illustration?: string
 }
 
 export type Book = {
