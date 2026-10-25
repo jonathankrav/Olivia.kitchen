@@ -147,7 +147,7 @@ function NewOrderForm({ onCreated, onClose }: { onCreated: (order: Order) => voi
   }
 
   return (
-    <form className="ord-new" onSubmit={submit}>
+    <form className="ord-form" onSubmit={submit}>
       <h2>Новая заявка</h2>
       <div className="ord-fields">
         <label>Имя<input name="name" /></label>
