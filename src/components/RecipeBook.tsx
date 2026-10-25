@@ -22,7 +22,7 @@ export function BookLogin() {
   }
 
   return (
-    <main className="book-login">
+    <main className="book-login" dir="ltr" lang="ru">
       <form className="book-login-card" onSubmit={submit}>
         <p className="book-login-mark">Olivia’s Kitchen</p>
         <h1>Книга рецептов</h1>
@@ -117,7 +117,7 @@ export function RecipeBook({ book }: { book: Book }) {
   }
 
   return (
-    <main className="book-shell">
+    <main className="book-shell" dir="ltr" lang="ru">
       <div className="book">
         <div className="book-spread" key={page}>
           {page === 0 && (
