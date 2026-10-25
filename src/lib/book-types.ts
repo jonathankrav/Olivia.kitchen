@@ -8,6 +8,7 @@ export type Recipe = {
   id: string
   title: string
   subtitle?: string
+  listTitle?: string
   meta?: string[]
   ingredients: RecipeGroup[]
   steps: string[]

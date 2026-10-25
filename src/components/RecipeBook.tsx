@@ -45,7 +45,7 @@ function RecipeText({ recipe, headings }: { recipe: Recipe; headings?: boolean }
     <>
       {recipe.subtitle && <p className="book-subtitle">{recipe.subtitle}</p>}
       {recipe.meta && recipe.meta.length > 0 && <p className="book-meta">{recipe.meta.join(' · ')}</p>}
-      {headings && <h3 className="book-section">Ингредиенты</h3>}
+      {headings && <h3 className="book-section">{recipe.listTitle ?? 'Ингредиенты'}</h3>}
       {pieces?.bl && <img className="m-art m-art-bl" src={pieces.bl.src} alt="" />}
       {recipe.ingredients.map((group, index) => (
         <div className="book-group" key={index}>
