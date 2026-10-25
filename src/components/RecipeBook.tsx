@@ -53,8 +53,8 @@ function RecipeText({ recipe, headings }: { recipe: Recipe; headings?: boolean }
           <ul>{group.items.map(item => <li key={item}>{item}</li>)}</ul>
         </div>
       ))}
-      {headings && <h3 className="book-section book-section-steps">Приготовление</h3>}
-      <ol className="book-steps">{recipe.steps.map(step => <li key={step}>{step}</li>)}</ol>
+      {headings && recipe.steps.length > 0 && <h3 className="book-section book-section-steps">Приготовление</h3>}
+      {recipe.steps.length > 0 && <ol className="book-steps">{recipe.steps.map(step => <li key={step}>{step}</li>)}</ol>}
       {recipe.note && <p className="book-note">{recipe.note}</p>}
       {pieces?.dish && (
         <div className="m-art m-art-end">
