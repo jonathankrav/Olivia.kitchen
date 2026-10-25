@@ -4,7 +4,7 @@ import { ArrowDown, ArrowRight, ArrowUpRight, Check, Leaf, Mail, Menu, MessageCi
 import { GallerySection } from '@/components/Gallery'
 import { AreasSection, FaqSection, KashrutSection, ServicesSection, VideoSection } from '@/components/Sections'
 import { contact, content, sections, type Language } from '@/lib/content'
-import { notifyRequest } from '@/lib/notify'
+import { notifyRequest, reportMailProblem } from '@/lib/notify'
 
 const cuisineKeys = ['israeli', 'italian', 'azerbaijani']
 const imageUrl = (name: string) => `/img/${name}.webp`
@@ -50,11 +50,15 @@ export function Landing({ language }: { language: Language }) {
           headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
           body: JSON.stringify({ ...fields, _template: 'table', _captcha: 'false' }),
         }).then(async response => {
-          const result = await response.json()
-          if (!response.ok || String(result.success) !== 'true') throw new Error('Submission failed')
+          const result = await response.json().catch(() => ({}))
+          if (!response.ok || String(result.success) !== 'true') throw new Error(`formsubmit: HTTP ${response.status} ${String(result.message ?? '').slice(0, 250)}`)
         }),
         (notifyRequest as unknown as (options: { data: Record<string, unknown> }) => Promise<{ ok: boolean }>)({ data: fields }),
       ])
+      if (mail.status === 'rejected') {
+        const detail = mail.reason instanceof Error ? mail.reason.message : String(mail.reason)
+        void (reportMailProblem as unknown as (options: { data: { detail: string } }) => Promise<unknown>)({ data: { detail } }).catch(() => undefined)
+      }
       const delivered = mail.status === 'fulfilled' || (telegram.status === 'fulfilled' && telegram.value.ok)
       if (!delivered) throw new Error('Submission failed')
       setFormState('success')

@@ -7,3 +7,13 @@ export const notifyRequest = createServerFn({ method: 'POST' }).handler(async (c
   const [saved, sent] = await Promise.allSettled([saveSiteOrder(input), sendRequestNotification(input)])
   return { ok: (saved.status === 'fulfilled' && saved.value) || (sent.status === 'fulfilled' && sent.value) }
 })
+
+export const reportMailProblem = createServerFn({ method: 'POST' }).handler(async (context): Promise<{ ok: boolean }> => {
+  const { sendMailProblem } = await import('@/server/telegram')
+  const detail = (context as unknown as { data?: { detail?: unknown } }).data?.detail
+  try {
+    return { ok: await sendMailProblem(detail) }
+  } catch {
+    return { ok: false }
+  }
+})
