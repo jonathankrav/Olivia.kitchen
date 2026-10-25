@@ -4,7 +4,7 @@ import { ArrowDown, ArrowRight, ArrowUpRight, Check, Leaf, Mail, Menu, MessageCi
 import { GallerySection } from '@/components/Gallery'
 import { AreasSection, FaqSection, KashrutSection, ServicesSection, VideoSection } from '@/components/Sections'
 import { contact, content, sections, type Language } from '@/lib/content'
-import { notifyRequest } from '@/lib/notify'
+import { notifyRequest, reportMailProblem } from '@/lib/notify'
 
 const cuisineKeys = ['israeli', 'italian', 'azerbaijani']
 const imageUrl = (name: string) => `/img/${name}.webp`
@@ -44,18 +44,23 @@ export function Landing({ language }: { language: Language }) {
     const fields = Object.fromEntries(new FormData(form).entries())
     setFormState('sending')
     try {
-      const [mail, telegram] = await Promise.allSettled([
-        fetch(`https://formsubmit.co/ajax/${contact.email}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify({ ...fields, _template: 'table', _captcha: 'false' }),
-        }).then(async response => {
-          const result = await response.json()
-          if (!response.ok || String(result.success) !== 'true') throw new Error('Submission failed')
-        }),
-        (notifyRequest as unknown as (options: { data: Record<string, unknown> }) => Promise<{ ok: boolean }>)({ data: fields }),
-      ])
-      const delivered = mail.status === 'fulfilled' || (telegram.status === 'fulfilled' && telegram.value.ok)
+      const server = await (notifyRequest as unknown as (options: { data: Record<string, unknown> }) => Promise<{ ok: boolean; mail: boolean }>)({ data: fields }).catch(() => ({ ok: false, mail: false }))
+      let delivered = server.ok
+      if (!server.mail) {
+        try {
+          const response = await fetch(`https://formsubmit.co/ajax/${contact.email}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify({ ...fields, _template: 'table', _captcha: 'false' }),
+          })
+          const result = await response.json().catch(() => ({}))
+          if (!response.ok || String(result.success) !== 'true') throw new Error(`formsubmit: HTTP ${response.status} ${String(result.message ?? '').slice(0, 250)}`)
+          delivered = true
+        } catch (error) {
+          const detail = error instanceof Error ? error.message : String(error)
+          void (reportMailProblem as unknown as (options: { data: { detail: string } }) => Promise<unknown>)({ data: { detail } }).catch(() => undefined)
+        }
+      }
       if (!delivered) throw new Error('Submission failed')
       setFormState('success')
       form.reset()

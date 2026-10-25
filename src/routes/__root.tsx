@@ -25,7 +25,7 @@ export const Route = createRootRoute({
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   const pathname = useRouterState({ select: state => state.location.pathname })
-  const privateBook = pathname.startsWith('/kniga')
+  const privateBook = pathname.startsWith('/kniga') || pathname.startsWith('/orders')
   const language = privateBook ? 'ru' : pathname.startsWith('/en') ? 'en' : pathname.startsWith('/ru') ? 'ru' : 'he'
   return (
     <html lang={language} dir={language === 'he' ? 'rtl' : 'ltr'}>
