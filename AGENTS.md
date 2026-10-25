@@ -37,3 +37,5 @@ The inquiry form posts JSON to FormSubmit (`https://formsubmit.co/ajax/<contact.
 ## Workflow
 
 Use pnpm for dependency management. Local development is `pnpm dev`. During agent-runner tasks, do not run build, dev-server, TypeScript-check, or test commands; automatic deployment validates the project. Never inspect `.git` or print credentials. No inline code comments unless requested.
+
+- Contact form notifications: the form sends the request to formsubmit (email) and, in parallel, to the notifyRequest server fn in src/lib/notify.ts, which messages Telegram via src/server/telegram.ts. Env vars TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID are set only by the owner in Vercel; never put them in code or chat. Without them the notification is silently skipped.
