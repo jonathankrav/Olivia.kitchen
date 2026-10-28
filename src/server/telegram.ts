@@ -7,6 +7,7 @@ const labels: [string, string][] = [
   ['cuisine', 'Кухня'],
   ['language', 'Язык'],
   ['message', 'Сообщение'],
+  ['origin', 'Откуда пришёл'],
 ]
 
 const recent: number[] = []
