@@ -84,6 +84,7 @@ function build(fields: Record<string, unknown>, source: Order['source']): Order 
     cuisine: oneLine(fields.cuisine, 120),
     language: oneLine(fields.language, 40),
     message: text(fields.message, 3000),
+    origin: oneLine(fields.origin, 200),
     status: 'new',
     cost: null,
     revenue: null,

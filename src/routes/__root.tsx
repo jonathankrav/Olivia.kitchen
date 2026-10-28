@@ -34,6 +34,8 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         {children}
+        {!privateBook && <script dangerouslySetInnerHTML={{ __html: 'window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)}' }} />}
+        {!privateBook && <script defer src="/_vercel/insights/script.js" />}
         <Scripts />
       </body>
     </html>

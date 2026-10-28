@@ -9,6 +9,26 @@ import { notifyRequest, reportMailProblem } from '@/lib/notify'
 const cuisineKeys = ['israeli', 'italian', 'azerbaijani']
 const imageUrl = (name: string) => `/img/${name}.webp`
 
+function visitOrigin() {
+  try {
+    const saved = window.sessionStorage.getItem('ok_origin')
+    if (saved) return saved
+    const params = new URLSearchParams(window.location.search)
+    const utm = [params.get('utm_source'), params.get('utm_medium'), params.get('utm_campaign')].filter(Boolean).join(' / ')
+    let referrer = ''
+    try {
+      referrer = document.referrer ? new URL(document.referrer).hostname : ''
+    } catch {
+      referrer = ''
+    }
+    const value = utm || referrer || 'прямой заход'
+    window.sessionStorage.setItem('ok_origin', value)
+    return value
+  } catch {
+    return ''
+  }
+}
+
 const languagePaths: Record<Language, string> = { en: '/en', he: '/', ru: '/ru' }
 
 export function Landing({ language }: { language: Language }) {
@@ -20,6 +40,10 @@ export function Landing({ language }: { language: Language }) {
   const text = content[language]
   const alts = sections[language].alts
   const direction = language === 'he' ? 'rtl' : 'ltr'
+
+  useEffect(() => {
+    visitOrigin()
+  }, [])
 
   useEffect(() => {
     setSiteUrl(window.location.origin)
@@ -41,7 +65,7 @@ export function Landing({ language }: { language: Language }) {
     event.preventDefault()
     if (formState === 'sending') return
     const form = event.currentTarget
-    const fields = Object.fromEntries(new FormData(form).entries())
+    const fields: Record<string, unknown> = { ...Object.fromEntries(new FormData(form).entries()), origin: visitOrigin() }
     setFormState('sending')
     try {
       const server = await (notifyRequest as unknown as (options: { data: Record<string, unknown> }) => Promise<{ ok: boolean; mail: boolean }>)({ data: fields }).catch(() => ({ ok: false, mail: false }))

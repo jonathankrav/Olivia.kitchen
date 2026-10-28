@@ -20,6 +20,7 @@ export type Order = {
   cuisine: string
   language: string
   message: string
+  origin?: string
   status: OrderStatus
   cost: number | null
   revenue: number | null
