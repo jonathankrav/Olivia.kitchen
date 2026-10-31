@@ -44,4 +44,4 @@ Use pnpm for dependency management. Local development is `pnpm dev`. During agen
 
 - Analytics: Vercel Web Analytics through the script tags in src/routes/__root.tsx (no npm package, public pages only; it must also be enabled in the Vercel project). Landing remembers the visit origin (utm_source/medium/campaign or referrer host) in sessionStorage and sends it as the `origin` field with a request; Telegram, email and the stored order show it as «Откуда пришёл».
 
-- Menu section (MenuSection in src/components/Sections.tsx, `menu` in `sections` of src/lib/content.ts, all three languages): dishes by category as text; photos per dish are planned. The owner approves the dish list; keep the three languages aligned. No «ручной работы» promises and no pork or seafood.
+- Menu section (MenuSection in src/components/Sections.tsx, `menu` in `sections` of src/lib/content.ts, all three languages): dishes by category as text. The owner approves the dish list; keep the three languages aligned. No «ручной работы» promises and no pork or seafood.
