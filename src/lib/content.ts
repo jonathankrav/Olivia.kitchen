@@ -4,7 +4,7 @@ export const contact = {
   email: 'chef@olivia.kitchen',
   phone: '054-505-5199',
   phoneE164: '+972545055199',
-  whatsappNumber: '+972587217215',
+  whatsappNumber: '+972545055199',
 }
 
 export const content = {
