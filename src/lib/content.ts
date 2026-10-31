@@ -22,7 +22,7 @@ export const content = {
     kitchensIntro: 'Different traditions, the same love for bringing people together. Pick a favourite, or let me create a menu that crosses borders.',
     cuisineNames: ['Israeli', 'Italian', 'Caucasian'],
     cuisineNotes: ['Fresh, vibrant & generous', 'Simple, soulful & seasonal', 'Warm, aromatic & heartfelt'],
-    cuisineDescriptions: ['Colourful mezze, bright herbs, and beautiful ingredients. A sun-filled table made for sharing.', 'Handmade pasta, seasonal produce, and the joy of a long, unhurried meal. A little taste of la dolce vita.', 'Fragrant saffron rice, fresh herbs, and comforting flavours. A rich tradition of welcoming people to the table.'],
+    cuisineDescriptions: ['Colourful mezze, bright herbs, and beautiful ingredients. A sun-filled table made for sharing.', 'Pasta, seasonal produce, and the joy of a long, unhurried meal. A little taste of la dolce vita.', 'Fragrant saffron rice, fresh herbs, and comforting flavours. A rich tradition of welcoming people to the table.'],
     galleryLabel: 'FROM THE KITCHEN', galleryTitle: 'A feast for the eyes.', galleryText: 'A little inspiration for your next gathering.', all: 'All flavours', savoury: 'Starters & mains', desserts: 'Desserts',
     imageDisclosure: 'Photographs of dishes I prepared. © JonathanKrav', viewImage: 'View image', close: 'Close',
     contactLabel: 'LET’S MAKE SOMETHING SPECIAL', contactTitle: 'Your next beautiful\nevening starts here.',
@@ -50,7 +50,7 @@ export const content = {
     kitchensIntro: 'מסורות שונות, אותה אהבה לחיבור בין אנשים. בחרו מטבח אהוב, או אצור עבורכם תפריט שחוצה גבולות.',
     cuisineNames: ['ישראלי', 'איטלקי', 'קווקזי'],
     cuisineNotes: ['טרי, צבעוני ונדיב', 'פשוט, מלא נשמה ועונתי', 'חם, ארומטי ומכל הלב'],
-    cuisineDescriptions: ['מזטים צבעוניים, עשבי תיבול רעננים וחומרי גלם נהדרים. שולחן מלא שמש שנועד לחלוק.', 'פסטה בעבודת יד, תוצרת עונתית והנאה מארוחה ארוכה ונינוחה. טעימה קטנה מהחיים הטובים.', 'אורז זעפרן ריחני, עשבי תיבול טריים וטעמים מנחמים. מסורת עשירה של אירוח סביב השולחן.'],
+    cuisineDescriptions: ['מזטים צבעוניים, עשבי תיבול רעננים וחומרי גלם נהדרים. שולחן מלא שמש שנועד לחלוק.', 'פסטה, תוצרת עונתית והנאה מארוחה ארוכה ונינוחה. טעימה קטנה מהחיים הטובים.', 'אורז זעפרן ריחני, עשבי תיבול טריים וטעמים מנחמים. מסורת עשירה של אירוח סביב השולחן.'],
     galleryLabel: 'מהמטבח', galleryTitle: 'חגיגה לעיניים.', galleryText: 'קצת השראה למפגש הבא שלכם.', all: 'כל הטעמים', savoury: 'פתיחות ועיקריות', desserts: 'קינוחים',
     imageDisclosure: 'צילומי מנות שהכנתי. © JonathanKrav', viewImage: 'הצגת תמונה', close: 'סגירה',
     contactLabel: 'בואו ניצור משהו מיוחד', contactTitle: 'הערב היפה הבא שלכם\nמתחיל כאן.',
@@ -78,7 +78,7 @@ export const content = {
     kitchensIntro: 'Разные традиции и одна любовь к тёплым встречам. Выберите любимую кухню или я создам меню без границ.',
     cuisineNames: ['Израильская', 'Итальянская', 'Кавказская'],
     cuisineNotes: ['Свежая, яркая и щедрая', 'Простая, душевная и сезонная', 'Тёплая, ароматная и искренняя'],
-    cuisineDescriptions: ['Разноцветные мезе, свежая зелень и прекрасные продукты. Солнечный стол для дружной компании.', 'Паста ручной работы, сезонные продукты и радость неспешного ужина. Немного итальянской dolce vita.', 'Ароматный шафрановый плов, свежая зелень и уютные вкусы. Богатая традиция гостеприимства.'],
+    cuisineDescriptions: ['Разноцветные мезе, свежая зелень и прекрасные продукты. Солнечный стол для дружной компании.', 'Паста, сезонные продукты и радость неспешного ужина. Немного итальянской dolce vita.', 'Ароматный шафрановый плов, свежая зелень и уютные вкусы. Богатая традиция гостеприимства.'],
     galleryLabel: 'ИЗ КУХНИ', galleryTitle: 'Праздник для глаз.', galleryText: 'Немного вдохновения для вашей следующей встречи.', all: 'Все вкусы', savoury: 'Закуски и горячее', desserts: 'Десерты',
     imageDisclosure: 'Фотографии блюд, приготовленных мной. © JonathanKrav', viewImage: 'Открыть изображение', close: 'Закрыть',
     contactLabel: 'СОЗДАДИМ ЧТО-ТО ОСОБЕННОЕ', contactTitle: 'Ваш прекрасный вечер\nначинается здесь.',
@@ -180,7 +180,7 @@ export const sections = {
       options: [
         { title: 'Kosher', text: 'A menu planned around the kashrut rules of your home, including the separation of meat and dairy.' },
         { title: 'Kosher-style', text: 'No pork or shellfish and no mixing of meat and dairy.' },
-        { title: 'Not kosher', text: 'Full freedom with the menu: seafood, meat with dairy, anything you like, except pork.' },
+        { title: 'Not kosher', text: 'A menu without kashrut limits: meat and dairy can share one table. No pork or seafood.' },
       ],
     },
     areas: {
@@ -232,7 +232,7 @@ export const sections = {
       options: [
         { title: 'מטבח כשר', text: 'תפריט שמתוכנן לפי כללי הכשרות של הבית שלכם, כולל הפרדה בין בשרי לחלבי.' },
         { title: 'בסגנון כשר', text: 'בלי בשר חזיר ופירות ים ובלי ערבוב בשר וחלב.' },
-        { title: 'לא כשר', text: 'חופש מלא בתפריט: פירות ים, בשר וחלב יחד וכל מה שתרצו, חוץ מבשר חזיר.' },
+        { title: 'לא כשר', text: 'תפריט ללא מגבלות כשרות: אפשר לשלב בשר וחלב באותו שולחן. בלי חזיר ופירות ים.' },
       ],
     },
     areas: {
@@ -284,7 +284,7 @@ export const sections = {
       options: [
         { title: 'Кошерная кухня', text: 'Меню по правилам кашрута вашего дома, включая разделение мясного и молочного.' },
         { title: 'Кошер-стайл', text: 'Без свинины и морепродуктов и без смешивания мясного с молочным.' },
-        { title: 'Некошерная кухня', text: 'Полная свобода в меню: морепродукты, мясное с молочным, всё, что захотите, кроме свинины.' },
+        { title: 'Некошерная кухня', text: 'Меню без ограничений кашрута: мясное и молочное можно сочетать за одним столом. Без свинины и морепродуктов.' },
       ],
     },
     areas: {
