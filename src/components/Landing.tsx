@@ -2,7 +2,7 @@ import { Link } from '@tanstack/react-router'
 import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { ArrowDown, ArrowRight, ArrowUpRight, Check, Leaf, Mail, Menu, MessageCircle, Utensils, X } from 'lucide-react'
 import { GallerySection } from '@/components/Gallery'
-import { AreasSection, FaqSection, KashrutSection, ServicesSection, VideoSection } from '@/components/Sections'
+import { AreasSection, FaqSection, KashrutSection, MenuSection, ServicesSection, VideoSection } from '@/components/Sections'
 import { contact, content, sections, type Language } from '@/lib/content'
 import { notifyRequest, reportMailProblem } from '@/lib/notify'
 
@@ -148,6 +148,8 @@ export function Landing({ language }: { language: Language }) {
             <div className="cuisine-title"><h3>{text.cuisineNames[index]}</h3><span>✳</span></div><span className="cuisine-note">{text.cuisineNotes[index]}</span><p>{text.cuisineDescriptions[index]}</p>
           </article>)}</div>
         </section>
+
+        <MenuSection language={language} />
 
         <KashrutSection language={language} />
 

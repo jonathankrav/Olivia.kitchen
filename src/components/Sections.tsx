@@ -77,6 +77,21 @@ export function KashrutSection({ language }: { language: Language }) {
   )
 }
 
+export function MenuSection({ language }: { language: Language }) {
+  const { menu } = sections[language]
+  const [active, setActive] = useState(0)
+  return (
+    <section id="menu" className="menu-section section-wrap">
+      <div className="section-heading"><div><span className="eyebrow">{menu.label}</span><h2>{menu.title}</h2></div><p>{menu.intro}</p></div>
+      <div className="menu-tabs" role="group" aria-label={menu.label}>{menu.categories.map((category, index) => <button key={category.title} type="button" aria-pressed={active === index} className={active === index ? 'active' : ''} onClick={() => setActive(index)}>{category.title}</button>)}</div>
+      {menu.categories.map((category, index) => <div className="menu-panel" key={category.title} hidden={active !== index}>
+        <h3>{category.title}</h3>
+        <ul className="menu-list">{category.items.map(item => <li key={item}>{item}</li>)}</ul>
+      </div>)}
+    </section>
+  )
+}
+
 export function AreasSection({ language }: { language: Language }) {
   const { areas } = sections[language]
   return (
