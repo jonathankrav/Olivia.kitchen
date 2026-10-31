@@ -183,6 +183,17 @@ export const sections = {
         { title: 'Not kosher', text: 'A menu without kashrut limits: meat and dairy can share one table. No pork or seafood.' },
       ],
     },
+    menu: {
+      label: 'MENU', title: 'A taste of\nthe menu.',
+      intro: 'A sample of what I cook. We shape the final menu together around your evening. Photos of the dishes will be added here soon.',
+      categories: [
+        { title: 'Cold dishes & starters', items: ['Caesar salad', 'Vegetable salad', 'Burrata salad', 'Halloumi salad', 'Caprese salad', 'Artichoke salad', 'Mangal salad', 'Battered fried eggplant with salsa', 'Salmon carpaccio', 'Eggplant rolls filled with cheese', 'Coal-roasted eggplant with tahini', 'Niçoise salad'] },
+        { title: 'Main dishes', items: ['Salmon steak', 'Azerbaijani plov (rice served separately)', 'Pulled beef', 'Dolma in eggplant and in tomatoes', 'Beef braised in beer', 'Goulash', 'Oven-baked fish', 'Grilled chicken', 'Fish burgers', 'Moroccan-style fish in tomato sauce', 'Conchiglioni with cheese'] },
+        { title: 'Sides', items: ['Ratatouille', 'Fried rice', 'Baked potatoes with cheese and sour cream sauce', 'Mashed potatoes', 'Sweet potato mash', 'Roasted vegetables', 'Green beans in wine'] },
+        { title: 'Pasta', items: ['Cream pasta', 'Tomato pasta', 'Salmon pasta', 'Cream and mushroom pasta', 'Rosé pasta', 'Bolognese'] },
+        { title: 'Breakfasts', items: ['Bagel with salmon and egg', 'Eggs Benedict', 'Cheese spreads', 'Cheese platter', 'Vegetable platter', 'Fruit platter'] },
+      ],
+    },
     areas: {
       label: 'WHERE I WORK', title: 'Haifa and\nthe North.',
       text: 'I work in Haifa and across Northern Israel. If you are somewhere else in the north, write to me and I will check.',
@@ -235,6 +246,17 @@ export const sections = {
         { title: 'לא כשר', text: 'תפריט ללא מגבלות כשרות: אפשר לשלב בשר וחלב באותו שולחן. בלי חזיר ופירות ים.' },
       ],
     },
+    menu: {
+      label: 'תפריט', title: 'טעימה\nמהתפריט.',
+      intro: 'דוגמה למנות שאני מכינה. את התפריט הסופי נבנה יחד לפי הערב שלכם. תמונות של המנות יתווספו כאן בקרוב.',
+      categories: [
+        { title: 'מנות קרות ופתיחות', items: ['סלט קיסר', 'סלט ירקות', 'סלט בוראטה', 'סלט חלומי', 'סלט קפרזה', 'סלט ארטישוק', 'סלט מנגל', 'חציל מטוגן בבלילה עם סלסה', 'קרפצ’יו סלמון', 'רולדות חציל במילוי גבינה', 'חציל על גחלים עם טחינה', 'סלט ניסואז'] },
+        { title: 'מנות עיקריות', items: ['סטייק סלמון', 'פלוב אזרבייג’ני (האורז מוגש בנפרד)', 'בקר מפורק', 'דולמה בחציל ובעגבנייה', 'בקר מבושל בבירה', 'גולאש', 'דג אפוי בתנור', 'עוף בגריל', 'פישבורגר', 'דג ברוטב עגבניות בסגנון מרוקאי', 'קונצ’יליוני בגבינה'] },
+        { title: 'תוספות', items: ['רטטוי', 'אורז מוקפץ', 'תפוחי אדמה אפויים בגבינה עם רוטב שמנת חמוצה', 'פירה תפוחי אדמה', 'פירה עם בטטה', 'ירקות אפויים', 'שעועית ירוקה ביין'] },
+        { title: 'פסטות', items: ['פסטה שמנת', 'פסטה עגבניות', 'פסטה סלמון', 'פסטה שמנת ופטריות', 'פסטה רוזה', 'פסטה בולונז'] },
+        { title: 'ארוחות בוקר', items: ['בייגל עם סלמון וביצה', 'ארוחת בוקר בנדיקט', 'ממרחי גבינה', 'פלטת גבינות', 'פלטת ירקות', 'פלטת פירות'] },
+      ],
+    },
     areas: {
       label: 'אזורי שירות', title: 'חיפה\nוהצפון.',
       text: 'אני עובדת בחיפה ובצפון הארץ. אם אתם במקום אחר בצפון, כתבו לי ונבדוק יחד.',
@@ -285,6 +307,17 @@ export const sections = {
         { title: 'Кошерная кухня', text: 'Меню по правилам кашрута вашего дома, включая разделение мясного и молочного.' },
         { title: 'Кошер-стайл', text: 'Без свинины и морепродуктов и без смешивания мясного с молочным.' },
         { title: 'Некошерная кухня', text: 'Меню без ограничений кашрута: мясное и молочное можно сочетать за одним столом. Без свинины и морепродуктов.' },
+      ],
+    },
+    menu: {
+      label: 'МЕНЮ', title: 'Что можно\nпопробовать.',
+      intro: 'Примерный список блюд. Итоговое меню мы составляем вместе под ваш вечер. Фотографии блюд появятся здесь позже.',
+      categories: [
+        { title: 'Холодные блюда и закуски', items: ['Салат «Цезарь»', 'Овощной салат', 'Салат с бураттой', 'Салат с халуми', 'Салат «Капрезе»', 'Салат с артишоками', 'Салат «Мангал»', 'Жареный баклажан в кляре с сальсой', 'Карпаччо из лосося', 'Баклажановые рулетики с сырной начинкой', 'Баклажан на углях с тхиной', 'Салат «Нисуаз»'] },
+        { title: 'Основные блюда', items: ['Стейк из лосося', 'Плов по-азербайджански (рис отдельно)', 'Рваная говядина', 'Долма в баклажане и в помидорах', 'Говядина, тушёная в пиве', 'Гуляш', 'Рыба, запечённая в духовке', 'Курица гриль', 'Фишбургеры', 'Рыба в томатном соусе по-мароккански', 'Конкильони с сыром'] },
+        { title: 'Гарниры', items: ['Рататуй', 'Жареный рис', 'Запечённый картофель под сыром со сметанным соусом', 'Картофельное пюре', 'Пюре с бататом', 'Запечённые овощи', 'Стручковая фасоль в вине'] },
+        { title: 'Пасты', items: ['Паста со сливочным соусом', 'Паста с томатами', 'Паста с лососем', 'Паста со сливками и грибами', 'Паста «Розе»', 'Паста «Болоньезе»'] },
+        { title: 'Завтраки', items: ['Бейгль с лососем и яйцом', 'Завтрак «Бенедикт»', 'Сырные намазки', 'Сырная тарелка', 'Овощная тарелка', 'Фруктовая тарелка'] },
       ],
     },
     areas: {
