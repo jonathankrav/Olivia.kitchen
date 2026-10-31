@@ -185,7 +185,7 @@ export const sections = {
     },
     menu: {
       label: 'MENU', title: 'A taste of\nthe menu.',
-      intro: 'A sample of what I cook. We shape the final menu together around your evening. Photos of the dishes will be added here soon.',
+      intro: 'A sample of what I cook. We shape the final menu together around your evening.',
       categories: [
         { title: 'Cold dishes & starters', items: ['Caesar salad', 'Vegetable salad', 'Burrata salad', 'Halloumi salad', 'Caprese salad', 'Artichoke salad', 'Mangal salad', 'Battered fried eggplant with salsa', 'Salmon carpaccio', 'Eggplant rolls filled with cheese', 'Coal-roasted eggplant with tahini', 'Niçoise salad'] },
         { title: 'Main dishes', items: ['Salmon steak', 'Azerbaijani plov (rice served separately)', 'Pulled beef', 'Dolma in eggplant and in tomatoes', 'Beef braised in beer', 'Goulash', 'Oven-baked fish', 'Grilled chicken', 'Fish burgers', 'Moroccan-style fish in tomato sauce', 'Conchiglioni with cheese'] },
@@ -248,7 +248,7 @@ export const sections = {
     },
     menu: {
       label: 'תפריט', title: 'טעימה\nמהתפריט.',
-      intro: 'דוגמה למנות שאני מכינה. את התפריט הסופי נבנה יחד לפי הערב שלכם. תמונות של המנות יתווספו כאן בקרוב.',
+      intro: 'דוגמה למנות שאני מכינה. את התפריט הסופי נבנה יחד לפי הערב שלכם.',
       categories: [
         { title: 'מנות קרות ופתיחות', items: ['סלט קיסר', 'סלט ירקות', 'סלט בוראטה', 'סלט חלומי', 'סלט קפרזה', 'סלט ארטישוק', 'סלט מנגל', 'חציל מטוגן בבלילה עם סלסה', 'קרפצ’יו סלמון', 'רולדות חציל במילוי גבינה', 'חציל על גחלים עם טחינה', 'סלט ניסואז'] },
         { title: 'מנות עיקריות', items: ['סטייק סלמון', 'פלוב אזרבייג’ני (האורז מוגש בנפרד)', 'בקר מפורק', 'דולמה בחציל ובעגבנייה', 'בקר מבושל בבירה', 'גולאש', 'דג אפוי בתנור', 'עוף בגריל', 'פישבורגר', 'דג ברוטב עגבניות בסגנון מרוקאי', 'קונצ’יליוני בגבינה'] },
@@ -311,7 +311,7 @@ export const sections = {
     },
     menu: {
       label: 'МЕНЮ', title: 'Что можно\nпопробовать.',
-      intro: 'Примерный список блюд. Итоговое меню мы составляем вместе под ваш вечер. Фотографии блюд появятся здесь позже.',
+      intro: 'Примерный список блюд. Итоговое меню мы составляем вместе под ваш вечер.',
       categories: [
         { title: 'Холодные блюда и закуски', items: ['Салат «Цезарь»', 'Овощной салат', 'Салат с бураттой', 'Салат с халуми', 'Салат «Капрезе»', 'Салат с артишоками', 'Салат «Мангал»', 'Жареный баклажан в кляре с сальсой', 'Карпаччо из лосося', 'Баклажановые рулетики с сырной начинкой', 'Баклажан на углях с тхиной', 'Салат «Нисуаз»'] },
         { title: 'Основные блюда', items: ['Стейк из лосося', 'Плов по-азербайджански (рис отдельно)', 'Рваная говядина', 'Долма в баклажане и в помидорах', 'Говядина, тушёная в пиве', 'Гуляш', 'Рыба, запечённая в духовке', 'Курица гриль', 'Фишбургеры', 'Рыба в томатном соусе по-мароккански', 'Конкильони с сыром'] },
