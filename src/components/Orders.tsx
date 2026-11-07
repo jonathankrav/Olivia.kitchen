@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import type { FormEvent } from 'react'
 import { useRouter } from '@tanstack/react-router'
 import { createOrder, loginOrders, logoutOrders, removeOrder, updateOrder } from '@/lib/orders'
-import { orderProfit, orderStatuses, type Order, type OrderPatch, type OrderStatus } from '@/lib/orders-types'
+import { orderExpenses, orderProfit, orderStatuses, type Order, type OrderPatch, type OrderStatus } from '@/lib/orders-types'
 
 type Call<T> = (options: { data: Record<string, unknown> }) => Promise<T>
 
@@ -64,9 +64,15 @@ function OrderCard({ order, onChange, onDelete }: { order: Order; onChange: (ord
   const [revenue, setRevenue] = useState(order.revenue === null ? '' : String(order.revenue))
   const [expectations, setExpectations] = useState(order.expectations)
   const [result, setResult] = useState(order.result)
+  const [proposedMenu, setProposedMenu] = useState(order.proposedMenu)
+  const [finalMenu, setFinalMenu] = useState(order.finalMenu)
+  const [dishware, setDishware] = useState(order.dishware === null ? '' : String(order.dishware))
+  const [other, setOther] = useState(order.other === null ? '' : String(order.other))
+  const [otherNote, setOtherNote] = useState(order.otherNote)
+  const [notes, setNotes] = useState(order.notes)
   const [state, setState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle')
 
-  const profit = orderProfit({ cost: parseAmount(cost), revenue: parseAmount(revenue) })
+  const profit = orderProfit({ cost: parseAmount(cost), dishware: parseAmount(dishware), other: parseAmount(other), revenue: parseAmount(revenue) })
   const digits = order.phone.replace(/\D/g, '')
 
   async function save(patch: OrderPatch) {
@@ -106,6 +112,12 @@ function OrderCard({ order, onChange, onDelete }: { order: Order; onChange: (ord
           <label>Себестоимость, ₪
             <input inputMode="decimal" value={cost} onChange={event => setCost(event.target.value)} onBlur={() => save({ cost: parseAmount(cost) })} />
           </label>
+          <label>Посуда, ₪
+            <input inputMode="decimal" value={dishware} onChange={event => setDishware(event.target.value)} onBlur={() => save({ dishware: parseAmount(dishware) })} />
+          </label>
+          <label>Прочие расходы, ₪
+            <input inputMode="decimal" value={other} onChange={event => setOther(event.target.value)} onBlur={() => save({ other: parseAmount(other) })} />
+          </label>
           <label>Полученная сумма, ₪
             <input inputMode="decimal" value={revenue} onChange={event => setRevenue(event.target.value)} onBlur={() => save({ revenue: parseAmount(revenue) })} />
           </label>
@@ -113,11 +125,23 @@ function OrderCard({ order, onChange, onDelete }: { order: Order; onChange: (ord
             <output className="ord-output">{revenue.trim() === '' ? '—' : money.format(profit ?? 0)}</output>
           </label>
         </div>
+        <label className="ord-text">Комментарий к прочим расходам
+          <textarea rows={2} value={otherNote} onChange={event => setOtherNote(event.target.value)} onBlur={() => save({ otherNote })} />
+        </label>
+        <label className="ord-text">Предложенное меню
+          <textarea rows={4} value={proposedMenu} onChange={event => setProposedMenu(event.target.value)} onBlur={() => save({ proposedMenu })} />
+        </label>
+        <label className="ord-text">Окончательное меню
+          <textarea rows={4} value={finalMenu} onChange={event => setFinalMenu(event.target.value)} onBlur={() => save({ finalMenu })} />
+        </label>
         <label className="ord-text">Согласование ожиданий и заявки
           <textarea rows={4} value={expectations} onChange={event => setExpectations(event.target.value)} onBlur={() => save({ expectations })} />
         </label>
         <label className="ord-text">Окончательный результат
           <textarea rows={4} value={result} onChange={event => setResult(event.target.value)} onBlur={() => save({ result })} />
+        </label>
+        <label className="ord-text">Комментарий по заявке: как прошло, аллергии, отзывы, предпочтения клиента
+          <textarea rows={6} value={notes} onChange={event => setNotes(event.target.value)} onBlur={() => save({ notes })} />
         </label>
         <div className="ord-actions">
           <span className="ord-state" role="status">{state === 'saving' ? 'Сохраняю…' : state === 'saved' ? 'Сохранено' : state === 'error' ? 'Не удалось сохранить' : ''}</span>
@@ -169,17 +193,18 @@ function NewOrderForm({ onCreated, onClose }: { onCreated: (order: Order) => voi
 
 async function exportExcel(orders: Order[]) {
   const { buildXlsx } = await import('@/lib/xlsx')
-  const header = ['Получена', 'Статус', 'Имя', 'Телефон', 'Email', 'Дата события', 'Гостей', 'Кухня', 'Язык', 'Запрос клиента', 'Согласование ожиданий и заявки', 'Окончательный результат', 'Себестоимость, ₪', 'Полученная сумма, ₪', 'Прибыль до налогов, ₪']
+  const header = ['Получена', 'Статус', 'Имя', 'Телефон', 'Email', 'Дата события', 'Гостей', 'Кухня', 'Язык', 'Запрос клиента', 'Согласование ожиданий и заявки', 'Окончательный результат', 'Предложенное меню', 'Окончательное меню', 'Себестоимость, ₪', 'Посуда, ₪', 'Прочие расходы, ₪', 'Комментарий к прочим расходам', 'Полученная сумма, ₪', 'Прибыль до налогов, ₪', 'Комментарий по заявке']
   const rows = orders.map((order, index) => {
     const row = index + 2
     const profit = orderProfit(order)
     return [
-      formatCreated(order.createdAt), statusLabel(order.status), order.name, order.phone, order.email, order.date, order.guests, order.cuisine, order.language, order.message, order.expectations, order.result,
-      order.cost, order.revenue,
-      order.revenue === null ? null : { formula: `N${row}-M${row}`, value: profit },
+      formatCreated(order.createdAt), statusLabel(order.status), order.name, order.phone, order.email, order.date, order.guests, order.cuisine, order.language, order.message, order.expectations, order.result, order.proposedMenu, order.finalMenu,
+      order.cost, order.dishware, order.other, order.otherNote, order.revenue,
+      order.revenue === null ? null : { formula: `S${row}-O${row}-P${row}-Q${row}`, value: profit },
+      order.notes,
     ]
   })
-  const bytes = buildXlsx([header, ...rows], [18, 15, 20, 18, 24, 18, 9, 16, 9, 40, 40, 40, 16, 18, 20], [12, 13, 14])
+  const bytes = buildXlsx([header, ...rows], [18, 15, 20, 18, 24, 18, 9, 16, 9, 40, 40, 40, 40, 40, 16, 12, 16, 30, 18, 20, 50], [14, 15, 16, 18, 19])
   const blob = new Blob([bytes], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' })
   const url = URL.createObjectURL(blob)
   const link = document.createElement('a')
@@ -204,7 +229,7 @@ export function OrdersApp({ initial, configured }: { initial: Order[]; configure
     for (const order of shown) {
       if (order.revenue === null) continue
       revenue += order.revenue
-      cost += order.cost ?? 0
+      cost += orderExpenses(order)
     }
     return { revenue, cost, profit: revenue - cost }
   }, [shown])
@@ -243,7 +268,7 @@ export function OrdersApp({ initial, configured }: { initial: Order[]; configure
           </select>
         </label>
         <div><span>Получено</span><strong>{formatMoney(totals.revenue)}</strong></div>
-        <div><span>Себестоимость</span><strong>{formatMoney(totals.cost)}</strong></div>
+        <div><span>Расходы</span><strong>{formatMoney(totals.cost)}</strong></div>
         <div><span>Прибыль до налогов</span><strong>{formatMoney(totals.profit)}</strong></div>
       </section>
       <div className="ord-list">

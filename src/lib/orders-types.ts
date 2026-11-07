@@ -26,12 +26,22 @@ export type Order = {
   revenue: number | null
   expectations: string
   result: string
+  proposedMenu: string
+  finalMenu: string
+  dishware: number | null
+  other: number | null
+  otherNote: string
+  notes: string
 }
 
-export type OrderPatch = Partial<Pick<Order, 'status' | 'cost' | 'revenue' | 'expectations' | 'result' | 'name' | 'phone' | 'email' | 'date' | 'guests' | 'cuisine' | 'message'>>
+export type OrderPatch = Partial<Pick<Order, 'status' | 'cost' | 'revenue' | 'expectations' | 'result' | 'proposedMenu' | 'finalMenu' | 'dishware' | 'other' | 'otherNote' | 'notes' | 'name' | 'phone' | 'email' | 'date' | 'guests' | 'cuisine' | 'message'>>
 
 export type OrdersState = { authed: false } | { authed: true; configured: boolean; orders: Order[] }
 
-export function orderProfit(order: Pick<Order, 'cost' | 'revenue'>) {
-  return order.revenue === null ? null : order.revenue - (order.cost ?? 0)
+export function orderExpenses(order: Pick<Order, 'cost' | 'dishware' | 'other'>) {
+  return (order.cost ?? 0) + (order.dishware ?? 0) + (order.other ?? 0)
+}
+
+export function orderProfit(order: Pick<Order, 'cost' | 'dishware' | 'other' | 'revenue'>) {
+  return order.revenue === null ? null : order.revenue - orderExpenses(order)
 }
