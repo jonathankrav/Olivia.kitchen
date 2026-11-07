@@ -3,7 +3,7 @@ import type { FormEvent } from 'react'
 import { useRouter } from '@tanstack/react-router'
 import { createOrder, loginOrders, logoutOrders, removeOrder, updateOrder } from '@/lib/orders'
 import { sections } from '@/lib/content'
-import { orderExpenses, orderProfit, orderStatuses, type Order, type OrderPatch, type OrderStatus } from '@/lib/orders-types'
+import { formatEventDate, orderExpenses, orderProfit, orderStatuses, type Order, type OrderPatch, type OrderStatus } from '@/lib/orders-types'
 
 type Call<T> = (options: { data: Record<string, unknown> }) => Promise<T>
 
@@ -133,7 +133,7 @@ function OrderCard({ order, onChange, onDelete }: { order: Order; onChange: (ord
       <summary>
         <span className="ord-name">{order.name || order.phone || 'Без имени'}</span>
         <span className={`ord-badge ord-${order.status}`}>{statusLabel(order.status)}</span>
-        <span className="ord-meta">{order.date || formatCreated(order.createdAt)}{order.guests ? ` · ${order.guests} гост.` : ''}</span>
+        <span className="ord-meta">{order.date ? formatEventDate(order.date) : formatCreated(order.createdAt)}{order.guests ? ` · ${order.guests} гост.` : ''}</span>
         <span className="ord-profit">{formatMoney(orderProfit(order))}</span>
       </summary>
       <div className="ord-body">
@@ -141,7 +141,7 @@ function OrderCard({ order, onChange, onDelete }: { order: Order; onChange: (ord
           <div><dt>Получена</dt><dd>{formatCreated(order.createdAt)}{order.source === 'manual' ? ' (добавлена вручную)' : ''}</dd></div>
           {order.phone && <div><dt>Телефон</dt><dd><a href={`tel:${order.phone}`}>{order.phone}</a>{digits && <> · <a href={`https://wa.me/${digits}`} target="_blank" rel="noreferrer">WhatsApp</a></>}</dd></div>}
           {order.email && <div><dt>Email</dt><dd><a href={`mailto:${order.email}`}>{order.email}</a></dd></div>}
-          {order.date && <div><dt>Дата события</dt><dd>{order.date}</dd></div>}
+          {order.date && <div><dt>Дата события</dt><dd>{formatEventDate(order.date)}</dd></div>}
           {order.guests && <div><dt>Гостей по заявке</dt><dd>{order.guests}</dd></div>}
           {order.cuisine && <div><dt>Кухня</dt><dd>{order.cuisine}</dd></div>}
           {order.language && <div><dt>Язык</dt><dd>{order.language}</dd></div>}
@@ -227,7 +227,7 @@ function NewOrderForm({ onCreated, onClose }: { onCreated: (order: Order) => voi
         <label>Имя<input name="name" /></label>
         <label>Телефон<input name="phone" inputMode="tel" /></label>
         <label>Email<input name="email" type="email" /></label>
-        <label>Дата события<input name="date" /></label>
+        <label>Дата события<input name="date" type="date" /></label>
         <label>Гостей<input name="guests" inputMode="numeric" /></label>
         <label>Кухня<input name="cuisine" /></label>
       </div>

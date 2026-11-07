@@ -1,5 +1,5 @@
 import { buildXlsx } from '@/lib/xlsx'
-import { orderProfit, orderStatuses, type Order } from '@/lib/orders-types'
+import { formatEventDate, orderProfit, orderStatuses, type Order } from '@/lib/orders-types'
 
 function formatCreated(value: string) {
   const date = new Date(value)
@@ -17,7 +17,7 @@ export function buildOrdersXlsx(orders: Order[]) {
     const row = index + 2
     const profit = orderProfit(order)
     return [
-      formatCreated(order.createdAt), statusLabel(order.status), order.name, order.phone, order.email, order.date, order.guests, order.cuisine, order.language, order.message, order.expectations, order.result, order.proposedMenu.join('; '), (order.finalMenu ?? order.proposedMenu).join('; '),
+      formatCreated(order.createdAt), statusLabel(order.status), order.name, order.phone, order.email, formatEventDate(order.date), order.guests, order.cuisine, order.language, order.message, order.expectations, order.result, order.proposedMenu.join('; '), (order.finalMenu ?? order.proposedMenu).join('; '),
       order.cost, order.dishware, order.other, order.otherNote, order.revenue,
       order.revenue === null ? null : { formula: `S${row}-O${row}-P${row}-Q${row}`, value: profit },
       order.notes, order.confirmedGuests ?? order.guests,

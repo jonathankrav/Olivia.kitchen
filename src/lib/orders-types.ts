@@ -46,3 +46,25 @@ export function orderExpenses(order: Pick<Order, 'cost' | 'dishware' | 'other'>)
 export function orderProfit(order: Pick<Order, 'cost' | 'dishware' | 'other' | 'revenue'>) {
   return order.revenue === null ? null : order.revenue - orderExpenses(order)
 }
+
+export function formatEventDate(value: string) {
+  const text = value.trim()
+  const iso = /^(\d{4})-(\d{1,2})-(\d{1,2})$/.exec(text)
+  const local = /^(\d{1,2})[./-](\d{1,2})[./-](\d{2}|\d{4})$/.exec(text)
+  let year = 0
+  let month = 0
+  let day = 0
+  if (iso) {
+    year = Number(iso[1])
+    month = Number(iso[2])
+    day = Number(iso[3])
+  } else if (local) {
+    day = Number(local[1])
+    month = Number(local[2])
+    year = Number(local[3]) < 100 ? 2000 + Number(local[3]) : Number(local[3])
+  } else return text
+  const date = new Date(Date.UTC(year, month - 1, day))
+  if (date.getUTCFullYear() !== year || date.getUTCMonth() !== month - 1 || date.getUTCDate() !== day) return text
+  const weekday = date.toLocaleDateString('he-IL', { weekday: 'long', timeZone: 'UTC' })
+  return `${String(day).padStart(2, '0')}.${String(month).padStart(2, '0')}.${year}, ${weekday}`
+}
