@@ -150,3 +150,4 @@
 .ord-page .ord-menu-reset{align-self:flex-start}
 .ord-page .ord-save{background:#354737;color:#fffefb;font-weight:600;padding:11px 26px;box-shadow:0 1px 0 #1f2b21}.ord-actions{flex-wrap:wrap}.ord-actions .ord-state{flex:1}
 .ord-period{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:-4px 0 14px}.ord-summary input[type=date]{min-height:40px}
+.ord-approve{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:10px 12px;border:1px dashed #b9c4a4;border-radius:8px;background:#f7f9f1}.ord-approved{font-weight:600;color:#2d5a3a}

@@ -109,6 +109,7 @@ function OrderCard({ order, onChange, onDelete }: { order: Order; onChange: (ord
   const [proposedMenu, setProposedMenu] = useState(order.proposedMenu)
   const [finalMenu, setFinalMenu] = useState(order.finalMenu)
   const finalShown = finalMenu ?? proposedMenu
+  const [approvedAt, setApprovedAt] = useState(order.menuApprovedAt)
   const [confirmed, setConfirmed] = useState(order.confirmedGuests ?? order.guests)
   const [dishware, setDishware] = useState(order.dishware === null ? '' : String(order.dishware))
   const [other, setOther] = useState(order.other === null ? '' : String(order.other))
@@ -171,6 +172,15 @@ function OrderCard({ order, onChange, onDelete }: { order: Order; onChange: (ord
           <label>Прибыль до налогов, ₪
             <output className="ord-output">{revenue.trim() === '' ? '—' : money.format(profit ?? 0)}</output>
           </label>
+        </div>
+        <div className="ord-approve">
+          {approvedAt ? <>
+            <span className="ord-approved">✓ Меню утверждено клиентом: {formatEventDate(approvedAt.slice(0, 10)).split(',')[0]}</span>
+            <button type="button" className="ord-secondary" onClick={() => { setApprovedAt(null); save({ menuApprovedAt: null }) }}>Снять утверждение</button>
+          </> : <>
+            <button type="button" onClick={() => { setApprovedAt(new Date().toISOString()); save({ menuApprovedAt: new Date().toISOString() }) }} disabled={finalShown.length === 0}>Клиент утвердил меню</button>
+            <span className="ord-state">{finalShown.length === 0 ? 'Сначала отметьте блюда в окончательном меню' : 'Нажмите, когда клиент согласовал окончательное меню'}</span>
+          </>}
         </div>
         <label className="ord-text">Комментарий к прочим расходам
           <textarea rows={2} value={otherNote} onChange={event => setOtherNote(event.target.value)} onBlur={() => save({ otherNote })} />

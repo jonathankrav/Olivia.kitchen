@@ -46,7 +46,7 @@ function status(value: unknown): OrderStatus {
   return statusValues.includes(value as OrderStatus) ? (value as OrderStatus) : 'new'
 }
 
-const blank = { confirmedGuests: null as string | null, proposedMenu: [] as string[], finalMenu: null as string[] | null, dishware: null, other: null, otherNote: '', notes: '' }
+const blank = { confirmedGuests: null as string | null, menuApprovedAt: null as string | null, proposedMenu: [] as string[], finalMenu: null as string[] | null, dishware: null, other: null, otherNote: '', notes: '' }
 
 function dishes(value: unknown): string[] {
   const list = Array.isArray(value) ? value : typeof value === 'string' ? value.split('\n') : []
@@ -144,6 +144,7 @@ export async function updateOrder(id: unknown, patch: unknown): Promise<Order | 
   if ('expectations' in changes) next.expectations = text(changes.expectations, 8000)
   if ('result' in changes) next.result = text(changes.result, 8000)
   if ('confirmedGuests' in changes) next.confirmedGuests = oneLine(changes.confirmedGuests, 60) || null
+  if ('menuApprovedAt' in changes) next.menuApprovedAt = changes.menuApprovedAt ? new Date().toISOString() : null
   if ('dishware' in changes) next.dishware = amount(changes.dishware)
   if ('other' in changes) next.other = amount(changes.other)
   if ('proposedMenu' in changes) next.proposedMenu = dishes(changes.proposedMenu)
