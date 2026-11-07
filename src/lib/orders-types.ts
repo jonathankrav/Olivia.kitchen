@@ -17,6 +17,7 @@ export type Order = {
   email: string
   date: string
   guests: string
+  confirmedGuests: string | null
   cuisine: string
   language: string
   message: string
@@ -34,7 +35,7 @@ export type Order = {
   notes: string
 }
 
-export type OrderPatch = Partial<Pick<Order, 'status' | 'cost' | 'revenue' | 'expectations' | 'result' | 'proposedMenu' | 'finalMenu' | 'dishware' | 'other' | 'otherNote' | 'notes' | 'name' | 'phone' | 'email' | 'date' | 'guests' | 'cuisine' | 'message'>>
+export type OrderPatch = Partial<Pick<Order, 'status' | 'cost' | 'revenue' | 'expectations' | 'result' | 'proposedMenu' | 'finalMenu' | 'dishware' | 'other' | 'otherNote' | 'notes' | 'name' | 'phone' | 'email' | 'date' | 'guests' | 'cuisine' | 'message' | 'confirmedGuests'>>
 
 export type OrdersState = { authed: false } | { authed: true; configured: boolean; orders: Order[] }
 
