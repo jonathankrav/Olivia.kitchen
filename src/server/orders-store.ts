@@ -46,10 +46,27 @@ function status(value: unknown): OrderStatus {
   return statusValues.includes(value as OrderStatus) ? (value as OrderStatus) : 'new'
 }
 
+const blank = { confirmedGuests: null as string | null, menuApprovedAt: null as string | null, proposedMenu: [] as string[], finalMenu: null as string[] | null, dishware: null, other: null, otherNote: '', notes: '' }
+
+function dishes(value: unknown): string[] {
+  const list = Array.isArray(value) ? value : typeof value === 'string' ? value.split('\n') : []
+  const seen = new Set<string>()
+  for (const item of list) {
+    const name = oneLine(item, 200)
+    if (name) seen.add(name)
+    if (seen.size >= 200) break
+  }
+  return [...seen]
+}
+
 function parse(raw: unknown): Order | null {
   if (typeof raw !== 'string') return null
   try {
-    return JSON.parse(raw) as Order
+    const order = { ...blank, ...(JSON.parse(raw) as Order) }
+    order.proposedMenu = dishes(order.proposedMenu)
+    const legacy = typeof order.finalMenu === 'string' && !(order.finalMenu as string).trim()
+    order.finalMenu = order.finalMenu === null || order.finalMenu === undefined || legacy ? null : dishes(order.finalMenu)
+    return order
   } catch {
     return null
   }
@@ -90,6 +107,7 @@ function build(fields: Record<string, unknown>, source: Order['source']): Order 
     revenue: null,
     expectations: '',
     result: '',
+    ...blank,
   }
 }
 
@@ -125,6 +143,14 @@ export async function updateOrder(id: unknown, patch: unknown): Promise<Order | 
   if ('revenue' in changes) next.revenue = amount(changes.revenue)
   if ('expectations' in changes) next.expectations = text(changes.expectations, 8000)
   if ('result' in changes) next.result = text(changes.result, 8000)
+  if ('confirmedGuests' in changes) next.confirmedGuests = oneLine(changes.confirmedGuests, 60) || null
+  if ('menuApprovedAt' in changes) next.menuApprovedAt = changes.menuApprovedAt ? new Date().toISOString() : null
+  if ('dishware' in changes) next.dishware = amount(changes.dishware)
+  if ('other' in changes) next.other = amount(changes.other)
+  if ('proposedMenu' in changes) next.proposedMenu = dishes(changes.proposedMenu)
+  if ('finalMenu' in changes) next.finalMenu = changes.finalMenu === null ? null : dishes(changes.finalMenu)
+  if ('notes' in changes) next.notes = text(changes.notes, 8000)
+  if ('otherNote' in changes) next.otherNote = text(changes.otherNote, 2000)
   for (const [key, limit] of [['name', 200], ['phone', 80], ['email', 200], ['date', 120], ['guests', 60], ['cuisine', 120]] as const) {
     if (key in changes) next[key] = oneLine(changes[key], limit)
   }
@@ -136,4 +162,8 @@ export async function deleteOrder(id: unknown): Promise<boolean> {
   if (!endpoint() || typeof id !== 'string' || id.length > 80) return false
   await command(['HDEL', hashKey, id])
   return true
+}
+
+export async function claimBackupSlot(): Promise<boolean> {
+  return (await command(['SET', 'backup:last', new Date().toISOString(), 'NX', 'EX', '500000'])) === 'OK'
 }

@@ -1,4 +1,5 @@
 import { contact } from '@/lib/content'
+import { cuisineLabel, formatEventDate } from '@/lib/orders-types'
 
 const labels: [string, string][] = [
   ['name', 'Имя'],
@@ -12,6 +13,12 @@ const labels: [string, string][] = [
   ['origin', 'Откуда пришёл'],
 ]
 
+function shown(key: string, value: string) {
+  if (key === 'date' && value) return formatEventDate(value)
+  if (key === 'cuisine' && value) return cuisineLabel(value)
+  return value
+}
+
 function clean(value: unknown, limit: number) {
   return typeof value === 'string' ? value.replace(/\r\n/g, '\n').trim().slice(0, limit) : ''
 }
@@ -22,7 +29,7 @@ export async function sendRequestEmail(input: unknown): Promise<boolean> {
   const fields = input as Record<string, unknown>
   if (clean(fields._honey, 20)) return false
   const rows = labels
-    .map(([name, label]) => [label, clean(fields[name], name === 'message' ? 3000 : 200)] as const)
+    .map(([name, label]) => [label, shown(name, clean(fields[name], name === 'message' ? 3000 : 200))] as const)
     .filter(([, value]) => value)
   if (rows.length === 0) return false
   const replyTo = clean(fields.email, 200)

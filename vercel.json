@@ -2,6 +2,16 @@
   "framework": "tanstack-start",
   "installCommand": "pnpm install --no-frozen-lockfile",
   "redirects": [
-    { "source": "/he", "destination": "/", "permanent": true }
+    {
+      "source": "/he",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/orders-backup",
+      "schedule": "0 6 * * 1"
+    }
   ]
 }

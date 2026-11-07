@@ -2,7 +2,8 @@ import { useMemo, useState } from 'react'
 import type { FormEvent } from 'react'
 import { useRouter } from '@tanstack/react-router'
 import { createOrder, loginOrders, logoutOrders, removeOrder, updateOrder } from '@/lib/orders'
-import { orderProfit, orderStatuses, type Order, type OrderPatch, type OrderStatus } from '@/lib/orders-types'
+import { sections } from '@/lib/content'
+import { cuisineLabel, cuisineOptions, eventDateISO, formatEventDate, orderExpenses, orderProfit, orderStatuses, type Order, type OrderPatch, type OrderStatus } from '@/lib/orders-types'
 
 type Call<T> = (options: { data: Record<string, unknown> }) => Promise<T>
 
@@ -59,14 +60,64 @@ function parseAmount(value: string): number | null {
   return Number.isFinite(number) ? number : null
 }
 
+const menuCategories = sections.ru.menu.categories.map(category => ({ title: category.title, items: [...category.items] }))
+const knownDishes = new Set(menuCategories.flatMap(category => category.items))
+
+function MenuPicker({ title, selected, onChange, hint, onReset }: { title: string; selected: string[]; onChange: (list: string[]) => void; hint?: string; onReset?: () => void }) {
+  const [custom, setCustom] = useState('')
+  const extras = selected.filter(name => !knownDishes.has(name))
+
+  function toggle(name: string) {
+    onChange(selected.includes(name) ? selected.filter(item => item !== name) : [...selected, name])
+  }
+
+  function addCustom() {
+    const name = custom.trim().replace(/\s+/g, ' ')
+    if (!name) return
+    if (!selected.includes(name)) onChange([...selected, name])
+    setCustom('')
+  }
+
+  return (
+    <details className="ord-menu">
+      <summary><span>{title}</span><span className="ord-menu-count">выбрано: {selected.length}</span></summary>
+      <div className="ord-menu-body">
+        {hint && <p className="ord-menu-hint">{hint}</p>}
+        {menuCategories.map(category => <fieldset key={category.title}>
+          <legend>{category.title}</legend>
+          <div className="ord-menu-grid">{category.items.map(name => <label className="ord-check" key={name}><input type="checkbox" checked={selected.includes(name)} onChange={() => toggle(name)} /><span>{name}</span></label>)}</div>
+        </fieldset>)}
+        <fieldset>
+          <legend>Другое (не из меню на сайте)</legend>
+          <div className="ord-menu-grid">{extras.map(name => <label className="ord-check" key={name}><input type="checkbox" checked onChange={() => toggle(name)} /><span>{name}</span></label>)}</div>
+          <div className="ord-menu-add">
+            <input value={custom} placeholder="Название блюда" onChange={event => setCustom(event.target.value)} onKeyDown={event => { if (event.key === 'Enter') { event.preventDefault(); addCustom() } }} />
+            <button type="button" className="ord-secondary" onClick={addCustom}>Добавить</button>
+          </div>
+        </fieldset>
+        {onReset && <button type="button" className="ord-secondary ord-menu-reset" onClick={onReset}>Вернуть как в предложенном</button>}
+      </div>
+    </details>
+  )
+}
+
 function OrderCard({ order, onChange, onDelete }: { order: Order; onChange: (order: Order) => void; onDelete: (id: string) => void }) {
   const [cost, setCost] = useState(order.cost === null ? '' : String(order.cost))
   const [revenue, setRevenue] = useState(order.revenue === null ? '' : String(order.revenue))
   const [expectations, setExpectations] = useState(order.expectations)
   const [result, setResult] = useState(order.result)
+  const [proposedMenu, setProposedMenu] = useState(order.proposedMenu)
+  const [finalMenu, setFinalMenu] = useState(order.finalMenu)
+  const finalShown = finalMenu ?? proposedMenu
+  const [approvedAt, setApprovedAt] = useState(order.menuApprovedAt)
+  const [confirmed, setConfirmed] = useState(order.confirmedGuests ?? order.guests)
+  const [dishware, setDishware] = useState(order.dishware === null ? '' : String(order.dishware))
+  const [other, setOther] = useState(order.other === null ? '' : String(order.other))
+  const [otherNote, setOtherNote] = useState(order.otherNote)
+  const [notes, setNotes] = useState(order.notes)
   const [state, setState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle')
 
-  const profit = orderProfit({ cost: parseAmount(cost), revenue: parseAmount(revenue) })
+  const profit = orderProfit({ cost: parseAmount(cost), dishware: parseAmount(dishware), other: parseAmount(other), revenue: parseAmount(revenue) })
   const digits = order.phone.replace(/\D/g, '')
 
   async function save(patch: OrderPatch) {
@@ -83,7 +134,7 @@ function OrderCard({ order, onChange, onDelete }: { order: Order; onChange: (ord
       <summary>
         <span className="ord-name">{order.name || order.phone || 'Без имени'}</span>
         <span className={`ord-badge ord-${order.status}`}>{statusLabel(order.status)}</span>
-        <span className="ord-meta">{order.date || formatCreated(order.createdAt)}{order.guests ? ` · ${order.guests} гост.` : ''}</span>
+        <span className="ord-meta">{order.date ? formatEventDate(order.date) : formatCreated(order.createdAt)}{order.guests ? ` · ${order.guests} гост.` : ''}</span>
         <span className="ord-profit">{formatMoney(orderProfit(order))}</span>
       </summary>
       <div className="ord-body">
@@ -91,9 +142,9 @@ function OrderCard({ order, onChange, onDelete }: { order: Order; onChange: (ord
           <div><dt>Получена</dt><dd>{formatCreated(order.createdAt)}{order.source === 'manual' ? ' (добавлена вручную)' : ''}</dd></div>
           {order.phone && <div><dt>Телефон</dt><dd><a href={`tel:${order.phone}`}>{order.phone}</a>{digits && <> · <a href={`https://wa.me/${digits}`} target="_blank" rel="noreferrer">WhatsApp</a></>}</dd></div>}
           {order.email && <div><dt>Email</dt><dd><a href={`mailto:${order.email}`}>{order.email}</a></dd></div>}
-          {order.date && <div><dt>Дата события</dt><dd>{order.date}</dd></div>}
-          {order.guests && <div><dt>Гостей</dt><dd>{order.guests}</dd></div>}
-          {order.cuisine && <div><dt>Кухня</dt><dd>{order.cuisine}</dd></div>}
+          {order.date && <div><dt>Дата события</dt><dd>{formatEventDate(order.date)}</dd></div>}
+          {order.guests && <div><dt>Гостей по заявке</dt><dd>{order.guests}</dd></div>}
+          {order.cuisine && <div><dt>Кухня</dt><dd>{cuisineLabel(order.cuisine)}</dd></div>}
           {order.language && <div><dt>Язык</dt><dd>{order.language}</dd></div>}
         </dl>
         {order.message && <p className="ord-message">{order.message}</p>}
@@ -106,6 +157,15 @@ function OrderCard({ order, onChange, onDelete }: { order: Order; onChange: (ord
           <label>Себестоимость, ₪
             <input inputMode="decimal" value={cost} onChange={event => setCost(event.target.value)} onBlur={() => save({ cost: parseAmount(cost) })} />
           </label>
+          <label>Подтверждённое количество гостей
+            <input inputMode="numeric" value={confirmed} placeholder={order.guests} onChange={event => setConfirmed(event.target.value)} onBlur={() => save({ confirmedGuests: confirmed.trim() === order.guests.trim() ? null : confirmed })} />
+          </label>
+          <label>Посуда, ₪
+            <input inputMode="decimal" value={dishware} onChange={event => setDishware(event.target.value)} onBlur={() => save({ dishware: parseAmount(dishware) })} />
+          </label>
+          <label>Прочие расходы, ₪
+            <input inputMode="decimal" value={other} onChange={event => setOther(event.target.value)} onBlur={() => save({ other: parseAmount(other) })} />
+          </label>
           <label>Полученная сумма, ₪
             <input inputMode="decimal" value={revenue} onChange={event => setRevenue(event.target.value)} onBlur={() => save({ revenue: parseAmount(revenue) })} />
           </label>
@@ -113,13 +173,37 @@ function OrderCard({ order, onChange, onDelete }: { order: Order; onChange: (ord
             <output className="ord-output">{revenue.trim() === '' ? '—' : money.format(profit ?? 0)}</output>
           </label>
         </div>
+        <label className="ord-text">Комментарий к прочим расходам
+          <textarea rows={2} value={otherNote} onChange={event => setOtherNote(event.target.value)} onBlur={() => save({ otherNote })} />
+        </label>
+        <MenuPicker title="Предложенное меню" selected={proposedMenu} onChange={list => { setProposedMenu(list); save({ proposedMenu: list }) }} />
+        <MenuPicker
+          title="Окончательное меню"
+          selected={finalShown}
+          hint={finalMenu === null ? 'Пока совпадает с предложенным. Измените любую галочку, и список станет вашим.' : undefined}
+          onChange={list => { setFinalMenu(list); save({ finalMenu: list }) }}
+          onReset={finalMenu === null ? undefined : () => { setFinalMenu(null); save({ finalMenu: null }) }}
+        />
+        <div className="ord-approve">
+          {approvedAt ? <>
+            <span className="ord-approved">✓ Меню утверждено клиентом: {formatEventDate(approvedAt.slice(0, 10)).split(',')[0]}</span>
+            <button type="button" className="ord-secondary" onClick={() => { setApprovedAt(null); save({ menuApprovedAt: null }) }}>Снять утверждение</button>
+          </> : <>
+            <button type="button" onClick={() => { setApprovedAt(new Date().toISOString()); save({ menuApprovedAt: new Date().toISOString() }) }} disabled={finalShown.length === 0}>Клиент утвердил меню</button>
+            <span className="ord-state">{finalShown.length === 0 ? 'Сначала отметьте блюда в окончательном меню' : 'Нажмите, когда клиент согласовал окончательное меню'}</span>
+          </>}
+        </div>
         <label className="ord-text">Согласование ожиданий и заявки
           <textarea rows={4} value={expectations} onChange={event => setExpectations(event.target.value)} onBlur={() => save({ expectations })} />
         </label>
         <label className="ord-text">Окончательный результат
           <textarea rows={4} value={result} onChange={event => setResult(event.target.value)} onBlur={() => save({ result })} />
         </label>
+        <label className="ord-text">Комментарий по заявке: как прошло, аллергии, отзывы, предпочтения клиента
+          <textarea rows={6} value={notes} onChange={event => setNotes(event.target.value)} onBlur={() => save({ notes })} />
+        </label>
         <div className="ord-actions">
+          <button type="button" className="ord-save" onClick={() => save({ confirmedGuests: confirmed.trim() === order.guests.trim() ? null : confirmed, cost: parseAmount(cost), revenue: parseAmount(revenue), dishware: parseAmount(dishware), other: parseAmount(other), otherNote, expectations, result, notes })} disabled={state === 'saving'}>{state === 'saving' ? 'Сохраняю…' : 'Сохранить'}</button>
           <span className="ord-state" role="status">{state === 'saving' ? 'Сохраняю…' : state === 'saved' ? 'Сохранено' : state === 'error' ? 'Не удалось сохранить' : ''}</span>
           <button type="button" className="ord-delete" onClick={() => { if (window.confirm('Удалить эту заявку без возможности восстановления?')) onDelete(order.id) }}>Удалить</button>
         </div>
@@ -153,9 +237,9 @@ function NewOrderForm({ onCreated, onClose }: { onCreated: (order: Order) => voi
         <label>Имя<input name="name" /></label>
         <label>Телефон<input name="phone" inputMode="tel" /></label>
         <label>Email<input name="email" type="email" /></label>
-        <label>Дата события<input name="date" /></label>
+        <label>Дата события<input name="date" type="date" /></label>
         <label>Гостей<input name="guests" inputMode="numeric" /></label>
-        <label>Кухня<input name="cuisine" /></label>
+        <label>Кухня<select name="cuisine" defaultValue="inspiration">{cuisineOptions.map(item => <option key={item.value} value={item.value}>{item.label}</option>)}</select></label>
       </div>
       <label className="ord-text">Что просит клиент<textarea name="message" rows={3} /></label>
       {error && <p className="ord-error" role="alert">Не получилось сохранить. Укажите хотя бы имя, телефон или текст.</p>}
@@ -168,18 +252,8 @@ function NewOrderForm({ onCreated, onClose }: { onCreated: (order: Order) => voi
 }
 
 async function exportExcel(orders: Order[]) {
-  const { buildXlsx } = await import('@/lib/xlsx')
-  const header = ['Получена', 'Статус', 'Имя', 'Телефон', 'Email', 'Дата события', 'Гостей', 'Кухня', 'Язык', 'Запрос клиента', 'Согласование ожиданий и заявки', 'Окончательный результат', 'Себестоимость, ₪', 'Полученная сумма, ₪', 'Прибыль до налогов, ₪']
-  const rows = orders.map((order, index) => {
-    const row = index + 2
-    const profit = orderProfit(order)
-    return [
-      formatCreated(order.createdAt), statusLabel(order.status), order.name, order.phone, order.email, order.date, order.guests, order.cuisine, order.language, order.message, order.expectations, order.result,
-      order.cost, order.revenue,
-      order.revenue === null ? null : { formula: `N${row}-M${row}`, value: profit },
-    ]
-  })
-  const bytes = buildXlsx([header, ...rows], [18, 15, 20, 18, 24, 18, 9, 16, 9, 40, 40, 40, 16, 18, 20], [12, 13, 14])
+  const { buildOrdersXlsx } = await import('@/lib/orders-export')
+  const bytes = buildOrdersXlsx(orders)
   const blob = new Blob([bytes], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' })
   const url = URL.createObjectURL(blob)
   const link = document.createElement('a')
@@ -196,15 +270,33 @@ export function OrdersApp({ initial, configured }: { initial: Order[]; configure
   const [orders, setOrders] = useState(initial)
   const [filter, setFilter] = useState<'all' | OrderStatus>('all')
   const [adding, setAdding] = useState(false)
+  const [from, setFrom] = useState('')
+  const [to, setTo] = useState('')
 
-  const shown = useMemo(() => orders.filter(order => filter === 'all' || order.status === filter), [orders, filter])
+  const periodOn = from !== '' || to !== ''
+  const undated = useMemo(() => (periodOn ? orders.filter(order => (filter === 'all' || order.status === filter) && eventDateISO(order.date) === null).length : 0), [orders, filter, periodOn])
+  const shown = useMemo(() => orders.filter(order => {
+    if (filter !== 'all' && order.status !== filter) return false
+    if (!periodOn) return true
+    const day = eventDateISO(order.date)
+    if (day === null) return false
+    return (from === '' || day >= from) && (to === '' || day <= to)
+  }), [orders, filter, from, to, periodOn])
+
+  function setMonth(offset: number) {
+    const now = new Date()
+    const start = new Date(Date.UTC(now.getFullYear(), now.getMonth() + offset, 1))
+    const end = new Date(Date.UTC(now.getFullYear(), now.getMonth() + offset + 1, 0))
+    setFrom(start.toISOString().slice(0, 10))
+    setTo(end.toISOString().slice(0, 10))
+  }
   const totals = useMemo(() => {
     let revenue = 0
     let cost = 0
     for (const order of shown) {
       if (order.revenue === null) continue
       revenue += order.revenue
-      cost += order.cost ?? 0
+      cost += orderExpenses(order)
     }
     return { revenue, cost, profit: revenue - cost }
   }, [shown])
@@ -229,7 +321,7 @@ export function OrdersApp({ initial, configured }: { initial: Order[]; configure
         <h1>Заявки</h1>
         <div className="ord-top-actions">
           <button type="button" onClick={() => setAdding(true)} disabled={!configured}>Добавить</button>
-          <button type="button" className="ord-secondary" onClick={() => exportExcel(orders)} disabled={orders.length === 0}>Скачать Excel</button>
+          <button type="button" className="ord-secondary" onClick={() => exportExcel(shown)} disabled={shown.length === 0}>{periodOn || filter !== 'all' ? 'Скачать Excel (показанные)' : 'Скачать Excel'}</button>
           <button type="button" className="ord-secondary" onClick={leave}>Выйти</button>
         </div>
       </header>
@@ -242,10 +334,22 @@ export function OrdersApp({ initial, configured }: { initial: Order[]; configure
             {orderStatuses.map(item => <option key={item.value} value={item.value}>{item.label} ({orders.filter(order => order.status === item.value).length})</option>)}
           </select>
         </label>
+        <label>Период с (дата мероприятия)
+          <input type="date" value={from} max={to || undefined} onChange={event => setFrom(event.target.value)} />
+        </label>
+        <label>Период по
+          <input type="date" value={to} min={from || undefined} onChange={event => setTo(event.target.value)} />
+        </label>
         <div><span>Получено</span><strong>{formatMoney(totals.revenue)}</strong></div>
-        <div><span>Себестоимость</span><strong>{formatMoney(totals.cost)}</strong></div>
+        <div><span>Расходы</span><strong>{formatMoney(totals.cost)}</strong></div>
         <div><span>Прибыль до налогов</span><strong>{formatMoney(totals.profit)}</strong></div>
       </section>
+      <div className="ord-period">
+        <button type="button" className="ord-secondary" onClick={() => setMonth(0)}>Этот месяц</button>
+        <button type="button" className="ord-secondary" onClick={() => setMonth(-1)}>Прошлый месяц</button>
+        {periodOn && <button type="button" className="ord-secondary" onClick={() => { setFrom(''); setTo('') }}>Сбросить период</button>}
+        {periodOn && <span className="ord-state">Показано заявок: {shown.length}{undated > 0 ? `. Скрыто без даты мероприятия: ${undated}` : ''}</span>}
+      </div>
       <div className="ord-list">
         {shown.length === 0 ? <p className="ord-empty">Заявок пока нет.</p> : shown.map(order => <OrderCard key={order.id} order={order} onChange={replace} onDelete={remove} />)}
       </div>
