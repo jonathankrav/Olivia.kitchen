@@ -46,12 +46,26 @@ function status(value: unknown): OrderStatus {
   return statusValues.includes(value as OrderStatus) ? (value as OrderStatus) : 'new'
 }
 
-const blank = { proposedMenu: '', finalMenu: '', dishware: null, other: null, otherNote: '', notes: '' }
+const blank = { proposedMenu: [] as string[], finalMenu: null as string[] | null, dishware: null, other: null, otherNote: '', notes: '' }
+
+function dishes(value: unknown): string[] {
+  const list = Array.isArray(value) ? value : typeof value === 'string' ? value.split('\n') : []
+  const seen = new Set<string>()
+  for (const item of list) {
+    const name = oneLine(item, 200)
+    if (name) seen.add(name)
+    if (seen.size >= 200) break
+  }
+  return [...seen]
+}
 
 function parse(raw: unknown): Order | null {
   if (typeof raw !== 'string') return null
   try {
-    return { ...blank, ...(JSON.parse(raw) as Order) }
+    const order = { ...blank, ...(JSON.parse(raw) as Order) }
+    order.proposedMenu = dishes(order.proposedMenu)
+    order.finalMenu = order.finalMenu === null ? null : dishes(order.finalMenu)
+    return order
   } catch {
     return null
   }
@@ -130,9 +144,9 @@ export async function updateOrder(id: unknown, patch: unknown): Promise<Order | 
   if ('result' in changes) next.result = text(changes.result, 8000)
   if ('dishware' in changes) next.dishware = amount(changes.dishware)
   if ('other' in changes) next.other = amount(changes.other)
-  for (const key of ['proposedMenu', 'finalMenu', 'notes'] as const) {
-    if (key in changes) next[key] = text(changes[key], 8000)
-  }
+  if ('proposedMenu' in changes) next.proposedMenu = dishes(changes.proposedMenu)
+  if ('finalMenu' in changes) next.finalMenu = changes.finalMenu === null ? null : dishes(changes.finalMenu)
+  if ('notes' in changes) next.notes = text(changes.notes, 8000)
   if ('otherNote' in changes) next.otherNote = text(changes.otherNote, 2000)
   for (const [key, limit] of [['name', 200], ['phone', 80], ['email', 200], ['date', 120], ['guests', 60], ['cuisine', 120]] as const) {
     if (key in changes) next[key] = oneLine(changes[key], limit)

@@ -135,3 +135,16 @@
 [dir=rtl] .menu-list li,[dir=rtl] .menu-panel h3{font-family:'Noto Sans Hebrew',sans-serif;font-size:18px;letter-spacing:0}
 [dir=rtl] .menu-panel h3{font-size:24px}
 @media(max-width:760px){.menu-section{padding-top:52px;padding-bottom:44px}.menu-tabs{gap:7px;margin-bottom:24px}.menu-tabs button{font-size:11px;padding:9px 12px}.menu-panel h3{font-size:26px}.menu-list{columns:1}.menu-list li{font-size:20px;padding:13px 0}[dir=rtl] .menu-list li{font-size:17px}}
+
+.ord-menu{border:1px solid #dce0d3;border-radius:8px;background:#fff}
+.ord-menu>summary{cursor:pointer;display:flex;justify-content:space-between;gap:10px;padding:10px 12px;font-size:14px;font-weight:600}
+.ord-menu-count{font-weight:400;font-size:12px;color:#6e7267}
+.ord-menu-body{padding:4px 12px 14px;display:flex;flex-direction:column;gap:12px}
+.ord-menu-hint{margin:0;font-size:12px;color:#6e7267}
+.ord-menu fieldset{border:0;padding:0;margin:0}
+.ord-menu legend{font-size:12px;color:#6e7267;padding:0;margin-bottom:6px}
+.ord-menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:2px 12px}
+.ord-page .ord-check{display:flex;flex-direction:row;align-items:flex-start;gap:8px;font-size:14px;color:#25301f;padding:5px 0;cursor:pointer}
+.ord-page .ord-check input{width:18px;height:18px;padding:0;margin:1px 0 0;flex:none;accent-color:#354737}
+.ord-menu-add{display:flex;gap:8px;margin-top:8px}
+.ord-page .ord-menu-reset{align-self:flex-start}

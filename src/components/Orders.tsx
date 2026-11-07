@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import type { FormEvent } from 'react'
 import { useRouter } from '@tanstack/react-router'
 import { createOrder, loginOrders, logoutOrders, removeOrder, updateOrder } from '@/lib/orders'
+import { sections } from '@/lib/content'
 import { orderExpenses, orderProfit, orderStatuses, type Order, type OrderPatch, type OrderStatus } from '@/lib/orders-types'
 
 type Call<T> = (options: { data: Record<string, unknown> }) => Promise<T>
@@ -59,6 +60,47 @@ function parseAmount(value: string): number | null {
   return Number.isFinite(number) ? number : null
 }
 
+const menuCategories = sections.ru.menu.categories.map(category => ({ title: category.title, items: [...category.items] }))
+const knownDishes = new Set(menuCategories.flatMap(category => category.items))
+
+function MenuPicker({ title, selected, onChange, hint, onReset }: { title: string; selected: string[]; onChange: (list: string[]) => void; hint?: string; onReset?: () => void }) {
+  const [custom, setCustom] = useState('')
+  const extras = selected.filter(name => !knownDishes.has(name))
+
+  function toggle(name: string) {
+    onChange(selected.includes(name) ? selected.filter(item => item !== name) : [...selected, name])
+  }
+
+  function addCustom() {
+    const name = custom.trim().replace(/\s+/g, ' ')
+    if (!name) return
+    if (!selected.includes(name)) onChange([...selected, name])
+    setCustom('')
+  }
+
+  return (
+    <details className="ord-menu">
+      <summary><span>{title}</span><span className="ord-menu-count">выбрано: {selected.length}</span></summary>
+      <div className="ord-menu-body">
+        {hint && <p className="ord-menu-hint">{hint}</p>}
+        {menuCategories.map(category => <fieldset key={category.title}>
+          <legend>{category.title}</legend>
+          <div className="ord-menu-grid">{category.items.map(name => <label className="ord-check" key={name}><input type="checkbox" checked={selected.includes(name)} onChange={() => toggle(name)} /><span>{name}</span></label>)}</div>
+        </fieldset>)}
+        <fieldset>
+          <legend>Другое (не из меню на сайте)</legend>
+          <div className="ord-menu-grid">{extras.map(name => <label className="ord-check" key={name}><input type="checkbox" checked onChange={() => toggle(name)} /><span>{name}</span></label>)}</div>
+          <div className="ord-menu-add">
+            <input value={custom} placeholder="Название блюда" onChange={event => setCustom(event.target.value)} onKeyDown={event => { if (event.key === 'Enter') { event.preventDefault(); addCustom() } }} />
+            <button type="button" className="ord-secondary" onClick={addCustom}>Добавить</button>
+          </div>
+        </fieldset>
+        {onReset && <button type="button" className="ord-secondary ord-menu-reset" onClick={onReset}>Вернуть как в предложенном</button>}
+      </div>
+    </details>
+  )
+}
+
 function OrderCard({ order, onChange, onDelete }: { order: Order; onChange: (order: Order) => void; onDelete: (id: string) => void }) {
   const [cost, setCost] = useState(order.cost === null ? '' : String(order.cost))
   const [revenue, setRevenue] = useState(order.revenue === null ? '' : String(order.revenue))
@@ -66,6 +108,7 @@ function OrderCard({ order, onChange, onDelete }: { order: Order; onChange: (ord
   const [result, setResult] = useState(order.result)
   const [proposedMenu, setProposedMenu] = useState(order.proposedMenu)
   const [finalMenu, setFinalMenu] = useState(order.finalMenu)
+  const finalShown = finalMenu ?? proposedMenu
   const [dishware, setDishware] = useState(order.dishware === null ? '' : String(order.dishware))
   const [other, setOther] = useState(order.other === null ? '' : String(order.other))
   const [otherNote, setOtherNote] = useState(order.otherNote)
@@ -128,12 +171,14 @@ function OrderCard({ order, onChange, onDelete }: { order: Order; onChange: (ord
         <label className="ord-text">Комментарий к прочим расходам
           <textarea rows={2} value={otherNote} onChange={event => setOtherNote(event.target.value)} onBlur={() => save({ otherNote })} />
         </label>
-        <label className="ord-text">Предложенное меню
-          <textarea rows={4} value={proposedMenu} onChange={event => setProposedMenu(event.target.value)} onBlur={() => save({ proposedMenu })} />
-        </label>
-        <label className="ord-text">Окончательное меню
-          <textarea rows={4} value={finalMenu} onChange={event => setFinalMenu(event.target.value)} onBlur={() => save({ finalMenu })} />
-        </label>
+        <MenuPicker title="Предложенное меню" selected={proposedMenu} onChange={list => { setProposedMenu(list); save({ proposedMenu: list }) }} />
+        <MenuPicker
+          title="Окончательное меню"
+          selected={finalShown}
+          hint={finalMenu === null ? 'Пока совпадает с предложенным. Измените любую галочку, и список станет вашим.' : undefined}
+          onChange={list => { setFinalMenu(list); save({ finalMenu: list }) }}
+          onReset={finalMenu === null ? undefined : () => { setFinalMenu(null); save({ finalMenu: null }) }}
+        />
         <label className="ord-text">Согласование ожиданий и заявки
           <textarea rows={4} value={expectations} onChange={event => setExpectations(event.target.value)} onBlur={() => save({ expectations })} />
         </label>
@@ -198,7 +243,7 @@ async function exportExcel(orders: Order[]) {
     const row = index + 2
     const profit = orderProfit(order)
     return [
-      formatCreated(order.createdAt), statusLabel(order.status), order.name, order.phone, order.email, order.date, order.guests, order.cuisine, order.language, order.message, order.expectations, order.result, order.proposedMenu, order.finalMenu,
+      formatCreated(order.createdAt), statusLabel(order.status), order.name, order.phone, order.email, order.date, order.guests, order.cuisine, order.language, order.message, order.expectations, order.result, order.proposedMenu.join('; '), (order.finalMenu ?? order.proposedMenu).join('; '),
       order.cost, order.dishware, order.other, order.otherNote, order.revenue,
       order.revenue === null ? null : { formula: `S${row}-O${row}-P${row}-Q${row}`, value: profit },
       order.notes,

@@ -26,8 +26,8 @@ export type Order = {
   revenue: number | null
   expectations: string
   result: string
-  proposedMenu: string
-  finalMenu: string
+  proposedMenu: string[]
+  finalMenu: string[] | null
   dishware: number | null
   other: number | null
   otherNote: string
