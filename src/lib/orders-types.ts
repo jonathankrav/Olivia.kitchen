@@ -68,3 +68,14 @@ export function formatEventDate(value: string) {
   const weekday = date.toLocaleDateString('he-IL', { weekday: 'long', timeZone: 'UTC' })
   return `${String(day).padStart(2, '0')}.${String(month).padStart(2, '0')}.${year}, ${weekday}`
 }
+
+export const cuisineOptions: { value: string; label: string }[] = [
+  { value: 'israeli', label: 'Израильская' },
+  { value: 'italian', label: 'Итальянская' },
+  { value: 'azerbaijani', label: 'Азербайджанская' },
+  { value: 'inspiration', label: 'Выбор Оливии' },
+]
+
+export function cuisineLabel(value: string) {
+  return cuisineOptions.find(item => item.value === value)?.label ?? value
+}

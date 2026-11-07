@@ -3,7 +3,7 @@ import type { FormEvent } from 'react'
 import { useRouter } from '@tanstack/react-router'
 import { createOrder, loginOrders, logoutOrders, removeOrder, updateOrder } from '@/lib/orders'
 import { sections } from '@/lib/content'
-import { formatEventDate, orderExpenses, orderProfit, orderStatuses, type Order, type OrderPatch, type OrderStatus } from '@/lib/orders-types'
+import { cuisineLabel, cuisineOptions, formatEventDate, orderExpenses, orderProfit, orderStatuses, type Order, type OrderPatch, type OrderStatus } from '@/lib/orders-types'
 
 type Call<T> = (options: { data: Record<string, unknown> }) => Promise<T>
 
@@ -143,7 +143,7 @@ function OrderCard({ order, onChange, onDelete }: { order: Order; onChange: (ord
           {order.email && <div><dt>Email</dt><dd><a href={`mailto:${order.email}`}>{order.email}</a></dd></div>}
           {order.date && <div><dt>Дата события</dt><dd>{formatEventDate(order.date)}</dd></div>}
           {order.guests && <div><dt>Гостей по заявке</dt><dd>{order.guests}</dd></div>}
-          {order.cuisine && <div><dt>Кухня</dt><dd>{order.cuisine}</dd></div>}
+          {order.cuisine && <div><dt>Кухня</dt><dd>{cuisineLabel(order.cuisine)}</dd></div>}
           {order.language && <div><dt>Язык</dt><dd>{order.language}</dd></div>}
         </dl>
         {order.message && <p className="ord-message">{order.message}</p>}
@@ -229,7 +229,7 @@ function NewOrderForm({ onCreated, onClose }: { onCreated: (order: Order) => voi
         <label>Email<input name="email" type="email" /></label>
         <label>Дата события<input name="date" type="date" /></label>
         <label>Гостей<input name="guests" inputMode="numeric" /></label>
-        <label>Кухня<input name="cuisine" /></label>
+        <label>Кухня<select name="cuisine" defaultValue="inspiration">{cuisineOptions.map(item => <option key={item.value} value={item.value}>{item.label}</option>)}</select></label>
       </div>
       <label className="ord-text">Что просит клиент<textarea name="message" rows={3} /></label>
       {error && <p className="ord-error" role="alert">Не получилось сохранить. Укажите хотя бы имя, телефон или текст.</p>}
