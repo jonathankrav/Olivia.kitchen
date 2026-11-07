@@ -149,3 +149,4 @@
 .ord-menu-add{display:flex;gap:8px;margin-top:8px}
 .ord-page .ord-menu-reset{align-self:flex-start}
 .ord-page .ord-save{background:#354737;color:#fffefb;font-weight:600;padding:11px 26px;box-shadow:0 1px 0 #1f2b21}.ord-actions{flex-wrap:wrap}.ord-actions .ord-state{flex:1}
+.ord-period{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:-4px 0 14px}.ord-summary input[type=date]{min-height:40px}

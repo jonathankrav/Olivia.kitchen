@@ -3,7 +3,7 @@ import type { FormEvent } from 'react'
 import { useRouter } from '@tanstack/react-router'
 import { createOrder, loginOrders, logoutOrders, removeOrder, updateOrder } from '@/lib/orders'
 import { sections } from '@/lib/content'
-import { cuisineLabel, cuisineOptions, formatEventDate, orderExpenses, orderProfit, orderStatuses, type Order, type OrderPatch, type OrderStatus } from '@/lib/orders-types'
+import { cuisineLabel, cuisineOptions, eventDateISO, formatEventDate, orderExpenses, orderProfit, orderStatuses, type Order, type OrderPatch, type OrderStatus } from '@/lib/orders-types'
 
 type Call<T> = (options: { data: Record<string, unknown> }) => Promise<T>
 
@@ -260,8 +260,26 @@ export function OrdersApp({ initial, configured }: { initial: Order[]; configure
   const [orders, setOrders] = useState(initial)
   const [filter, setFilter] = useState<'all' | OrderStatus>('all')
   const [adding, setAdding] = useState(false)
+  const [from, setFrom] = useState('')
+  const [to, setTo] = useState('')
 
-  const shown = useMemo(() => orders.filter(order => filter === 'all' || order.status === filter), [orders, filter])
+  const periodOn = from !== '' || to !== ''
+  const undated = useMemo(() => (periodOn ? orders.filter(order => (filter === 'all' || order.status === filter) && eventDateISO(order.date) === null).length : 0), [orders, filter, periodOn])
+  const shown = useMemo(() => orders.filter(order => {
+    if (filter !== 'all' && order.status !== filter) return false
+    if (!periodOn) return true
+    const day = eventDateISO(order.date)
+    if (day === null) return false
+    return (from === '' || day >= from) && (to === '' || day <= to)
+  }), [orders, filter, from, to, periodOn])
+
+  function setMonth(offset: number) {
+    const now = new Date()
+    const start = new Date(Date.UTC(now.getFullYear(), now.getMonth() + offset, 1))
+    const end = new Date(Date.UTC(now.getFullYear(), now.getMonth() + offset + 1, 0))
+    setFrom(start.toISOString().slice(0, 10))
+    setTo(end.toISOString().slice(0, 10))
+  }
   const totals = useMemo(() => {
     let revenue = 0
     let cost = 0
@@ -293,7 +311,7 @@ export function OrdersApp({ initial, configured }: { initial: Order[]; configure
         <h1>Заявки</h1>
         <div className="ord-top-actions">
           <button type="button" onClick={() => setAdding(true)} disabled={!configured}>Добавить</button>
-          <button type="button" className="ord-secondary" onClick={() => exportExcel(orders)} disabled={orders.length === 0}>Скачать Excel</button>
+          <button type="button" className="ord-secondary" onClick={() => exportExcel(shown)} disabled={shown.length === 0}>{periodOn || filter !== 'all' ? 'Скачать Excel (показанные)' : 'Скачать Excel'}</button>
           <button type="button" className="ord-secondary" onClick={leave}>Выйти</button>
         </div>
       </header>
@@ -306,10 +324,22 @@ export function OrdersApp({ initial, configured }: { initial: Order[]; configure
             {orderStatuses.map(item => <option key={item.value} value={item.value}>{item.label} ({orders.filter(order => order.status === item.value).length})</option>)}
           </select>
         </label>
+        <label>Период с (дата мероприятия)
+          <input type="date" value={from} max={to || undefined} onChange={event => setFrom(event.target.value)} />
+        </label>
+        <label>Период по
+          <input type="date" value={to} min={from || undefined} onChange={event => setTo(event.target.value)} />
+        </label>
         <div><span>Получено</span><strong>{formatMoney(totals.revenue)}</strong></div>
         <div><span>Расходы</span><strong>{formatMoney(totals.cost)}</strong></div>
         <div><span>Прибыль до налогов</span><strong>{formatMoney(totals.profit)}</strong></div>
       </section>
+      <div className="ord-period">
+        <button type="button" className="ord-secondary" onClick={() => setMonth(0)}>Этот месяц</button>
+        <button type="button" className="ord-secondary" onClick={() => setMonth(-1)}>Прошлый месяц</button>
+        {periodOn && <button type="button" className="ord-secondary" onClick={() => { setFrom(''); setTo('') }}>Сбросить период</button>}
+        {periodOn && <span className="ord-state">Показано заявок: {shown.length}{undated > 0 ? `. Скрыто без даты мероприятия: ${undated}` : ''}</span>}
+      </div>
       <div className="ord-list">
         {shown.length === 0 ? <p className="ord-empty">Заявок пока нет.</p> : shown.map(order => <OrderCard key={order.id} order={order} onChange={replace} onDelete={remove} />)}
       </div>
