@@ -242,19 +242,8 @@ function NewOrderForm({ onCreated, onClose }: { onCreated: (order: Order) => voi
 }
 
 async function exportExcel(orders: Order[]) {
-  const { buildXlsx } = await import('@/lib/xlsx')
-  const header = ['Получена', 'Статус', 'Имя', 'Телефон', 'Email', 'Дата события', 'Гостей', 'Кухня', 'Язык', 'Запрос клиента', 'Согласование ожиданий и заявки', 'Окончательный результат', 'Предложенное меню', 'Окончательное меню', 'Себестоимость, ₪', 'Посуда, ₪', 'Прочие расходы, ₪', 'Комментарий к прочим расходам', 'Полученная сумма, ₪', 'Прибыль до налогов, ₪', 'Комментарий по заявке', 'Гостей подтверждено']
-  const rows = orders.map((order, index) => {
-    const row = index + 2
-    const profit = orderProfit(order)
-    return [
-      formatCreated(order.createdAt), statusLabel(order.status), order.name, order.phone, order.email, order.date, order.guests, order.cuisine, order.language, order.message, order.expectations, order.result, order.proposedMenu.join('; '), (order.finalMenu ?? order.proposedMenu).join('; '),
-      order.cost, order.dishware, order.other, order.otherNote, order.revenue,
-      order.revenue === null ? null : { formula: `S${row}-O${row}-P${row}-Q${row}`, value: profit },
-      order.notes, order.confirmedGuests ?? order.guests,
-    ]
-  })
-  const bytes = buildXlsx([header, ...rows], [18, 15, 20, 18, 24, 18, 9, 16, 9, 40, 40, 40, 40, 40, 16, 12, 16, 30, 18, 20, 50, 14], [14, 15, 16, 18, 19])
+  const { buildOrdersXlsx } = await import('@/lib/orders-export')
+  const bytes = buildOrdersXlsx(orders)
   const blob = new Blob([bytes], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' })
   const url = URL.createObjectURL(blob)
   const link = document.createElement('a')

@@ -162,3 +162,7 @@ export async function deleteOrder(id: unknown): Promise<boolean> {
   await command(['HDEL', hashKey, id])
   return true
 }
+
+export async function claimBackupSlot(): Promise<boolean> {
+  return (await command(['SET', 'backup:last', new Date().toISOString(), 'NX', 'EX', '500000'])) === 'OK'
+}
