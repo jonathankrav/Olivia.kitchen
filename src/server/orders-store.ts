@@ -64,7 +64,8 @@ function parse(raw: unknown): Order | null {
   try {
     const order = { ...blank, ...(JSON.parse(raw) as Order) }
     order.proposedMenu = dishes(order.proposedMenu)
-    order.finalMenu = order.finalMenu === null ? null : dishes(order.finalMenu)
+    const legacy = typeof order.finalMenu === 'string' && !(order.finalMenu as string).trim()
+    order.finalMenu = order.finalMenu === null || order.finalMenu === undefined || legacy ? null : dishes(order.finalMenu)
     return order
   } catch {
     return null

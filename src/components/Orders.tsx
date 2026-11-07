@@ -189,6 +189,7 @@ function OrderCard({ order, onChange, onDelete }: { order: Order; onChange: (ord
           <textarea rows={6} value={notes} onChange={event => setNotes(event.target.value)} onBlur={() => save({ notes })} />
         </label>
         <div className="ord-actions">
+          <button type="button" className="ord-save" onClick={() => save({ cost: parseAmount(cost), revenue: parseAmount(revenue), dishware: parseAmount(dishware), other: parseAmount(other), otherNote, expectations, result, notes })} disabled={state === 'saving'}>{state === 'saving' ? 'Сохраняю…' : 'Сохранить'}</button>
           <span className="ord-state" role="status">{state === 'saving' ? 'Сохраняю…' : state === 'saved' ? 'Сохранено' : state === 'error' ? 'Не удалось сохранить' : ''}</span>
           <button type="button" className="ord-delete" onClick={() => { if (window.confirm('Удалить эту заявку без возможности восстановления?')) onDelete(order.id) }}>Удалить</button>
         </div>

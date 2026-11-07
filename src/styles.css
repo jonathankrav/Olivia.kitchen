@@ -148,3 +148,4 @@
 .ord-page .ord-check input{width:18px;height:18px;padding:0;margin:1px 0 0;flex:none;accent-color:#354737}
 .ord-menu-add{display:flex;gap:8px;margin-top:8px}
 .ord-page .ord-menu-reset{align-self:flex-start}
+.ord-page .ord-save{background:#354737;color:#fffefb;font-weight:600;padding:11px 26px;box-shadow:0 1px 0 #1f2b21}.ord-actions{flex-wrap:wrap}.ord-actions .ord-state{flex:1}
