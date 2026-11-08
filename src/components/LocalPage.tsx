@@ -1,6 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { ArrowUpRight, MessageCircle } from 'lucide-react'
 import { contact, content, localPages, sections, type Language, type LocalPageKey } from '@/lib/content'
+import { StickyContacts } from '@/components/StickyContacts'
 import { GallerySection } from '@/components/Gallery'
 import { AreasSection, FaqSection, KashrutSection, ServicesSection, VideoSection } from '@/components/Sections'
 
@@ -82,6 +83,7 @@ export function LocalPage({ pageKey, language }: { pageKey: LocalPageKey; langua
       </main>
 
       <footer><div className="footer-main"><Link className="brand footer-brand" to={home}><img className="brand-mark" src="/logo.svg" alt="" width="52" height="52" /><span className="brand-text"><span className="brand-name">Olivia’s Kitchen</span><small>{text.slogan}</small></span></Link><p>{text.footer}</p></div><div className="footer-bottom"><span>© {new Date().getFullYear()} {text.rights}</span><span>{text.cuisineNames.join(' · ')}</span><a href={`tel:${contact.phoneE164}`} dir="ltr">{contact.phone}</a><a href={`mailto:${contact.email}`}>{contact.email}</a></div></footer>
+      <StickyContacts language={language} paths={page.paths} whatsappUrl={whatsappUrl} />
     </div>
   )
 }
