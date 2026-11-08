@@ -15,7 +15,7 @@ This is a single-page private-chef marketing website, built with TanStack Start,
 - `public/robots.txt`, `public/sitemap.xml`: search engine files; update the sitemap when adding a route, and keep its image list for `/` in step with `galleryPhotos` and its `video:video` entries in step with `videoClips`.
 - `src/lib/content.ts`: all English, Hebrew, and Russian copy plus email and WhatsApp configuration.
 - `src/styles.css`: responsive editorial design, olive/cream theme tokens, typography, RTL handling, motion, and reduced-motion preferences.
-- `public/img/`: real photographs of Olivia's dishes (webp only), processed to the site style with the photographer's JonathanKrav mark in the bottom-right corner. Gallery files come in a full size and a `-sm` size; `hero`, `israeli`, `italian` and `azerbaijani` are the hero and cuisine-card crops. The gallery list, groups (`savoury`, `desserts`) and per-language captions live in `galleryPhotos` in `src/lib/content.ts`. Images are served as static files from `/img/`.
+- `public/img/`: real photographs of Olivia's dishes (webp only). Gallery files come in a full size and a `-sm` size; `hero`, `israeli`, `italian` and `azerbaijani` are the hero and cuisine-card crops. The gallery list, groups (`savoury`, `desserts`) and per-language captions live in `galleryPhotos` in `src/lib/content.ts`. Images are served as static files from `/img/`.
 - `scripts/generate-images.mjs`: optional, manually invoked static-image generation utility using Netlify AI Gateway. Never run during a build.
 
 ## Conventions
