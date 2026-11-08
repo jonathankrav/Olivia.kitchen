@@ -164,3 +164,4 @@
 .sticky-contacts .languages a[aria-current=page]{color:#fff;border-bottom-color:#fff}
 @media(max-width:760px){.site{padding-bottom:58px}.sticky-contacts{gap:6px;justify-content:space-between;padding:4px 14px}.sticky-contacts>a{padding:10px 12px}.sticky-contacts>a span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.sticky-contacts>a svg{width:22px;height:22px}.sticky-contacts .languages{margin-inline-start:0}}
 @media(min-width:761px) and (max-width:1000px){.sticky-contacts{gap:20px}.sticky-contacts>a:nth-child(3) span{display:none}}
+@media(min-width:1001px){.contacts-list a,.contacts-list button,.contacts-value{font-size:clamp(18px,1.75vw,26px);overflow-wrap:break-word;word-break:normal;hyphens:none}}
