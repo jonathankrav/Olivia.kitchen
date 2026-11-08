@@ -156,7 +156,7 @@ export const sections = {
     services: {
       label: 'EVENTS & SERVICE', title: 'Your table for\n4 to 30 guests.',
       intro: 'I cook and provide catering for groups of 4 to 30 guests: family celebrations, corporate events and evenings with friends. You decide how much to take on and what kind of evening you want.',
-      guests: ['4–30', 'guests'],
+      guests: ['4-30', 'guests'],
       groups: [
         { title: 'Occasions', items: [
           { title: 'Family celebrations', text: 'Birthdays, holidays and special dates around one table.' },
@@ -219,7 +219,7 @@ export const sections = {
     services: {
       label: 'אירועים ושירות', title: 'שולחן לקבוצות\nשל 4 עד 30 אורחים.',
       intro: 'אני מבשלת ומספקת קייטרינג לקבוצות של 4 עד 30 אורחים: אירועים משפחתיים, אירועי חברה וערבים עם חברים. אתם בוחרים כמה לקחת על עצמכם ואיזה ערב אתם רוצים.',
-      guests: ['4–30', 'אורחים'],
+      guests: ['4-30', 'אורחים'],
       groups: [
         { title: 'סוגי אירועים', items: [
           { title: 'אירועים משפחתיים', text: 'ימי הולדת, חגים ותאריכים מיוחדים סביב שולחן אחד.' },
@@ -282,7 +282,7 @@ export const sections = {
     services: {
       label: 'МЕРОПРИЯТИЯ И СЕРВИС', title: 'Стол для компании\nот 4 до 30 человек.',
       intro: 'Я готовлю и делаю кейтеринг для компаний от 4 до 30 человек: семейные праздники, корпоративы и встречи с друзьями. Вы выбираете, сколько забот взять на себя и каким будет вечер.',
-      guests: ['4–30', 'человек'],
+      guests: ['4-30', 'человек'],
       groups: [
         { title: 'Какие события', items: [
           { title: 'Семейные праздники', text: 'Дни рождения, праздники и важные даты за одним столом.' },

@@ -49,7 +49,7 @@ export function LocalPage({ pageKey, language }: { pageKey: LocalPageKey; langua
         <section className="kitchens section-wrap">
           <div className="section-heading"><div><span className="eyebrow">{text.kitchensLabel}</span><h2>{text.kitchensTitle}</h2></div><p>{text.kitchensIntro}</p></div>
           <div className="cuisine-grid">{cuisineKeys.map((key, index) => <article className="cuisine-card" key={key}>
-            <Link to={home} hash="contact" className="cuisine-image" aria-label={`${text.book} — ${text.cuisineNames[index]}`}><img src={`/img/${key}.webp`} alt={alts[index + 1]} loading="lazy" width="1120" height="1000" /><span className="cuisine-number">0{index + 1}</span><span className="round-arrow"><ArrowUpRight size={22} /></span></Link>
+            <Link to={home} hash="contact" className="cuisine-image" aria-label={`${text.book} | ${text.cuisineNames[index]}`}><img src={`/img/${key}.webp`} alt={alts[index + 1]} loading="lazy" width="1120" height="1000" /><span className="cuisine-number">0{index + 1}</span><span className="round-arrow"><ArrowUpRight size={22} /></span></Link>
             <div className="cuisine-title"><h3>{text.cuisineNames[index]}</h3><span>✳</span></div><span className="cuisine-note">{text.cuisineNotes[index]}</span><p>{text.cuisineDescriptions[index]}</p>
           </article>)}</div>
         </section>

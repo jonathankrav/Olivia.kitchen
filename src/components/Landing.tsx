@@ -145,7 +145,7 @@ export function Landing({ language }: { language: Language }) {
         <section id="kitchens" className="kitchens section-wrap">
           <div className="section-heading"><div><span className="eyebrow">{text.kitchensLabel}</span><h2>{text.kitchensTitle}</h2></div><p>{text.kitchensIntro}</p></div>
           <div className="cuisine-grid">{cuisineKeys.map((key, index) => <article className="cuisine-card" key={key}>
-            <a href="#contact" className="cuisine-image" aria-label={`${text.book} — ${text.cuisineNames[index]}`}><img src={imageUrl(key)} alt={alts[index + 1]} loading="lazy" width="1120" height="1000" /><span className="cuisine-number">0{index + 1}</span><span className="round-arrow"><ArrowUpRight size={22} /></span></a>
+            <a href="#contact" className="cuisine-image" aria-label={`${text.book} | ${text.cuisineNames[index]}`}><img src={imageUrl(key)} alt={alts[index + 1]} loading="lazy" width="1120" height="1000" /><span className="cuisine-number">0{index + 1}</span><span className="round-arrow"><ArrowUpRight size={22} /></span></a>
             <div className="cuisine-title"><h3>{text.cuisineNames[index]}</h3><span>✳</span></div><span className="cuisine-note">{text.cuisineNotes[index]}</span><p>{text.cuisineDescriptions[index]}</p>
           </article>)}</div>
         </section>
@@ -168,7 +168,7 @@ export function Landing({ language }: { language: Language }) {
           </div>
           <div className="form-panel">
             {formState === 'success' ? <div className="form-success" role="status"><span className="success-icon"><Check size={30} /></span><h3>{text.success}</h3><p>{text.successText}</p><button className="button" onClick={() => setFormState('idle')}>{text.another}<ArrowRight size={17} /></button></div> : <form onSubmit={handleSubmit}>
-              <input type="hidden" name="language" value={language} /><input type="hidden" name="_subject" value="New private dining inquiry — Olivia Kitchen" />
+              <input type="hidden" name="language" value={language} /><input type="hidden" name="_subject" value="New private dining inquiry: Olivia Kitchen" />
               <div hidden><label>Leave this empty<input name="_honey" tabIndex={-1} autoComplete="off" /></label></div>
               <div className="form-grid">
                 <label>{text.name}<span className="required">*</span><input name="name" autoComplete="name" placeholder={text.namePlaceholder} required maxLength={100} /></label>
@@ -199,7 +199,7 @@ export function Landing({ language }: { language: Language }) {
       <footer><div className="footer-main"><a className="brand footer-brand" href="#"><img className="brand-mark" src="/logo.svg" alt="" width="52" height="52" /><span className="brand-text"><span className="brand-name">Olivia’s Kitchen</span><small>{text.slogan}</small></span></a><p>{text.footer}</p><a className="back-top" href="#" aria-label={text.top}><ArrowUpRight size={23} /></a></div><div className="footer-bottom"><span>© {new Date().getFullYear()} {text.rights}</span><span>{text.cuisineNames.join(' · ')}</span><a href={`tel:${contact.phoneE164}`} dir="ltr">{contact.phone}</a><a href={`mailto:${contact.email}`} dir="ltr">{contact.email}</a></div></footer>
       <StickyContacts language={language} paths={languagePaths} whatsappUrl={whatsappUrl || '#contacts'} />
 
-      <dialog ref={whatsappDialog} className="contact-dialog" onCancel={() => setWhatsappNotice(false)} onClick={event => { if (event.target === event.currentTarget) setWhatsappNotice(false) }} aria-labelledby="whatsapp-title"><button autoFocus className="dialog-close icon-button" aria-label={text.close} onClick={() => setWhatsappNotice(false)}><X /></button><MessageCircle size={32} /><h3 id="whatsapp-title">{text.whatsapp}</h3><p>{text.whatsappUnavailable}</p><a href={`mailto:${contact.email}`} className="button"><Mail size={18} />{contact.email}</a><a className="share-link" href={`https://wa.me/?text=${encodeURIComponent(`Olivia’s Kitchen — Israeli, Italian & Caucasian private dining. ${siteUrl}`)}`} target="_blank" rel="noopener noreferrer">{text.share}<ArrowUpRight size={16} /></a></dialog>
+      <dialog ref={whatsappDialog} className="contact-dialog" onCancel={() => setWhatsappNotice(false)} onClick={event => { if (event.target === event.currentTarget) setWhatsappNotice(false) }} aria-labelledby="whatsapp-title"><button autoFocus className="dialog-close icon-button" aria-label={text.close} onClick={() => setWhatsappNotice(false)}><X /></button><MessageCircle size={32} /><h3 id="whatsapp-title">{text.whatsapp}</h3><p>{text.whatsappUnavailable}</p><a href={`mailto:${contact.email}`} className="button"><Mail size={18} />{contact.email}</a><a className="share-link" href={`https://wa.me/?text=${encodeURIComponent(`Olivia’s Kitchen | Israeli, Italian & Caucasian private dining. ${siteUrl}`)}`} target="_blank" rel="noopener noreferrer">{text.share}<ArrowUpRight size={16} /></a></dialog>
     </div>
   )
 }
