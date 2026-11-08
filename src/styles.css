@@ -154,3 +154,13 @@
 
 .footer-bottom a{white-space:nowrap;flex:none}
 @media(min-width:1001px){.contacts-list{grid-template-columns:1fr 1.5fr 1fr 1fr}.contacts-list a,.contacts-list button,.contacts-value{font-size:clamp(21px,2.1vw,28px)}.contacts-list a[href^="mailto:"],.contacts-list a[href^="tel:"]{white-space:nowrap;overflow-wrap:normal}}
+
+.site{padding-bottom:56px}
+.sticky-contacts{position:fixed;inset-inline:0;bottom:0;z-index:50;display:flex;align-items:center;justify-content:center;gap:34px;min-height:52px;padding:6px 4%;background:rgba(53,71,55,.97);color:#f1f3e8;border-top:1px solid #64725c;backdrop-filter:blur(6px)}
+.sticky-contacts>a{display:inline-flex;align-items:center;gap:9px;font-size:14px;letter-spacing:.2px;color:inherit;white-space:nowrap;padding:8px 0}
+.sticky-contacts>a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
+.sticky-contacts .languages{margin-inline-start:6px}
+.sticky-contacts .languages a{color:#c6ccba;font-size:14px;padding:6px 8px}
+.sticky-contacts .languages a[aria-current=page]{color:#fff;border-bottom-color:#fff}
+@media(max-width:760px){.site{padding-bottom:58px}.sticky-contacts{gap:6px;justify-content:space-between;padding:4px 14px}.sticky-contacts>a{padding:10px 12px}.sticky-contacts>a span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.sticky-contacts>a svg{width:22px;height:22px}.sticky-contacts .languages{margin-inline-start:0}}
+@media(min-width:761px) and (max-width:1000px){.sticky-contacts{gap:20px}.sticky-contacts>a:nth-child(3) span{display:none}}
