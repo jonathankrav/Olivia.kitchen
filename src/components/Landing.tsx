@@ -1,6 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { ArrowDown, ArrowRight, ArrowUpRight, Check, Leaf, Mail, Menu, MessageCircle, Utensils, X } from 'lucide-react'
+import { StickyContacts } from '@/components/StickyContacts'
 import { GallerySection } from '@/components/Gallery'
 import { AreasSection, FaqSection, KashrutSection, MenuSection, ServicesSection, VideoSection } from '@/components/Sections'
 import { contact, content, sections, type Language } from '@/lib/content'
