@@ -180,7 +180,7 @@ export const sections = {
       options: [
         { title: 'Kosher', text: 'A menu planned around the kashrut rules of your home, including the separation of meat and dairy.' },
         { title: 'Kosher-style', text: 'No pork or shellfish and no mixing of meat and dairy.' },
-        { title: 'Not kosher', text: 'A menu without kashrut limits: meat and dairy can share one table. No pork or seafood.' },
+        { title: 'Not kosher', text: 'A menu without kashrut limits: meat and dairy can share one table. No pork.' },
       ],
     },
     menu: {
@@ -243,7 +243,7 @@ export const sections = {
       options: [
         { title: 'מטבח כשר', text: 'תפריט שמתוכנן לפי כללי הכשרות של הבית שלכם, כולל הפרדה בין בשרי לחלבי.' },
         { title: 'בסגנון כשר', text: 'בלי בשר חזיר ופירות ים ובלי ערבוב בשר וחלב.' },
-        { title: 'לא כשר', text: 'תפריט ללא מגבלות כשרות: אפשר לשלב בשר וחלב באותו שולחן. בלי חזיר ופירות ים.' },
+        { title: 'לא כשר', text: 'תפריט ללא מגבלות כשרות: אפשר לשלב בשר וחלב באותו שולחן. בלי חזיר.' },
       ],
     },
     menu: {
@@ -306,7 +306,7 @@ export const sections = {
       options: [
         { title: 'Кошерная кухня', text: 'Меню по правилам кашрута вашего дома, включая разделение мясного и молочного.' },
         { title: 'Кошер-стайл', text: 'Без свинины и морепродуктов и без смешивания мясного с молочным.' },
-        { title: 'Некошерная кухня', text: 'Меню без ограничений кашрута: мясное и молочное можно сочетать за одним столом. Без свинины и морепродуктов.' },
+        { title: 'Некошерная кухня', text: 'Меню без ограничений кашрута: мясное и молочное можно сочетать за одним столом. Без свинины.' },
       ],
     },
     menu: {
