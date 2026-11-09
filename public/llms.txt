@@ -1,0 +1,17 @@
+# Olivia’s Kitchen
+
+> Private chef service by Olivia in Haifa and Northern Israel. Israeli, Italian and Caucasian menus for groups of 4 to 30 guests: family events, corporate events and evenings with friends.
+
+## Pages
+- [Hebrew (main)](https://olivia.kitchen/)
+- [English](https://olivia.kitchen/en)
+- [Russian](https://olivia.kitchen/ru)
+- [Private chef in Haifa](https://olivia.kitchen/haifa)
+- [Private chef for events in the North](https://olivia.kitchen/north)
+
+## Facts
+- Cuisines: Israeli, Italian, Caucasian. No pork. Kosher, kosher-style and non-kosher menus.
+- Service: full service or cooking only; seated menu or buffet.
+- Area: Haifa and Northern Israel.
+- Contact: chef@olivia.kitchen, +972545055199 (phone and WhatsApp)
+- Sitemap: https://olivia.kitchen/sitemap.xml
