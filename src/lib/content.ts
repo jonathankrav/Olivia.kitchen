@@ -196,14 +196,14 @@ export const sections = {
     },
     areas: {
       label: 'WHERE I WORK', title: 'Haifa and\nthe North.',
-      text: 'I work in Haifa and across Northern Israel. If you are somewhere else in the north, write to me and I will check.',
+      text: 'I work in Haifa and across Northern Israel. If you are somewhere else in Israel, write to me and I will check.',
       cities: ['Haifa', 'The Krayot', 'Nesher', 'Karmiel', 'Nahariya', 'Akko'],
       links: [{ label: 'Private chef in Haifa', to: '/en/haifa' }, { label: 'Private chef for events in the North', to: '/en/north' }],
     },
     faq: {
       label: 'GOOD TO KNOW', title: 'Frequently\nasked questions.',
       items: [
-        { q: 'Where do I work?', a: 'In Haifa and Northern Israel: Haifa, the Krayot, Nesher, Karmiel, Nahariya, Akko and the surrounding area. If your home is elsewhere in the north, write to me and I will check.' },
+        { q: 'Where do I work?', a: 'In Haifa and Northern Israel: Haifa, the Krayot, Nesher, Karmiel, Nahariya, Akko and the surrounding area. If your home is elsewhere in Israel, write to me and I will check.' },
         { q: 'Is kosher food available?', a: 'Yes. There are three options: kosher, kosher-style and not kosher. Tell me in your inquiry what suits your home.' },
         { q: 'Which cuisines can I choose?', a: 'Israeli, Italian and Caucasian. Pick one kitchen or combine them in a single menu.' },
         { q: 'What kind of occasions is this for?', a: 'Family celebrations, corporate events and evenings with friends, for groups of 4 to 30 guests. Choose full service or cooking only, and a full menu or a buffet.' },
@@ -259,14 +259,14 @@ export const sections = {
     },
     areas: {
       label: 'אזורי שירות', title: 'חיפה\nוהצפון.',
-      text: 'אני עובדת בחיפה ובצפון הארץ. אם אתם במקום אחר בצפון, כתבו לי ונבדוק יחד.',
+      text: 'אני עובדת בחיפה ובצפון הארץ. אם אתם במקום אחר בישראל, כתבו לי ונבדוק יחד.',
       cities: ['חיפה', 'הקריות', 'נשר', 'כרמיאל', 'נהריה', 'עכו'],
       links: [{ label: 'שף פרטי בחיפה', to: '/haifa' }, { label: 'שף פרטי לאירועים בצפון', to: '/north' }],
     },
     faq: {
       label: 'טוב לדעת', title: 'שאלות\nנפוצות.',
       items: [
-        { q: 'באילו אזורים אני עובדת?', a: 'בחיפה ובצפון: חיפה, הקריות, נשר, כרמיאל, נהריה, עכו והסביבה. אם הבית שלכם במקום אחר בצפון, כתבו לי ואבדוק.' },
+        { q: 'באילו אזורים אני עובדת?', a: 'בחיפה ובצפון: חיפה, הקריות, נשר, כרמיאל, נהריה, עכו והסביבה. אם הבית שלכם במקום אחר בישראל, כתבו לי ואבדוק.' },
         { q: 'האם אפשר לקבל אוכל כשר?', a: 'כן. יש שלוש אפשרויות: מטבח כשר, בסגנון כשר ולא כשר. כתבו בפנייה מה מתאים לבית שלכם.' },
         { q: 'אילו מטבחים אפשר לבחור?', a: 'ישראלי, איטלקי וקווקזי. אפשר לבחור מטבח אחד או לשלב ביניהם בתפריט אחד.' },
         { q: 'לאילו אירועים זה מתאים?', a: 'אירועים משפחתיים, אירועי חברה וערבים עם חברים, לקבוצות של 4 עד 30 אורחים. אפשר לבחור שירות מלא או הכנת האוכל בלבד, ותפריט מלא או בופה.' },
@@ -322,14 +322,14 @@ export const sections = {
     },
     areas: {
       label: 'ГДЕ Я РАБОТАЮ', title: 'Хайфа\nи север.',
-      text: 'Работаю в Хайфе и на севере Израиля. Если вы в другом месте на севере, напишите мне, и я проверю.',
+      text: 'Работаю в Хайфе и на севере Израиля. Если вы в другом месте Израиля, напишите мне, и я проверю.',
       cities: ['Хайфа', 'Крайот', 'Нешер', 'Кармиэль', 'Нагария', 'Акко'],
       links: [{ label: 'Частный шеф в Хайфе', to: '/ru/haifa' }, { label: 'Частный шеф для мероприятий на севере', to: '/ru/north' }],
     },
     faq: {
       label: 'ПОЛЕЗНО ЗНАТЬ', title: 'Частые\nвопросы.',
       items: [
-        { q: 'Где я работаю?', a: 'В Хайфе и на севере Израиля: Хайфа, Крайот, Нешер, Кармиэль, Нагария, Акко и окрестности. Если ваш дом в другом месте на севере, напишите мне, и я проверю.' },
+        { q: 'Где я работаю?', a: 'В Хайфе и на севере Израиля: Хайфа, Крайот, Нешер, Кармиэль, Нагария, Акко и окрестности. Если ваш дом в другом месте Израиля, напишите мне, и я проверю.' },
         { q: 'Можно ли заказать кошерное меню?', a: 'Да. Есть три варианта: кошерная кухня, кошер-стайл и некошерная. Напишите в запросе, что подходит вашему дому.' },
         { q: 'Какие кухни можно выбрать?', a: 'Израильская, итальянская и кавказская. Можно выбрать одну или объединить их в одном меню.' },
         { q: 'Для каких событий это подходит?', a: 'Семейные праздники, корпоративы и встречи с друзьями для компаний от 4 до 30 человек. Можно выбрать полное обслуживание или только приготовление, а также полное меню или фуршет.' },
@@ -395,7 +395,7 @@ export const localPages = {
       paragraphs: [
         'אני אוליביה, שפית פרטית מחיפה, ואני עובדת בכל צפון הארץ: בכרמיאל, בנהריה, בעכו ובסביבה.',
         'ארוחת ערב אינטימית או חגיגה משפחתית: מתכננים יחד תפריט ישראלי, איטלקי או קווקזי, או שילוב ביניהם. יש אפשרות למטבח כשר, בסגנון כשר או לא כשר.',
-        'אם הבית שלכם במקום אחר בצפון, כתבו ונבדוק יחד.',
+        'אם הבית שלכם במקום אחר בישראל, כתבו ונבדוק יחד.',
       ],
       otherLabel: 'שף פרטי בחיפה',
     },
@@ -407,7 +407,7 @@ export const localPages = {
       paragraphs: [
         'I am Olivia, a private chef from Haifa, and I work across Northern Israel: Karmiel, Nahariya, Akko and the surrounding area.',
         'An intimate dinner or a family celebration: together we plan an Israeli, Italian or Caucasian menu, or a mix of them. Kosher, kosher-style and non-kosher kitchens are all possible.',
-        'If your home is elsewhere in the north, write to me and we will check together.',
+        'If your home is elsewhere in Israel, write to me and we will check together.',
       ],
       otherLabel: 'Private chef in Haifa',
     },
@@ -419,7 +419,7 @@ export const localPages = {
       paragraphs: [
         'Я Оливия, частный шеф из Хайфы, и работаю по всему северу страны: Кармиэль, Нагарию, Акко и окрестности.',
         'Камерный ужин или семейный праздник: вместе составим меню израильской, итальянской или кавказской кухни или соединим их. Можно выбрать кошерную кухню, кухню в кошерном стиле или некошерную.',
-        'Если ваш дом в другом месте на севере, напишите, и мы вместе всё проверим.',
+        'Если ваш дом в другом месте Израиля, напишите, и мы вместе всё проверим.',
       ],
       otherLabel: 'Частный шеф в Хайфе',
     },
