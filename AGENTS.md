@@ -47,3 +47,4 @@ Use pnpm for dependency management. Local development is `pnpm dev`. During agen
 - Menu section (MenuSection in src/components/Sections.tsx, `menu` in `sections` of src/lib/content.ts, all three languages): dishes by category as text. The owner approves the dish list; keep the three languages aligned. No «ручной работы» promises and no pork. Seafood is fine in the non-kosher option.
 
 - Orders backup and keepalive: GET /api/orders-backup (src/routes/api.orders-backup.ts, src/server/orders-backup.ts) runs weekly from the Vercel cron in vercel.json, reads the database (keeps the free Upstash database active) and emails the Excel of all orders through Resend, at most once per six days. If CRON_SECRET is set in Vercel the route requires it. Cron runs only on production (main).
+- Wording rule: never describe cooking at the client's home or on site (no "at your home", "comes to cook", grill). Say the chef prepares the table or the menu for the event.
