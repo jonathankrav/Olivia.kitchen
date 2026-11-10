@@ -169,3 +169,6 @@
 html[lang=ru] .hero-stamp{font-size:9.5px;gap:6px}
 @media(max-width:1100px){html[lang=ru] .hero-stamp{font-size:9px}.hero-stamp span{padding:0 9px}}
 @media(max-width:760px){html[lang=ru] .hero-stamp{font-size:7px;gap:5px}html[lang=ru] .hero-stamp span{padding:0 13px}}
+.form-grid{align-items:end}
+.form-grid input[type=date]{height:43px;appearance:none;-webkit-appearance:none}
+@media(max-width:760px){.form-grid label small{display:block;margin-inline-start:0;margin-top:2px}}
