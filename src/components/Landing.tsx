@@ -4,6 +4,7 @@ import { ArrowDown, ArrowRight, ArrowUpRight, Check, Leaf, Mail, Menu, MessageCi
 import { StickyContacts } from '@/components/StickyContacts'
 import { rememberScroll, useRestoreScroll } from '@/lib/scroll-position'
 import { LanguageHint } from '@/components/LanguageHint'
+import { LivePhoto } from '@/components/LivePhoto'
 import { isDateFromToday, isEmail, isGuests, isPhone, messageMax, nameMax, todayISO } from '@/lib/form-validation'
 import { GallerySection } from '@/components/Gallery'
 import { AreasSection, FaqSection, KashrutSection, MenuSection, ServicesSection, VideoSection } from '@/components/Sections'
@@ -148,6 +149,7 @@ export function Landing({ language }: { language: Language }) {
           </div>
           <div className="hero-visual">
             <img src={imageUrl('hero')} alt={alts[0]} fetchPriority="high" width="1600" height="1143" />
+            <LivePhoto className="live-wrap" photo={imageUrl('hero')} depth="/img/hero-depth.jpg" />
             <div className="photo-label"><span className="star-flower">✳</span><span>{text.photoNote}</span></div>
             <div className="hero-stamp"><Utensils size={22} strokeWidth={1.2} /><span>{text.stamp[0]}<br />{text.stamp[1]}</span></div>
           </div>
