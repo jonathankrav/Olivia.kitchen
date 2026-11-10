@@ -2,6 +2,7 @@ import { Link } from '@tanstack/react-router'
 import { ArrowUpRight, MessageCircle } from 'lucide-react'
 import { contact, content, localPages, sections, type Language, type LocalPageKey } from '@/lib/content'
 import { StickyContacts } from '@/components/StickyContacts'
+import { rememberScroll, useRestoreScroll } from '@/lib/scroll-position'
 import { GallerySection } from '@/components/Gallery'
 import { AreasSection, FaqSection, KashrutSection, ServicesSection, VideoSection } from '@/components/Sections'
 
@@ -14,6 +15,7 @@ export function LocalPage({ pageKey, language }: { pageKey: LocalPageKey; langua
   const home = homePaths[language]
   const text = content[language]
   const alts = sections[language].alts
+  useRestoreScroll(language)
   const cuisineKeys = ['israeli', 'italian', 'azerbaijani']
   const whatsappUrl = `https://wa.me/${contact.whatsappNumber.replace(/\D/g, '')}`
   return (
@@ -23,7 +25,7 @@ export function LocalPage({ pageKey, language }: { pageKey: LocalPageKey; langua
         <Link className="brand" to={home} aria-label="Olivia’s Kitchen"><img className="brand-mark" src="/logo.svg" alt="" width="52" height="52" /><span className="brand-text"><span className="brand-name">Olivia’s Kitchen</span><small>{text.slogan}</small></span></Link>
         <div className="header-actions">
           <div className="languages" role="group" aria-label={text.language}>
-            {(['en', 'he', 'ru'] as Language[]).map(option => <Link key={option} to={page.paths[option]} hrefLang={option} lang={option} aria-label={{ en: 'English', he: 'עברית', ru: 'Русский' }[option]} aria-current={language === option ? 'page' : undefined}>{option === 'he' ? 'עב' : option.toUpperCase()}</Link>)}
+            {(['en', 'he', 'ru'] as Language[]).map(option => <Link key={option} to={page.paths[option]} resetScroll={false} onClick={rememberScroll} hrefLang={option} lang={option} aria-label={{ en: 'English', he: 'עברית', ru: 'Русский' }[option]} aria-current={language === option ? 'page' : undefined}>{option === 'he' ? 'עב' : option.toUpperCase()}</Link>)}
           </div>
           <Link to={home} hash="contact" className="button header-book">{text.book}<ArrowUpRight size={15} /></Link>
         </div>

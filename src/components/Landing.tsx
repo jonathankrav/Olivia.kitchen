@@ -2,6 +2,7 @@ import { Link } from '@tanstack/react-router'
 import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { ArrowDown, ArrowRight, ArrowUpRight, Check, Leaf, Mail, Menu, MessageCircle, Utensils, X } from 'lucide-react'
 import { StickyContacts } from '@/components/StickyContacts'
+import { rememberScroll, useRestoreScroll } from '@/lib/scroll-position'
 import { GallerySection } from '@/components/Gallery'
 import { AreasSection, FaqSection, KashrutSection, MenuSection, ServicesSection, VideoSection } from '@/components/Sections'
 import { contact, content, sections, type Language } from '@/lib/content'
@@ -41,6 +42,8 @@ export function Landing({ language }: { language: Language }) {
   const text = content[language]
   const alts = sections[language].alts
   const direction = language === 'he' ? 'rtl' : 'ltr'
+
+  useRestoreScroll(language)
 
   useEffect(() => {
     visitOrigin()
@@ -109,7 +112,7 @@ export function Landing({ language }: { language: Language }) {
         </nav>
         <div className="header-actions">
           <div className="languages" role="group" aria-label={text.language}>
-            {(['en', 'he', 'ru'] as Language[]).map(option => <Link key={option} to={languagePaths[option]} hrefLang={option} lang={option} aria-label={{ en: 'English', he: 'עברית', ru: 'Русский' }[option]} aria-current={language === option ? 'page' : undefined}>{option === 'he' ? 'עב' : option.toUpperCase()}</Link>)}
+            {(['en', 'he', 'ru'] as Language[]).map(option => <Link key={option} to={languagePaths[option]} resetScroll={false} onClick={rememberScroll} hrefLang={option} lang={option} aria-label={{ en: 'English', he: 'עברית', ru: 'Русский' }[option]} aria-current={language === option ? 'page' : undefined}>{option === 'he' ? 'עב' : option.toUpperCase()}</Link>)}
           </div>
           <a href="#contact" className="button header-book">{text.book}<ArrowUpRight size={15} /></a>
           <button className="menu-toggle icon-button" aria-label={text.menu} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</button>
