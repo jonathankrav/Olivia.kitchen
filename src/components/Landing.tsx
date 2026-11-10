@@ -3,6 +3,8 @@ import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { ArrowDown, ArrowRight, ArrowUpRight, Check, Leaf, Mail, Menu, MessageCircle, Utensils, X } from 'lucide-react'
 import { StickyContacts } from '@/components/StickyContacts'
 import { rememberScroll, useRestoreScroll } from '@/lib/scroll-position'
+import { LanguageHint } from '@/components/LanguageHint'
+import { isDateFromToday, isEmail, isGuests, isPhone, messageMax, nameMax, todayISO } from '@/lib/form-validation'
 import { GallerySection } from '@/components/Gallery'
 import { AreasSection, FaqSection, KashrutSection, MenuSection, ServicesSection, VideoSection } from '@/components/Sections'
 import { contact, content, sections, type Language } from '@/lib/content'
@@ -44,6 +46,20 @@ export function Landing({ language }: { language: Language }) {
   const direction = language === 'he' ? 'rtl' : 'ltr'
 
   useRestoreScroll(language)
+  const [today, setToday] = useState('')
+  useEffect(() => { setToday(todayISO()) }, [])
+
+  function checkField(event: FormEvent<HTMLFormElement>) {
+    const field = event.target as HTMLInputElement
+    const value = field.value.trim()
+    const invalid: Record<string, string | false> = {
+      email: !isEmail(value) && text.emailError,
+      phone: value !== '' && !isPhone(value) && text.phoneError,
+      date: value !== '' && !isDateFromToday(value, todayISO()) && text.dateError,
+      guests: value !== '' && !isGuests(value) && text.guestsError,
+    }
+    if (field.name in invalid) field.setCustomValidity(invalid[field.name] || '')
+  }
 
   useEffect(() => {
     visitOrigin()
@@ -105,6 +121,7 @@ export function Landing({ language }: { language: Language }) {
   return (
     <div className="site" dir={direction}>
       <a className="skip-link" href="#main">{text.skip}</a>
+      <LanguageHint language={language} paths={languagePaths} />
       <header className="header">
         <a className="brand" href="#" aria-label="Olivia’s Kitchen"><img className="brand-mark" src="/logo.svg" alt="" width="52" height="52" /><span className="brand-text"><span className="brand-name">Olivia’s Kitchen</span><small>{text.slogan}</small></span></a>
         <nav className={menuOpen ? 'navigation is-open' : 'navigation'} aria-label={text.menu}>
@@ -170,17 +187,17 @@ export function Landing({ language }: { language: Language }) {
             <span className="contact-flower" aria-hidden="true">✳</span>
           </div>
           <div className="form-panel">
-            {formState === 'success' ? <div className="form-success" role="status"><span className="success-icon"><Check size={30} /></span><h3>{text.success}</h3><p>{text.successText}</p><button className="button" onClick={() => setFormState('idle')}>{text.another}<ArrowRight size={17} /></button></div> : <form onSubmit={handleSubmit}>
+            {formState === 'success' ? <div className="form-success" role="status"><span className="success-icon"><Check size={30} /></span><h3>{text.success}</h3><p>{text.successText}</p><button className="button" onClick={() => setFormState('idle')}>{text.another}<ArrowRight size={17} /></button></div> : <form onSubmit={handleSubmit} onInput={checkField} onChange={checkField}>
               <input type="hidden" name="language" value={language} /><input type="hidden" name="_subject" value="New private dining inquiry: Olivia Kitchen" />
               <div hidden><label>Leave this empty<input name="_honey" tabIndex={-1} autoComplete="off" /></label></div>
               <div className="form-grid">
-                <label>{text.name}<span className="required">*</span><input name="name" autoComplete="name" placeholder={text.namePlaceholder} required maxLength={100} /></label>
-                <label>{text.email}<span className="required">*</span><input type="email" name="email" autoComplete="email" placeholder="you@example.com" required maxLength={254} dir="ltr" /></label>
-                <label>{text.phone}<small>({text.optional})</small><input type="tel" name="phone" autoComplete="tel" placeholder={text.phonePlaceholder} maxLength={40} dir="ltr" /></label>
-                <label>{text.date}<small>({text.optional})</small><input type="date" name="date" /></label>
-                <label>{text.guests}<small>({text.optional})</small><input type="number" name="guests" min="1" max="1000" placeholder="8" /></label>
+                <label>{text.name}<span className="required">*</span><input name="name" autoComplete="name" placeholder={text.namePlaceholder} required minLength={2} maxLength={nameMax} /></label>
+                <label>{text.email}<span className="required">*</span><input type="email" name="email" autoComplete="email" placeholder="you@example.com" required maxLength={254} pattern="[^\s@]+@[^\s@]+\.[^\s@]{2,}" dir="ltr" /></label>
+                <label>{text.phone}<small>({text.optional})</small><input type="tel" name="phone" autoComplete="tel" inputMode="tel" placeholder={text.phonePlaceholder} maxLength={20} dir="ltr" /></label>
+                <label>{text.date}<small>({text.optional})</small><input type="date" name="date" min={today || undefined} /></label>
+                <label>{text.guests}<small>({text.optional})</small><input type="number" name="guests" min="1" max="999" step="1" inputMode="numeric" placeholder="8" /></label>
                 <label>{text.cuisine}<select name="cuisine" defaultValue="inspiration"><option value="inspiration">{text.choose}</option>{text.cuisineNames.map((name, index) => <option value={cuisineKeys[index]} key={name}>{name}</option>)}</select></label>
-                <label className="full-width">{text.message}<textarea name="message" rows={4} placeholder={text.messagePlaceholder} maxLength={5000} /></label>
+                <label className="full-width">{text.message}<textarea name="message" rows={4} placeholder={text.messagePlaceholder} maxLength={messageMax} /></label>
               </div>
               {formState === 'error' && <p className="form-error" role="alert">{text.error}</p>}
               <button type="submit" className="button submit-button" disabled={formState === 'sending'}>{formState === 'sending' ? text.sending : text.send}<ArrowUpRight size={19} /></button>

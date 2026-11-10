@@ -172,3 +172,10 @@ html[lang=ru] .hero-stamp{font-size:9.5px;gap:6px}
 .form-grid{align-items:end}
 .form-grid input[type=date]{height:43px;appearance:none;-webkit-appearance:none}
 @media(max-width:760px){.form-grid label small{display:block;margin-inline-start:0;margin-top:2px}}
+.form-grid label{min-width:0}
+.form-grid input[type=date]{min-width:0;max-width:100%;text-align:start;-webkit-min-logical-width:0}
+.form-grid input[type=date]::-webkit-date-and-time-value{text-align:start;min-height:1.2em}
+.form-grid textarea{min-height:120px;max-height:240px;overflow-y:auto;resize:vertical}
+.lang-hint{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding:10px 44px 10px 16px;background:var(--olive);color:#f1f3ea;font-family:var(--sans);font-size:14px;line-height:1.4;position:relative;text-align:center}
+.lang-hint a{color:#fff;font-weight:600;text-decoration:underline;text-underline-offset:3px;padding:6px 2px}
+.lang-hint button{position:absolute;right:10px;top:50%;transform:translateY(-50%);width:32px;height:32px;display:grid;place-items:center;background:none;border:0;color:#f1f3ea}

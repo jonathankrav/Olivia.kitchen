@@ -3,6 +3,7 @@ import { ArrowUpRight, MessageCircle } from 'lucide-react'
 import { contact, content, localPages, sections, type Language, type LocalPageKey } from '@/lib/content'
 import { StickyContacts } from '@/components/StickyContacts'
 import { rememberScroll, useRestoreScroll } from '@/lib/scroll-position'
+import { LanguageHint } from '@/components/LanguageHint'
 import { GallerySection } from '@/components/Gallery'
 import { AreasSection, FaqSection, KashrutSection, ServicesSection, VideoSection } from '@/components/Sections'
 
@@ -21,6 +22,7 @@ export function LocalPage({ pageKey, language }: { pageKey: LocalPageKey; langua
   return (
     <div className="site" dir={language === 'he' ? 'rtl' : 'ltr'}>
       <a className="skip-link" href="#main">{text.skip}</a>
+      <LanguageHint language={language} paths={page.paths} />
       <header className="header">
         <Link className="brand" to={home} aria-label="Olivia’s Kitchen"><img className="brand-mark" src="/logo.svg" alt="" width="52" height="52" /><span className="brand-text"><span className="brand-name">Olivia’s Kitchen</span><small>{text.slogan}</small></span></Link>
         <div className="header-actions">
