@@ -185,3 +185,7 @@ html[lang=ru] .hero-stamp{font-size:9.5px;gap:6px}
 
 .live-wrap{container-type:size;overflow:hidden}
 .live-wrap>div{position:absolute!important;top:50%;right:0;width:max(100cqw,140cqh)!important;transform:translateY(-50%)}
+.hero-visual{min-height:0!important;height:auto;aspect-ratio:1600/1143;align-self:center}
+.hero-visual>img,.hero-visual>.live-wrap{object-position:center;border-radius:80px 0 0 0}
+[dir=rtl] .hero-visual>img,[dir=rtl] .hero-visual>.live-wrap{border-radius:0 80px 0 0}
+@media(max-width:760px){.hero-visual{aspect-ratio:1600/1143!important}.hero-visual>img,.hero-visual>.live-wrap{border-radius:56px 0 0 0}[dir=rtl] .hero-visual>img,[dir=rtl] .hero-visual>.live-wrap{border-radius:0 56px 0 0}}
