@@ -48,3 +48,4 @@ Use pnpm for dependency management. Local development is `pnpm dev`. During agen
 
 - Orders backup and keepalive: GET /api/orders-backup (src/routes/api.orders-backup.ts, src/server/orders-backup.ts) runs weekly from the Vercel cron in vercel.json, reads the database (keeps the free Upstash database active) and emails the Excel of all orders through Resend, at most once per six days. If CRON_SECRET is set in Vercel the route requires it. Cron runs only on production (main).
 - Wording rule: never describe cooking at the client's home or on site (no "at your home", "comes to cook", grill). Say the chef prepares the table or the menu for the event.
+- Hero live photo: src/components/live-photo (WebGL steam, glints) drawn over the hero image via LivePhoto.tsx, depth mask public/img/hero-depth.jpg (fits only the hero photo; change both together). Falls back to the plain photo with reduced motion or no WebGL.
