@@ -195,7 +195,7 @@ html[lang=ru] .hero-stamp{font-size:9.5px;gap:6px}
 .ord-cal-legend i{display:inline-block;width:14px;height:14px;border-radius:3px}
 .ord-cal-legend .booked-future{background:#d62f2f}
 .ord-cal-legend .booked-past{background:#6b6b6b;margin-inline-start:10px}
-.ord-cal-months{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ord-cal-months{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .ord-cal-month{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px}
 .ord-cal-month h3{margin:0 0 10px;font-size:15px;font-weight:600}
 .ord-cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;text-align:center}
@@ -207,4 +207,5 @@ html[lang=ru] .hero-stamp{font-size:9.5px;gap:6px}
 .ord-cal-day.booked.past{background:#6b6b6b;color:#fff}
 .ord-cal-day.today{outline:2px solid var(--olive);outline-offset:1px}
 .ord-cal-day.picked{box-shadow:0 0 0 2px var(--olive)}
-@media(max-width:900px){.ord-cal-months{grid-template-columns:1fr}}
+@media(max-width:900px){.ord-cal-month{padding:10px}.ord-cal-grid{gap:2px}.ord-cal-day{font-size:12px}.ord-cal-month h3{font-size:14px}}
+@media(max-width:640px){.ord-cal-months{grid-template-columns:1fr}.ord-cal-month{padding:14px}.ord-cal-grid{gap:3px}.ord-cal-day{font-size:13px}}
