@@ -289,7 +289,7 @@ function OrdersCalendar({ orders, from, to, onPick }: { orders: Order[]; from: s
     return map
   }, [orders])
   const now = new Date()
-  const months = [-1, 0, 1].map(offset => {
+  const months = [0, 1].map(offset => {
     const first = new Date(Date.UTC(now.getFullYear(), now.getMonth() + offset, 1))
     const year = first.getUTCFullYear()
     const month = first.getUTCMonth()
