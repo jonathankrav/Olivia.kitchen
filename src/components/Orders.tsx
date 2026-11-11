@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import type { FormEvent } from 'react'
 import { Link, useRouter } from '@tanstack/react-router'
-import { createOrder, loginOrders, logoutOrders, removeOrder, updateOrder } from '@/lib/orders'
+import { createOrder, emailOrder, loginOrders, logoutOrders, removeOrder, updateOrder } from '@/lib/orders'
 import { sections } from '@/lib/content'
 import { todayISO } from '@/lib/form-validation'
 import { cuisineLabel, cuisineOptions, eventDateISO, formatEventDate, orderExpenses, orderProfit, orderStatuses, type Order, type OrderPatch, type OrderStatus } from '@/lib/orders-types'
@@ -111,6 +111,13 @@ function OrderCard({ order, onChange, onDelete }: { order: Order; onChange: (ord
   const [finalMenu, setFinalMenu] = useState(order.finalMenu)
   const finalShown = finalMenu ?? proposedMenu
   const [approvedAt, setApprovedAt] = useState(order.menuApprovedAt)
+  const [mailState, setMailState] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+
+  async function sendExcel() {
+    setMailState('sending')
+    const result = await (emailOrder as unknown as Call<{ ok: boolean }>)({ data: { id: order.id } })
+    setMailState(result.ok ? 'sent' : 'error')
+  }
   const [confirmed, setConfirmed] = useState(order.confirmedGuests ?? order.guests)
   const [dishware, setDishware] = useState(order.dishware === null ? '' : String(order.dishware))
   const [other, setOther] = useState(order.other === null ? '' : String(order.other))
@@ -185,6 +192,16 @@ function OrderCard({ order, onChange, onDelete }: { order: Order; onChange: (ord
           onChange={list => { setFinalMenu(list); save({ finalMenu: list }) }}
           onReset={finalMenu === null ? undefined : () => { setFinalMenu(null); save({ finalMenu: null }) }}
         />
+        <div className="ord-tools">
+          <Link to="/shopping/$orderId" params={{ orderId: order.id }} className="ord-work">Работаем с заявкой</Link>
+          <button type="button" className="ord-secondary" onClick={() => exportExcel([order])}>Скачать Excel</button>
+          <button type="button" className="ord-secondary" onClick={sendExcel} disabled={mailState === 'sending'}>{mailState === 'sending' ? 'Отправляю…' : 'Отправить Excel на почту'}</button>
+          {mailState === 'sent' && <span className="ord-state">Отправлено на почту</span>}
+          {mailState === 'error' && <span className="ord-state">Не удалось отправить</span>}
+        </div>
+        {order.shopping?.finished && order.shopping.estimate !== null && (
+          <p className="ord-shopping-summary">Закупка завершена. Ориентир {formatMoney(order.shopping.estimate)}{parseAmount(order.shopping.actual) !== null ? `, факт ${formatMoney(parseAmount(order.shopping.actual) ?? 0)}, отклонение ${formatMoney((parseAmount(order.shopping.actual) ?? 0) - order.shopping.estimate)}` : ', факт не указан'}.</p>
+        )}
         <div className="ord-approve">
           {approvedAt ? <>
             <span className="ord-approved">✓ Меню утверждено клиентом: {formatEventDate(approvedAt.slice(0, 10)).split(',')[0]}</span>

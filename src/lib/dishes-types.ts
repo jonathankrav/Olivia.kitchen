@@ -13,6 +13,7 @@ export type RecipeRow = {
 
 export type Recipe = {
   portions: string
+  serves: string
   calcPortions: string
   locked: boolean
   rows: RecipeRow[]
@@ -22,7 +23,7 @@ export type DishesState =
   | { authed: false }
   | { authed: true; configured: boolean; recipes: Record<string, Recipe> }
 
-export const emptyRecipe: Recipe = { portions: '', calcPortions: '', locked: false, rows: [] }
+export const emptyRecipe: Recipe = { portions: '', serves: '', calcPortions: '', locked: false, rows: [] }
 
 export function parseNumber(value: string): number | null {
   const cleaned = value.replace(/\s/g, '').replace(',', '.')

@@ -33,7 +33,7 @@ function recipe(value: unknown): Recipe {
   if (!value || typeof value !== 'object') return { ...emptyRecipe }
   const item = value as Record<string, unknown>
   const rows = (Array.isArray(item.rows) ? item.rows : []).slice(0, 80).map(row).filter((entry): entry is RecipeRow => entry !== null)
-  return { portions: numeric(item.portions), calcPortions: numeric(item.calcPortions), locked: item.locked === true, rows }
+  return { portions: numeric(item.portions), serves: numeric(item.serves), calcPortions: numeric(item.calcPortions), locked: item.locked === true, rows }
 }
 
 export async function listRecipes(): Promise<Record<string, Recipe>> {

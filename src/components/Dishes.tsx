@@ -94,6 +94,9 @@ function RecipeEditor({ dish, initial, configured, onSaved }: { dish: string; in
         <label>Порций в рецепте
           <input inputMode="decimal" value={recipe.portions} onChange={event => change({ ...recipe, portions: event.target.value })} placeholder="например, 10" />
         </label>
+        <label>Человек на 1 порцию (1 = индивидуальная)
+          <input inputMode="decimal" value={recipe.serves} onChange={event => change({ ...recipe, serves: event.target.value })} placeholder="например, 4" />
+        </label>
         <label>Кол-во порций для расчёта
           <input inputMode="decimal" value={recipe.calcPortions} onChange={event => change({ ...recipe, calcPortions: event.target.value })} placeholder="например, 25" />
         </label>
