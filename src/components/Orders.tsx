@@ -409,6 +409,7 @@ export function OrdersApp({ initial, configured, extras }: { initial: Order[]; c
   }
 
   return (
+    <ExtrasContext.Provider value={extras}>
     <main className="ord-page" dir="ltr" lang="ru">
       <header className="ord-top">
         <h1>Заявки</h1>
@@ -449,5 +450,6 @@ export function OrdersApp({ initial, configured, extras }: { initial: Order[]; c
         {shown.length === 0 ? <p className="ord-empty">Заявок пока нет.</p> : shown.map(order => <OrderCard key={order.id} order={order} onChange={replace} onDelete={remove} />)}
       </div>
     </main>
+    </ExtrasContext.Provider>
   )
 }
