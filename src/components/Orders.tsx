@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import type { FormEvent } from 'react'
 import { useRouter } from '@tanstack/react-router'
 import { createOrder, loginOrders, logoutOrders, removeOrder, updateOrder } from '@/lib/orders'
@@ -270,13 +270,14 @@ const monthNames = ['Январь', 'Февраль', 'Март', 'Апрель'
 const weekdayNames = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
 
 function OrdersCalendar({ orders, from, to, onPick }: { orders: Order[]; from: string; to: string; onPick: (day: string) => void }) {
-  const [open, setOpen] = useState(() => {
+  const [mounted, setMounted] = useState(false)
+  const [open, setOpen] = useState(true)
+  useEffect(() => {
     try {
-      return localStorage.getItem('ord_calendar') !== 'hidden'
-    } catch {
-      return true
-    }
-  })
+      if (localStorage.getItem('ord_calendar') === 'hidden') setOpen(false)
+    } catch {}
+    setMounted(true)
+  }, [])
   const today = todayISO()
   const counts = useMemo(() => {
     const map = new Map<string, number>()
@@ -302,6 +303,8 @@ function OrdersCalendar({ orders, from, to, onPick }: { orders: Order[]; from: s
       localStorage.setItem('ord_calendar', next ? 'shown' : 'hidden')
     } catch {}
   }
+
+  if (!mounted) return null
 
   return (
     <section className="ord-cal" aria-label="Календарь заявок">
