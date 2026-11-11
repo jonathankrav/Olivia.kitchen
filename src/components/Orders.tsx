@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import type { FormEvent } from 'react'
-import { useRouter } from '@tanstack/react-router'
+import { Link, useRouter } from '@tanstack/react-router'
 import { createOrder, loginOrders, logoutOrders, removeOrder, updateOrder } from '@/lib/orders'
 import { sections } from '@/lib/content'
 import { todayISO } from '@/lib/form-validation'
@@ -24,7 +24,7 @@ function statusLabel(status: OrderStatus) {
   return orderStatuses.find(item => item.value === status)?.label ?? status
 }
 
-export function OrdersLogin() {
+export function OrdersLogin({ title = 'Заявки' }: { title?: string }) {
   const router = useRouter()
   const [password, setPassword] = useState('')
   const [error, setError] = useState(false)
@@ -44,7 +44,7 @@ export function OrdersLogin() {
     <main className="book-login" dir="ltr" lang="ru">
       <form className="book-login-card" onSubmit={submit}>
         <p className="book-login-mark">Olivia’s Kitchen</p>
-        <h1>Заявки</h1>
+        <h1>{title}</h1>
         <p>Эта страница личная. Введите пароль.</p>
         <input type="password" autoComplete="current-password" value={password} onChange={event => setPassword(event.target.value)} aria-label="Пароль" required autoFocus />
         {error && <p className="book-login-error" role="alert">Пароль не подошёл. Попробуйте ещё раз.</p>}
@@ -395,6 +395,7 @@ export function OrdersApp({ initial, configured }: { initial: Order[]; configure
         <div className="ord-top-actions">
           <button type="button" onClick={() => setAdding(true)} disabled={!configured}>Добавить</button>
           <button type="button" className="ord-secondary" onClick={() => exportExcel(shown)} disabled={shown.length === 0}>{periodOn || filter !== 'all' ? 'Скачать Excel (показанные)' : 'Скачать Excel'}</button>
+          <Link to="/dishes" className="ord-link">Меню и рецепты</Link>
           <button type="button" className="ord-secondary" onClick={leave}>Выйти</button>
         </div>
       </header>

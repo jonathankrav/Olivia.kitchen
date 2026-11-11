@@ -15,7 +15,7 @@ export function storeConfigured() {
   return endpoint() !== null
 }
 
-async function command(args: string[]): Promise<unknown> {
+export async function command(args: string[]): Promise<unknown> {
   const target = endpoint()
   if (!target) throw new Error('Storage is not configured')
   const response = await fetch(target.url, {
