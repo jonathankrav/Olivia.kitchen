@@ -7,6 +7,7 @@ import { LanguageHint } from '@/components/LanguageHint'
 import { LivePhoto } from '@/components/LivePhoto'
 import { isDateFromToday, isEmail, isGuests, isPhone, messageMax, nameMax, todayISO } from '@/lib/form-validation'
 import { GallerySection } from '@/components/Gallery'
+import type { CustomDish } from '@/lib/dishes-types'
 import { AreasSection, FaqSection, KashrutSection, MenuSection, ServicesSection, VideoSection } from '@/components/Sections'
 import { contact, content, sections, type Language } from '@/lib/content'
 import { notifyRequest, reportMailProblem } from '@/lib/notify'
@@ -36,7 +37,7 @@ function visitOrigin() {
 
 const languagePaths: Record<Language, string> = { en: '/en', he: '/', ru: '/ru' }
 
-export function Landing({ language }: { language: Language }) {
+export function Landing({ language, extras }: { language: Language; extras?: CustomDish[] }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [whatsappNotice, setWhatsappNotice] = useState(false)
   const [formState, setFormState] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
@@ -172,7 +173,7 @@ export function Landing({ language }: { language: Language }) {
           </article>)}</div>
         </section>
 
-        <MenuSection language={language} />
+        <MenuSection language={language} extras={extras} />
 
         <KashrutSection language={language} />
 

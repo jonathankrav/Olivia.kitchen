@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from '@tanstack/react-router'
 import { ArrowRight, ArrowUpRight, Volume2 } from 'lucide-react'
 import { sections, videoClips, type Language } from '@/lib/content'
+import type { CustomDish } from '@/lib/dishes-types'
 
 export function ServicesSection({ language, contactHref = '#contact' }: { language: Language; contactHref?: string }) {
   const { services } = sections[language]
@@ -77,8 +78,9 @@ export function KashrutSection({ language }: { language: Language }) {
   )
 }
 
-export function MenuSection({ language }: { language: Language }) {
-  const { menu } = sections[language]
+export function MenuSection({ language, extras = [] }: { language: Language; extras?: CustomDish[] }) {
+  const { menu: baseMenu } = sections[language]
+  const menu = { ...baseMenu, categories: baseMenu.categories.map((category, index) => ({ ...category, items: [...category.items, ...extras.filter(dish => dish.category === index).map(dish => dish[language] || dish.ru)] })) }
   const [active, setActive] = useState(0)
   return (
     <section id="menu" className="menu-section section-wrap">

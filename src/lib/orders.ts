@@ -1,6 +1,9 @@
 import { createServerFn } from '@tanstack/react-start'
 import { deleteCookie, getCookie, setCookie } from '@tanstack/react-start/server'
 import type { Order, OrdersState } from '@/lib/orders-types'
+import type { Recipe } from '@/lib/dishes-types'
+
+export type ShoppingState = { authed: false } | { authed: true; order: Order | null; recipes: Record<string, Recipe> }
 
 type Input = { data?: Record<string, unknown> }
 
@@ -13,9 +16,10 @@ export const getOrders = createServerFn({ method: 'GET' }).handler(async (): Pro
   if (!(await authorised())) return { authed: false }
   const store = await import('@/server/orders-store')
   try {
-    return { authed: true, configured: store.storeConfigured(), orders: await store.listOrders() }
+    const extras = store.storeConfigured() ? await (await import('@/server/menu-extras-store')).listExtras().catch(() => []) : []
+    return { authed: true, configured: store.storeConfigured(), orders: await store.listOrders(), extras }
   } catch {
-    return { authed: true, configured: false, orders: [] }
+    return { authed: true, configured: false, orders: [], extras: [] }
   }
 })
 
@@ -40,6 +44,32 @@ export const logoutOrders = createServerFn({ method: 'POST' }).handler(async ():
   const auth = await import('@/server/orders-auth')
   deleteCookie(auth.ordersCookieName, { path: '/' })
   return { ok: true }
+})
+
+export const emailOrder = createServerFn({ method: 'POST' }).handler(async (context): Promise<{ ok: boolean }> => {
+  if (!(await authorised())) return { ok: false }
+  const store = await import('@/server/orders-store')
+  try {
+    const order = await store.getOrder((context as unknown as Input).data?.id)
+    if (!order) return { ok: false }
+    const backup = await import('@/server/orders-backup')
+    return { ok: await backup.emailOrderFile(order) }
+  } catch {
+    return { ok: false }
+  }
+})
+
+export const getShopping = createServerFn({ method: 'GET' }).handler(async (context): Promise<ShoppingState> => {
+  if (!(await authorised())) return { authed: false }
+  const store = await import('@/server/orders-store')
+  try {
+    const order = await store.getOrder((context as unknown as Input).data?.id)
+    if (!order) return { authed: true, order: null, recipes: {} }
+    const dishes = await import('@/server/dishes-store')
+    return { authed: true, order, recipes: await dishes.listRecipes() }
+  } catch {
+    return { authed: true, order: null, recipes: {} }
+  }
 })
 
 export const updateOrder = createServerFn({ method: 'POST' }).handler(async (context): Promise<{ order: Order | null }> => {

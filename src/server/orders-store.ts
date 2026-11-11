@@ -1,5 +1,5 @@
 import { randomUUID } from 'node:crypto'
-import { orderStatuses, type Order, type OrderPatch, type OrderStatus } from '@/lib/orders-types'
+import { orderStatuses, type Order, type OrderPatch, type OrderStatus, type Shopping } from '@/lib/orders-types'
 
 const hashKey = 'orders'
 const statusValues = orderStatuses.map(item => item.value)
@@ -15,7 +15,7 @@ export function storeConfigured() {
   return endpoint() !== null
 }
 
-async function command(args: string[]): Promise<unknown> {
+export async function command(args: string[]): Promise<unknown> {
   const target = endpoint()
   if (!target) throw new Error('Storage is not configured')
   const response = await fetch(target.url, {
@@ -46,7 +46,7 @@ function status(value: unknown): OrderStatus {
   return statusValues.includes(value as OrderStatus) ? (value as OrderStatus) : 'new'
 }
 
-const blank = { confirmedGuests: null as string | null, menuApprovedAt: null as string | null, proposedMenu: [] as string[], finalMenu: null as string[] | null, dishware: null, other: null, otherNote: '', notes: '' }
+const blank = { shopping: null as Shopping | null, confirmedGuests: null as string | null, menuApprovedAt: null as string | null, proposedMenu: [] as string[], finalMenu: null as string[] | null, dishware: null, other: null, otherNote: '', notes: '' }
 
 function dishes(value: unknown): string[] {
   const list = Array.isArray(value) ? value : typeof value === 'string' ? value.split('\n') : []
@@ -57,6 +57,25 @@ function dishes(value: unknown): string[] {
     if (seen.size >= 200) break
   }
   return [...seen]
+}
+
+function shopping(value: unknown): Shopping | null {
+  if (!value || typeof value !== 'object') return null
+  const item = value as Record<string, unknown>
+  const checked = (Array.isArray(item.checked) ? item.checked : []).map(entry => oneLine(entry, 200)).filter(Boolean).slice(0, 400)
+  const finished = item.finished === true
+  return {
+    checked: [...new Set(checked)],
+    actual: oneLine(item.actual, 20).replace(/[^\d.,]/g, ''),
+    finished,
+    estimate: amount(item.estimate),
+    finishedAt: finished ? (typeof item.finishedAt === 'string' && item.finishedAt ? item.finishedAt.slice(0, 40) : new Date().toISOString()) : null,
+  }
+}
+
+export async function getOrder(id: unknown): Promise<Order | null> {
+  if (!endpoint() || typeof id !== 'string' || id.length > 80) return null
+  return parse(await command(['HGET', hashKey, id]))
 }
 
 function parse(raw: unknown): Order | null {
@@ -149,6 +168,7 @@ export async function updateOrder(id: unknown, patch: unknown): Promise<Order | 
   if ('other' in changes) next.other = amount(changes.other)
   if ('proposedMenu' in changes) next.proposedMenu = dishes(changes.proposedMenu)
   if ('finalMenu' in changes) next.finalMenu = changes.finalMenu === null ? null : dishes(changes.finalMenu)
+  if ('shopping' in changes) next.shopping = shopping(changes.shopping)
   if ('notes' in changes) next.notes = text(changes.notes, 8000)
   if ('otherNote' in changes) next.otherNote = text(changes.otherNote, 2000)
   for (const [key, limit] of [['name', 200], ['phone', 80], ['email', 200], ['date', 120], ['guests', 60], ['cuisine', 120]] as const) {

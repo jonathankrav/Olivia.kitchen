@@ -8,6 +8,14 @@ export const orderStatuses: { value: OrderStatus; label: string }[] = [
   { value: 'cancelled', label: 'Отменена' },
 ]
 
+export type Shopping = {
+  checked: string[]
+  actual: string
+  finished: boolean
+  estimate: number | null
+  finishedAt: string | null
+}
+
 export type Order = {
   id: string
   createdAt: string
@@ -34,11 +42,12 @@ export type Order = {
   other: number | null
   otherNote: string
   notes: string
+  shopping: Shopping | null
 }
 
-export type OrderPatch = Partial<Pick<Order, 'status' | 'cost' | 'revenue' | 'expectations' | 'result' | 'proposedMenu' | 'finalMenu' | 'dishware' | 'other' | 'otherNote' | 'notes' | 'name' | 'phone' | 'email' | 'date' | 'guests' | 'cuisine' | 'message' | 'confirmedGuests' | 'menuApprovedAt'>>
+export type OrderPatch = Partial<Pick<Order, 'shopping' | 'status' | 'cost' | 'revenue' | 'expectations' | 'result' | 'proposedMenu' | 'finalMenu' | 'dishware' | 'other' | 'otherNote' | 'notes' | 'name' | 'phone' | 'email' | 'date' | 'guests' | 'cuisine' | 'message' | 'confirmedGuests' | 'menuApprovedAt'>>
 
-export type OrdersState = { authed: false } | { authed: true; configured: boolean; orders: Order[] }
+export type OrdersState = { authed: false } | { authed: true; configured: boolean; orders: Order[]; extras: { ru: string; category: number }[] }
 
 export function orderExpenses(order: Pick<Order, 'cost' | 'dishware' | 'other'>) {
   return (order.cost ?? 0) + (order.dishware ?? 0) + (order.other ?? 0)

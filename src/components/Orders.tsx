@@ -1,8 +1,9 @@
-import { useMemo, useState } from 'react'
+import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import type { FormEvent } from 'react'
-import { useRouter } from '@tanstack/react-router'
-import { createOrder, loginOrders, logoutOrders, removeOrder, updateOrder } from '@/lib/orders'
+import { Link, useRouter } from '@tanstack/react-router'
+import { createOrder, emailOrder, loginOrders, logoutOrders, removeOrder, updateOrder } from '@/lib/orders'
 import { sections } from '@/lib/content'
+import { todayISO } from '@/lib/form-validation'
 import { cuisineLabel, cuisineOptions, eventDateISO, formatEventDate, orderExpenses, orderProfit, orderStatuses, type Order, type OrderPatch, type OrderStatus } from '@/lib/orders-types'
 
 type Call<T> = (options: { data: Record<string, unknown> }) => Promise<T>
@@ -23,7 +24,7 @@ function statusLabel(status: OrderStatus) {
   return orderStatuses.find(item => item.value === status)?.label ?? status
 }
 
-export function OrdersLogin() {
+export function OrdersLogin({ title = 'Заявки' }: { title?: string }) {
   const router = useRouter()
   const [password, setPassword] = useState('')
   const [error, setError] = useState(false)
@@ -43,7 +44,7 @@ export function OrdersLogin() {
     <main className="book-login" dir="ltr" lang="ru">
       <form className="book-login-card" onSubmit={submit}>
         <p className="book-login-mark">Olivia’s Kitchen</p>
-        <h1>Заявки</h1>
+        <h1>{title}</h1>
         <p>Эта страница личная. Введите пароль.</p>
         <input type="password" autoComplete="current-password" value={password} onChange={event => setPassword(event.target.value)} aria-label="Пароль" required autoFocus />
         {error && <p className="book-login-error" role="alert">Пароль не подошёл. Попробуйте ещё раз.</p>}
@@ -62,10 +63,13 @@ function parseAmount(value: string): number | null {
 
 const menuCategories = sections.ru.menu.categories.map(category => ({ title: category.title, items: [...category.items] }))
 const knownDishes = new Set(menuCategories.flatMap(category => category.items))
+const ExtrasContext = createContext<{ ru: string; category: number }[]>([])
 
 function MenuPicker({ title, selected, onChange, hint, onReset }: { title: string; selected: string[]; onChange: (list: string[]) => void; hint?: string; onReset?: () => void }) {
   const [custom, setCustom] = useState('')
-  const extras = selected.filter(name => !knownDishes.has(name))
+  const siteExtras = useContext(ExtrasContext)
+  const siteExtraNames = new Set(siteExtras.map(dish => dish.ru))
+  const extras = selected.filter(name => !knownDishes.has(name) && !siteExtraNames.has(name))
 
   function toggle(name: string) {
     onChange(selected.includes(name) ? selected.filter(item => item !== name) : [...selected, name])
@@ -85,7 +89,7 @@ function MenuPicker({ title, selected, onChange, hint, onReset }: { title: strin
         {hint && <p className="ord-menu-hint">{hint}</p>}
         {menuCategories.map(category => <fieldset key={category.title}>
           <legend>{category.title}</legend>
-          <div className="ord-menu-grid">{category.items.map(name => <label className="ord-check" key={name}><input type="checkbox" checked={selected.includes(name)} onChange={() => toggle(name)} /><span>{name}</span></label>)}</div>
+          <div className="ord-menu-grid">{[...category.items, ...siteExtras.filter(dish => dish.category === menuCategories.indexOf(category)).map(dish => dish.ru)].map(name => <label className="ord-check" key={name}><input type="checkbox" checked={selected.includes(name)} onChange={() => toggle(name)} /><span>{name}</span></label>)}</div>
         </fieldset>)}
         <fieldset>
           <legend>Другое (не из меню на сайте)</legend>
@@ -110,6 +114,13 @@ function OrderCard({ order, onChange, onDelete }: { order: Order; onChange: (ord
   const [finalMenu, setFinalMenu] = useState(order.finalMenu)
   const finalShown = finalMenu ?? proposedMenu
   const [approvedAt, setApprovedAt] = useState(order.menuApprovedAt)
+  const [mailState, setMailState] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+
+  async function sendExcel() {
+    setMailState('sending')
+    const result = await (emailOrder as unknown as Call<{ ok: boolean }>)({ data: { id: order.id } })
+    setMailState(result.ok ? 'sent' : 'error')
+  }
   const [confirmed, setConfirmed] = useState(order.confirmedGuests ?? order.guests)
   const [dishware, setDishware] = useState(order.dishware === null ? '' : String(order.dishware))
   const [other, setOther] = useState(order.other === null ? '' : String(order.other))
@@ -184,6 +195,16 @@ function OrderCard({ order, onChange, onDelete }: { order: Order; onChange: (ord
           onChange={list => { setFinalMenu(list); save({ finalMenu: list }) }}
           onReset={finalMenu === null ? undefined : () => { setFinalMenu(null); save({ finalMenu: null }) }}
         />
+        <div className="ord-tools">
+          <Link to="/shopping/$orderId" params={{ orderId: order.id }} className="ord-work">Работаем с заявкой</Link>
+          <button type="button" className="ord-secondary" onClick={() => exportExcel([order])}>Скачать Excel</button>
+          <button type="button" className="ord-secondary" onClick={sendExcel} disabled={mailState === 'sending'}>{mailState === 'sending' ? 'Отправляю…' : 'Отправить Excel на почту'}</button>
+          {mailState === 'sent' && <span className="ord-state">Отправлено на почту</span>}
+          {mailState === 'error' && <span className="ord-state">Не удалось отправить</span>}
+        </div>
+        {order.shopping?.finished && order.shopping.estimate !== null && (
+          <p className="ord-shopping-summary">Закупка завершена. Ориентир {formatMoney(order.shopping.estimate)}{parseAmount(order.shopping.actual) !== null ? `, факт ${formatMoney(parseAmount(order.shopping.actual) ?? 0)}, отклонение ${formatMoney((parseAmount(order.shopping.actual) ?? 0) - order.shopping.estimate)}` : ', факт не указан'}.</p>
+        )}
         <div className="ord-approve">
           {approvedAt ? <>
             <span className="ord-approved">✓ Меню утверждено клиентом: {formatEventDate(approvedAt.slice(0, 10)).split(',')[0]}</span>
@@ -265,7 +286,79 @@ async function exportExcel(orders: Order[]) {
   setTimeout(() => URL.revokeObjectURL(url), 1000)
 }
 
-export function OrdersApp({ initial, configured }: { initial: Order[]; configured: boolean }) {
+const monthNames = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
+const weekdayNames = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
+
+function OrdersCalendar({ orders, from, to, onPick }: { orders: Order[]; from: string; to: string; onPick: (day: string) => void }) {
+  const [mounted, setMounted] = useState(false)
+  const [open, setOpen] = useState(true)
+  useEffect(() => {
+    try {
+      if (localStorage.getItem('ord_calendar') === 'hidden') setOpen(false)
+    } catch {}
+    setMounted(true)
+  }, [])
+  const today = todayISO()
+  const counts = useMemo(() => {
+    const map = new Map<string, number>()
+    for (const order of orders) {
+      if (order.status === 'cancelled') continue
+      const day = eventDateISO(order.date)
+      if (day) map.set(day, (map.get(day) ?? 0) + 1)
+    }
+    return map
+  }, [orders])
+  const now = new Date()
+  const months = [0, 1].map(offset => {
+    const first = new Date(Date.UTC(now.getFullYear(), now.getMonth() + offset, 1))
+    const year = first.getUTCFullYear()
+    const month = first.getUTCMonth()
+    return { year, month, lead: first.getUTCDay(), days: new Date(Date.UTC(year, month + 1, 0)).getUTCDate() }
+  })
+
+  function toggle() {
+    const next = !open
+    setOpen(next)
+    try {
+      localStorage.setItem('ord_calendar', next ? 'shown' : 'hidden')
+    } catch {}
+  }
+
+  if (!mounted) return null
+
+  return (
+    <section className="ord-cal" aria-label="Календарь заявок">
+      <div className="ord-cal-bar">
+        <button type="button" className="ord-secondary" onClick={toggle} aria-expanded={open}>{open ? 'Скрыть календарь' : 'Показать календарь'}</button>
+        {open && <span className="ord-cal-legend"><i className="booked-future" /> заявка впереди <i className="booked-past" /> заявка в прошлом</span>}
+      </div>
+      {open && (
+        <div className="ord-cal-months">
+          {months.map(({ year, month, lead, days }) => (
+            <div className="ord-cal-month" key={`${year}-${month}`}>
+              <h3>{monthNames[month]} {year}</h3>
+              <div className="ord-cal-grid">
+                {weekdayNames.map(name => <span className="ord-cal-head" key={name}>{name}</span>)}
+                {Array.from({ length: lead }, (_, index) => <span key={`e${index}`} />)}
+                {Array.from({ length: days }, (_, index) => {
+                  const day = index + 1
+                  const iso = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`
+                  const count = counts.get(iso) ?? 0
+                  const classes = ['ord-cal-day', iso < today ? 'past' : '', count ? 'booked' : '', iso === today ? 'today' : '', from === iso && to === iso ? 'picked' : ''].filter(Boolean).join(' ')
+                  return count
+                    ? <button type="button" className={classes} key={iso} title={`Заявок: ${count}`} onClick={() => onPick(iso)}>{day}</button>
+                    : <span className={classes} key={iso}>{day}</span>
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
+  )
+}
+
+export function OrdersApp({ initial, configured, extras }: { initial: Order[]; configured: boolean; extras: { ru: string; category: number }[] }) {
   const router = useRouter()
   const [orders, setOrders] = useState(initial)
   const [filter, setFilter] = useState<'all' | OrderStatus>('all')
@@ -316,12 +409,14 @@ export function OrdersApp({ initial, configured }: { initial: Order[]; configure
   }
 
   return (
+    <ExtrasContext.Provider value={extras}>
     <main className="ord-page" dir="ltr" lang="ru">
       <header className="ord-top">
         <h1>Заявки</h1>
         <div className="ord-top-actions">
           <button type="button" onClick={() => setAdding(true)} disabled={!configured}>Добавить</button>
           <button type="button" className="ord-secondary" onClick={() => exportExcel(shown)} disabled={shown.length === 0}>{periodOn || filter !== 'all' ? 'Скачать Excel (показанные)' : 'Скачать Excel'}</button>
+          <Link to="/dishes" className="ord-link">Меню и рецепты</Link>
           <button type="button" className="ord-secondary" onClick={leave}>Выйти</button>
         </div>
       </header>
@@ -344,6 +439,7 @@ export function OrdersApp({ initial, configured }: { initial: Order[]; configure
         <div><span>Расходы</span><strong>{formatMoney(totals.cost)}</strong></div>
         <div><span>Прибыль до налогов</span><strong>{formatMoney(totals.profit)}</strong></div>
       </section>
+      <OrdersCalendar orders={orders} from={from} to={to} onPick={day => { if (from === day && to === day) { setFrom(''); setTo('') } else { setFrom(day); setTo(day) } }} />
       <div className="ord-period">
         <button type="button" className="ord-secondary" onClick={() => setMonth(0)}>Этот месяц</button>
         <button type="button" className="ord-secondary" onClick={() => setMonth(-1)}>Прошлый месяц</button>
@@ -354,5 +450,6 @@ export function OrdersApp({ initial, configured }: { initial: Order[]; configure
         {shown.length === 0 ? <p className="ord-empty">Заявок пока нет.</p> : shown.map(order => <OrderCard key={order.id} order={order} onChange={replace} onDelete={remove} />)}
       </div>
     </main>
+    </ExtrasContext.Provider>
   )
 }
