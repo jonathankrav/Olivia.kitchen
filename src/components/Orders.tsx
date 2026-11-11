@@ -3,6 +3,7 @@ import type { FormEvent } from 'react'
 import { useRouter } from '@tanstack/react-router'
 import { createOrder, loginOrders, logoutOrders, removeOrder, updateOrder } from '@/lib/orders'
 import { sections } from '@/lib/content'
+import { todayISO } from '@/lib/form-validation'
 import { cuisineLabel, cuisineOptions, eventDateISO, formatEventDate, orderExpenses, orderProfit, orderStatuses, type Order, type OrderPatch, type OrderStatus } from '@/lib/orders-types'
 
 type Call<T> = (options: { data: Record<string, unknown> }) => Promise<T>
@@ -265,6 +266,75 @@ async function exportExcel(orders: Order[]) {
   setTimeout(() => URL.revokeObjectURL(url), 1000)
 }
 
+const monthNames = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
+const weekdayNames = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
+
+function OrdersCalendar({ orders, from, to, onPick }: { orders: Order[]; from: string; to: string; onPick: (day: string) => void }) {
+  const [open, setOpen] = useState(() => {
+    try {
+      return localStorage.getItem('ord_calendar') !== 'hidden'
+    } catch {
+      return true
+    }
+  })
+  const today = todayISO()
+  const counts = useMemo(() => {
+    const map = new Map<string, number>()
+    for (const order of orders) {
+      if (order.status === 'cancelled') continue
+      const day = eventDateISO(order.date)
+      if (day) map.set(day, (map.get(day) ?? 0) + 1)
+    }
+    return map
+  }, [orders])
+  const now = new Date()
+  const months = [-1, 0, 1].map(offset => {
+    const first = new Date(Date.UTC(now.getFullYear(), now.getMonth() + offset, 1))
+    const year = first.getUTCFullYear()
+    const month = first.getUTCMonth()
+    return { year, month, lead: first.getUTCDay(), days: new Date(Date.UTC(year, month + 1, 0)).getUTCDate() }
+  })
+
+  function toggle() {
+    const next = !open
+    setOpen(next)
+    try {
+      localStorage.setItem('ord_calendar', next ? 'shown' : 'hidden')
+    } catch {}
+  }
+
+  return (
+    <section className="ord-cal" aria-label="Календарь заявок">
+      <div className="ord-cal-bar">
+        <button type="button" className="ord-secondary" onClick={toggle} aria-expanded={open}>{open ? 'Скрыть календарь' : 'Показать календарь'}</button>
+        {open && <span className="ord-cal-legend"><i className="booked-future" /> заявка впереди <i className="booked-past" /> заявка в прошлом</span>}
+      </div>
+      {open && (
+        <div className="ord-cal-months">
+          {months.map(({ year, month, lead, days }) => (
+            <div className="ord-cal-month" key={`${year}-${month}`}>
+              <h3>{monthNames[month]} {year}</h3>
+              <div className="ord-cal-grid">
+                {weekdayNames.map(name => <span className="ord-cal-head" key={name}>{name}</span>)}
+                {Array.from({ length: lead }, (_, index) => <span key={`e${index}`} />)}
+                {Array.from({ length: days }, (_, index) => {
+                  const day = index + 1
+                  const iso = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`
+                  const count = counts.get(iso) ?? 0
+                  const classes = ['ord-cal-day', iso < today ? 'past' : '', count ? 'booked' : '', iso === today ? 'today' : '', from === iso && to === iso ? 'picked' : ''].filter(Boolean).join(' ')
+                  return count
+                    ? <button type="button" className={classes} key={iso} title={`Заявок: ${count}`} onClick={() => onPick(iso)}>{day}</button>
+                    : <span className={classes} key={iso}>{day}</span>
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
+  )
+}
+
 export function OrdersApp({ initial, configured }: { initial: Order[]; configured: boolean }) {
   const router = useRouter()
   const [orders, setOrders] = useState(initial)
@@ -344,6 +414,7 @@ export function OrdersApp({ initial, configured }: { initial: Order[]; configure
         <div><span>Расходы</span><strong>{formatMoney(totals.cost)}</strong></div>
         <div><span>Прибыль до налогов</span><strong>{formatMoney(totals.profit)}</strong></div>
       </section>
+      <OrdersCalendar orders={orders} from={from} to={to} onPick={day => { if (from === day && to === day) { setFrom(''); setTo('') } else { setFrom(day); setTo(day) } }} />
       <div className="ord-period">
         <button type="button" className="ord-secondary" onClick={() => setMonth(0)}>Этот месяц</button>
         <button type="button" className="ord-secondary" onClick={() => setMonth(-1)}>Прошлый месяц</button>
