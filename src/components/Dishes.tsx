@@ -84,7 +84,6 @@ function RecipeEditor({ dish, initial, configured, onSaved }: { dish: string; in
     return { qty, calcQty, cost, unit: row.unit }
   }), [recipe.rows, factor])
 
-  const qtyTotal = sumByUnit(computed.flatMap(item => (item.qty === null ? [] : [{ unit: item.unit, value: item.qty }])))
   const calcTotal = sumByUnit(computed.flatMap(item => (item.calcQty === null ? [] : [{ unit: item.unit, value: item.calcQty }])))
   const costTotal = computed.reduce((sum, item) => sum + (item.cost ?? 0), 0)
   const missingPrice = computed.filter((item, index) => item.calcQty !== null && item.cost === null && recipe.rows[index].name.trim() !== '').length
@@ -119,8 +118,8 @@ function RecipeEditor({ dish, initial, configured, onSaved }: { dish: string; in
               <th>Цена из интернета, ₪</th>
               <th>Цена вручную, ₪</th>
               <th className="dish-sep" aria-hidden="true" />
-              <th>Количество на {calc !== null ? format(calc) : '…'} порц.</th>
-              <th>Себестоимость на {calc !== null ? format(calc) : '…'} порц.</th>
+              <th>Кол-во для закупки</th>
+              <th>С/с закупки</th>
               <th aria-label="Удалить" />
             </tr>
           </thead>
@@ -152,7 +151,7 @@ function RecipeEditor({ dish, initial, configured, onSaved }: { dish: string; in
           <tfoot>
             <tr>
               <td>Итого</td>
-              <td className="dish-num">{qtyTotal}</td>
+              <td />
               <td />
               <td />
               <td />
