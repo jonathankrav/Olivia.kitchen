@@ -17,5 +17,5 @@ export const Route = createFileRoute('/dishes')({
 
 function DishesPage() {
   const state = Route.useLoaderData()
-  return state.authed ? <DishesApp initial={state.recipes} configured={state.configured} /> : <OrdersLogin title="Меню и рецепты" />
+  return state.authed ? <DishesApp initial={state.recipes} extras={state.extras} configured={state.configured} /> : <OrdersLogin title="Меню и рецепты" />
 }

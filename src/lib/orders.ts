@@ -16,9 +16,10 @@ export const getOrders = createServerFn({ method: 'GET' }).handler(async (): Pro
   if (!(await authorised())) return { authed: false }
   const store = await import('@/server/orders-store')
   try {
-    return { authed: true, configured: store.storeConfigured(), orders: await store.listOrders() }
+    const extras = store.storeConfigured() ? await (await import('@/server/menu-extras-store')).listExtras().catch(() => []) : []
+    return { authed: true, configured: store.storeConfigured(), orders: await store.listOrders(), extras }
   } catch {
-    return { authed: true, configured: false, orders: [] }
+    return { authed: true, configured: false, orders: [], extras: [] }
   }
 })
 

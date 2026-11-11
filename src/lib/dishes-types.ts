@@ -19,9 +19,11 @@ export type Recipe = {
   rows: RecipeRow[]
 }
 
+export type CustomDish = { ru: string; en: string; he: string; category: number }
+
 export type DishesState =
   | { authed: false }
-  | { authed: true; configured: boolean; recipes: Record<string, Recipe> }
+  | { authed: true; configured: boolean; recipes: Record<string, Recipe>; extras: CustomDish[] }
 
 export const emptyRecipe: Recipe = { portions: '', serves: '', calcPortions: '', locked: false, rows: [] }
 

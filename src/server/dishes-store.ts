@@ -1,4 +1,5 @@
 import { command } from '@/server/orders-store'
+import { hasExtra } from '@/server/menu-extras-store'
 import { sections } from '@/lib/content'
 import { emptyRecipe, recipeUnits, type Recipe, type RecipeRow, type RecipeUnit } from '@/lib/dishes-types'
 
@@ -49,7 +50,7 @@ export async function listRecipes(): Promise<Record<string, Recipe>> {
 }
 
 export async function saveRecipe(id: unknown, value: unknown): Promise<Recipe | null> {
-  if (typeof id !== 'string' || !knownDishes.has(id)) return null
+  if (typeof id !== 'string' || !(knownDishes.has(id) || (await hasExtra(id)))) return null
   const clean = recipe(value)
   await command(['HSET', hashKey, id, JSON.stringify(clean)])
   return clean

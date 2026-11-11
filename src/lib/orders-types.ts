@@ -47,7 +47,7 @@ export type Order = {
 
 export type OrderPatch = Partial<Pick<Order, 'shopping' | 'status' | 'cost' | 'revenue' | 'expectations' | 'result' | 'proposedMenu' | 'finalMenu' | 'dishware' | 'other' | 'otherNote' | 'notes' | 'name' | 'phone' | 'email' | 'date' | 'guests' | 'cuisine' | 'message' | 'confirmedGuests' | 'menuApprovedAt'>>
 
-export type OrdersState = { authed: false } | { authed: true; configured: boolean; orders: Order[] }
+export type OrdersState = { authed: false } | { authed: true; configured: boolean; orders: Order[]; extras: { ru: string; category: number }[] }
 
 export function orderExpenses(order: Pick<Order, 'cost' | 'dishware' | 'other'>) {
   return (order.cost ?? 0) + (order.dishware ?? 0) + (order.other ?? 0)

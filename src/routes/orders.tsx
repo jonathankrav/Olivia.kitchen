@@ -16,5 +16,5 @@ export const Route = createFileRoute('/orders')({
 
 function OrdersPage() {
   const state = Route.useLoaderData()
-  return state.authed ? <OrdersApp key={state.orders.map(order => order.id).join('|')} initial={state.orders} configured={state.configured} /> : <OrdersLogin />
+  return state.authed ? <OrdersApp key={state.orders.map(order => order.id).join('|')} initial={state.orders} configured={state.configured} extras={state.extras} /> : <OrdersLogin />
 }

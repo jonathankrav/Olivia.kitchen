@@ -1,13 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+import type { FormEvent } from 'react'
 import { Link, useRouter } from '@tanstack/react-router'
 import { logoutOrders } from '@/lib/orders'
-import { saveDish } from '@/lib/dishes'
+import { addDish, saveDish } from '@/lib/dishes'
 import { sections } from '@/lib/content'
-import { emptyRecipe, parseNumber, recipeUnits, type Recipe, type RecipeRow, type RecipeUnit } from '@/lib/dishes-types'
+import { emptyRecipe, parseNumber, recipeUnits, type CustomDish, type Recipe, type RecipeRow, type RecipeUnit } from '@/lib/dishes-types'
 
 type Call<T> = (options: { data: Record<string, unknown> }) => Promise<T>
 
-const categories = sections.ru.menu.categories.map(category => ({ title: category.title, items: [...category.items] }))
 
 function format(value: number) {
   return (Math.round(value * 100) / 100).toLocaleString('ru-RU', { maximumFractionDigits: 2 })
@@ -19,12 +19,6 @@ function money(value: number) {
 
 function newRow(added: boolean): RecipeRow {
   return { id: Math.random().toString(36).slice(2, 10), name: '', qty: '', unit: '', priceWeb: '', priceManual: '', added }
-}
-
-function sumByUnit(entries: { unit: RecipeUnit | ''; value: number }[]) {
-  const totals = new Map<string, number>()
-  for (const entry of entries) totals.set(entry.unit || 'без ед.', (totals.get(entry.unit || 'без ед.') ?? 0) + entry.value)
-  return [...totals.entries()].map(([unit, value]) => `${format(value)} ${unit === 'без ед.' ? '' : unit}`.trim()).join(' + ')
 }
 
 function RecipeEditor({ dish, initial, configured, onSaved }: { dish: string; initial: Recipe; configured: boolean; onSaved: (recipe: Recipe) => void }) {
@@ -84,8 +78,8 @@ function RecipeEditor({ dish, initial, configured, onSaved }: { dish: string; in
     return { qty, calcQty, cost, unit: row.unit }
   }), [recipe.rows, factor])
 
-  const calcTotal = sumByUnit(computed.flatMap(item => (item.calcQty === null ? [] : [{ unit: item.unit, value: item.calcQty }])))
   const costTotal = computed.reduce((sum, item) => sum + (item.cost ?? 0), 0)
+  const perPortion = factor !== null && calc !== null && calc > 0 ? costTotal / calc : null
   const missingPrice = computed.filter((item, index) => item.calcQty !== null && item.cost === null && recipe.rows[index].name.trim() !== '').length
 
   return (
@@ -159,8 +153,18 @@ function RecipeEditor({ dish, initial, configured, onSaved }: { dish: string; in
               <td />
               <td />
               <td className="dish-sep" aria-hidden="true" />
-              <td className="dish-num">{calcTotal}</td>
+              <td className="dish-num" />
               <td className="dish-num">{factor !== null ? money(costTotal) : ''}</td>
+              <td />
+            </tr>
+            <tr className="dish-portion-row">
+              <td colSpan={2}>Приблизительная с/с порции по рецепту</td>
+              <td className="dish-num">{perPortion !== null ? money(perPortion) : ''}</td>
+              <td />
+              <td />
+              <td className="dish-sep" aria-hidden="true" />
+              <td />
+              <td />
               <td />
             </tr>
           </tfoot>
@@ -174,10 +178,33 @@ function RecipeEditor({ dish, initial, configured, onSaved }: { dish: string; in
   )
 }
 
-export function DishesApp({ initial, configured }: { initial: Record<string, Recipe>; configured: boolean }) {
+export function DishesApp({ initial, extras: initialExtras, configured }: { initial: Record<string, Recipe>; extras: CustomDish[]; configured: boolean }) {
   const router = useRouter()
   const [recipes, setRecipes] = useState(initial)
   const [openDish, setOpenDish] = useState<string | null>(null)
+  const [extras, setExtras] = useState(initialExtras)
+  const [adding, setAdding] = useState(false)
+  const [form, setForm] = useState({ category: 0, ru: '', en: '', he: '' })
+  const [addError, setAddError] = useState('')
+  const [busy, setBusy] = useState(false)
+  const categories = sections.ru.menu.categories.map((category, index) => ({ title: category.title, items: [...category.items, ...extras.filter(dish => dish.category === index).map(dish => dish.ru)] }))
+
+  async function submitDish(event: FormEvent) {
+    event.preventDefault()
+    setBusy(true)
+    setAddError('')
+    const result = await (addDish as unknown as Call<{ dish: CustomDish | null; error?: string }>)({ data: form })
+    setBusy(false)
+    if (!result.dish) {
+      setAddError(result.error ?? 'Не удалось добавить.')
+      return
+    }
+    const dish = result.dish
+    setExtras(list => [...list, dish])
+    setForm({ category: form.category, ru: '', en: '', he: '' })
+    setAdding(false)
+    setOpenDish(dish.ru)
+  }
 
   async function leave() {
     await (logoutOrders as unknown as Call<{ ok: boolean }>)({ data: {} })
@@ -195,6 +222,33 @@ export function DishesApp({ initial, configured }: { initial: Record<string, Rec
       </header>
       {!configured && <p className="ord-warning">Хранилище ещё не подключено в Vercel, поэтому рецепты не сохраняются.</p>}
       <p className="ord-state dish-intro">Здесь всё меню с сайта. Нажмите на блюдо, чтобы открыть его рецепт. Цена считается за указанную единицу (за кг, за штуку и так далее). Если заполнена цена вручную, считается по ней, иначе по цене из интернета.</p>
+      <div className="dish-add">
+        {!adding
+          ? <button type="button" className="ord-save" onClick={() => setAdding(true)} disabled={!configured}>Добавить блюдо в меню</button>
+          : (
+            <form className="dish-add-form" onSubmit={submitDish}>
+              <label>Раздел
+                <select value={form.category} onChange={event => setForm({ ...form, category: Number(event.target.value) })}>
+                  {sections.ru.menu.categories.map((category, index) => <option key={category.title} value={index}>{category.title}</option>)}
+                </select>
+              </label>
+              <label>Название (по-русски, как на сайте)
+                <input value={form.ru} maxLength={90} required onChange={event => setForm({ ...form, ru: event.target.value })} />
+              </label>
+              <label>Название по-английски
+                <input value={form.en} maxLength={90} dir="ltr" onChange={event => setForm({ ...form, en: event.target.value })} placeholder="если пусто, на сайте будет русское" />
+              </label>
+              <label>Название на иврите
+                <input value={form.he} maxLength={90} dir="rtl" onChange={event => setForm({ ...form, he: event.target.value })} placeholder="если пусто, на сайте будет русское" />
+              </label>
+              {addError && <p className="ord-warning">{addError}</p>}
+              <div className="dish-actions">
+                <button type="submit" className="ord-save" disabled={busy}>{busy ? 'Добавляю…' : 'Добавить на сайт и в меню'}</button>
+                <button type="button" className="ord-secondary" onClick={() => { setAdding(false); setAddError('') }}>Отмена</button>
+              </div>
+            </form>
+          )}
+      </div>
       {categories.map(category => (
         <section className="dish-category" key={category.title}>
           <h2>{category.title}</h2>

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import type { FormEvent } from 'react'
 import { Link, useRouter } from '@tanstack/react-router'
 import { createOrder, emailOrder, loginOrders, logoutOrders, removeOrder, updateOrder } from '@/lib/orders'
@@ -63,10 +63,13 @@ function parseAmount(value: string): number | null {
 
 const menuCategories = sections.ru.menu.categories.map(category => ({ title: category.title, items: [...category.items] }))
 const knownDishes = new Set(menuCategories.flatMap(category => category.items))
+const ExtrasContext = createContext<{ ru: string; category: number }[]>([])
 
 function MenuPicker({ title, selected, onChange, hint, onReset }: { title: string; selected: string[]; onChange: (list: string[]) => void; hint?: string; onReset?: () => void }) {
   const [custom, setCustom] = useState('')
-  const extras = selected.filter(name => !knownDishes.has(name))
+  const siteExtras = useContext(ExtrasContext)
+  const siteExtraNames = new Set(siteExtras.map(dish => dish.ru))
+  const extras = selected.filter(name => !knownDishes.has(name) && !siteExtraNames.has(name))
 
   function toggle(name: string) {
     onChange(selected.includes(name) ? selected.filter(item => item !== name) : [...selected, name])
@@ -86,7 +89,7 @@ function MenuPicker({ title, selected, onChange, hint, onReset }: { title: strin
         {hint && <p className="ord-menu-hint">{hint}</p>}
         {menuCategories.map(category => <fieldset key={category.title}>
           <legend>{category.title}</legend>
-          <div className="ord-menu-grid">{category.items.map(name => <label className="ord-check" key={name}><input type="checkbox" checked={selected.includes(name)} onChange={() => toggle(name)} /><span>{name}</span></label>)}</div>
+          <div className="ord-menu-grid">{[...category.items, ...siteExtras.filter(dish => dish.category === menuCategories.indexOf(category)).map(dish => dish.ru)].map(name => <label className="ord-check" key={name}><input type="checkbox" checked={selected.includes(name)} onChange={() => toggle(name)} /><span>{name}</span></label>)}</div>
         </fieldset>)}
         <fieldset>
           <legend>Другое (не из меню на сайте)</legend>
@@ -355,7 +358,7 @@ function OrdersCalendar({ orders, from, to, onPick }: { orders: Order[]; from: s
   )
 }
 
-export function OrdersApp({ initial, configured }: { initial: Order[]; configured: boolean }) {
+export function OrdersApp({ initial, configured, extras }: { initial: Order[]; configured: boolean; extras: { ru: string; category: number }[] }) {
   const router = useRouter()
   const [orders, setOrders] = useState(initial)
   const [filter, setFilter] = useState<'all' | OrderStatus>('all')
