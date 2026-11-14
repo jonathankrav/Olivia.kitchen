@@ -39,7 +39,7 @@ export async function sendRequestEmail(input: unknown): Promise<boolean> {
     method: 'POST',
     headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      from: process.env.MAIL_FROM || 'Olivia’s Kitchen <zayavki@olivia.kitchen>',
+      from: process.env.MAIL_FROM || 'Olivia’s Kitchen <orders@olivia.kitchen>',
       to: [process.env.MAIL_TO || contact.email],
       ...(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(replyTo) ? { reply_to: replyTo } : {}),
       subject: `Новая заявка${name ? `: ${name}` : ''}${date ? `, ${date}` : ''}`,
@@ -113,7 +113,7 @@ export async function sendClientReply(input: unknown): Promise<boolean> {
     method: 'POST',
     headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      from: process.env.MAIL_FROM || 'Olivia’s Kitchen <zayavki@olivia.kitchen>',
+      from: process.env.MAIL_FROM || 'Olivia’s Kitchen <orders@olivia.kitchen>',
       to: [to],
       reply_to: contact.email,
       subject: copy.subject,

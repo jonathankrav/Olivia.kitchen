@@ -10,7 +10,7 @@ export async function emailOrderFile(order: Order): Promise<boolean> {
     method: 'POST',
     headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      from: process.env.MAIL_FROM || 'Olivia’s Kitchen <zayavki@olivia.kitchen>',
+      from: process.env.MAIL_FROM || 'Olivia’s Kitchen <orders@olivia.kitchen>',
       to: [process.env.MAIL_TO || contact.email],
       subject: `Заявка: ${label}`,
       text: `Заявка в приложенном файле: ${label}.`,
@@ -32,7 +32,7 @@ export async function runOrdersBackup(): Promise<{ ok: boolean; orders: number; 
     method: 'POST',
     headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      from: process.env.MAIL_FROM || 'Olivia’s Kitchen <zayavki@olivia.kitchen>',
+      from: process.env.MAIL_FROM || 'Olivia’s Kitchen <orders@olivia.kitchen>',
       to: [process.env.MAIL_TO || contact.email],
       subject: `Копия заявок Olivia’s Kitchen, ${today}`,
       text: `Автоматическая резервная копия: ${orders.length} заявок в приложенном файле.`,
