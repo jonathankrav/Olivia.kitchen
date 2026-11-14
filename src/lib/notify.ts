@@ -20,8 +20,8 @@ export const notifyRequest = createServerFn({ method: 'POST' }).handler(async (c
   if (!validInquiry(input)) return { ok: false, mail: true }
   const { saveSiteOrder } = await import('@/server/orders-store')
   const { sendRequestNotification } = await import('@/server/telegram')
-  const { sendRequestEmail } = await import('@/server/mail')
-  const [saved, sent, mailed] = await Promise.allSettled([saveSiteOrder(input), sendRequestNotification(input), sendRequestEmail(input)])
+  const { sendRequestEmail, sendClientReply } = await import('@/server/mail')
+  const [saved, sent, mailed] = await Promise.allSettled([saveSiteOrder(input), sendRequestNotification(input), sendRequestEmail(input), sendClientReply(input)])
   const yes = (result: PromiseSettledResult<boolean>) => result.status === 'fulfilled' && result.value
   return { ok: yes(saved) || yes(sent) || yes(mailed), mail: yes(mailed) }
 })
