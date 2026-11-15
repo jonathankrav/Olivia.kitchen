@@ -1,8 +1,9 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import type { FormEvent } from 'react'
 import { Link, useRouter } from '@tanstack/react-router'
-import { createOrder, emailOrder, loginOrders, logoutOrders, removeOrder, updateOrder } from '@/lib/orders'
+import { createOrder, emailOrder, getShopping, loginOrders, logoutOrders, removeOrder, updateOrder } from '@/lib/orders'
 import { sections } from '@/lib/content'
+import type { Recipe } from '@/lib/dishes-types'
 import { todayISO } from '@/lib/form-validation'
 import { cuisineLabel, cuisineOptions, eventDateISO, formatEventDate, orderExpenses, orderProfit, orderStatuses, type Order, type OrderPatch, type OrderStatus } from '@/lib/orders-types'
 
@@ -197,7 +198,7 @@ function OrderCard({ order, onChange, onDelete }: { order: Order; onChange: (ord
         />
         <div className="ord-tools">
           <Link to="/shopping/$orderId" params={{ orderId: order.id }} className="ord-work">Работаем с заявкой</Link>
-          <button type="button" className="ord-secondary" onClick={() => exportExcel([order])}>Скачать Excel</button>
+          <button type="button" className="ord-secondary" onClick={() => exportOrderExcel(order)}>Скачать Excel</button>
           <button type="button" className="ord-secondary" onClick={sendExcel} disabled={mailState === 'sending'}>{mailState === 'sending' ? 'Отправляю…' : 'Отправить Excel на почту'}</button>
           {mailState === 'sent' && <span className="ord-state">Отправлено на почту</span>}
           {mailState === 'error' && <span className="ord-state">Не удалось отправить</span>}
@@ -270,6 +271,23 @@ function NewOrderForm({ onCreated, onClose }: { onCreated: (order: Order) => voi
       </div>
     </form>
   )
+}
+
+async function exportOrderExcel(order: Order) {
+  const [{ buildOrderWorkbook }, state] = await Promise.all([
+    import('@/lib/order-sheet'),
+    (getShopping as unknown as Call<{ recipes?: Record<string, Recipe> }>)({ data: { id: order.id } }).catch(() => ({ recipes: {} as Record<string, Recipe> })),
+  ])
+  const bytes = buildOrderWorkbook(order, state.recipes ?? {})
+  const blob = new Blob([bytes], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' })
+  const url = URL.createObjectURL(blob)
+  const link = document.createElement('a')
+  link.href = url
+  link.download = `zayavka-${order.id.slice(0, 8)}.xlsx`
+  document.body.append(link)
+  link.click()
+  link.remove()
+  setTimeout(() => URL.revokeObjectURL(url), 1000)
 }
 
 async function exportExcel(orders: Order[]) {
