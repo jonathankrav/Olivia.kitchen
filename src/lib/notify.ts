@@ -35,3 +35,13 @@ export const reportMailProblem = createServerFn({ method: 'POST' }).handler(asyn
     return { ok: false }
   }
 })
+
+export const reportWhatsappClick = createServerFn({ method: 'POST' }).handler(async (context): Promise<{ ok: boolean }> => {
+  const page = (context as unknown as { data?: { page?: unknown } }).data?.page
+  try {
+    const { sendWhatsappClick } = await import('@/server/telegram')
+    return { ok: await sendWhatsappClick(page) }
+  } catch {
+    return { ok: false }
+  }
+})

@@ -1,3 +1,4 @@
+import { trackWhatsapp } from '@/lib/whatsapp-click'
 import { Link } from '@tanstack/react-router'
 import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { ArrowDown, ArrowRight, ArrowUpRight, Check, Leaf, Mail, Menu, MessageCircle, Utensils, X } from 'lucide-react'
@@ -186,7 +187,7 @@ export function Landing({ language, extras }: { language: Language; extras?: Cus
 
         <section id="contact" className="contact-section section-wrap">
           <div className="contact-copy"><span className="eyebrow">{text.contactLabel}</span><h2>{text.contactTitle}</h2><p>{text.contactText}</p><div className="contact-email"><span className="eyebrow">{text.emailLabel}</span><a href={`mailto:${contact.email}`}>{contact.email}<ArrowUpRight size={20} /></a></div>
-            {whatsappUrl ? <a className="whatsapp-link" href={whatsappUrl} target="_blank" rel="noopener noreferrer"><MessageCircle size={19} />{text.whatsapp}<ArrowUpRight size={15} /></a> : <button className="whatsapp-link" onClick={() => setWhatsappNotice(true)}><MessageCircle size={19} />{text.whatsapp}<ArrowUpRight size={15} /></button>}
+            {whatsappUrl ? <a className="whatsapp-link" href={whatsappUrl} onClick={trackWhatsapp} target="_blank" rel="noopener noreferrer"><MessageCircle size={19} />{text.whatsapp}<ArrowUpRight size={15} /></a> : <button className="whatsapp-link" onClick={() => setWhatsappNotice(true)}><MessageCircle size={19} />{text.whatsapp}<ArrowUpRight size={15} /></button>}
             <span className="contact-flower" aria-hidden="true">✳</span>
           </div>
           <div className="form-panel">
@@ -213,7 +214,7 @@ export function Landing({ language, extras }: { language: Language; extras?: Cus
           <ul className="contacts-list">
             <li><span className="eyebrow">{text.callLabel}</span><a href={`tel:${contact.phoneE164}`} dir="ltr">{contact.phone}</a></li>
             <li><span className="eyebrow">{text.writeLabel}</span><a href={`mailto:${contact.email}`} dir="ltr">{contact.email}</a></li>
-            <li><span className="eyebrow">WHATSAPP</span>{whatsappUrl ? <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">{text.chatLabel}</a> : <button onClick={() => setWhatsappNotice(true)}>{text.chatLabel}</button>}</li>
+            <li><span className="eyebrow">WHATSAPP</span>{whatsappUrl ? <a href={whatsappUrl} onClick={trackWhatsapp} target="_blank" rel="noopener noreferrer">{text.chatLabel}</a> : <button onClick={() => setWhatsappNotice(true)}>{text.chatLabel}</button>}</li>
             <li><span className="eyebrow">{text.areaLabel}</span><span className="contacts-value">{text.areaValue}</span></li>
           </ul>
         </section>

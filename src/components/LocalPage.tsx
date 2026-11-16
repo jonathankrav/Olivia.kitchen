@@ -1,3 +1,4 @@
+import { trackWhatsapp } from '@/lib/whatsapp-click'
 import { Link } from '@tanstack/react-router'
 import { ArrowUpRight, MessageCircle } from 'lucide-react'
 import { contact, content, localPages, sections, type Language, type LocalPageKey } from '@/lib/content'
@@ -42,7 +43,7 @@ export function LocalPage({ pageKey, language }: { pageKey: LocalPageKey; langua
             {copy.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
             <div className="hero-actions">
               <Link className="button" to={home} hash="contact">{text.book}<ArrowUpRight size={18} /></Link>
-              <a className="text-link" href={whatsappUrl} target="_blank" rel="noopener noreferrer"><MessageCircle size={16} />{text.whatsapp}</a>
+              <a className="text-link" href={whatsappUrl} onClick={trackWhatsapp} target="_blank" rel="noopener noreferrer"><MessageCircle size={16} />{text.whatsapp}</a>
             </div>
           </div>
           <figure className="local-hero-photo"><img src={`/img/${page.heroImage.file}.webp`} alt={alts[page.heroImage.altIndex]} width={page.heroImage.width} height={page.heroImage.height} fetchPriority="high" /></figure>
@@ -71,7 +72,7 @@ export function LocalPage({ pageKey, language }: { pageKey: LocalPageKey; langua
           <ul className="contacts-list">
             <li><span className="eyebrow">{text.callLabel}</span><a href={`tel:${contact.phoneE164}`} dir="ltr">{contact.phone}</a></li>
             <li><span className="eyebrow">{text.writeLabel}</span><a href={`mailto:${contact.email}`} dir="ltr">{contact.email}</a></li>
-            <li><span className="eyebrow">WHATSAPP</span><a href={whatsappUrl} target="_blank" rel="noopener noreferrer">{text.chatLabel}</a></li>
+            <li><span className="eyebrow">WHATSAPP</span><a href={whatsappUrl} onClick={trackWhatsapp} target="_blank" rel="noopener noreferrer">{text.chatLabel}</a></li>
             <li><span className="eyebrow">{text.areaLabel}</span><span className="contacts-value">{text.areaValue}</span></li>
           </ul>
         </section>

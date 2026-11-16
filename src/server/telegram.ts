@@ -59,3 +59,22 @@ export async function sendMailProblem(detail: unknown): Promise<boolean> {
   })
   return response.ok
 }
+
+const recentClicks: number[] = []
+
+export async function sendWhatsappClick(page: unknown): Promise<boolean> {
+  const token = process.env.TELEGRAM_BOT_TOKEN
+  const chatId = process.env.TELEGRAM_CHAT_ID
+  const path = typeof page === 'string' && /^\/[a-z-]{0,20}$/.test(page) ? page : '/'
+  if (!token || !chatId) return false
+  const now = Date.now()
+  while (recentClicks.length > 0 && now - recentClicks[0] > 60_000) recentClicks.shift()
+  if (recentClicks.length >= 6) return false
+  recentClicks.push(now)
+  const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ chat_id: chatId, text: `Посетитель нажал WhatsApp на сайте.\nСтраница: olivia.kitchen${path === '/' ? '' : path}\nЕсли напишет, сообщение придёт в WhatsApp.`, disable_web_page_preview: true }),
+  })
+  return response.ok
+}
