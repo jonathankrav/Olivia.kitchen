@@ -498,6 +498,7 @@ function foodService(serviceType: string) {
       availableLanguage: ['Hebrew', 'English', 'Russian'],
     },
     founder: { '@id': `${siteUrl}/#olivia` },
+    sameAs: ['https://www.facebook.com/share/1KVybNW9NG/'],
     knowsAbout: ['Israeli cuisine', 'Italian cuisine', 'Caucasian cuisine', 'Kosher cooking', 'Private dining'],
     description: 'Private chef service by Olivia in Haifa and Northern Israel: Israeli, Italian and Caucasian menus prepared by the chef and brought to your table for groups of 4 to 30 guests.',
     serviceType,

@@ -18,5 +18,6 @@
 - Pricing: personal offer by menu, guests and date.
 - Service: full service or cooking only; seated menu or buffet.
 - Area: Haifa and Northern Israel.
+- Facebook: https://www.facebook.com/share/1KVybNW9NG/
 - Contact: chef@olivia.kitchen, +972545055199 (phone and WhatsApp)
 - Sitemap: https://olivia.kitchen/sitemap.xml
