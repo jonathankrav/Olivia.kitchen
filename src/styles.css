@@ -37,7 +37,7 @@
 .services{padding-top:96px;padding-bottom:96px;border-top:1px solid var(--line)}
 .services-top{display:grid;grid-template-columns:1fr 1fr;gap:8%;align-items:end;margin-bottom:56px}
 .services-lead p{font-size:14px;line-height:1.9;max-width:470px}
-.services-count{display:flex;align-items:baseline;gap:14px;margin-top:26px}
+.services-count{display:flex;align-items:baseline;gap:6px 14px;flex-wrap:wrap;margin-top:26px}
 .services-count strong{font-family:var(--serif);font-weight:400;font-size:76px;line-height:1;letter-spacing:-2px}
 .services-count span{font-size:11px;font-weight:600;letter-spacing:2px;color:#87926b}
 .services-groups{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--olive)}

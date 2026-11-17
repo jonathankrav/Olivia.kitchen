@@ -154,9 +154,9 @@ export const sections = {
     alts: ['Lamb chops, beef medallions and roasted vegetables on a platter', 'Seared salmon with silky purée', 'Burrata with heirloom tomatoes and basil', 'Grilled lamb ribs with rice and roasted vegetables'],
     video: { label: 'VIDEO', title: 'How it\ncomes together.', intro: 'A few seconds of the process: watch a dish come together.', sound: 'Turn sound on', duration: 'Video, 19 seconds' },
     services: {
-      label: 'EVENTS & SERVICE', title: 'Your table for\n4 to 30 guests.',
-      intro: 'I cook and provide catering for groups of 4 to 30 guests: family celebrations, corporate events and evenings with friends. You decide how much to take on and what kind of evening you want.',
-      guests: ['4-30', 'guests'],
+      label: 'EVENTS & SERVICE', title: 'Your table for\nup to 40 guests.',
+      intro: 'I cook and provide catering for groups of up to 40 guests: family celebrations, corporate events and evenings with friends. You decide how much to take on and what kind of evening you want.',
+      guests: ['up to 40', 'guests'],
       groups: [
         { title: 'Occasions', items: [
           { title: 'Family celebrations', text: 'Birthdays, holidays and special dates around one table.' },
@@ -206,10 +206,10 @@ export const sections = {
         { q: 'Where do I work?', a: 'In Haifa and Northern Israel: Haifa, the Krayot, Nesher, Karmiel, Nahariya, Akko and the surrounding area. If you are elsewhere in Israel, write to me and I will check.' },
         { q: 'Is kosher food available?', a: 'Yes. There are three options: kosher, kosher-style and not kosher. Tell me in your inquiry what suits your home.' },
         { q: 'Which cuisines can I choose?', a: 'Israeli, Italian and Caucasian. Pick one kitchen or combine them in a single menu.' },
-        { q: 'What kind of occasions is this for?', a: 'Family celebrations, corporate events and evenings with friends, for groups of 4 to 30 guests. Choose full service or cooking only, and a full menu or a buffet.' },
+        { q: 'What kind of occasions is this for?', a: 'Family celebrations, corporate events and evenings with friends, for groups of up to 40 guests. Choose full service or cooking only, and a full menu or a buffet.' },
         { q: 'What about allergies and dietary needs?', a: 'Mention them in the inquiry form and I will adapt the menu in a personal conversation.' },
         { q: 'How much does it cost?', a: 'The price depends on the menu, the number of guests and the date. Send an inquiry and you will receive a personal offer.' },
-        { q: 'What is Olivia’s Kitchen?', a: 'Olivia’s Kitchen is a private chef service in Haifa and Northern Israel. Olivia cooks Israeli, Italian and Caucasian menus and brings them to your table for groups of 4 to 30 guests.' },
+        { q: 'What is Olivia’s Kitchen?', a: 'Olivia’s Kitchen is a private chef service in Haifa and Northern Israel. Olivia cooks Israeli, Italian and Caucasian menus and brings them to your table for groups of up to 40 guests.' },
         { q: 'Is the menu pork-free?', a: 'Yes. I do not cook with pork. Menus can be kosher, kosher-style or not kosher.' },
         { q: 'How do I book?', a: 'Fill in the inquiry form, write to chef@olivia.kitchen or message on WhatsApp. I will get back to you to plan the details.' },
       ],
@@ -219,9 +219,9 @@ export const sections = {
     alts: ['צלעות טלה, מדליוני בקר וירקות צלויים על מגש', 'סלמון צרוב עם פירה קטיפתי', 'בוראטה עם עגבניות צבעוניות ובזיליקום', 'צלעות טלה על האש עם אורז וירקות צלויים'],
     video: { label: 'וידאו', title: 'ככה זה\nנעשה.', intro: 'כמה שניות מהתהליך: ככה מרכיבים מנה.', sound: 'הפעלת צליל', duration: 'סרטון, 19 שניות' },
     services: {
-      label: 'אירועים ושירות', title: 'שולחן לקבוצות\nשל 4 עד 30 אורחים.',
-      intro: 'אני מבשלת ומספקת קייטרינג לקבוצות של 4 עד 30 אורחים: אירועים משפחתיים, אירועי חברה וערבים עם חברים. אתם בוחרים כמה לקחת על עצמכם ואיזה ערב אתם רוצים.',
-      guests: ['4-30', 'אורחים'],
+      label: 'אירועים ושירות', title: 'שולחן לקבוצות\nשל עד 40 אורחים.',
+      intro: 'אני מבשלת ומספקת קייטרינג לקבוצות של עד 40 אורחים: אירועים משפחתיים, אירועי חברה וערבים עם חברים. אתם בוחרים כמה לקחת על עצמכם ואיזה ערב אתם רוצים.',
+      guests: ['עד 40', 'אורחים'],
       groups: [
         { title: 'סוגי אירועים', items: [
           { title: 'אירועים משפחתיים', text: 'ימי הולדת, חגים ותאריכים מיוחדים סביב שולחן אחד.' },
@@ -271,10 +271,10 @@ export const sections = {
         { q: 'באילו אזורים אני עובדת?', a: 'בחיפה ובצפון: חיפה, הקריות, נשר, כרמיאל, נהריה, עכו והסביבה. אם אתם במקום אחר בישראל, כתבו לי ואבדוק.' },
         { q: 'האם אפשר לקבל אוכל כשר?', a: 'כן. יש שלוש אפשרויות: מטבח כשר, בסגנון כשר ולא כשר. כתבו בפנייה מה מתאים לבית שלכם.' },
         { q: 'אילו מטבחים אפשר לבחור?', a: 'ישראלי, איטלקי וקווקזי. אפשר לבחור מטבח אחד או לשלב ביניהם בתפריט אחד.' },
-        { q: 'לאילו אירועים זה מתאים?', a: 'אירועים משפחתיים, אירועי חברה וערבים עם חברים, לקבוצות של 4 עד 30 אורחים. אפשר לבחור שירות מלא או הכנת האוכל בלבד, ותפריט מלא או בופה.' },
+        { q: 'לאילו אירועים זה מתאים?', a: 'אירועים משפחתיים, אירועי חברה וערבים עם חברים, לקבוצות של עד 40 אורחים. אפשר לבחור שירות מלא או הכנת האוכל בלבד, ותפריט מלא או בופה.' },
         { q: 'מה לגבי אלרגיות והעדפות תזונתיות?', a: 'ציינו אותן בטופס הפנייה, ואני אתאים את התפריט בשיחה אישית.' },
         { q: 'כמה זה עולה?', a: 'המחיר תלוי בתפריט, במספר האורחים ובמועד האירוע. השאירו פנייה ותקבלו הצעה אישית.' },
-        { q: 'מה זה Olivia’s Kitchen?', a: 'Olivia’s Kitchen הוא שירות שף פרטי בחיפה ובצפון. אוליביה מבשלת תפריטים ישראליים, איטלקיים וקווקזיים ומגישה אותם לשולחן שלכם, לקבוצות של 4 עד 30 אורחים.' },
+        { q: 'מה זה Olivia’s Kitchen?', a: 'Olivia’s Kitchen הוא שירות שף פרטי בחיפה ובצפון. אוליביה מבשלת תפריטים ישראליים, איטלקיים וקווקזיים ומגישה אותם לשולחן שלכם, לקבוצות של עד 40 אורחים.' },
         { q: 'האם התפריט ללא חזיר?', a: 'כן. אני לא מבשלת עם בשר חזיר. התפריט יכול להיות כשר, בסגנון כשר או לא כשר.' },
         { q: 'איך מזמינים?', a: 'ממלאים את טופס הפנייה באתר, כותבים ל־chef@olivia.kitchen או פונים בוואטסאפ. אחזור אליכם לתיאום הפרטים.' },
       ],
@@ -284,9 +284,9 @@ export const sections = {
     alts: ['Бараньи рёбрышки, медальоны из говядины и запечённые овощи на блюде', 'Лосось с нежным пюре', 'Буррата с разноцветными томатами и базиликом', 'Бараньи рёбрышки на гриле с рисом и запечёнными овощами'],
     video: { label: 'ВИДЕО', title: 'Как это\nготовится.', intro: 'Несколько секунд процесса: смотрите, как собирается блюдо.', sound: 'Включить звук', duration: 'Видео, 19 секунд' },
     services: {
-      label: 'МЕРОПРИЯТИЯ И СЕРВИС', title: 'Стол для компании\nот 4 до 30 человек.',
-      intro: 'Я готовлю и делаю кейтеринг для компаний от 4 до 30 человек: семейные праздники, корпоративы и встречи с друзьями. Вы выбираете, сколько забот взять на себя и каким будет вечер.',
-      guests: ['4-30', 'человек'],
+      label: 'МЕРОПРИЯТИЯ И СЕРВИС', title: 'Стол для компании\nдо 40 человек.',
+      intro: 'Я готовлю и делаю кейтеринг для компаний до 40 человек: семейные праздники, корпоративы и встречи с друзьями. Вы выбираете, сколько забот взять на себя и каким будет вечер.',
+      guests: ['до 40', 'человек'],
       groups: [
         { title: 'Какие события', items: [
           { title: 'Семейные праздники', text: 'Дни рождения, праздники и важные даты за одним столом.' },
@@ -336,10 +336,10 @@ export const sections = {
         { q: 'Где я работаю?', a: 'В Хайфе и на севере Израиля: Хайфа, Крайот, Нешер, Кармиэль, Нагария, Акко и окрестности. Если вы в другом месте Израиля, напишите мне, и я проверю.' },
         { q: 'Можно ли заказать кошерное меню?', a: 'Да. Есть три варианта: кошерная кухня, кошер-стайл и некошерная. Напишите в запросе, что подходит вашему дому.' },
         { q: 'Какие кухни можно выбрать?', a: 'Израильская, итальянская и кавказская. Можно выбрать одну или объединить их в одном меню.' },
-        { q: 'Для каких событий это подходит?', a: 'Семейные праздники, корпоративы и встречи с друзьями для компаний от 4 до 30 человек. Можно выбрать полное обслуживание или только приготовление, а также полное меню или фуршет.' },
+        { q: 'Для каких событий это подходит?', a: 'Семейные праздники, корпоративы и встречи с друзьями для компаний до 40 человек. Можно выбрать полное обслуживание или только приготовление, а также полное меню или фуршет.' },
         { q: 'Что с аллергиями и пожеланиями по питанию?', a: 'Укажите их в форме запроса, и я подберу меню в личном разговоре.' },
         { q: 'Сколько это стоит?', a: 'Цена зависит от меню, количества гостей и даты. Отправьте запрос, и вы получите индивидуальное предложение.' },
-        { q: 'Что такое Olivia’s Kitchen?', a: 'Olivia’s Kitchen — сервис личного шефа в Хайфе и на севере Израиля. Оливия готовит израильское, итальянское и кавказское меню и привозит его к вашему столу для компаний от 4 до 30 человек.' },
+        { q: 'Что такое Olivia’s Kitchen?', a: 'Olivia’s Kitchen — сервис личного шефа в Хайфе и на севере Израиля. Оливия готовит израильское, итальянское и кавказское меню и привозит его к вашему столу для компаний до 40 человек.' },
         { q: 'Есть ли в меню свинина?', a: 'Нет, я не готовлю со свининой. Меню может быть кошерным, в стиле кошер или некошерным.' },
         { q: 'Как заказать?', a: 'Заполните форму запроса, напишите на chef@olivia.kitchen или в WhatsApp. Я свяжусь с вами, чтобы обсудить детали.' },
       ],
@@ -500,7 +500,7 @@ function foodService(serviceType: string) {
     founder: { '@id': `${siteUrl}/#olivia` },
     sameAs: ['https://www.facebook.com/olivia.kitchen.il'],
     knowsAbout: ['Israeli cuisine', 'Italian cuisine', 'Caucasian cuisine', 'Kosher cooking', 'Private dining'],
-    description: 'Private chef service by Olivia in Haifa and Northern Israel: Israeli, Italian and Caucasian menus prepared by the chef and brought to your table for groups of 4 to 30 guests.',
+    description: 'Private chef service by Olivia in Haifa and Northern Israel: Israeli, Italian and Caucasian menus prepared by the chef and brought to your table for groups of up to 40 guests.',
     serviceType,
     inLanguage: ['en', 'he', 'ru'],
     areaServed: [
