@@ -9,8 +9,13 @@
 - [Private chef in Haifa](https://olivia.kitchen/haifa)
 - [Private chef for events in the North](https://olivia.kitchen/north)
 
+## Full reference
+- [Full menu sample and FAQ in Hebrew, English and Russian](https://olivia.kitchen/llms-full.txt)
+
 ## Facts
 - Cuisines: Israeli, Italian, Caucasian. No pork. Kosher, kosher-style and non-kosher menus.
+- Languages: Hebrew, English, Russian.
+- Pricing: personal offer by menu, guests and date.
 - Service: full service or cooking only; seated menu or buffet.
 - Area: Haifa and Northern Israel.
 - Contact: chef@olivia.kitchen, +972545055199 (phone and WhatsApp)

@@ -209,6 +209,8 @@ export const sections = {
         { q: 'What kind of occasions is this for?', a: 'Family celebrations, corporate events and evenings with friends, for groups of 4 to 30 guests. Choose full service or cooking only, and a full menu or a buffet.' },
         { q: 'What about allergies and dietary needs?', a: 'Mention them in the inquiry form and I will adapt the menu in a personal conversation.' },
         { q: 'How much does it cost?', a: 'The price depends on the menu, the number of guests and the date. Send an inquiry and you will receive a personal offer.' },
+        { q: 'What is Olivia’s Kitchen?', a: 'Olivia’s Kitchen is a private chef service in Haifa and Northern Israel. Olivia cooks Israeli, Italian and Caucasian menus and brings them to your table for groups of 4 to 30 guests.' },
+        { q: 'Is the menu pork-free?', a: 'Yes. I do not cook with pork. Menus can be kosher, kosher-style or not kosher.' },
         { q: 'How do I book?', a: 'Fill in the inquiry form, write to chef@olivia.kitchen or message on WhatsApp. I will get back to you to plan the details.' },
       ],
     },
@@ -272,6 +274,8 @@ export const sections = {
         { q: 'לאילו אירועים זה מתאים?', a: 'אירועים משפחתיים, אירועי חברה וערבים עם חברים, לקבוצות של 4 עד 30 אורחים. אפשר לבחור שירות מלא או הכנת האוכל בלבד, ותפריט מלא או בופה.' },
         { q: 'מה לגבי אלרגיות והעדפות תזונתיות?', a: 'ציינו אותן בטופס הפנייה, ואני אתאים את התפריט בשיחה אישית.' },
         { q: 'כמה זה עולה?', a: 'המחיר תלוי בתפריט, במספר האורחים ובמועד האירוע. השאירו פנייה ותקבלו הצעה אישית.' },
+        { q: 'מה זה Olivia’s Kitchen?', a: 'Olivia’s Kitchen הוא שירות שף פרטי בחיפה ובצפון. אוליביה מבשלת תפריטים ישראליים, איטלקיים וקווקזיים ומגישה אותם לשולחן שלכם, לקבוצות של 4 עד 30 אורחים.' },
+        { q: 'האם התפריט ללא חזיר?', a: 'כן. אני לא מבשלת עם בשר חזיר. התפריט יכול להיות כשר, בסגנון כשר או לא כשר.' },
         { q: 'איך מזמינים?', a: 'ממלאים את טופס הפנייה באתר, כותבים ל־chef@olivia.kitchen או פונים בוואטסאפ. אחזור אליכם לתיאום הפרטים.' },
       ],
     },
@@ -335,6 +339,8 @@ export const sections = {
         { q: 'Для каких событий это подходит?', a: 'Семейные праздники, корпоративы и встречи с друзьями для компаний от 4 до 30 человек. Можно выбрать полное обслуживание или только приготовление, а также полное меню или фуршет.' },
         { q: 'Что с аллергиями и пожеланиями по питанию?', a: 'Укажите их в форме запроса, и я подберу меню в личном разговоре.' },
         { q: 'Сколько это стоит?', a: 'Цена зависит от меню, количества гостей и даты. Отправьте запрос, и вы получите индивидуальное предложение.' },
+        { q: 'Что такое Olivia’s Kitchen?', a: 'Olivia’s Kitchen — сервис личного шефа в Хайфе и на севере Израиля. Оливия готовит израильское, итальянское и кавказское меню и привозит его к вашему столу для компаний от 4 до 30 человек.' },
+        { q: 'Есть ли в меню свинина?', a: 'Нет, я не готовлю со свининой. Меню может быть кошерным, в стиле кошер или некошерным.' },
         { q: 'Как заказать?', a: 'Заполните форму запроса, напишите на chef@olivia.kitchen или в WhatsApp. Я свяжусь с вами, чтобы обсудить детали.' },
       ],
     },
@@ -456,6 +462,24 @@ function faqSchema(language: Language) {
   }
 }
 
+function menuSchema(language: Language, extras: { ru: string; en?: string; he?: string; category: number }[]) {
+  return {
+    '@type': 'Menu',
+    '@id': `${siteUrl}/#menu`,
+    name: sections[language].menu.title.replace(/\n/g, ' '),
+    inLanguage: language,
+    provider: { '@id': `${siteUrl}/#business` },
+    hasMenuSection: sections[language].menu.categories.map((category, index) => ({
+      '@type': 'MenuSection',
+      name: category.title,
+      hasMenuItem: [
+        ...category.items.map(item => ({ '@type': 'MenuItem', name: item })),
+        ...extras.filter(dish => dish.category === index).map(dish => ({ '@type': 'MenuItem', name: dish[language] || dish.ru })),
+      ],
+    })),
+  }
+}
+
 function foodService(serviceType: string) {
   return {
     '@type': 'FoodService',
@@ -505,6 +529,7 @@ function websiteSchema() {
     name: 'Olivia’s Kitchen',
     url: siteUrl,
     inLanguage: ['he', 'en', 'ru'],
+    dateModified: '2026-11-17',
     publisher: { '@id': `${siteUrl}/#business` },
   }
 }
@@ -521,9 +546,9 @@ function breadcrumbSchema(page: { path: string; title: string }, language: Langu
   }
 }
 
-function buildHead(page: { path: string; title: string; description: string; locale: string }, serviceType: string, language: Language, alternates: { hrefLang: string; href: string }[], breadcrumb: boolean) {
+function buildHead(page: { path: string; title: string; description: string; locale: string }, serviceType: string, language: Language, alternates: { hrefLang: string; href: string }[], breadcrumb: boolean, extras: { ru: string; en?: string; he?: string; category: number }[] | null = null) {
   const url = `${siteUrl}${page.path === '/' ? '/' : page.path}`
-  const graph = { '@context': 'https://schema.org', '@graph': [foodService(serviceType), personSchema(), websiteSchema(), faqSchema(language), ...videoSchemas(language), ...(breadcrumb ? [breadcrumbSchema(page, language)] : [])] }
+  const graph = { '@context': 'https://schema.org', '@graph': [foodService(serviceType), personSchema(), websiteSchema(), faqSchema(language), ...(extras ? [menuSchema(language, extras)] : []), ...videoSchemas(language), ...(breadcrumb ? [breadcrumbSchema(page, language)] : [])] }
   return {
     meta: [
       { title: page.title },
@@ -546,7 +571,7 @@ function buildHead(page: { path: string; title: string; description: string; loc
   }
 }
 
-export function seoHead(language: Language) {
+export function seoHead(language: Language, extras: { ru: string; en?: string; he?: string; category: number }[] = []) {
   const page = seo[language]
   const alternates = [
     { hrefLang: 'en', href: `${siteUrl}/en` },
@@ -554,7 +579,7 @@ export function seoHead(language: Language) {
     { hrefLang: 'ru', href: `${siteUrl}/ru` },
     { hrefLang: 'x-default', href: `${siteUrl}/` },
   ]
-  return buildHead(page, page.serviceType, language, alternates, false)
+  return buildHead(page, page.serviceType, language, alternates, false, extras)
 }
 
 export function localSeoHead(key: LocalPageKey, language: Language) {

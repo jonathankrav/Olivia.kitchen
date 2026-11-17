@@ -4,7 +4,7 @@ import { seoHead } from '@/lib/content'
 import { getMenuExtras } from '@/lib/menu-extras'
 
 export const Route = createFileRoute('/en')({
-  head: () => seoHead('en'),
+  head: ({ loaderData }) => seoHead('en', loaderData),
   loader: () => getMenuExtras(),
   component: Page,
 })
